@@ -8,20 +8,23 @@ Works as of 28.06.2012
 
 This assumes you've got Homebrew installed and up to date. Open a terminal window and:
 
-Get CouchDB (1.2 required, run `$ couchdb -V` to check your version if you have it installed)
+**1. Get CouchDB** (1.2 required, run `$ couchdb -V` to check your version if you have it installed)
 
 	$ brew install CouchDB
 
-Get nodeJS
+**2. Get nodeJS**
 
 	$ brew install nodejs
-Get npm (the Node Package Manager)
+
+**3. Get npm (the Node Package Manager)**
 
 	$ curl http://npmjs.org/install.sh | sh
 
-Start couch and leave it running
+**4. Start couch and leave it running**
 
 	$ sudo CouchDB
+
+**5. Check your installation**
 
 Check that everything worked by opening Futon, the CouchDB admin interface, at http://127.0.0.1:5984/_utils
 
@@ -31,11 +34,15 @@ Set up an admin user for couch (bottom of the sidebar) and remember the user nam
 
 Don't bother with the "Test Suite", that's for people working on couch itself
 
+**6. Set up the CORS-Proxy**
+
 You'll very likely need a proxy to avoid different origin-problems, which you will definitely get if you want to build stuff in localhost. Get cors-proxy from https://github.com/gr2m/cors-proxy and put it somewhere you'll find it again. Open a terminal in the cors-proxy folder and do $ npm install . (the "." is important)
 
 To run the proxy, do `$ node server.js` and leave it running
 
 More on how to use the proxy later
+
+**7. Set up a database worker**
 
 Get the worker-create-user-database script from https://github.com/hoodiehq/worker-create-user-database and put it somewhere you'll find it again. This worker creates individual databases from hoodie users, which is something you need. So this needs to be running all the time
 You'll need to set some environment variables. Open a new terminal window in this folder and do 
@@ -44,14 +51,15 @@ You'll need to set some environment variables. Open a new terminal window in thi
 	$ export HOODIE_ADMIN_USER=couch_admin_username
 	$ export HOODIE_ADMIN_PASS=couch_admin_password
 
-To start the worker, do $ node index.js and leave it running
+To start the worker, do `$ node index.js` and leave it running
 
-You're set. You'll need to have CouchDB, node server.js and node CreateUserDatabase running at all times, so don't close those terminal tabs or windows. You can turn couch into a daemon so it starts automatically with your system (details to be added later).
+You're set. You'll need to have CouchDB, node server.js and node CreateUserDatabase running at all times, so don't close those terminal tabs or windows. You can turn couch into a daemon so it starts automatically with your system (check out http://guide.couchdb.org/draft/source.html#daemon).
 
 ## First steps
 
 To start doing stuff with hoodie, you'll need a html file that gets served from any kind of webserver. 
-As of now, hoodie.js requires jQuery. Then you can initialize a hoodie
+As of now, hoodie.js requires jQuery. So just include jQuery and hoodie.js from from these external hosts and you're good to go. 
+Then start by initializing a hoodie:
 	
 	<html>
 	  <head>
