@@ -8,7 +8,7 @@ Works as of 28.06.2012
 
 This assumes you've got Homebrew installed and up to date. Open a terminal window and:
 
-Get CouchDB
+Get CouchDB (1.2 required, run `$ couchdb -V` to check your version if you have it installed)
 
 	$ brew install CouchDB
 
@@ -33,7 +33,7 @@ Don't bother with the "Test Suite", that's for people working on couch itself
 
 You'll very likely need a proxy to avoid different origin-problems, which you will definitely get if you want to build stuff in localhost. Get cors-proxy from https://github.com/gr2m/cors-proxy and put it somewhere you'll find it again. Open a terminal in the cors-proxy folder and do $ npm install . (the "." is important)
 
-To run the proxy, do $ node server.js and leave it running
+To run the proxy, do `$ node server.js` and leave it running
 
 More on how to use the proxy later
 
@@ -51,19 +51,23 @@ You're set. You'll need to have CouchDB, node server.js and node CreateUserDatab
 ## First steps
 
 To start doing stuff with hoodie, you'll need a html file that gets served from any kind of webserver. 
-As of now, hoodie.js requires jQuery, so put in this into your html file:
-
-that loads require.js and jquery (proper example will be included in the repo). Use require to load your main js file. Assuming all your scripts are in /scripts, this is how you'll do your JS loading:
-
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-	<script src="http://hoodiehq.github.com/hoodie-client.js/hoodie.js"></script>
-
-Now you can initialize a hoodie
+As of now, hoodie.js requires jQuery. Then you can initialize a hoodie
 	
-	<script>
-		CouchDB_endpoint = 'http://localhost:9292/localhost:5984/';
-	  hoodie = new Hoodie(CouchDB_endpoint)
-	</script>	
+	<html>
+	  <head>
+	    <title>hello hoodie</title>
+	  </head>
+	  <body>
+	    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	    <script src="http://hoodiehq.github.com/hoodie-client.js/hoodie.js"></script>
+	    <script>
+	      couchDB_endpoint = 'http://localhost:9292/d:5984';
+	      hoodie = new Hoodie(couchDB_endpoint);
+
+	 			// do some hoodie magic here
+	    </script>
+	  </body>
+	</html>
 
 The only interesting thing here is the content of "CouchDB_endpoint": localhost:9292 is the cors-proxy you launched in step 6, and you pass the local couch endpoint (localhost:5984) to that.
 
