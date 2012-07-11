@@ -128,6 +128,73 @@ To stop your worker, just hit `ctrl-c`:
 
     ^C$
 
+There’s three things we need to address next:
+
+ 1. Only log objects of the type `log`.
+ 2. Format objects to a line per entry.
+ 3. Write the log message to a file.
+
+Let’s do them in that order.
+
+### Hoodie Object Types
+
+Hoodie defines that objects have types[^cf_types]. This is purely conventional, but it allows for all sorts of magic. All objects in Hoodie have an attribute `_id` that uniquely identifies an object globally. We usually use a UUID for that. The type is specified as a prefix to the `_id` attribute. 
+
+[^cf_types]: See [*Hoodie Object Type Conventions*](TBD) for a full list of types and a more in-depth discussion.
+
+Here’s an example in JSON:
+
+    {
+        "_id": "image/fb461a0bfc5a4aeefc4d7fb461a0b1c1"
+    }
+
+The type here is `image`. We are now looking for objects that are of the type `log`:
+
+    {
+        "_id": "log/4ffd901d052de901bcaa28902dda3b4a"
+    }
+
+Let’s amend our `_changesCallback()` method to only react on `log` objects:
+
+    WorkerLog.prototype._changesCallback = function(error, message)
+    {
+        if(substr(message._id, 0, 3) != "log") {
+            return;
+        }
+
+        console.log(message);
+    }
+
+// TBD: Future versions of this should have a *hoodie* module that mirrors the client API.
+
+When you start the worker again and add another object to the CouchDB database, you should see no output:
+
+    $ curl -X POST http://127.0.0.1:5984/mydatabase/ -d '{"message":"hello world"}' -H "Content-Type: application/json"
+    {"ok":true,"id":"e72c9af9291eae530b28a3f15d0023dc","rev":"1-baa23d8189d19e166f6e0393e23b1085"}
+
+    $ node index.js
+    Logger started.
+
+When you add a document with the correct type:
+
+    $ curl -X POST http://127.0.0.1:5984/mydatabase/ -d '{"_id":"log/foobar","message":"hello world"}' -H "Content-Type: application/json"
+    {"ok":true,"id":"log/foobar","rev":"1-baa23d8189d19e166f6e0393e23b1085"}
+
+You should see:
+
+    { seq: 3,
+      id: 'log/foobar',
+      changes: [ { rev: '1-baa23d8189d19e166f6e0393e23b1085' } ],
+      doc:
+       { _id: 'log/foobar',
+         _rev: '1-baa23d8189d19e166f6e0393e23b1085',
+         message: 'hello world' } }
+
+So far, so good.
+
+
+Next up, we’ll format our message a little bit. Before we dive into the actual formatting code, we’ll *define* a format that we expect a log object to look like. This can be later be enforced, so we know only to expect objects of the type `log` that have all the required fields.
+
 
 ## Helper Methods
 
