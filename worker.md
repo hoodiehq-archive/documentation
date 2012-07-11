@@ -257,7 +257,7 @@ Finally, we want to log to a file, not just the command line. To do this, we’l
 
 Finally, we change the call to `console.log` to:
 
-    fs.fileAppendSync("/tmp/hoodie-worker-log.log", log_message + "\n");
+    fs.appendFileSync("/tmp/hoodie-worker-log.log", log_message + "\n");
 
 When we start the worker now, we go back to just seeing the welcome message:
 
