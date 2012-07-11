@@ -50,18 +50,20 @@ You're set. You'll need to have CouchDB, node server.js and node CreateUserDatab
 
 ## First steps
 
-To start doing stuff with hoodie, you'll need a html file that loads require.js and jquery (proper example will be included in the repo). Use require to load your main js file. Assuming all your scripts are in /scripts, this is how you'll do your JS loading:
+To start doing stuff with hoodie, you'll need a html file that gets served from any kind of webserver. 
+As of now, hoodie.js requires jQuery, so put in this into your html file:
 
-	<script data-main="scripts/main" src="scripts/require-1.0.7.js"></script>
-	<script src="scripts/jquery-1.7.2.min.js"></script>
+that loads require.js and jquery (proper example will be included in the repo). Use require to load your main js file. Assuming all your scripts are in /scripts, this is how you'll do your JS loading:
 
-where data-main="scripts/main" tells require.js to load "scripts/main.js", which should then start like this:
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<script src="http://hoodiehq.github.com/hoodie-client.js/hoodie.js"></script>
 
-	define(function (require) {
-	  Hoodie = require('hoodie');
-	  var CouchDB_endpoint = 'http://localhost:9292/localhost:5984/';
-	  hoodie = new Hoodie(CouchDB_endpoint);
-	});
+Now you can initialize a hoodie
+	
+	<script>
+		CouchDB_endpoint = 'http://localhost:9292/localhost:5984/';
+	  hoodie = new Hoodie(CouchDB_endpoint)
+	</script>	
 
 The only interesting thing here is the content of "CouchDB_endpoint": localhost:9292 is the cors-proxy you launched in step 6, and you pass the local couch endpoint (localhost:5984) to that.
 
@@ -74,4 +76,7 @@ Now try registering a new user with hoodie:
 
 You should see the server.js terminal showing some activity as the worker converts the new user to a database, and you should also be able to see a new database called joe$example.com when you call up http://127.0.0.1:5984/_utils (Don't worry about the "$").
 
+Have a look at http://hoodiehq.github.com/hoodie-client.js/ for more hoodie API fun.
+
 Have fun trying out hoodie!
+
