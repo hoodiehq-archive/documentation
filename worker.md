@@ -15,7 +15,7 @@ See the [Hoodie Architecture](TODO LINK) for more details.
 
 ## Getting Started
 
-The Hoodie reference implementation uses Node.js and CouchDB. While the Hoodie Specification is implementation agnostic, these are the tools we chose to start because the helped us to get going quick.
+The Hoodie reference implementation uses Node.js and CouchDB. While the Hoodie Specification is implementation agnostic, these are the tools we chose to start because they helped us to get going quick.
 
 As more language implementations for workers come up, expect language-specific documentation. Until then, we’ll show you how we write Hoodie Workers in Node.js.
 
