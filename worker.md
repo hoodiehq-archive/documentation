@@ -192,8 +192,87 @@ You should see:
 
 So far, so good.
 
-
 Next up, we’ll format our message a little bit. Before we dive into the actual formatting code, we’ll *define* a format that we expect a log object to look like. This can be later be enforced, so we know only to expect objects of the type `log` that have all the required fields.
+
+    {
+        "_id": "log/*",
+        "message": "Log Message",
+        "timestamp": 1234567890123, // seconds since epoch
+        "level": "one of 'info', 'warn', 'debug', 'tmi'",
+        "tag": "(optional, user-defined tag)"
+    }
+
+We’ll take objects of that structure and turn them into a string that looks like this:
+
+    timestamp [level[, tag]: message
+
+For example:
+
+    1234567890123 [debug]: Hello World
+
+Or, with a tag:
+
+    1234567890123 [info, email]: Email X Sent.
+
+Let’s do it!
+
+    WorkerLog.prototype._changesCallback = function(error, message)
+    {
+        var obj = message.doc;
+        if(obj._id.substr(0, 3) != "log") {
+            return;
+        }
+
+        var log_message = "";
+        if(obj.tag) {
+            log_message = util.format("%d [%s, %s]: %s",
+                obj.timestamp, obj.level, obj.tag, obj.message);
+        } else {
+            log_message = util.format("%d [%s]: %s",
+                obj.timestamp, obj.level, obj.message);
+        }
+        console.log(log_message);
+    }
+
+We keep looking for `log` documents. The we see if the current object has a `tag` member, and format the message string accordingly. Finally, we output the message.
+
+Note that we are using the `util` module here. It ships with Node.js, so you don’t have to install anything, but to use it you have to declare it in your module. We add this to the top of our `index.js` file:
+
+    var util = require("util");
+
+If you run your worker again now, you should see a bunch of undefined and NaN messages. That’s because your test document from earlier doesn’t have the required fields. If you go to CouchDB’s [administration console](http://127.0.0.1:5984/_utils/), you can edit the document and add the fields `message`, `timestamp` and `level`, and if you want `tag`, but that’s no required.
+
+When you save the document now, you should see something like this:
+
+    1342020415 [debug]: hello world
+
+Or, when you have a `tag`:
+
+    1342020415 [debug, foo]: hello world
+
+Yay logging, we are getting closer.
+
+Finally, we want to log to a file, not just the command line. To do this, we’ll use Node.js’s `fs.appendFileSync()` method. To get access to that method, we need to require the `fs` module at the top of our `index.js`:
+
+    var fs = require("fs");
+
+Finally, we change the call to `console.log` to:
+
+    fs.fileAppendSync("/tmp/hoodie-worker-log.log", log_message + "\n");
+
+When we start the worker now, we go back to just seeing the welcome message:
+
+    $ node index.js
+    Logger started.
+
+But that’s expected. If you open another terminal you can see the messages coming in in real-time with:
+
+    $ tail -f /tmp/hoodie-worker-log.log
+    1342020415 [debug, foo]: hello world
+
+Yay Logging.
+
+This concludes the main section of this tutorial. The following sections fill in a few blanks that we glossed over in favour of getting you up and running quickly.
 
 
 ## Helper Methods
