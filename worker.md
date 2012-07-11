@@ -5,14 +5,13 @@ This document explains how to write a Hoodie Worker.
 
 ## What is a Hoodie Worker?
 
-A hoodie Worker is a server-side module that implemets a feature that client-side code can’t implement. A good example is an email-delivery worker. To deliver an email, one needs to send data over SMTP, which is a TCP connection. Client side code doesn’t (usually) have the facilities to do so.
+A hoodie Worker is a server-side module that implements a feature that client-side code can’t implement. A good example is an email-delivery worker. To deliver an email, one needs to send data over SMTP, which is a TCP connection. Client side code doesn’t (usually) have the facilities to do so.
 
-To keep things simple, we’ll create a *Logger* worker. It reads log messages from objects and writes them into a file.
+To keep things simple, we’ll create a *Logger* **worker**. It reads log messages from objects and writes them into a file.
 
 A worker communicates with the frontend over [*state machine documents*](TODO LINK).
 
 See the [Hoodie Architecture](TODO LINK) for more details.
-
 
 ## Getting Started
 
