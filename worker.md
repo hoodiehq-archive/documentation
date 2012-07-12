@@ -94,7 +94,7 @@ Now we can set up the changes listening:
         include_docs: true}
     );
 
-Before we can test our new changes listener, we need to start up a CouchDB instance. Make sure its location matches what we put in the code above. We assume that it runs on your local machine on the default port, and that we are using a database called `mydatabase` to test things. See [*CouchDB Setup Options*](TBD) for alternative ways to use CouchDB.
+Before we can test our new changes listener, we need to start up a CouchDB instance. Make sure its location matches what we put in the code above. We assume that it runs on your local machine on the default port, and that we are using a database called `mydatabase` to test things. See [*CouchDB Setup Options*](TBD) for alternative ways to use CouchDB. See [*Serving Multiple Databases*](below) for details on how not to hard code the database name for a single database into your worker.
 
 Now we can start the worker again:
 
