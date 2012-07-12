@@ -21,7 +21,7 @@ As more language implementations for workers come up, expect language-specific d
 
 This documentation assumes you want to develop your Hoodie Worker locally and only later plan on deploying it. See the [Hoodie Worker Deployment Documentation](TODO LINK) for details.
 
-The only dependency is Node.js. Here are a few ways to install it:
+The only dependency is Node.js version 0.8.0 or higher. Here are a few ways to install it:
 
 Mac OS X:
 
@@ -74,9 +74,9 @@ Add this to the top of your `index.js` file:
 
     var CouchDBChanges = require("CouchDBChanges");
 
-To start listening, we first need to create a *callback function* that is called for every new change that is sent to us.
+To start listening, we first need to create a *callback function* that is called for every new change that is sent to us. Put this new function before the current last line (which should be `var log = new WorkerLog();`).
 
-Our callback for now, will only log the changes object to the command line:
+Our callback function will, for now, only log the changes object to the command line:
 
     WorkerLog.prototype._changesCallback = function(error, message)
     {
@@ -87,12 +87,14 @@ See *Helper Methods* below for an explanation of why we use the `prototype` synt
 
 The callback will get passed two arguments, we ignore the error for now. See *Error Handling* below for more details.
 
-Now we can set up the changes listening:
+Now we can set up the changes listener. This goes inside the `WorkerLog()` function at the top, after our initial `console.log("Logger started.");`.
 
     var changes = new CouchDBChanges("http://127.0.0.1:5984/");
-    changes.follow("mydatabase", this._changesCallback, {}, {
+    changes.follow("myDatabaseName", this._changesCallback, {}, {
         include_docs: true}
     );
+
+If this is your first stop after the introductory [getting started-readme](https://github.com/hoodiehq/documentation/blob/master/development-setup.md), try following a user database. If you've run all the code examples from the readme, `joe$example_com` will work as a database name.
 
 Before we can test our new changes listener, we need to start up a CouchDB instance. Make sure its location matches what we put in the code above. We assume that it runs on your local machine on the default port, and that we are using a database called `mydatabase` to test things. See [*CouchDB Setup Options*](TBD) for alternative ways to use CouchDB. See [*Serving Multiple Databases*](below) for details on how not to hard code the database name for a single database into your worker.
 
@@ -157,7 +159,7 @@ Let’s amend our `_changesCallback()` method to only react on `log` objects:
 
     WorkerLog.prototype._changesCallback = function(error, message)
     {
-        if(substr(message._id, 0, 3) != "log") {
+        if(message.doc._id.substr(0, 3) != "log") {
             return;
         }
 
