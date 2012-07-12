@@ -453,7 +453,7 @@ Now we can write a test for the formatting method:
         });
     });
 
-[Repo Link](https://github.com/hoodiehq/worker-log/blob/how-to-10/index.js)
+[Repo Link](https://github.com/hoodiehq/worker-log/blob/how-to-11/index.js)
 
 Let’s run `mocha` again:
 
@@ -492,7 +492,7 @@ To get started, we need to create a new file `package.json` in the top level of 
         }
     }
 
-[Repo Link](https://github.com/hoodiehq/worker-log/blob/how-to-11/index.js)
+[Repo Link](https://github.com/hoodiehq/worker-log/blob/how-to-12/index.js)
 
 
 Read `npm help json` for details on what all this means in detail. Just briefly, a name will allow us to register the worker with npm, so other people can make use of it. We give it an early version number that we can increase as we go along. The description explains what our worker does. In `scripts` we can tell npm what to run when called as `npm start` or `npm test` which becomes really useful later. And finally, we register our dependencies, to make sure we always get the correct version of the CouchDBChanges package.
