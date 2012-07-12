@@ -292,11 +292,181 @@ This concludes the main section of this tutorial. The following sections fill in
 
 Helper methods are methods that we need during the operation of our worker, but that are not exposed to the outside of the module.
 
-The `_changesCallback` method above is one such helper method.
+The `_changesCallback` method above is one such helper method. If you just need a single helper method, the code is fine as is, but if you want to call other helper functions from within your first helper function, we must make a subtle change:
 
-// TBD expand
+    -    changes.follow("mydatabase", this._changesCallback, {}, {
+    +    changes.follow("mydatabase", this._changesCallback.bind(this), {}, {
+
+[Repo Link](https://github.com/hoodiehq/worker-log/blob/how-to-6/index.js)
+
+This makes it that the `this` variable in all helper methods refers to the main module function. In our case `WorkerLog()`. The result is that we now can call other helper methods with `this._otherHelperMethod()` instead of `WorkerLog.prototype._otherHelperMethod()` which should be more convenient.
+
 
 ## Testing
+
+You want to make sure that the functionality of your worker keeps working (pun definitely intended) as you keep developing. At Hoodie, we’re using [Mocha](http://visionmedia.github.com/mocha/). You are free to use whatever you fancy, but this example uses Mocha and Node.js’s built-in [assertions](http://nodejs.org/api/assert.html).
+
+First, install mocha:
+
+    $ npm install -g mocha
+
+Next, create a `test` directory and test file:
+
+    $ mkdir test
+    $ $EDITOR test/test.js
+
+Paste in this code:
+
+    var assert = require("assert")
+    describe("Worker", function(){
+      describe("#test()", function(){
+        it("should do the right thing", function() {
+            assert(true);
+        });
+      });
+    });
+
+[Repo Link](https://github.com/hoodiehq/worker-log/blob/how-to-7/index.js)
+
+Then, run `mocha`:
+
+    $ mocha
+
+    .
+
+    ✔ 1 test complete (2ms)
+
+Yay, the setup works, but we don’t have anything to test, really.
+
+Let’s revisit our worker code and see what we can test. The `_changesCallback()` method does a few things:
+
+ * filter out messages that are not of type `log`.
+ * create a formatted log message from a log object.
+ * write the message to the log file.
+
+It’s generally a good idea to keep methods short and let them do one thing. Our method here does a number of things. It sounds like a good idea to split that up.
+
+Let’s start with filtering out objects that are not of the type `log`:
+
+    WorkerLog.prototype._isLogObject = function(obj)
+    {
+        if(obj._id.substr(0, 3) == "log") {
+            return true;
+        }
+
+        return false;
+    }
+
+We take the code out of `_changesCallback()` and put it into its own method `isLogObject()`. The `is` prefix tells us that the method will return true or false. Note that we flipped the comparison operator in the `if` statement to `==`.
+
+To make use of the function, we add this to `_changesCallback()`:
+
+    if(!this._isLogObject(obj)) {
+        return;
+    }
+
+[Repo Link](https://github.com/hoodiehq/worker-log/blob/how-to-8/index.js)
+
+If you start the worker again, everything should still work as before.
+
+Now we have a method that does one job and we can test whether it does a good job of it:
+
+    var assert = require("assert")
+    describe("WorkerLog", function(){
+      describe("#_isLogObject()", function(){
+        it("filters log objects correctly", function() {
+            var log_object = {
+                _id: "log/1234"
+            };
+            var not_a_log_object = {
+                _id: "image/4321"
+            };
+            var WorkerLog = require("../index");
+            assert(WorkerLog.prototype._isLogObject(log_object));
+            assert(!WorkerLog.prototype._isLogObject(not_a_log_object));
+        });
+      });
+    });
+
+[Repo Link](https://github.com/hoodiehq/worker-log/blob/how-to-9/index.js)
+
+We create two objects, one that is of type `log` and one that isn’t and then we run both through the `_isLogObject()` method and assert it’s success and failure respectively.
+
+If we run `mocha` again, our test passes.
+
+    $ mocha
+
+      Logger started.
+    .
+
+      ✔ 1 test complete (45ms)
+
+Great! But we’re not done yet. `_changeCallback()` still does two job. Let’s move the message formatting into its own method:
+
+    WorkerLog.prototype._formatLogMessage = function(obj)
+    {
+        var log_message = "";
+        if(obj.tag) {
+            log_message = util.format("%d [%s, %s]: %s\n",
+                obj.timestamp, obj.level, obj.tag, obj.message);
+        } else {
+            log_message = util.format("%d [%s]: %s\n",
+                obj.timestamp, obj.level, obj.message);
+        }
+        return log_message;
+    }
+
+And call it from `_changesCallback()`:
+
+    var log_message = this._formatLogMessage(obj);
+    fs.appendFileSync("/tmp/hoodie-worker-log.log", log_message);
+
+[Repo Link](https://github.com/hoodiehq/worker-log/blob/how-to-10/index.js)
+
+Now we can write a test for the formatting method:
+
+    describe("#_formatLogMessage()", function() {
+        it("should format messages correctly", function() {
+            var log_object = {
+                _id: "log/1234",
+                message: "log message",
+                level: "debug",
+                timestamp: 1234567890
+            };
+            var WorkerLog = require("../index");
+            var expected_message = "1234567890 [debug]: log message\n";
+            var result = WorkerLog.prototype._formatLogMessage(log_object);
+            assert.equal(expected_message, result);
+        });
+        it("should format messages with tags correctly", function() {
+            var log_object = {
+                _id: "log/1234",
+                message: "log message",
+                level: "debug",
+                tag: "internal",
+                timestamp: 1234567890
+            };
+            var WorkerLog = require("../index");
+            var expected_message = "1234567890 [debug, internal]: log message\n";
+            var result = WorkerLog.prototype._formatLogMessage(log_object);
+            assert.equal(expected_message, result);
+        });
+    });
+
+[Repo Link](https://github.com/hoodiehq/worker-log/blob/how-to-10/index.js)
+
+Let’s run `mocha` again:
+
+    $ mocha
+
+      Logger started.
+    ...
+
+      ✔ 3 tests complete (53ms)
+
+Hooray, we’re tested now!
+
+## NPM-ness
 
 ## Configuring Workers
 
