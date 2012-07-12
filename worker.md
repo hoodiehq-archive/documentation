@@ -21,6 +21,8 @@ As more language implementations for workers come up, expect language-specific d
 
 This documentation assumes you want to develop your Hoodie Worker locally and only later plan on deploying it. See the [Hoodie Worker Deployment Documentation](TODO LINK) for details.
 
+If you want  to make sure you don’t make any typos copying the code, or, when we later only show additions to the code, we set up a [git repository](https://github.com/hoodiehq/worker-log/) with all the different steps in separate branches, we link to the relevant parts later too.
+
 The only dependency is Node.js version 0.8.0 or higher. Here are a few ways to install it:
 
 Mac OS X:
@@ -45,6 +47,8 @@ Copy over this template code, we’ll explain it in detail in a minute:
     }
 
     var log = new WorkerLog();
+
+[Repo Link](https://github.com/hoodiehq/worker-log/blob/how-to-1/index.js)
 
 That’s all! You can now start your worker:
 
@@ -93,6 +97,8 @@ Now we can set up the changes listener. This goes inside the `WorkerLog()` funct
     changes.follow("myDatabaseName", this._changesCallback, {}, {
         include_docs: true}
     );
+
+[Repo Link](https://github.com/hoodiehq/worker-log/blob/how-to-2/index.js)
 
 If this is your first stop after the introductory [getting started-readme](https://github.com/hoodiehq/documentation/blob/master/development-setup.md), try following a user database. If you've run all the code examples from the readme, `joe$example_com` will work as a database name.
 
@@ -166,6 +172,8 @@ Let’s amend our `_changesCallback()` method to only react on `log` objects:
         console.log(message);
     }
 
+[Repo Link](https://github.com/hoodiehq/worker-log/blob/how-to-3/index.js)
+
 // TBD: Future versions of this should have a *hoodie* module that mirrors the client API.
 
 When you start the worker again and add another object to the CouchDB database, you should see no output:
@@ -235,6 +243,8 @@ Let’s do it!
         console.log(log_message);
     }
 
+[Repo Link](https://github.com/hoodiehq/worker-log/blob/how-to-4/index.js)
+
 We keep looking for `log` documents. The we see if the current object has a `tag` member, and format the message string accordingly. Finally, we output the message.
 
 Note that we are using the `util` module here. It ships with Node.js, so you don’t have to install anything, but to use it you have to declare it in your module. We add this to the top of our `index.js` file:
@@ -260,6 +270,8 @@ Finally, we want to log to a file, not just the command line. To do this, we’l
 Finally, we change the call to `console.log` to:
 
     fs.appendFileSync("/tmp/hoodie-worker-log.log", log_message + "\n");
+
+[Repo Link](https://github.com/hoodiehq/worker-log/blob/how-to-5/index.js)
 
 When we start the worker now, we go back to just seeing the welcome message:
 
