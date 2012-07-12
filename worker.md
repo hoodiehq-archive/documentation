@@ -561,7 +561,7 @@ And then we replace all occurrences in our code, as shown in this diff:
     +    fs.appendFileSync(this.config.logfile, log_message);
      }
 
-[Repo Link](https://github.com/hoodiehq/worker-log/blob/how-to-13)
+[Repo Link](https://github.com/hoodiehq/worker-log/tree/how-to-13)
 
 This isn’t immediately more useful, but it will when we get to deploying workers.
 
@@ -584,7 +584,7 @@ The Node.js module pattern we are using here (we didn’t tell you, but it’s w
 
 And `lib/worker-log.js` will include the rest of our code.
 
-See the [Repo Link](https://github.com/hoodiehq/worker-log/blob/how-to-14)
+See the [Repo Link](https://github.com/hoodiehq/worker-log/tree/how-to-14)
  for how we need to adjust a few require statements in our tests.
 
 
