@@ -100,12 +100,10 @@ So now try registering a new user with hoodie:
 
 You should see the server.js terminal showing some activity as the worker converts the new user to a database, and you should also be able to see a new database called joe$example.com when you call up http://localhost:5984/_utils (Don't worry about the "$" in the database name). The 'couch'-object you created a minute ago (that only existed locally before you set up the user) has now automatically been synced with the server and lives inside that user database. If you go ahead and change the color attribute of the couch Object in Futon and then go back to check the browser's localStorage, you should see that the local copy has automatically been synced as well. That's some pretty effortless persistence right there.
 
-**Note: This last bit is actually slightly broken right now**
-
 Let's do one more thing. Add this to the code or run it in your console:
 
 	hoodie.remote.on('changed', function(type, id, changedObject){
-		console.log("Someone painted my couch: ", changedObject.color);
+		console.log("Someone painted my couch ", changedObject.color);
 	});
 
 In Futon, change the color attribute of the 'couch'-object to 'green' and then check your browser console. Don't tell me that isn't awesome!
