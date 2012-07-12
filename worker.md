@@ -466,16 +466,130 @@ Let’s run `mocha` again:
 
 Hooray, we’re tested now!
 
+To recap, we learned how to separate out code into discrete methods that we can test. The methods define what makes a worker special, and we avoid testing things like the changes follower itself which is already encapsulated in a module.
+
+
 ## NPM-ness
+
+We are using Node.js to write our worker. Node.js comes with a handy developer tool called *npm*. We used npm earlier to install the `CouchDBChanges` package. Npm can do all sorts of good things for us. We should use it.
+
+To get started, we need to create a new file `package.json` in the top level of our worker directory:
+
+    {
+        "name": "hoodie-worker-log",
+        "version": "0.0.1",
+        "description": "log things to a file, Hoodie-style",
+        "author": "Hoodie",
+        "scripts": {
+            "start": "node index.js",
+            "test": "mocha"
+        },
+        "dependencies": {
+            "CouchDBChanges": ">=0.0.3"
+        },
+        "devDependencies": {
+            "mocha": ">=1.3.0"
+        }
+    }
+
+[Repo Link](https://github.com/hoodiehq/worker-log/blob/how-to-11/index.js)
+
+
+Read `npm help json` for details on what all this means in detail. Just briefly, a name will allow us to register the worker with npm, so other people can make use of it. We give it an early version number that we can increase as we go along. The description explains what our worker does. In `scripts` we can tell npm what to run when called as `npm start` or `npm test` which becomes really useful later. And finally, we register our dependencies, to make sure we always get the correct version of the CouchDBChanges package.
+
+To start our worker now, we can run `npm start`:
+
+    $ npm start
+
+    > hoodie-worker-log@0.0.1 start /Users/jan/Work/hoodie/worker/worker-log
+    > node index.js
+
+    Logger started.
+
+Looking good.
+
+
+## Continuous Integration with Travis CI
+
+We already have unit tests set up. That’s great, but we can do one better: continuous integration that runs our unit tests with every commit to our repository. This assumes you are using GitHub.
+
+To enable Travis integration, we need to create a `.travis.yml` file:
+
+    language: node_js
+    node_js:
+      - 0.8
+
+Then go to the [Travis CI Website](http://travis-ci.org) and follow the instructions to set up your repository.
+
+[Repo Link](https://github.com/hoodiehq/worker-log/blob/how-to-12/index.js)
+
 
 ## Configuring Workers
 
-## Workers Callbacks
+So far we hardcoded a few values, the CouchDB server address, the database name and the log file. In the real world, these things should be configurable. Let’s do that now. As a first step, we make the the hardcoded values variables:
 
-## Error Handling
+    var config = {
+        server: "http://127.0.0.1:5984",
+        database: "mydatabase",
+        logfile: "/tmp/hoodie-worker-log.log"
+    };
+
+We then pass the `config` variable to our instantiation of `WorkerLog`:
+
+    var log = new WorkerLog(config);
+
+And then we replace all occurrences in our code, as shown in this diff:
+
+    -function WorkerLog()
+    +function WorkerLog(config)
+     {
+    +    this.config = config;
+         console.log("Logger started.");
+     
+    -    var changes = new CouchDBChanges("http://127.0.0.1:5984/");
+    -    changes.follow("mydatabase", this._changesCallback.bind(this), {}, {
+    +    var changes = new CouchDBChanges(this.config.server);
+    +    changes.follow(this.config.database, this._changesCallback.bind(this), {}, {
+             include_docs: true}
+         );
+     }
+    @@ -43,7 +44,13 @@ WorkerLog.prototype._changesCallback = function(error, message)
+         }
+     
+         var log_message = this._formatLogMessage(obj);
+    -    fs.appendFileSync("/tmp/hoodie-worker-log.log", log_message);
+    +    fs.appendFileSync(this.config.logfile, log_message);
+     }
+
+[Repo Link](https://github.com/hoodiehq/worker-log/blob/how-to-13)
+
+This isn’t immediately more useful, but it will when we get to deploying workers.
+
 
 ## Organising Code
 
-## Using Modules
+Now we take a step back from coding, and introduce some structure that will make things easier for us down the line: we reorganise our code into multiple files.
+
+The Node.js module pattern we are using here (we didn’t tell you, but it’s what we are secretly doing), keeps the `index.js` file as lean as possible, our’s is going to look like this:
+
+    var WorkerLog = require("./lib/worker-log");
+
+    var config = {
+        server: "http://127.0.0.1:5984",
+        database: "mydatabase",
+        logfile: "/tmp/hoodie-worker-log.log"
+    };
+
+    var log = new WorkerLog(config);
+
+And `lib/worker-log.js` will include the rest of our code.
+
+See the [Repo Link](https://github.com/hoodiehq/worker-log/blob/how-to-14)
+ for how we need to adjust a few require statements in our tests.
+
+
+## Error Handling
 
 ## Serving Multiple Databases
+
+## Deploying a Worker with Heroku
