@@ -401,7 +401,7 @@ If we run `mocha` again, our test passes.
 
       ✔ 1 test complete (45ms)
 
-Great! But we’re not done yet. `_changeCallback()` still does two job. Let’s move the message formatting into its own method:
+Great! But we’re not done yet. `_changeCallback()` still does two jobs. Let’s move the message formatting into its own method:
 
     WorkerLog.prototype._formatLogMessage = function(obj)
     {
