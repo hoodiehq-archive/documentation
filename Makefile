@@ -1,4 +1,4 @@
 %.html: %.md
-	markdown -o /tmp worker.md
-	cat tools/style.html /tmp/worker.html > build/worker.html
+	cat tools/style.html > build/$@
+	multimarkdown $< >> build/$@
 	open -a /Applications/Safari.app build/$@
