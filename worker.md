@@ -608,13 +608,61 @@ And `lib/worker-log.js` will include the rest of our code.
 
 This allows us finally to run our tests without also starting the worker fully. That means we can run our tests now without requiring a working CouchDB instance. And our Travis CI setup also works, yay!
 
-See the [Repo Link](https://github.com/hoodiehq/worker-log/tree/how-to-14)
+See the [Repo Link](https://github.com/hoodiehq/worker-log/tree/how-to-15)
  for how we need to adjust a few require statements in our tests.
 
 
 ## Serving Multiple Databases
 
 For now, our worker will only listen to the changes of a single database. To be able to log from multiple databases, we could just launch a worker per database and pass the database name to the worker using environment variables (see [*Configuring Workers*][] for details on that).
+
+With hundreds and thousands of users, that would mean as many Node.js processes that almost all do nothing. With a little bit of work, we can make our worker handle all databases in a single, busy Node.js process. The trick is to instantiate multiple workers, one per database.
+
+Here’s what the `index.js` file looks like:
+
+    var WorkerLog = require("./lib/worker-log");
+    var request = require("request");
+
+    var config = {
+        server: process.env.HOODIE_SERVER || "http://127.0.0.1:5984",
+        logfile: process.env.HOODIE_LOGFILE || "/tmp/hoodie-worker-log.log"
+    };
+
+    var workers = [];
+    request({
+      uri: config.server + "/_all_dbs"
+    }, function(error, response, body) {
+      if(error !== null) {
+        console.warn("init error, _all_dbs: " + error);
+      }
+
+      var dbs = JSON.parse(body);
+      dbs.forEach(function(db) {
+        if(db[0] == "_") {
+            // skip system dbs
+            return;
+        }
+        config.database = db;
+        var worker = new WorkerLog(config);
+        workers.push(worker);
+      });
+    });
+
+[Repo Link](https://github.com/hoodiehq/worker-log/tree/how-to-16).
+
+First, we require the `request` module as we’ll need that later. Next, we remove the `database` configuration value from our `config` object. Then we initialise an empty array to hold all instances of our workers. We then send a request to the CouchDB server and request a list of all databases. For each database, we add its name to the `config` object and then start a new worker with that configuration. We skip databases that start with an underscore, as they are special to CouchDB.
+
+When we start our worker now, we should see:
+
+    $ npm start
+
+    > hoodie-worker-log@0.0.1 start /Users/jan/Work/hoodie/worker/worker-log
+    > node index.js
+
+    Logger started for 'mydatabase'.
+
+If you have more databases in your CouchDB instance, you should get a line for each of them, of the format "Logger started for 'databasename'".
+
 
 
 ## Error Handling
