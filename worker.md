@@ -201,7 +201,7 @@ You should see:
 
 So far, so good.
 
-Next up, we’ll format our message a little bit. Before we dive into the actual formatting code, we’ll *define* a format that we expect a log object to look like. This can be later be enforced, so we know only to expect objects of the type `log` that have all the required fields.
+Next up, we’ll format our message a little bit. Before we dive into the actual formatting code, we’ll *define* a format that we expect a log object to look like. This can be later enforced, so we know only to expect objects of the type `log` that have all the required fields.
 
     {
         "_id": "log/*",
