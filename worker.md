@@ -542,27 +542,26 @@ And then we replace all occurrences in our code, as shown in this diff:
 
      
 ```diff
-- function WorkerLog()
-+ function WorkerLog(config)
-  {
-+     this.config = config;
-      console.log("Logger started.");
-  
--     var changes = new CouchDBChanges("http://127.0.0.1:5984/");
--     changes.follow("mydatabase", this._changesCallback.bind(this), {}, {
-+     var changes = new CouchDBChanges(this.config.server);
-+     changes.follow(this.config.database, this._changesCallback.bind(this), {}, {
-          include_docs: true}
-      );
-  }
-
+-function WorkerLog()
++function WorkerLog(config)
+ {
++    this.config = config;
+     console.log("Logger started.");
+ 
+-    var changes = new CouchDBChanges("http://127.0.0.1:5984/");
+-    changes.follow("mydatabase", this._changesCallback.bind(this), {}, {
++    var changes = new CouchDBChanges(this.config.server);
++    changes.follow(this.config.database, this._changesCallback.bind(this), {}, {
+         include_docs: true}
+     );
+ }
 @@ -43,7 +44,13 @@ WorkerLog.prototype._changesCallback = function(error, message)
-      }
-  
-      var log_message = this._formatLogMessage(obj);
--     fs.appendFileSync("/tmp/hoodie-worker-log.log", log_message);
-+     fs.appendFileSync(this.config.logfile, log_message);
-  }
+     }
+ 
+     var log_message = this._formatLogMessage(obj);
+-    fs.appendFileSync("/tmp/hoodie-worker-log.log", log_message);
++    fs.appendFileSync(this.config.logfile, log_message);
+ }
 ```
 
 [Repo Link](https://github.com/hoodiehq/worker-log/tree/how-to-13)
