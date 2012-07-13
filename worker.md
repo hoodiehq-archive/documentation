@@ -468,6 +468,7 @@ Hooray, we’re tested now!
 
 To recap, we learned how to separate out code into discrete methods that we can test. The methods define what makes a worker special, and we avoid testing things like the changes follower itself which is already encapsulated in a module.
 
+Note that for now, you need a running CouchDB instance for the tests to succeed. We’ll fix that soon!
 
 ## NPM-ness
 
@@ -521,8 +522,9 @@ To enable Travis integration, we need to create a `.travis.yml` file:
 
 Then go to the [Travis CI Website](http://travis-ci.org) and follow the instructions to set up your repository.
 
-[Repo Link](https://github.com/hoodiehq/worker-log/blob/how-to-12/index.js)
+[Repo Link](https://github.com/hoodiehq/worker-log/blob/how-to-13/index.js)
 
+Note that for now, you need a running CouchDB instance for the tests to succeed, so actually pushing to Travis CI will fail. We’ll fix that very soon!
 
 ## Configuring Workers
 
@@ -561,9 +563,29 @@ And then we replace all occurrences in our code, as shown in this diff:
     +    fs.appendFileSync(this.config.logfile, log_message);
      }
 
-[Repo Link](https://github.com/hoodiehq/worker-log/tree/how-to-13)
+[Repo Link](https://github.com/hoodiehq/worker-log/tree/how-to-14)
 
-This isn’t immediately more useful, but it will when we get to deploying workers.
+Now that our code is variable, we need a way to pass in new configuration options.
+
+This is easy, we just extend what we already have:
+
+    var config = {
+        server: process.env.HOODIE_SERVER || "http://127.0.0.1:5984",
+        database: process.env.HOODIE_DATABASE || "mydatabase",
+        logfile: process.env.HOODIE_LOGFILE || "/tmp/hoodie-worker-log.log"
+    };
+
+[Repo Link](https://github.com/hoodiehq/worker-log/tree/how-to-14b)
+
+This code tries to read environment variables, and if it doesn’t find them, assigns our default values.
+
+To, say, override the server and database values, you can do:
+
+    $ HOODIE_SERVER="http://example.com" HOODIE_DATABASE="somedatabase" npm start
+
+Note that other shells might have other syntaxes to set up environment variables.
+
+// TBD: reload and whatnot, cf heroku
 
 
 ## Organising Code
@@ -584,12 +606,21 @@ The Node.js module pattern we are using here (we didn’t tell you, but it’s w
 
 And `lib/worker-log.js` will include the rest of our code.
 
+This allows us finally to run our tests without also starting the worker fully. That means we can run our tests now without requiring a working CouchDB instance. And our Travis CI setup also works, yay!
+
 See the [Repo Link](https://github.com/hoodiehq/worker-log/tree/how-to-14)
  for how we need to adjust a few require statements in our tests.
 
 
+## Serving Multiple Databases
+
+For now, our worker will only listen to the changes of a single database. To be able to log from multiple databases, we could just launch a worker per database and pass the database name to the worker using environment variables (see [*Configuring Workers*][] for details on that).
+
+
 ## Error Handling
 
-## Serving Multiple Databases
+## Ignoring Already Processed Objects
+
+## Objects as State Machines
 
 ## Deploying a Worker with Heroku
