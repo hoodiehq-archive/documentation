@@ -40,15 +40,13 @@ We start by creating an `index.js` file. This will be the main entry point into 
 
 Copy over this template code, we’ll explain it in detail in a minute:
 
-```js
-module.exports = WorkerLog;
-function WorkerLog()
-{
-    console.log("Logger started.");
-}
+    module.exports = WorkerLog;
+    function WorkerLog()
+    {
+		console.log("Logger started.");
+    }
 
-var log = new WorkerLog();
-```
+    var log = new WorkerLog();
 
 [Repo Link](https://github.com/hoodiehq/worker-log/blob/how-to-1/index.js)
 
@@ -78,20 +76,16 @@ Luckily, the mechanics of listening to a database’s changes feed are abstracte
 
 Add this to the top of your `index.js` file:
 
-```js
-var CouchDBChanges = require("CouchDBChanges");
-```
+    var CouchDBChanges = require("CouchDBChanges");
 
 To start listening, we first need to create a *callback function* that is called for every new change that is sent to us. Put this new function before the current last line (which should be `var log = new WorkerLog();`).
 
 Our callback function will, for now, only log the changes object to the command line:
 
-```js
-WorkerLog.prototype._changesCallback = function(error, message)
-{
-    console.log(message);
-}
-```
+    WorkerLog.prototype._changesCallback = function(error, message)
+    {
+        console.log(message);
+    }
 
 See *Helper Methods* below for an explanation of why we use the `prototype` syntax.
 
@@ -99,12 +93,10 @@ The callback will get passed two arguments, we ignore the error for now. See *Er
 
 Now we can set up the changes listener. This goes inside the `WorkerLog()` function at the top, after our initial `console.log("Logger started.");`.
 
-```js
-var changes = new CouchDBChanges("http://127.0.0.1:5984/");
-changes.follow("myDatabaseName", this._changesCallback, {}, {
-    include_docs: true}
-);
-```
+    var changes = new CouchDBChanges("http://127.0.0.1:5984/");
+    changes.follow("myDatabaseName", this._changesCallback, {}, {
+        include_docs: true}
+    );
 
 [Repo Link](https://github.com/hoodiehq/worker-log/blob/how-to-2/index.js)
 
@@ -127,9 +119,7 @@ If we now create a new document in the CouchDB database `mydatabase`, we should 
 
 You should see something like:
 
-```json
-{"ok":true,"id":"e72c9af9291eae530b28a3f15d00094d","rev":"1-baa23d8189d19e166f6e0393e23b1085"}
-```
+    {"ok":true,"id":"e72c9af9291eae530b28a3f15d00094d","rev":"1-baa23d8189d19e166f6e0393e23b1085"}
 
 If you switch back to the terminal where your worker is running, you should see:
 
@@ -161,32 +151,26 @@ Hoodie defines that objects have types[^cf_types]. This is purely conventional, 
 
 Here’s an example in JSON:
 
-```json
-{
-    "_id": "image/fb461a0bfc5a4aeefc4d7fb461a0b1c1"
-}
-```
+    {
+        "_id": "image/fb461a0bfc5a4aeefc4d7fb461a0b1c1"
+    }
 
 The type here is `image`. We are now looking for objects that are of the type `log`:
 
-```json
-{
-    "_id": "log/4ffd901d052de901bcaa28902dda3b4a"
-}
-```
+    {
+        "_id": "log/4ffd901d052de901bcaa28902dda3b4a"
+    }
 
 Let’s amend our `_changesCallback()` method to only react on `log` objects:
 
-```js
-WorkerLog.prototype._changesCallback = function(error, message)
-{
-    if(message.doc._id.substr(0, 3) != "log") {
-        return;
-    }
+    WorkerLog.prototype._changesCallback = function(error, message)
+    {
+        if(message.doc._id.substr(0, 3) != "log") {
+            return;
+        }
 
-    console.log(message);
-}
-```
+        console.log(message);
+    }
 
 [Repo Link](https://github.com/hoodiehq/worker-log/blob/how-to-3/index.js)
 
@@ -219,15 +203,13 @@ So far, so good.
 
 Next up, we’ll format our message a little bit. Before we dive into the actual formatting code, we’ll *define* a format that we expect a log object to look like. This can be later be enforced, so we know only to expect objects of the type `log` that have all the required fields.
 
-```json
-{
-    "_id": "log/*",
-    "message": "Log Message",
-    "timestamp": 1234567890123, // seconds since epoch
-    "level": "one of 'info', 'warn', 'debug', 'tmi'",
-    "tag": "(optional, user-defined tag)"
-}
-```
+    {
+        "_id": "log/*",
+        "message": "Log Message",
+        "timestamp": 1234567890123, // seconds since epoch
+        "level": "one of 'info', 'warn', 'debug', 'tmi'",
+        "tag": "(optional, user-defined tag)"
+    }
 
 We’ll take objects of that structure and turn them into a string that looks like this:
 
@@ -243,25 +225,23 @@ Or, with a tag:
 
 Let’s do it!
 
-```js
-WorkerLog.prototype._changesCallback = function(error, message)
-{
-    var obj = message.doc;
-    if(obj._id.substr(0, 3) != "log") {
-        return;
-    }
+    WorkerLog.prototype._changesCallback = function(error, message)
+    {
+        var obj = message.doc;
+        if(obj._id.substr(0, 3) != "log") {
+            return;
+        }
 
-    var log_message = "";
-    if(obj.tag) {
-        log_message = util.format("%d [%s, %s]: %s",
-            obj.timestamp, obj.level, obj.tag, obj.message);
-    } else {
-        log_message = util.format("%d [%s]: %s",
-            obj.timestamp, obj.level, obj.message);
+        var log_message = "";
+        if(obj.tag) {
+            log_message = util.format("%d [%s, %s]: %s",
+                obj.timestamp, obj.level, obj.tag, obj.message);
+        } else {
+            log_message = util.format("%d [%s]: %s",
+                obj.timestamp, obj.level, obj.message);
+        }
+        console.log(log_message);
     }
-    console.log(log_message);
-}
-```
 
 [Repo Link](https://github.com/hoodiehq/worker-log/blob/how-to-4/index.js)
 
@@ -269,9 +249,7 @@ We keep looking for `log` documents. The we see if the current object has a `tag
 
 Note that we are using the `util` module here. It ships with Node.js, so you don’t have to install anything, but to use it you have to declare it in your module. We add this to the top of our `index.js` file:
 
-```js
-var util = require("util");
-```
+    var util = require("util");
 
 If you run your worker again now, you should see a bunch of undefined and NaN messages. That’s because your test document from earlier doesn’t have the required fields. If you go to CouchDB’s [administration console](http://127.0.0.1:5984/_utils/), you can edit the document and add the fields `message`, `timestamp` and `level`, and if you want `tag`, but that’s no required.
 
@@ -287,15 +265,11 @@ Yay logging, we are getting closer.
 
 Finally, we want to log to a file, not just the command line. To do this, we’ll use Node.js’s `fs.appendFileSync()` method. To get access to that method, we need to require the `fs` module at the top of our `index.js`:
 
-```js
-var fs = require("fs");
-```
+    var fs = require("fs");
 
 Finally, we change the call to `console.log` to:
 
-```js
-fs.appendFileSync("/tmp/hoodie-worker-log.log", log_message + "\n");
-```
+    fs.appendFileSync("/tmp/hoodie-worker-log.log", log_message + "\n");
 
 [Repo Link](https://github.com/hoodiehq/worker-log/blob/how-to-5/index.js)
 
@@ -320,10 +294,8 @@ Helper methods are methods that we need during the operation of our worker, but 
 
 The `_changesCallback` method above is one such helper method. If you just need a single helper method, the code is fine as is, but if you want to call other helper functions from within your first helper function, we must make a subtle change:
 
-```diff
--    changes.follow("mydatabase", this._changesCallback, {}, {
-+    changes.follow("mydatabase", this._changesCallback.bind(this), {}, {
-```
+    -    changes.follow("mydatabase", this._changesCallback, {}, {
+    +    changes.follow("mydatabase", this._changesCallback.bind(this), {}, {
 
 [Repo Link](https://github.com/hoodiehq/worker-log/blob/how-to-6/index.js)
 
@@ -345,16 +317,14 @@ Next, create a `test` directory and test file:
 
 Paste in this code:
 
-```js
-var assert = require("assert")
-describe("Worker", function(){
-  describe("#test()", function(){
-    it("should do the right thing", function() {
-        assert(true);
+    var assert = require("assert")
+    describe("Worker", function(){
+      describe("#test()", function(){
+        it("should do the right thing", function() {
+            assert(true);
+        });
+      });
     });
-  });
-});
-```
 
 [Repo Link](https://github.com/hoodiehq/worker-log/blob/how-to-7/index.js)
 
@@ -378,26 +348,22 @@ It’s generally a good idea to keep methods short and let them do one thing. Ou
 
 Let’s start with filtering out objects that are not of the type `log`:
 
-```js
-WorkerLog.prototype._isLogObject = function(obj)
-{
-    if(obj._id.substr(0, 3) == "log") {
-        return true;
-    }
+    WorkerLog.prototype._isLogObject = function(obj)
+    {
+        if(obj._id.substr(0, 3) == "log") {
+            return true;
+        }
 
-    return false;
-}
-```
+        return false;
+    }
 
 We take the code out of `_changesCallback()` and put it into its own method `isLogObject()`. The `is` prefix tells us that the method will return true or false. Note that we flipped the comparison operator in the `if` statement to `==`.
 
 To make use of the function, we add this to `_changesCallback()`:
 
-```js
-if(!this._isLogObject(obj)) {
-    return;
-}
-```
+    if(!this._isLogObject(obj)) {
+        return;
+    }
 
 [Repo Link](https://github.com/hoodiehq/worker-log/blob/how-to-8/index.js)
 
@@ -405,24 +371,22 @@ If you start the worker again, everything should still work as before.
 
 Now we have a method that does one job and we can test whether it does a good job of it:
 
-```js
-var assert = require("assert")
-describe("WorkerLog", function(){
-  describe("#_isLogObject()", function(){
-    it("filters log objects correctly", function() {
-        var log_object = {
-            _id: "log/1234"
-        };
-        var not_a_log_object = {
-            _id: "image/4321"
-        };
-        var WorkerLog = require("../index");
-        assert(WorkerLog.prototype._isLogObject(log_object));
-        assert(!WorkerLog.prototype._isLogObject(not_a_log_object));
+    var assert = require("assert")
+    describe("WorkerLog", function(){
+      describe("#_isLogObject()", function(){
+        it("filters log objects correctly", function() {
+            var log_object = {
+                _id: "log/1234"
+            };
+            var not_a_log_object = {
+                _id: "image/4321"
+            };
+            var WorkerLog = require("../index");
+            assert(WorkerLog.prototype._isLogObject(log_object));
+            assert(!WorkerLog.prototype._isLogObject(not_a_log_object));
+        });
+      });
     });
-  });
-});
-```
 
 [Repo Link](https://github.com/hoodiehq/worker-log/blob/how-to-9/index.js)
 
@@ -439,61 +403,55 @@ If we run `mocha` again, our test passes.
 
 Great! But we’re not done yet. `_changeCallback()` still does two jobs. Let’s move the message formatting into its own method:
 
-```js
-WorkerLog.prototype._formatLogMessage = function(obj)
-{
-    var log_message = "";
-    if(obj.tag) {
-        log_message = util.format("%d [%s, %s]: %s\n",
-            obj.timestamp, obj.level, obj.tag, obj.message);
-    } else {
-        log_message = util.format("%d [%s]: %s\n",
-            obj.timestamp, obj.level, obj.message);
+    WorkerLog.prototype._formatLogMessage = function(obj)
+    {
+        var log_message = "";
+        if(obj.tag) {
+            log_message = util.format("%d [%s, %s]: %s\n",
+                obj.timestamp, obj.level, obj.tag, obj.message);
+        } else {
+            log_message = util.format("%d [%s]: %s\n",
+                obj.timestamp, obj.level, obj.message);
+        }
+        return log_message;
     }
-    return log_message;
-}
-```
 
 And call it from `_changesCallback()`:
 
-```js
-var log_message = this._formatLogMessage(obj);
-fs.appendFileSync("/tmp/hoodie-worker-log.log", log_message);
-```
+    var log_message = this._formatLogMessage(obj);
+    fs.appendFileSync("/tmp/hoodie-worker-log.log", log_message);
 
 [Repo Link](https://github.com/hoodiehq/worker-log/blob/how-to-10/index.js)
 
 Now we can write a test for the formatting method:
 
-```js
-describe("#_formatLogMessage()", function() {
-    it("should format messages correctly", function() {
-        var log_object = {
-            _id: "log/1234",
-            message: "log message",
-            level: "debug",
-            timestamp: 1234567890
-        };
-        var WorkerLog = require("../index");
-        var expected_message = "1234567890 [debug]: log message\n";
-        var result = WorkerLog.prototype._formatLogMessage(log_object);
-        assert.equal(expected_message, result);
+    describe("#_formatLogMessage()", function() {
+        it("should format messages correctly", function() {
+            var log_object = {
+                _id: "log/1234",
+                message: "log message",
+                level: "debug",
+                timestamp: 1234567890
+            };
+            var WorkerLog = require("../index");
+            var expected_message = "1234567890 [debug]: log message\n";
+            var result = WorkerLog.prototype._formatLogMessage(log_object);
+            assert.equal(expected_message, result);
+        });
+        it("should format messages with tags correctly", function() {
+            var log_object = {
+                _id: "log/1234",
+                message: "log message",
+                level: "debug",
+                tag: "internal",
+                timestamp: 1234567890
+            };
+            var WorkerLog = require("../index");
+            var expected_message = "1234567890 [debug, internal]: log message\n";
+            var result = WorkerLog.prototype._formatLogMessage(log_object);
+            assert.equal(expected_message, result);
+        });
     });
-    it("should format messages with tags correctly", function() {
-        var log_object = {
-            _id: "log/1234",
-            message: "log message",
-            level: "debug",
-            tag: "internal",
-            timestamp: 1234567890
-        };
-        var WorkerLog = require("../index");
-        var expected_message = "1234567890 [debug, internal]: log message\n";
-        var result = WorkerLog.prototype._formatLogMessage(log_object);
-        assert.equal(expected_message, result);
-    });
-});
-```
 
 [Repo Link](https://github.com/hoodiehq/worker-log/blob/how-to-11/index.js)
 
@@ -517,24 +475,22 @@ We are using Node.js to write our worker. Node.js comes with a handy developer t
 
 To get started, we need to create a new file `package.json` in the top level of our worker directory:
 
-```json
-{
-    "name": "hoodie-worker-log",
-    "version": "0.0.1",
-    "description": "log things to a file, Hoodie-style",
-    "author": "Hoodie",
-    "scripts": {
-        "start": "node index.js",
-        "test": "mocha"
-    },
-    "dependencies": {
-        "CouchDBChanges": ">=0.0.3"
-    },
-    "devDependencies": {
-        "mocha": ">=1.3.0"
+    {
+        "name": "hoodie-worker-log",
+        "version": "0.0.1",
+        "description": "log things to a file, Hoodie-style",
+        "author": "Hoodie",
+        "scripts": {
+            "start": "node index.js",
+            "test": "mocha"
+        },
+        "dependencies": {
+            "CouchDBChanges": ">=0.0.3"
+        },
+        "devDependencies": {
+            "mocha": ">=1.3.0"
+        }
     }
-}
-```
 
 [Repo Link](https://github.com/hoodiehq/worker-log/blob/how-to-12/index.js)
 
@@ -572,45 +528,41 @@ Then go to the [Travis CI Website](http://travis-ci.org) and follow the instruct
 
 So far we hardcoded a few values, the CouchDB server address, the database name and the log file. In the real world, these things should be configurable. Let’s do that now. As a first step, we make the the hardcoded values variables:
 
-```js
-var config = {
-    server: "http://127.0.0.1:5984",
-    database: "mydatabase",
-    logfile: "/tmp/hoodie-worker-log.log"
-};
-```
+    var config = {
+        server: "http://127.0.0.1:5984",
+        database: "mydatabase",
+        logfile: "/tmp/hoodie-worker-log.log"
+    };
 
 We then pass the `config` variable to our instantiation of `WorkerLog`:
 
-```js
-var log = new WorkerLog(config);
-```
+    var log = new WorkerLog(config);
 
 And then we replace all occurrences in our code, as shown in this diff:
 
      
 ```diff
--    function WorkerLog()
-+    function WorkerLog(config)
-     {
-+        this.config = config;
-         console.log("Logger started.");
-     
--        var changes = new CouchDBChanges("http://127.0.0.1:5984/");
--        changes.follow("mydatabase", this._changesCallback.bind(this), {}, {
-+        var changes = new CouchDBChanges(this.config.server);
-+        changes.follow(this.config.database, this._changesCallback.bind(this), {}, {
-             include_docs: true}
-         );
-     }
-    
+- function WorkerLog()
++ function WorkerLog(config)
+  {
++     this.config = config;
+      console.log("Logger started.");
+  
+-     var changes = new CouchDBChanges("http://127.0.0.1:5984/");
+-     changes.follow("mydatabase", this._changesCallback.bind(this), {}, {
++     var changes = new CouchDBChanges(this.config.server);
++     changes.follow(this.config.database, this._changesCallback.bind(this), {}, {
+          include_docs: true}
+      );
+  }
+
 @@ -43,7 +44,13 @@ WorkerLog.prototype._changesCallback = function(error, message)
-         }
-     
-         var log_message = this._formatLogMessage(obj);
--        fs.appendFileSync("/tmp/hoodie-worker-log.log", log_message);
-+        fs.appendFileSync(this.config.logfile, log_message);
-     }
+      }
+  
+      var log_message = this._formatLogMessage(obj);
+-     fs.appendFileSync("/tmp/hoodie-worker-log.log", log_message);
++     fs.appendFileSync(this.config.logfile, log_message);
+  }
 ```
 
 [Repo Link](https://github.com/hoodiehq/worker-log/tree/how-to-13)
@@ -624,17 +576,15 @@ Now we take a step back from coding, and introduce some structure that will make
 
 The Node.js module pattern we are using here (we didn’t tell you, but it’s what we are secretly doing), keeps the `index.js` file as lean as possible, our’s is going to look like this:
 
-```js
-var WorkerLog = require("./lib/worker-log");
+    var WorkerLog = require("./lib/worker-log");
 
-var config = {
-    server: "http://127.0.0.1:5984",
-    database: "mydatabase",
-    logfile: "/tmp/hoodie-worker-log.log"
-};
+    var config = {
+        server: "http://127.0.0.1:5984",
+        database: "mydatabase",
+        logfile: "/tmp/hoodie-worker-log.log"
+    };
 
-var log = new WorkerLog(config);
-```
+    var log = new WorkerLog(config);
 
 And `lib/worker-log.js` will include the rest of our code.
 
