@@ -672,3 +672,7 @@ If you have more databases in your CouchDB instance, you should get a line for e
 ## Objects as State Machines
 
 ## Deploying a Worker with Heroku
+
+## Registering a With Hoodie
+
+## Remote Configuration
