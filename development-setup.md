@@ -49,7 +49,7 @@ More on how to use the proxy later
 
 ###7. Set up a database worker
 
-Get the worker-create-user-database script from https://github.com/hoodiehq/worker-create-user-database and put it somewhere you'll find it again. This worker creates individual databases from hoodie users, which is something you need. So this needs to be running all the time
+Get the worker-user-database script from https://github.com/hoodiehq/worker-user-database and put it somewhere you'll find it again. This worker creates individual databases from hoodie users, which is something you need. So this needs to be running all the time
 You'll need to set some environment variables. Open a new terminal window in this folder and do 
 
 	$ export HOODIE_SERVER=http://localhost:5984
