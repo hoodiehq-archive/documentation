@@ -87,28 +87,27 @@ The only interesting thing here is the content of "CouchDB_endpoint": localhost:
 
 So now you're ready to save data:
 
-	hoodie.store.create('couch', {color: 'red'});
+	hoodie.my.store.create('couch', {color: 'red'});
 
 Now, since hoodie currently only stores data that belongs to individual users, this isn't actually written into the database. Instead, it is stored locally and synced to the couch as soon as the current user is signed up. The same thing happens if you're offline while using the app. Hoodie will save changes locally and sync them as soon as the server becomes available. 
 
 So now try registering a new user with hoodie:
 
-	hoodie.account.sign_up('joe@example.com', 'secret')
-	      .done( function(user) { console.log("Yay! ", user) } ) 
-	      .fail( function(err)  { console.log("Meh. ", err)
-	 } )
+	hoodie.my.account.signUp('joe@example.com', 'secret')
+	      .done( function(user) { console.log("Yay! ", user) } )
+	      .fail( function(err)  { console.log("Meh. ", err) } )
 
 You should see the server.js terminal showing some activity as the worker converts the new user to a database, and you should also be able to see a new database called joe$example.com when you call up http://localhost:5984/_utils (Don't worry about the "$" in the database name). The 'couch'-object you created a minute ago (that only existed locally before you set up the user) has now automatically been synced with the server and lives inside that user database. If you go ahead and change the color attribute of the couch Object in Futon and then go back to check the browser's localStorage, you should see that the local copy has automatically been synced as well. That's some pretty effortless persistence right there.
 
 Let's do one more thing. Add this to the code or run it in your console:
 
-	hoodie.remote.on('changed', function(type, id, changedObject){
+	hoodie.my.remote.on('changed', function(type, id, changedObject) {
 		console.log("Someone painted my couch ", changedObject.color);
 	});
 
 In Futon, change the color attribute of the 'couch'-object to 'green' and then check your browser console. Don't tell me that isn't awesome!
 
-Take a look at http://hoodiehq.github.com/hoodie-client.js/ for more of the hoodie API reference. 
+Take a look at http://hoodiehq.github.com/hoodie-client.js/ for more of the hoodie API reference.
 
 Have fun trying out hoodie!
 
