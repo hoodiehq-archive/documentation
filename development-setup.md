@@ -107,7 +107,7 @@ Let's do one more thing. Add this to the code or run it in your console:
 
 In Futon, change the color attribute of the 'couch'-object to 'green' and then check your browser console. Don't tell me that isn't awesome!
 
-Take a look at http://hoodiehq.github.com/hoodie-client.js/ for more of the hoodie API reference.
+Take a look at http://hoodiehq.github.com/hoodie.js/ for more of the hoodie API reference.
 
 Have fun trying out hoodie!
 
