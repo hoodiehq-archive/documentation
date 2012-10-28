@@ -5,11 +5,11 @@ This document explains the Hoodieverse.
 
 ## What is Hoodie?
 
-Hoodie is framework for frontend web applications that abstracts away the backend. If you love working in jQuery, Backbone, Dojo, Ember, or any other frontend framwork, but *dread* backend work, Hoodie is for you.
+Hoodie is framework for frontend web applications that abstracts away the backend. If you love working in jQuery, Backbone, Dojo, Ember, or any other frontend framework, but *dread* backend work, Hoodie is for you.
 
 > Hoodie, look ma, no backend!
 
-Hoodie gives your frontend code superpowers, by allowing you to do thing that only a backend can do (user accounts, emails, payments, etc.).
+Hoodie gives your frontend code superpowers, by allowing you to do things that only a backend can do (user accounts, emails, payments, etc.).
 
 All of Hoodie is accessible through a simple script include:
 
@@ -54,13 +54,13 @@ Our reference implementation for the Hoodie backend is in Node.js and CouchDB. B
 
 ### Hoodie Core
 
-Hoodie designed like an onion: a strong core and layers of modules that extend the basic feature set. At the center of Hoodie is an efficient object synchronisation system. Everything else is built on top. [TODO, find better analogy]
+Hoodie is designed like an onion: a strong core and layers of modules that extend the basic feature set. At the center of Hoodie is an efficient object synchronisation system. Everything else is built on top. [TODO, find better analogy]
 
-Hoodie gives you unified access to various in-browser storage systems. If you make use of that (and we suggest you do), you get free data synchronisation with the server for free. The key implications here are:
+Hoodie gives you unified access to various in-browser storage systems. If you make use of that (and we suggest you do), you get data synchronisation with the server for free. The key implications here are:
 
- - Data is immediately avaiable to the client. No need to wait around for any server requests.
+ - Data is immediately available to the client. No need to wait around for any server requests.
  - Improved user experience through mitigated server-latency.
- - Hoodie apps are offline by default.
+ - Hoodie apps are offline capable by default.
 
 See the [Hoodie Core Storage](core-storage.md) documentation for more details.
 
@@ -73,9 +73,9 @@ The first Module is the User Module. The majority of web applications have a way
 
 The User Module gives you an easy API to start all these actions:
 
-    hoodie.user.sign_up('email@example.com', 'secret passphrase');
-    hoodie.user.sign_in('email@example.com', 'secret passphrase');
-    hoodie.user.forgot_password('email@example.com');
+    hoodie.account.signUp('email@example.com', 'secret passphrase');
+    hoodie.account.signIn('email@example.com', 'secret passphrase');
+    hoodie.account.resetPassword('email@example.com');
 
 Account verification and password forget require the sending of emails. The Email Module takes care of that. This is an example where one Module depends on another for some of its work.
 
@@ -91,7 +91,7 @@ Each Hoodie application automatically gets an Admin interface. The Hoodie Applic
 
 The Interface allows you to manage the Modules for your application. You can enable and disable Modules at will, and change their configurations.
 
-For example, you can customise email tamplates that are sent out to your users, or create payment plans that your users can sign up for.
+For example, you can customise email templates that are sent out to your users, or create payment plans that your users can sign up for.
 
 The Hoodie Admin Interface has access to the [List of Hoodie Modules]() and you can add new Modules at any time.
 
@@ -101,6 +101,4 @@ See the [Hoodie Application Admin Interface]() for further details.
 
 ## Open Source
 
-[The source code for Hooide is available on GitHub](http://github.com/hoodiehq) under the Apache License 2.0.
-
-
+[The source code for Hoodie is available on GitHub](http://github.com/hoodiehq) under the Apache License 2.0.
