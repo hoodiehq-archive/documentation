@@ -3,7 +3,7 @@
 The way Hoodie is set up is trying to solve a number of things:
 
 1. It should be easy to install Hoodie for application development.
-2. It should be easy to isntall Hoodie for Hoodie development.
+2. It should be easy to install Hoodie for Hoodie development.
 3. The development setup should mirror the production setup as much as possible.
 
 
