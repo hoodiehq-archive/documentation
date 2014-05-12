@@ -8,26 +8,25 @@ The returned API can be called as function returning a store scoped by the
 passed type, for example
 
 <pre>
-    var taskStore = hoodie.store('task');
+    var taskStore = hoodie.store( 'task' );
+    
     taskStore.findAll().then( showAllTasks );
-    taskStore.update('id123', {done: true});
+    taskStore.update( 'id123', {done: true} );
 </pre>
+
 
 ## Methods
 
-### hoodie.store(_id_, _type_)
+### hoodie.store(_type_, _id_)
 
-It is most likely, that your application will have more than one type of object
-to be stored. Even if you have just a single object **hoodie.store(type)** 
+It is most likely, that your application will have more than one type of store object. Even if you have just a single object **hoodie.store(type)** 
 comes handy. Say you have to work with objects of the type **todo**, you usually
-do things like the following:
+do something like the following:
 
 <pre>
     hoodie.store.add('todo', { title: 'Getting Coffee' });
-    hoodie.store.findAll('todo').done(function(allTodos) { /*...*/ });
+    hoodie.store.findAll('todo').done(function(allTodos) { /* ... */ });
 </pre>
-
-And right
 
 The **hoodie.store** method offers you a short handle here, so you can create
 designated store context objects to work with:
@@ -39,8 +38,7 @@ designated store context objects to work with:
     todoStore.findAll().done(function(allTodos) { /*...*/ });
 </pre>
 
-In the later example the benefit of this variant might not be clear at 
-first glance. The primary benefit is, that you must set your object type only 
+The benefit of this variant might not be clear at first glance. The primary benefit is, that you must set your object type only 
 once. So in case you want to rename you object type "todo" to "things-to-be-done"
 in a later phase of development, you have to change this in signigicatly fewer 
 areas on you application code. By this you also avoid typos by reducing the 
@@ -49,6 +47,14 @@ amount of occurencies, where you can make the mistake at.
 Imagine having the typof "todoo" with a double o at the end. This would be a 
 dramatic bug if it comes to storing a new todo object, because when reading all
 "todo" (with single o this time) the new entries can't be found.
+
+You can also create a very particular store, to work with access to just one specific stored object.
+
+<pre>
+    var singleStore = hoodie.store( 'task', 'id123' );
+</pre>
+
+For the call like illustrated in the last example, only a minimal subset of functions will be available on the created store context. Every method those purpose is to target more than one stored object, will be left out (f.e. findAll). This is because we already specified a particular object form the store to work with.
 
 ### hoodie.store.validate(object, _options_)
 
