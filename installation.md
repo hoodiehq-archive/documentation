@@ -3,7 +3,7 @@
 ## Installation
 
     $ brew install hoodie
-    Installting node, couchdb, npm, cors.io
+    Installing node, couchdb, npm, cors.io
 
 
 ## Getting Started

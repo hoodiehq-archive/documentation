@@ -43,9 +43,9 @@ designated store context objects to work with:
 
 The benefit of this variant might not be clear at first glance. The primary benefit is, that you must set your object type only 
 once. So in case you want to rename you object type *"todo"* to *"things-to-be-done"*
-in a later phase of development, you have to change this in signigicatly fewer 
+in a later phase of development, you have to change this in significantly fewer
 areas on you application code. By this you also avoid typos by reducing the 
-amount of occurencies, where you can make the mistake at. 
+amount of occurrences, where you can make the mistake at.
 
 Imagine having the type of *"todoo"* with a double o at the end. This would be a 
 dramatic bug if it comes to storing a new todo object, because when reading all
@@ -65,7 +65,7 @@ For the call like illustrated in the last example, only a minimal subset of func
 
 By default `hoodie.store.validate` only checks for a valid object `type` and object `id`. The `type` as well as the `id` may not contain any slash ("/"). 
 This is due to the format, hoodie stores your object into the database.
-Every stored database entry has an internal identifier. It is a combination of both, formated as *"type/id"*. Therefore it is absolutely permitted to have a slashes in neither of both.
+Every stored database entry has an internal identifier. It is a combination of both, formatted as *"type/id"*. Therefore it is absolutely permitted to have a slashes in neither of both.
 
 All other characters are allowed, though it might be the best, to stick with
 alphabetical characters and numbers. But you are still free to choose.
@@ -106,7 +106,7 @@ Creates a new entry in your local store. It is the shorter version of a complete
 <pre>
     hoodie.store
     	.add('todo', { title: 'Getting Coffee' })
-    	.done(function(todo) { /* sucess handling */ });
+    	.done(function(todo) { /* success handling */ });
     	.fail(function(todo) { /* error handling */ });
 </pre>
 
@@ -114,12 +114,12 @@ Creates a new entry in your local store. It is the shorter version of a complete
 
 `hoodie.store.find(id)`
 
-Searches the store for a stored object with a particular `id`. Returns a promise so success and failure can be handeled. A failure occures for example when no object 
+Searches the store for a stored object with a particular `id`. Returns a promise so success and failure can be handled. A failure occurs for example when no object
 
 <pre>
 	hoodie.store('todo')
     	.find('hrmvby9')
-    	.done(function(todo) { /* sucess handling */ });
+    	.done(function(todo) { /* success handling */ });
     	.fail(function(todo) { /* error handling */ });
 </pre>
 
@@ -153,10 +153,10 @@ hoodie.store.findOrCreate takes three arguments here. All of them are required.
 The important thing to notice here is, that the `properties` parameter has no 
 influence on the search itself. Unlike you may have used store searches 
 with other frameworks, this will **not** use the `properties` parameter 
-as futher conditions to match a particular store entry. The only conditions the
+as further conditions to match a particular store entry. The only conditions the
 store will be searched for are the document `type` and `id`.
 
-Just to demonstrates the convenience of hoodie.store.findOrAdd, the belowth example
+Just to demonstrates the convenience of hoodie.store.findOrAdd, the below example
 illustrates the more complex alternative way of find and add:
 
 <pre>
@@ -175,7 +175,7 @@ illustrates the more complex alternative way of find and add:
                 hoodie.store
                     .add('custom-config', bluePrint)
                     .done(function(newConfig) {
-                        // work witht he newConfig here
+                        // work with the newConfig here
                     });
             }
         });
@@ -192,7 +192,7 @@ illustrates the more complex alternative way of find and add:
 `hoodie.store.update(type, id, updateFunction)`
 
 In contrast to `.save`, the `.update` method does not replace the stored object,
-but only changes the passed attributes of an exsting object, if it exists
+but only changes the passed attributes of an existing object, if it exists
 
 both a hash of key/values or a function that applies the update to the passed
 object can be passed.
