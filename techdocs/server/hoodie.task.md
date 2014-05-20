@@ -66,10 +66,10 @@ hoodie.store.findOrCreate takes three arguments here. All of them are required.
 The important thing to notice here is, that the **properties** parameter has no 
 influence on the search itself. Unlike you may have used store searches 
 with other frameworks, this will **not** use the **properties** parameter 
-as futher conditions to match a particular store entry. The only conditions the
+as further conditions to match a particular store entry. The only conditions the
 store will be searched for are the document **type** and **id**.
 
-Just to demonstrates the convenience of hoodie.store.findOrAdd, the belowth example
+Just to demonstrates the convenience of hoodie.store.findOrAdd, the below example
 illustrates the more complex alternative way of find and add:
 
 <pre>
@@ -86,7 +86,7 @@ illustrates the more complex alternative way of find and add:
                     hoodie.store
                         .add('custom-config', bluePrint)
                         .done(function(newConfig) {
-                            // work witht he newConfig here
+                            // work with the newConfig here
                         });
                 }
             });

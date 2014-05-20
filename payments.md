@@ -18,7 +18,7 @@ We are using [Stripe](http://stripe.com) as our payment gateway. They are awesom
 We may be integrating with other providers at some point, but not right now. High on our list is Braintree. Not on our list is PayPal, but you might be able ot convince us.
 
 
-## Prerequisits
+## Prerequisites
 
 Payments are hard and this is no exception, but we are trying to make it extra easy for you.
 
