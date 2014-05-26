@@ -47,7 +47,7 @@ This is the content of Heading 1
   in highlighter pick up the correct language.
 
 ```javascript
-  Array(16).join("wat"-1) + " Batman!"
+  Array(16).join('wat' -1) + ' Batman!'
 ```
 
 * The first level of list items should not be preceded by a newline.
