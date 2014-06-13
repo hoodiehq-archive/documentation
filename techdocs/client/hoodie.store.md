@@ -238,16 +238,93 @@ There aren't any [callback closure functions](http://), like many other JavaScri
 
 `hoodie.store.update(type, id, properties)`
 `hoodie.store.update(type, id, updateFunction)`
+`hoodie.store(type).update(id, properties)`
+`hoodie.store(type).update(id, updateFunction)`
 
 In contrast to `.save`, the `.update` method does not replace the stored object,
-but only changes the passed attributes of an existing object, if it exists
-
-both a hash of key/values or a function that applies the update to the passed
-object can be passed.
+but only changes the passed attributes of an existing object, if it exists. By this you are able to just update particular parts/attributes of your object. This is great for updating objects that are very large in bytes.
 
 <pre>
-	hoodie.store.update('car', 'abc4567', {sold: true})
-	hoodie.store.update('car', 'abc4567', function(obj) { obj.sold = true })
+// Example for store updates 
+// using JavaScript plain objects as update parameter.
+//
+// A todo object could look like this:
+//
+// {	
+//	id:'abc4567',
+//	title: 'start learning hoodie', 
+//	done: false,
+//	dueDate: 1381536000
+// }
+	
+var todoStore = hoodie.store('todo');
+
+todoStore
+    .findAll()
+    .then(function(allTodos) {
+        // just pick the first todo we can get
+        var originTodo = allTodos.pop();
+
+        console.log(originTodo.id, '=>', originTodo.dueDate)
+
+        // update the picked todo and update it's dueDate to now
+        todoStore
+            .update(originTodo.id, { dueDate:(Date.now()) })
+            .then(function(updatedTodo) {
+                // beyond this point, please work with updatedTodo
+                // instead of the originTodo, because originTodo 
+                // is outdated.
+                console.log(updatedTodo.id, '=>', updatedTodo.dueDate);
+            });
+
+        // update the picked todo and update it's dueDate to now
+        todoStore
+            .update('ID DOES NOT EXIST', { dueDate:(Date.now()) })
+            .then(function(updatedTodo) {
+                console.log('will never happen.');
+            })
+            .fail(function(error) {
+                console.log('the update failed with', error);
+            });
+    });
+</pre>
+
+The example updates the todo object, which owns the `dueDate` of the first found todo object to `Date.now()`, which is the timestamp of right now. Every other attribute stays the same.
+
+Further the example contains another example where we try to update an object, whose ID does not exist. This shall demostrate, how you can handle errors during updates. 
+
+The `update` methods have a certain speciality. Beside that you can pass a plain JavaScript object with attributes updates, you can also pass a function, that manipulates the the object matched by the given `id`.
+
+Cases when this advantage can be very useful are applying calculations or for conditioned updates. This will come mist handy when combined with `hoodie.store.updateAll`.
+
+<pre>
+// example for store updates 
+// using functions as update parameter
+
+var todoStore = hoodie.store('todo');
+
+todoStore
+    .findAll()
+    .then(function(allTodos) {
+        // just pick the first todo we can get
+        var originTodo = allTodos.pop();
+
+        todoStore.update(originTodo.id, function(oneTodo) {
+
+            // Apply update only if conditions matches.
+            if( Math.random() > 0.5) {
+                // set dueDate to: right now
+                oneTodo.dueDate = Date.now();
+            }
+
+            return oneTodo;
+        }).then(function(updatedTodo) {
+            console.log('update success', updatedTodo);
+        }).fail(function(error) {
+            console.log('failed update with', error);
+        });
+
+    });
 </pre>
 
 
