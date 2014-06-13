@@ -10,11 +10,13 @@ The returned API can be called as function returning a store scoped by the
 passed type, for example
 
 <pre>
-    var taskStore = hoodie.store( 'task' );
+    var todoStore = hoodie.store('todo');
     
-    taskStore.findAll().then( showAllTasks );
-    taskStore.update( 'id123', {done: true} );
+    todoStore.findAll().then(showAllTasks);
+    todoStore.update('id123', {done: true});
 </pre>
+
+
 
 
 ## Methods
@@ -54,7 +56,7 @@ dramatic bug if it comes to storing a new todo object, because when reading all
 You can also create a very particular store, to work with access to just one specific stored object.
 
 <pre>
-    var singleStore = hoodie.store( 'task', 'id123' );
+    var singleStore = hoodie.store( 'todo', 'id123' );
 </pre>
 
 For the call like illustrated in the last example, only a minimal subset of functions will be available on the created store context. Every method those purpose is to target more than one stored object, will be left out (f.e. findAll). This is because we already specified a particular object form the store to work with.
