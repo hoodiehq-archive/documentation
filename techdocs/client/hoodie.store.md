@@ -78,8 +78,6 @@ If **hoodie.store.validate** returns nothing, the passed **object** is valid.
 Otherwise it returns an **[HoodieError]<#>**.
 
 
-(...)
-
 ### save
 
 `hoodie.store.save(type, _id_, properties)`
@@ -185,6 +183,57 @@ illustrates the more complex alternative way of find and add:
 
 
 ### findAll
+
+With this you can retrieve all objects of a particular type from the store. Todos for instance. Given, that you already have existing `todo` objects stored, you can retrieve all of them like in the following example.
+
+<pre>	
+
+var todoStore = hoodie.store('todo');
+
+todoStore
+    .findAll()
+    .then(function(allTodos) {
+        allTodos.forEach(function(oneTodo) {
+            console.log('found', oneTodo);
+        });
+    })
+    .done(function() {
+        console.log('successfully finished findAll');
+    });
+    
+</pre>
+
+What you really have to now about promises here, is that there is a mayor difference between the methods `then` and `done`. While `done` might suggest, that you can handle all the retrieved objects in here actually it is `then` where `findAll` will deliver your data to. `done` on the other hand gets called when all other `then` calls have been passed. Yes you can utilize this mechanism to work with your data in several steps.
+
+<pre>
+console.clear();
+var todoStore = hoodie.store('todo');
+
+console.log(todoStore.findAll());
+
+todoStore
+    .findAll()
+    .then(function(allTodos) {
+        // get an array with all things 
+        // you have on your todo list
+        return allTodos.map(function(todo) {
+           return todo.title;
+        });
+    })
+    .then(function(titles) {
+        // print out all the things you have todo
+        titles.forEach(function(title) {
+            console.log('You have to => ', title);
+        });
+    })
+    .done(function() {
+        // this gets called on the end
+        console.log('successfully finished findAll');
+    });
+</pre>
+
+You might have recognized, that there aren't any [callback closure functions](http://), like many other JavaScript libraries use to work with asynchronous workflows. Hoodie uses so called ***promises** to handle async here. If you would like to now more about promises in hoodie, please see the [Hoodie promises Section](http://) for further details.
+
 
 ### update
 
