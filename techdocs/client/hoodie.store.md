@@ -16,6 +16,17 @@ passed type, for example
     todoStore.update('id123', {done: true});
 </pre>
 
+An important thing to note is that storing and accessing objects with hoodie always means accessing you personal objects. All stored data has a fixed association to the user who created them. So you won't be able to access other user's data by default. 
+
+Never the less there are some community contributed solutions, available as [Hoodie Plugins](http://). Each one offers a different level of data privacy:
+
+
+* [hoodie-plugin-shares](https://github.com/hoodiehq/hoodie-plugin-shares) share particular store objects, with particular rights to particular people. Also can invite people by mail.
+* [hoodie-plugin-global-share](https://github.com/hoodiehq/hoodie-plugin-global-share) shares particular store objects to all people within the same application.
+* [hoodie-plugin-punk](https://github.com/olizilla/hoodie-plugin-punk) share just everything to everyone within the same application.
+
+
+**Attention!** Please note that most of these are community contributions and may have flaws or are just outdated. Always feel free to adopt an ophaned plugin of contribute your own.
 
 
 
