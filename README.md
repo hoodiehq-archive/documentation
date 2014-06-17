@@ -16,6 +16,7 @@ If you want to join our great Hoodie-Docs-Team and help us ship this, ping us on
 ### Guides
 
 * How to Deploy Hoodie (https://github.com/hoodiehq/my-first-hoodie/blob/master/deployment.md)
+* How to Write Plugins for Hoodie (https://github.com/hoodiehq/hoodie-plugin-tutorial)
 
 ### Code Examples
 
