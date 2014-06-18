@@ -362,7 +362,25 @@ todoStore
 	});
 </pre>
 
-An important detail to notice here is, that unlike with SQL updates, there is not way to define a where clause. So this will really alter all of a user's stored objects.
+Like with `hoodie.store.update` you can pass an update function instead of an update object. So if you want update only a particular set of store objects, passing an update function is your friend. This is what comes close to a WHERE clause you may probably now from SQL. When using an update function to modify stored data, please make sure, to return the updated object at the end of the update function.
+
+<pre>
+var todoStore  = hoodie.store('todo'),
+	updateFunc = function(todo) {
+		if(todo.done != true) {
+			todo.done = true;
+		}
+		
+		return todo;
+	};
+
+todoStore
+	.updateAll(updateFunc)
+	.then(function(updates) {
+		console.log('the following todos are done', updates);
+	});
+</pre>
+
 
 
 
