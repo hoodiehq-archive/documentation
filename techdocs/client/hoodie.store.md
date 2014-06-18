@@ -346,6 +346,26 @@ todoStore
 
 ### updateAll
 
+`hoodie.store.updateAll(updateObject)`
+`hoodie.store(type).updateAll(updateObject)`
+
+Update all will update all your objects of a specific store. The changes to be applied are defined by an update object. Just configure the specific attributes to the values the way you want to have your objects updated.
+
+<pre>
+var todoStore    = hoodie.store('todo'),
+	objectUpdate = {done: true};
+
+todoStore
+	.updateAll(objectUpdate)
+	.then(function(updates) {
+		console.log('the following todos are done', updates);
+	});
+</pre>
+
+An important detail to notice here is, that unlike with SQL updates, there is not way to define a where clause. So this will really alter all of a user's stored objects.
+
+
+
 ### remove
 
 ### removeAll
