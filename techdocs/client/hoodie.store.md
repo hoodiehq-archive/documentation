@@ -20,18 +20,15 @@ An important thing to note is that storing and accessing objects with hoodie alw
 
 Never the less there are some community contributed solutions, available as [Hoodie Plugins](http://). Each one offers a different level of data privacy:
 
-
 * [hoodie-plugin-shares](https://github.com/hoodiehq/hoodie-plugin-shares) share particular store objects, with particular rights to particular people. Also can invite people by mail.
 * [hoodie-plugin-global-share](https://github.com/hoodiehq/hoodie-plugin-global-share) shares particular store objects to all people within the same application.
 * [hoodie-plugin-punk](https://github.com/olizilla/hoodie-plugin-punk) share just everything to everyone within the same application.
-
 
 **Attention!** Please note that most of these are community contributions and may have flaws or are just outdated. Always feel free to adopt an ophaned plugin of contribute your own.
 
 The objects you save with the `hoodie.store` are saved to yourbrowsers local data storage. This is one of the most important key concepts of hoodie itself. Otherwise we would yet have still very limited possibilities to build offline first applications. Since hoodie is also designed to also store data on the serverside, there has to be a sync. Currently hoodie uses long polling to achieve this. In future releases, we will make use of [PouchDB](http://pouchdb.com), a [CouchDB](http://couchdb.apache.org) compatible JavaScript implemantation. 
 
 Please note that generally, in order save objects to the server's store, you need to be logged in with a valid user. Learn more about the hoodie user system at [`Hoodie.User`](./hoodie.user.md).
-
 
 ## Methods
 
@@ -90,7 +87,6 @@ alphabetical characters and numbers. But you are still free to choose.
 If `hoodie.store.validate` returns nothing, the passed **object** is valid. 
 Otherwise it returns an **[HoodieError]<#>**.
 
-
 ### save
 
 `hoodie.store.save(type, _id_, properties)`
@@ -133,7 +129,6 @@ Searches the store for a stored object with a particular `id`. Returns a promise
     	.done(function(todo) { /* success handling */ });
     	.fail(function(todo) { /* error handling */ });
 </pre>
-
 
 ### findOrAdd
 
@@ -194,7 +189,6 @@ illustrates the more complex alternative way of find and add:
 	// IMPORTANT: BAD VARIATION
 </pre>
 
-
 ### findAll
 
 `hoodie.store.findAll(type)`
@@ -248,7 +242,6 @@ todoStore
 </pre>
 
 There aren't any [callback closure functions](http://), like many other JavaScript libraries use to work with asynchronous flows. Hoodie uses so called **promises** to handle async flows. If you would like to now more about promises in hoodie, please see the [Hoodie promises Section](http://) for further details.
-
 
 ### update
 
@@ -343,7 +336,6 @@ todoStore
     });
 </pre>
 
-
 ### updateAll
 
 `hoodie.store.updateAll(updateObject)`
@@ -381,13 +373,54 @@ todoStore
 	});
 </pre>
 
-
-
-
 ### remove
+
+`hoodie.store.remove(id)`
+`hoodie.store(type).remove(id)`
+
+This simple deletes one entriy of the defined `type` identified by it's `id` from a user's store. Please be aware that the data gets deleted immediately.
+
+<pre>
+// deletes the first found entry from the todo store
+
+var todoStore = hoodie.store('todo'),
+	todo;
+
+todoStore
+	.findAll()
+	.then(function(todos) {
+		var todo = todos[0];
+
+		todoStore
+			.remove(todo.id)
+			.then(function(removedTodos) {
+				console.log(removedTodos);
+			})
+			.fail(function(error) {
+				console.log('Error while removing todo', error);
+			});
+});
+</pre>
 
 ### removeAll
 
+`hoodie.store.remove()`
+`hoodie.store(type).removeAll()`
+
+This simple deletes all entries of the defined `type` from a user's store. Please be aware that the data gets deleted immediately.
+
+<pre>
+// deletes all objects from store
+
+var todoStore = hoodie.store('todo');
+
+todoStore
+	.removeAll()
+	.then(function(removedTodos) {
+		console.log(removedTodos);
+});
+</pre>
+ 
 ### decoratePromises
 
 ### trigger
