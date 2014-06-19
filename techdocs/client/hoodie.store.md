@@ -10,10 +10,10 @@ The returned API can be called as function returning a store scoped by the
 passed type, for example
 
 <pre>
-    var todoStore = hoodie.store('todo');
+var todoStore = hoodie.store('todo');
     
-    todoStore.findAll().then(showAllTasks);
-    todoStore.update('id123', {done: true});
+todoStore.findAll().then(showAllTasks);
+todoStore.update('id123', {done: true});
 </pre>
 
 An important thing to note is that storing and accessing objects with hoodie always means accessing you personal, local objects. All stored data has a fixed association to the user who created them. So you won't be able to access other user's data by default. 
@@ -40,18 +40,18 @@ comes handy. Say you have to work with objects of the type `todo`, you usually
 do something like the following:
 
 <pre>
-    hoodie.store.add('todo', { title: 'Getting Coffee' });
-    hoodie.store.findAll('todo').done(function(allTodos) { /* ... */ });
+hoodie.store.add('todo', { title: 'Getting Coffee' });
+hoodie.store.findAll('todo').done(function(allTodos) { /* ... */ });
 </pre>
 
 The `hoodie.store` method offers you a short handle here, so you can create
 designated store context objects to work with:
 
 <pre>
-    var todoStore = hoodie.store('todo');
+var todoStore = hoodie.store('todo');
 
-    todoStore.add({ title: 'Getting Coffee' });
-    todoStore.findAll().done(function(allTodos) { /*...*/ });
+todoStore.add({ title: 'Getting Coffee' });
+todoStore.findAll().done(function(allTodos) { /*...*/ });
 </pre>
 
 The benefit of this variant might not be clear at first glance. The primary benefit is, that you must set your object type only 
@@ -67,7 +67,7 @@ dramatic bug if it comes to storing a new todo object, because when reading all
 You can also create a very particular store, to work with access to just one specific stored object.
 
 <pre>
-    var singleStore = hoodie.store( 'todo', 'id123' );
+var singleStore = hoodie.store( 'todo', 'id123' );
 </pre>
 
 For the call like illustrated in the last example, only a minimal subset of functions will be available on the created store context. Every method those purpose is to target more than one stored object, will be left out (f.e. findAll). This is because we already specified a particular object form the store to work with.
@@ -98,10 +98,11 @@ When the `id` is of value *undefined*, the passed object will be created from sc
 **IMPORTANT**: If you want to just to partially update an existing object, please see `hoodie.store.update(type, id, objectUpdate)`. The method `hoodie.store.save` will completely replace an existing object.
 
 <pre>
-	var carStore = hoodie.store('car');
-	
-	carStore.save(undefined, {color: 'red'});
-	carStore.save(abc4567', {color: 'red'});
+var todoStore = hoodie.store('todo');
+
+// this will create a new todo
+todoStore.save(undefined, {title: 'Getting Coffee', done: false });
+todoStore.save('abc4567', {title: 'Still Getting Coffee', done: false });
 </pre>
 
 ### add
@@ -111,10 +112,10 @@ When the `id` is of value *undefined*, the passed object will be created from sc
 Creates a new entry in your local store. It is the shorter version of a complete save. This means you can not pass the id of an existing property. In fact `hoodie.store.add` will force `hoodie.store.save` to create a new object with the passed object properties of the `properties` parameter.
 
 <pre>
-    hoodie.store
-    	.add('todo', { title: 'Getting Coffee' })
-    	.done(function(todo) { /* success handling */ });
-    	.fail(function(todo) { /* error handling */ });
+hoodie.store
+	.add('todo', { title: 'Getting Coffee' })
+	.done(function(todo) { /* success handling */ });
+	.fail(function(todo) { /* error handling */ });
 </pre>
 
 ### find
@@ -124,10 +125,10 @@ Creates a new entry in your local store. It is the shorter version of a complete
 Searches the store for a stored object with a particular `id`. Returns a promise so success and failure can be handled. A failure occurs for example when no object
 
 <pre>
-	hoodie.store('todo')
-    	.find('hrmvby9')
-    	.done(function(todo) { /* success handling */ });
-    	.fail(function(todo) { /* error handling */ });
+hoodie.store('todo')
+	.find('hrmvby9')
+	.done(function(todo) { /* success handling */ });
+	.fail(function(todo) { /* error handling */ });
 </pre>
 
 ### findOrAdd
@@ -141,13 +142,15 @@ Well for example if you want to read a particular settings object, you want to
 work with in a later step.
 
 <pre>
-    // pre-conditions: You already read a user's account object.
-    var configBlueprint = { language: 'en/en', appTheme: 'default' };
-    var configId        = account.id + '_config';
+// pre-conditions: You already read a user's account object.
+var configBlueprint = { language: 'en/en', appTheme: 'default' };
+var configId        = account.id + '_config';
 
-    hoodie.store
-        .findOrCreate('custom-config', configId, configBlueprint)
-        .done(function(appConfig) { console.log('work with config', appConfig) });
+hoodie.store
+	.findOrCreate('custom-config', configId, configBlueprint)
+	.done(function(appConfig) { 
+		console.log('work with config', appConfig) 
+	});
 </pre>
 
 hoodie.store.findOrCreate takes three arguments here. All of them are required.
@@ -166,27 +169,27 @@ Just to demonstrates the convenience of hoodie.store.findOrAdd, the below exampl
 illustrates the more complex alternative way of find and add:
 
 <pre>
-	// IMPORTANT: BAD VARIATION
+// IMPORTANT: BAD VARIATION
 	
-    // pre-conditions: You already read a user's account object.
-    var defaultConfig = {language: 'en/en', appTheme: 'default'};
-    var configId      = account.id + '_config';
+// pre-conditions: You already read a user's account object.
+var defaultConfig = {language: 'en/en', appTheme: 'default'},
+	configId      = account.id + '_config';
 
-    hoodie.store
-        .find('custom-config', configId, configBlueprint)
-        .done(function(appConfig) {
-            console.log('work with config', appConfig);
+hoodie.store
+	.find('custom-config', configId, configBlueprint)
+	.done(function(appConfig) {
+		console.log('work with config', appConfig);
 
-            if(appConfig === undefined) {
-                hoodie.store
-                    .add('custom-config', bluePrint)
-                    .done(function(newConfig) {
-                        // work with the newConfig here
-                    });
+		if(appConfig === undefined) {
+			hoodie.store
+				.add('custom-config', bluePrint)
+				.done(function(newConfig) {
+					// work with the newConfig here
+				});
             }
-        });
+	});
         
-	// IMPORTANT: BAD VARIATION
+// IMPORTANT: BAD VARIATION
 </pre>
 
 ### findAll
@@ -261,7 +264,7 @@ but only changes the passed attributes of an existing object, if it exists. By t
 //
 // {	
 //	id:'abc4567',
-//	title: 'start learning hoodie', 
+//	title: 'Start learning Hoodie', 
 //	done: false,
 //	dueDate: 1381536000
 // }
