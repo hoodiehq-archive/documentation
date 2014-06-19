@@ -30,10 +30,27 @@ The objects you save with the `hoodie.store` are saved to yourbrowsers local dat
 
 Please note that generally, in order save objects to the server's store, you need to be logged in with a valid user. Learn more about the hoodie user system at [`Hoodie.User`](./hoodie.user.md).
 
+## The General `options` Parameter
+
+Most of the `hoodie.store` functions come with an `options` parameter, that is always passed as last parameter of a function call. This parameter was created to pass optional configurations to the certain function call. Like the following.
+
+<pre>
+	hoodie.store('todo').remove(id, {silent: true})
+</pre>
+
+The options that are available for most of these methods are listed below. For details on `options` parameters of particular functions, please see the section of the particular function itself.
+
+| Option        | Values           | Default | Description  |
+| ------------- |:----------------:| -------:| ------------:|
+| silent        | `true`, `false`  | false   | If set to `true`, this will stop the triggers from sending events about store changes. Otherwise the store informs all listeners, when events like addig or removing a data object occurs. Using the silent option might be interesting in cases you don't want to inform the event listeners about store changes. For instance when setting up the store for the first time or just storing application irrelevant meta/configuration data. |
+
+
+
 ## Methods
 
 ### store
 `hoodie.store(_type_, _id_)`
+
 
 It is most likely, that your application will have more than one type of store object. Even if you have just a single object `hoodie.store(type)` 
 comes handy. Say you have to work with objects of the type `todo`, you usually
