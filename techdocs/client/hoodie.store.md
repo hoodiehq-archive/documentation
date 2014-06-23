@@ -100,7 +100,6 @@ Every stored database entry has an internal identifier. It is a combination of b
 All other characters are allowed, though it might be the best, to stick with
 alphabetical characters and numbers. But you are still free to choose.
 
-
 If `hoodie.store.validate` returns nothing, the passed **object** is valid. 
 Otherwise it returns an **[HoodieError]<#>**.
 
@@ -446,6 +445,41 @@ todoStore
 ### trigger
 
 ### on
+
+`hoodie.store.on(event, handlerFunction)`
+
+The `hoodie.store` informs you about several things happening with the stored objects. In order to catch those messages you can register a function for handling those events. Those functions are also called **event handlers**.
+
+Here is a list of events `hoodie.store` emits and you can listen to:
+
+
+| Event       | Example        | Description |
+|-------------|----------------|------------|
+| **add**        | 'todo:add'     | A new object has been added to the store.|
+| **update**     | 'todo:update'  | An existing object has been updated from the store.|
+| **remove**     | 'todo:add'     | An existing object has been removed from the store.|
+
+As the above table already describes, the event messages are emitted as type `string`. Please note the format of the event message is always **type of store object** followed by a **:** and the type of the event. So if you listen to the event for a **todo* store object, you would have to listen to **todo:add**.
+
+<pre>
+
+hoodie.store.on('todo:add', function(createdTodo) {
+	console.log('A todo has been added => ', createdTodo);
+});
+
+hoodie.store.on('todo:remove', function(removedTodo) {
+	console.log('A todo has been removed => ', removedTodo);
+});
+
+hoodie.store.on('todo:update', function(updatedTodo) {
+	console.log('A todo has been updated => ', updatedTodo);
+});
+
+</pre>
+
+One of the major reasons, you usually want to get informed about store changes is, that you application can react and adapt to those changes. If you are creating a new store object with (`hoodie.store.add`)[http://] for instance, your application would want to know about that change, so it can update it's current data and views. Just calling (`hoodie.store.add`)[http://] alone will have no update effect on the displayed data. The same goes for `update` and `remove`.
+
+If you are already familiar with the (concept of synchronization)[http://] you are probably wondering now, if those event handlers are also called when the local reveives changes concerning the data store. The answer here is: Yes, the events got also emitted when sync happens.
 
 ### unbind
 
