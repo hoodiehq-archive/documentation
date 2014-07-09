@@ -516,6 +516,21 @@ There are two important things concerning the parameters:
 
 2) Starting with the second parameter you are allowed to pass an unlimited amount of detail information. This usually means you pass the object or an collection of objects, that has been changed. When you want to pass multiple objects at the same time, we encourage using an Array/Collection instead of an endless parameter list. Depending on what kind of event message you want to trigger, you have to decide yourself what details you have to pass, though it usually won't be more than just a couple. Feel completely free to decide here.
 
+It is also very important to keep track of the the contexts you are listening and triggering on. Custom event handling is always applied per instance. So that if you register an event handler with `hoodie.store('todo').on` and trigger the event just with `hoodie.store.trigger`, the previously registered event handler is never been called.
+
+<pre>
+	var todoStore = hoodie.store('todo');
+	
+	todoStore.on('trigger-test', function(num) {
+		// will only be called by the second trigger
+		console.log('triggered by', num);
+	});
+	
+	hoodie.store.trigger('trigger-test', 'number one');
+	todoStore.trigger('trigger-test', 'number two');
+	hoodie.store(hoodie).trigger('trigger-test', 'number three');
+</pre>
+
 ### off
 
 While `hoodie.store.on` subscribes an handler function to a certain event `hoodie.store.off` does the opposite and will unsubscribe all previously registered handlers for the given event.
