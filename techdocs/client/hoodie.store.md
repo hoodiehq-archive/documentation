@@ -483,6 +483,10 @@ If you are already familiar with the (concept of synchronization)[http://] you a
 
 You can also listen to custom events you trigger by yourself. See `hoodie.store.trigger` for more details on how to do that.
 
+### one
+
+`hoodie.store.one` is a special form of `hoodie.store.on` which will be executed only once, when the event has been caught. After that, it'll automatically unsubscribe from the event. This might be usefull in cases you want to handle an event only once. When waiting for the initial data for instance.
+
 
 ### trigger
 
@@ -517,6 +521,7 @@ There are two important things concerning the parameters:
 2) Starting with the second parameter you are allowed to pass an unlimited amount of detail information. This usually means you pass the object or an collection of objects, that has been changed. When you want to pass multiple objects at the same time, we encourage using an Array/Collection instead of an endless parameter list. Depending on what kind of event message you want to trigger, you have to decide yourself what details you have to pass, though it usually won't be more than just a couple. Feel completely free to decide here.
 
 It is also very important to keep track of the the contexts you are listening and triggering on. Custom event handling is always applied per instance. So that if you register an event handler with `hoodie.store('todo').on` and trigger the event just with `hoodie.store.trigger`, the previously registered event handler is never been called.
+
 
 <pre>
 	var todoStore = hoodie.store('todo');
