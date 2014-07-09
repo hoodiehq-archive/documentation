@@ -491,7 +491,7 @@ You can also listen to custom events you trigger by yourself. See `hoodie.store.
 Since you can listen for store events using `hoodie.store.on` or `hoodie.store.bind`, the `hoodie.store.trigger` function gives you the opportunity to send events of your own to the listeners. This includes the standard events as mentionend in the `hoodie.store.on` section as well as your personal custom events. Imagine you want to trigger an event when a todo is done. This could look something similiar to this:
 
 <pre>
-var todoStore = hoodie.store('todo')
+var todoStore = hoodie.store('todo');
 
 function markAsDone(todo) {
   // mark todo as done and trigger a custom done event
@@ -517,6 +517,28 @@ There are two important things concerning the parameters:
 2) Starting with the second parameter you are allowed to pass an unlimited amount of detail information. This usually means you pass the object or an collection of objects, that has been changed. When you want to pass multiple objects at the same time, we encourage using an Array/Collection instead of an endless parameter list. Depending on what kind of event message you want to trigger, you have to decide yourself what details you have to pass, though it usually won't be more than just a couple. Feel completely free to decide here.
 
 ### off
+
+While `hoodie.store.on` subscribes an handler function to a certain event `hoodie.store.off` does the opposite and will unsubscribe all previously registered handlers for the given event.
+
+<pre>
+var todoStore = hoodie.store('todo');
+todoStore.on('todo:done', function(doneTodo, t) {
+  // this will never be reached, neither
+});
+
+todoStore.on('todo:done', function(doneTodo, t) {
+  // this will never be reached either
+});
+
+// this unsubscribes both of the previously 
+// subscribed event handlers
+todoStore.off('todo:done');
+
+todoStore.findAll().then(function(allTodos) {
+  todoStore.trigger('todo:done', allTodos[0], new Date());
+});
+</pre>  
+
 
 ### bind
 
