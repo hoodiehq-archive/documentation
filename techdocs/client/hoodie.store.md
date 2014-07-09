@@ -442,8 +442,6 @@ todoStore
  
 ### decoratePromises
 
-### trigger
-
 ### on
 
 `hoodie.store.on(event, handlerFunction)`
@@ -479,9 +477,54 @@ hoodie.store.on('todo:update', function(updatedTodo) {
 
 One of the major reasons, you usually want to get informed about store changes is, that you application can react and adapt to those changes. If you are creating a new store object with (`hoodie.store.add`)[http://] for instance, your application would want to know about that change, so it can update it's current data and views. Just calling (`hoodie.store.add`)[http://] alone will have no update effect on the displayed data. The same goes for `update` and `remove`.
 
-If you are already familiar with the (concept of synchronization)[http://] you are probably wondering now, if those event handlers are also called when the local reveives changes concerning the data store. The answer here is: Yes, the events got also emitted when sync happens.
+The event handlers of the above examples are only expecting to be called with a single function parameter. Please note that this only applies in the example. Depending on the type of the event, it is also possible to receive two or more parameters.
+
+If you are already familiar with the (concept of synchronization)[http://] you are probably wondering now, if those event handlers are also called when the local receives changes concerning the data store. The answer here is: Yes, the events got also emitted when sync happens.
+
+You can also listen to custom events you trigger by yourself. See `hoodie.store.trigger` for more details on how to do that.
+
+
+### trigger
+
+`hoodie.store.trigger(event, paramOne, ..., paramN)`
+
+Since you can listen for store events using `hoodie.store.on` or `hoodie.store.bind`, the `hoodie.store.trigger` function gives you the opportunity to send events of your own to the listeners. This includes the standard events as mentionend in the `hoodie.store.on` section as well as your personal custom events. Imagine you want to trigger an event when a todo is done. This could look something similiar to this:
+
+<pre>
+var todoStore = hoodie.store('todo')
+
+function markAsDone(todo) {
+  // mark todo as done and trigger a custom done event
+  todo.done = true;
+  todoStore.trigger('todo:done', todo, new Date());
+}
+
+todoStore.on('todo:done', function(doneTodo, t) {
+  console.log(doneTodo.title, ' was done', t);
+});
+
+todoStore.findAll().then(function(allTodos) {
+  // take the first todo in list
+  // and mark it as done
+  markAsDone(allTodos[0]);
+});
+</pre>
+
+There are two important things concerning the parameters:
+
+1) The first parameter of 'hoodie.store.trigger' is usually a string that names the event. To keep the event handling sane, it is a good idea to stick to an overall convention like 'object-type:what-happened' or 'what-happened'. The event descriptor is required.
+
+2) Starting with the second parameter you are allowed to pass an unlimited amount of detail information. This usually means you pass the object or an collection of objects, that has been changed. When you want to pass multiple objects at the same time, we encourage using an Array/Collection instead of an endless parameter list. Depending on what kind of event message you want to trigger, you have to decide yourself what details you have to pass, though it usually won't be more than just a couple. Feel completely free to decide here.
+
+### off
+
+### bind
+
+`hoodie.store.on` is an alias for `hoodie.store.bind`. Please see `hoodie.store.on` for details.
 
 ### unbind
+
+`hoodie.store.off` is an alias for `hoodie.store.unbind`. Please see `hoodie.store.off` for details.
 
 
 ## Code Example
