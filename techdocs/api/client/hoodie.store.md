@@ -1,3 +1,7 @@
+---
+layout: layout
+---
+
 # Hoodie.Store
 
 *Source: hoodie/src/lib/store/scoped.js*

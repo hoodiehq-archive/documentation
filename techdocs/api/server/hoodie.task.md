@@ -1,3 +1,7 @@
+---
+layout: layout
+---
+
 # Hoodie.Task
 
 This class defines the API that hoodie.store (local store) and hoodie.open

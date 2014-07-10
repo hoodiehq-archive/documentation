@@ -1,3 +1,7 @@
+---
+layout: layout
+---
+
 # Hoodie Payments
 
 This document describes how Hoodie payments work.

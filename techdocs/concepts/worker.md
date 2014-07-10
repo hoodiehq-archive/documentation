@@ -1,3 +1,7 @@
+---
+layout: layout
+---
+
 # Hoodie Worker
 
 This document explains how to write a Hoodie Worker.

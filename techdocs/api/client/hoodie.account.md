@@ -1,3 +1,7 @@
+---
+layout: layout
+---
+
 # Hoodie.Account
 
 *Source: hoodie/src/hoodie/account.js*

@@ -1,3 +1,7 @@
+---
+layout: layout
+---
+
 index.md
 # Welcome to Hoodie
 
