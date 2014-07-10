@@ -2,6 +2,9 @@
 
 This document explains the Hoodieverse.
 
+## Client Api
+
+<!-- TOC -->
 
 ## What is Hoodie?
 
