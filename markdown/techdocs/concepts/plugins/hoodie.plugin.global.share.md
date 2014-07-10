@@ -60,4 +60,3 @@ hoodie.global.find('tasks').done(function(publicTasks) { ... });
 ```bash
 grunt
 ```
-

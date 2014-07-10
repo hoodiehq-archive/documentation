@@ -2,21 +2,21 @@
 
 *Source: hoodie/src/lib/store/scoped.js*
 
-This class defines the API that `hoodie.store` (local store) and `hoodie.open` 
+This class defines the API that `hoodie.store` (local store) and `hoodie.open`
 (remote store) implement to assure a coherent API. It also implements some
 basic validations.
 
-The returned API can be called as function returning a store scoped by the 
+The returned API can be called as function returning a store scoped by the
 passed type, for example
 
 <pre>
 var todoStore = hoodie.store('todo');
-    
+
 todoStore.findAll().then(showAllTasks);
 todoStore.update('id123', {done: true});
 </pre>
 
-An important thing to note is that storing and accessing objects with hoodie always means accessing you personal, local objects. All stored data has a fixed association to the user who created them. So you won't be able to access other user's data by default. 
+An important thing to note is that storing and accessing objects with hoodie always means accessing you personal, local objects. All stored data has a fixed association to the user who created them. So you won't be able to access other user's data by default.
 
 Never the less there are some community contributed solutions, available as [Hoodie Plugins](http://). Each one offers a different level of data privacy:
 
@@ -26,7 +26,7 @@ Never the less there are some community contributed solutions, available as [Hoo
 
 **Attention!** Please note that most of these are community contributions and may have flaws or are just outdated. Always feel free to adopt an ophaned plugin of contribute your own.
 
-The objects you save with the `hoodie.store` are saved to yourbrowsers local data storage. This is one of the most important key concepts of hoodie itself. Otherwise we would yet have still very limited possibilities to build offline first applications. Since hoodie is also designed to also store data on the serverside, there has to be a sync. Currently hoodie uses long polling to achieve this. In future releases, we will make use of [PouchDB](http://pouchdb.com), a [CouchDB](http://couchdb.apache.org) compatible JavaScript implemantation. 
+The objects you save with the `hoodie.store` are saved to yourbrowsers local data storage. This is one of the most important key concepts of hoodie itself. Otherwise we would yet have still very limited possibilities to build offline first applications. Since hoodie is also designed to also store data on the serverside, there has to be a sync. Currently hoodie uses long polling to achieve this. In future releases, we will make use of [PouchDB](http://pouchdb.com), a [CouchDB](http://couchdb.apache.org) compatible JavaScript implemantation.
 
 Please note that generally, in order save objects to the server's store, you need to be logged in with a valid user. Learn more about the hoodie user system at [`Hoodie.User`](./hoodie.user.md).
 
@@ -52,7 +52,7 @@ The options that are available for most of these methods are listed below. For d
 `hoodie.store(_type_, _id_)`
 
 
-It is most likely, that your application will have more than one type of store object. Even if you have just a single object `hoodie.store(type)` 
+It is most likely, that your application will have more than one type of store object. Even if you have just a single object `hoodie.store(type)`
 comes handy. Say you have to work with objects of the type `todo`, you usually
 do something like the following:
 
@@ -71,13 +71,13 @@ todoStore.add({ title: 'Getting Coffee' });
 todoStore.findAll().done(function(allTodos) { /*...*/ });
 </pre>
 
-The benefit of this variant might not be clear at first glance. The primary benefit is, that you must set your object type only 
+The benefit of this variant might not be clear at first glance. The primary benefit is, that you must set your object type only
 once. So in case you want to rename you object type *"todo"* to *"things-to-be-done"*
 in a later phase of development, you have to change this in significantly fewer
-areas on you application code. By this you also avoid typos by reducing the 
+areas on you application code. By this you also avoid typos by reducing the
 amount of occurrences, where you can make the mistake at.
 
-Imagine having the type of *"todoo"* with a double o at the end. This would be a 
+Imagine having the type of *"todoo"* with a double o at the end. This would be a
 dramatic bug if it comes to storing a new todo object, because when reading all
 "todo" (with single o this time) the new entries can't be found.
 
@@ -93,14 +93,14 @@ For the call like illustrated in the last example, only a minimal subset of func
 
 `hoodie.store.validate(object, _options_)`
 
-By default `hoodie.store.validate` only checks for a valid object `type` and object `id`. The `type` as well as the `id` may not contain any slash ("/"). 
+By default `hoodie.store.validate` only checks for a valid object `type` and object `id`. The `type` as well as the `id` may not contain any slash ("/").
 This is due to the format, hoodie stores your object into the database.
 Every stored database entry has an internal identifier. It is a combination of both, formatted as *"type/id"*. Therefore it is absolutely permitted to have a slashes in neither of both.
 
 All other characters are allowed, though it might be the best, to stick with
 alphabetical characters and numbers. But you are still free to choose.
 
-If `hoodie.store.validate` returns nothing, the passed **object** is valid. 
+If `hoodie.store.validate` returns nothing, the passed **object** is valid.
 Otherwise it returns an **[HoodieError]<#>**.
 
 ### save
@@ -152,9 +152,9 @@ hoodie.store('todo')
 `hoodie.store.findOrAdd(type, id, properties)`
 
 This is a convenient combination of hoodie.store.find and hoodie.store.add. Use can
-use if you would like to work with a particular store object, which existence 
-you are not sure about yet. Which cases would be worth using this? 
-Well for example if you want to read a particular settings object, you want to 
+use if you would like to work with a particular store object, which existence
+you are not sure about yet. Which cases would be worth using this?
+Well for example if you want to read a particular settings object, you want to
 work with in a later step.
 
 <pre>
@@ -164,8 +164,8 @@ var configId        = account.id + '_config';
 
 hoodie.store
 	.findOrCreate('custom-config', configId, configBlueprint)
-	.done(function(appConfig) { 
-		console.log('work with config', appConfig) 
+	.done(function(appConfig) {
+		console.log('work with config', appConfig)
 	});
 </pre>
 
@@ -175,9 +175,9 @@ hoodie.store.findOrCreate takes three arguments here. All of them are required.
  * `id`         => The unique id of the document to search the store for.
  * `properties` => The blueprint of the document to be created, in case nothing could be found.
 
-The important thing to notice here is, that the `properties` parameter has no 
-influence on the search itself. Unlike you may have used store searches 
-with other frameworks, this will **not** use the `properties` parameter 
+The important thing to notice here is, that the `properties` parameter has no
+influence on the search itself. Unlike you may have used store searches
+with other frameworks, this will **not** use the `properties` parameter
 as further conditions to match a particular store entry. The only conditions the
 store will be searched for are the document `type` and `id`.
 
@@ -186,7 +186,7 @@ illustrates the more complex alternative way of find and add:
 
 <pre>
 // IMPORTANT: BAD VARIATION
-	
+
 // pre-conditions: You already read a user's account object.
 var defaultConfig = {language: 'en/en', appTheme: 'default'},
 	configId      = account.id + '_config';
@@ -204,7 +204,7 @@ hoodie.store
 				});
             }
 	});
-        
+
 // IMPORTANT: BAD VARIATION
 </pre>
 
@@ -215,7 +215,7 @@ hoodie.store
 
 With this you can retrieve all objects of a particular `type` from the store. Todos for instance. Given, that you already have existing todo objects stored, you can retrieve all of them like in the following example.
 
-<pre>	
+<pre>
 
 var todoStore = hoodie.store('todo');
 
@@ -229,7 +229,7 @@ todoStore
     .done(function() {
         console.log('successfully finished findAll');
     });
-    
+
 </pre>
 
 What you really have to recognized here is that there is a mayor difference between the methods `then` and `done`. While `done` suggests that you can handle all the retrieved objects with it, actually it is `then` where `findAll` will deliver your data to. `done` on the other hand gets called when all other `then` calls have been passed. Yes you can utilize this mechanism to work with your data in several steps.
@@ -242,7 +242,7 @@ console.log(todoStore.findAll());
 todoStore
     .findAll()
     .then(function(allTodos) {
-        // get an array with all things 
+        // get an array with all things
         // you have on your todo list
         return allTodos.map(function(todo) {
            return todo.title;
@@ -273,18 +273,18 @@ In contrast to `.save`, the `.update` method does not replace the stored object,
 but only changes the passed attributes of an existing object, if it exists. By this you are able to just update particular parts/attributes of your object. This is great for updating objects that are very large in bytes.
 
 <pre>
-// Example for store updates 
+// Example for store updates
 // using JavaScript plain objects as update parameter.
 //
 // A todo object could look like this:
 //
-// {	
+// {
 //	id:'abc4567',
-//	title: 'Start learning Hoodie', 
+//	title: 'Start learning Hoodie',
 //	done: false,
 //	dueDate: 1381536000
 // }
-	
+
 var todoStore = hoodie.store('todo');
 
 todoStore
@@ -300,7 +300,7 @@ todoStore
             .update(originTodo.id, { dueDate:(Date.now()) })
             .then(function(updatedTodo) {
                 // beyond this point, please work with updatedTodo
-                // instead of the originTodo, because originTodo 
+                // instead of the originTodo, because originTodo
                 // is outdated.
                 console.log(updatedTodo.id, '=>', updatedTodo.dueDate);
             });
@@ -319,14 +319,14 @@ todoStore
 
 The example updates the todo object, which owns the `dueDate` of the first found todo object to `Date.now()`, which is the timestamp of right now. Every other attribute stays the same.
 
-Further the example contains another example where we try to update an object, whose ID does not exist. This shall demostrate, how you can handle errors during updates. 
+Further the example contains another example where we try to update an object, whose ID does not exist. This shall demostrate, how you can handle errors during updates.
 
 The `update` methods have a certain speciality. Beside that you can pass a plain JavaScript object with attributes updates, you can also pass a function, that manipulates the the object matched by the given `id`.
 
 Cases when this advantage can be very useful are applying calculations or for conditioned updates. This will come mist handy when combined with `hoodie.store.updateAll`.
 
 <pre>
-// example for store updates 
+// example for store updates
 // using functions as update parameter
 
 var todoStore = hoodie.store('todo');
@@ -381,7 +381,7 @@ var todoStore  = hoodie.store('todo'),
 		if(todo.done != true) {
 			todo.done = true;
 		}
-		
+
 		return todo;
 	};
 
@@ -439,7 +439,7 @@ todoStore
 		console.log(removedTodos);
 });
 </pre>
- 
+
 ### decoratePromises
 
 ### on
@@ -525,12 +525,12 @@ It is also very important to keep track of the the contexts you are listening an
 
 <pre>
 	var todoStore = hoodie.store('todo');
-	
+
 	todoStore.on('trigger-test', function(num) {
 		// will only be called by the second trigger
 		console.log('triggered by', num);
 	});
-	
+
 	hoodie.store.trigger('trigger-test', 'number one');
 	todoStore.trigger('trigger-test', 'number two');
 	hoodie.store(hoodie).trigger('trigger-test', 'number three');
@@ -550,14 +550,14 @@ todoStore.on('todo:done', function(doneTodo, t) {
   // this will never be reached either
 });
 
-// this unsubscribes both of the previously 
+// this unsubscribes both of the previously
 // subscribed event handlers
 todoStore.off('todo:done');
 
 todoStore.findAll().then(function(allTodos) {
   todoStore.trigger('todo:done', allTodos[0], new Date());
 });
-</pre>  
+</pre>
 
 
 ### bind

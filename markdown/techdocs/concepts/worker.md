@@ -126,7 +126,7 @@ If you switch back to the terminal where your worker is running, you should see:
     { seq: 1,
       id: 'e72c9af9291eae530b28a3f15d00094d',
       changes: [ { rev: '1-baa23d8189d19e166f6e0393e23b1085' } ],
-      doc: 
+      doc:
        { _id: 'e72c9af9291eae530b28a3f15d00094d',
          _rev: '1-baa23d8189d19e166f6e0393e23b1085',
          message: 'hello world' } }
@@ -145,7 +145,7 @@ Let’s do them in that order.
 
 ### Hoodie Object Types
 
-Hoodie defines that objects have types[^cf_types]. This is purely conventional, but it allows for all sorts of magic. All objects in Hoodie have an attribute `_id` that uniquely identifies an object globally. We usually use a UUID for that. The type is specified as a prefix to the `_id` attribute. 
+Hoodie defines that objects have types[^cf_types]. This is purely conventional, but it allows for all sorts of magic. All objects in Hoodie have an attribute `_id` that uniquely identifies an object globally. We usually use a UUID for that. The type is specified as a prefix to the `_id` attribute.
 
 [^cf_types]: See [*Hoodie Object Type Conventions*](TBD) for a full list of types and a more in-depth discussion.
 
@@ -547,7 +547,7 @@ And then we replace all occurrences in our code, as shown in this diff:
      {
     +    this.config = config;
          console.log("Logger started.");
-     
+
     -    var changes = new CouchDBChanges("http://127.0.0.1:5984/");
     -    changes.follow("mydatabase", this._changesCallback.bind(this), {}, {
     +    var changes = new CouchDBChanges(this.config.server);
@@ -557,7 +557,7 @@ And then we replace all occurrences in our code, as shown in this diff:
      }
     @@ -43,7 +44,13 @@ WorkerLog.prototype._changesCallback = function(error, message)
          }
-     
+
          var log_message = this._formatLogMessage(obj);
     -    fs.appendFileSync("/tmp/hoodie-worker-log.log", log_message);
     +    fs.appendFileSync(this.config.logfile, log_message);

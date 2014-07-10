@@ -12,7 +12,7 @@
     Starting Hoodie...Done.
 
     Visit the Hoodie Admin at http://127.0.0.1:8431
-    $ 
+    $
 
 Yay!
 

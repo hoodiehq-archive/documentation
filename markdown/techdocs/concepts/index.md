@@ -1,3 +1,4 @@
+index.md
 # Welcome to Hoodie
 
 This document explains the Hoodieverse.

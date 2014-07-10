@@ -12,7 +12,7 @@ Installation
 
 This assumes you've got Homebrew installed and up to date. Open a terminal window and:
 
-###1. Get CouchDB 
+###1. Get CouchDB
 (1.2 required. If you already have it installed, run `$ couchdb -V` to check your version)
 
 	$ brew install CouchDB
@@ -50,7 +50,7 @@ More on how to use the proxy later
 ###7. Set up a database worker
 
 Get the worker-user-database script from https://github.com/hoodiehq/worker-user-database and put it somewhere you'll find it again. This worker creates individual databases from hoodie users, which is something you need. So this needs to be running all the time
-You'll need to set some environment variables. Open a new terminal window in this folder and do 
+You'll need to set some environment variables. Open a new terminal window in this folder and do
 
 	$ export HOODIE_SERVER=http://localhost:5984
 	$ export HOODIE_ADMIN_USER=couch_admin_username
@@ -63,10 +63,10 @@ You're set. You'll need to have CouchDB, node server.js and node CreateUserDatab
 First steps
 -----------
 
-To start doing stuff with hoodie, you'll need a html file that gets served from any kind of webserver. 
-As of now, hoodie.js requires jQuery. So just include jQuery and hoodie.js from from these external hosts and you're good to go. 
+To start doing stuff with hoodie, you'll need a html file that gets served from any kind of webserver.
+As of now, hoodie.js requires jQuery. So just include jQuery and hoodie.js from from these external hosts and you're good to go.
 Then start by initializing a hoodie:
-	
+
 	<html>
 	  <head>
 	    <title>Hello Hoodie</title>
@@ -78,7 +78,7 @@ Then start by initializing a hoodie:
 	      couchDB_endpoint = 'http://localhost:9292/localhost:5984';
 	      hoodie = new Hoodie(couchDB_endpoint);
 
-	 			// do some hoodie magic here
+				// do some hoodie magic here
 	    </script>
 	  </body>
 	</html>
@@ -89,7 +89,7 @@ So now you're ready to save data:
 
 	hoodie.my.store.create('couch', {color: 'red'});
 
-Now, since hoodie currently only stores data that belongs to individual users, this isn't actually written into the database. Instead, it is stored locally and synced to the couch as soon as the current user is signed up. The same thing happens if you're offline while using the app. Hoodie will save changes locally and sync them as soon as the server becomes available. 
+Now, since hoodie currently only stores data that belongs to individual users, this isn't actually written into the database. Instead, it is stored locally and synced to the couch as soon as the current user is signed up. The same thing happens if you're offline while using the app. Hoodie will save changes locally and sync them as soon as the server becomes available.
 
 So now try registering a new user with hoodie:
 
@@ -110,4 +110,3 @@ In Futon, change the color attribute of the 'couch'-object to 'green' and then c
 Take a look at http://hoodiehq.github.com/hoodie.js/ for more of the hoodie API reference.
 
 Have fun trying out hoodie!
-
