@@ -1,3 +1,7 @@
+---
+layout: layout
+---
+
 ## Very Important:
 
 This tutorial is still a work in progress. 

@@ -45,7 +45,7 @@ Most of the `hoodie.store` functions come with an `options` parameter, that is a
 The options that are available for most of these methods are listed below. For details on `options` parameters of particular functions, please see the section of the particular function itself.
 
 | Option        | Values           | Default | Description  |
-| ------------- |:----------------:| -------:| ------------:|
+| ------------- |-----------------| --------| -------------|
 | silent        | `true`, `false`  | false   | If set to `true`, this will stop the triggers from sending events about store changes. Otherwise the store informs all listeners, when events like addig or removing a data object occurs. Using the silent option might be interesting in cases you don't want to inform the event listeners about store changes. For instance when setting up the store for the first time or just storing application irrelevant meta/configuration data. |
 
 
