@@ -132,7 +132,7 @@ To prevent data loss, signIn can be called with ````options.moveData = true````,
 
 
 ```javascript
-hoodie.account.signOut('username');
+hoodie.account.signOut(options);
 ```
 
 | option     | type   | description    | required |
@@ -141,42 +141,20 @@ hoodie.account.signOut('username');
 
 <br />
 
-SignIn() uses the standard CouchDB API to create a new user session (POST /_session).
-Besides the standard sign in, hoodie also checks if the account has been confirmed (roles include 'confirmed' role).
+SignOut() uses standard CouchDB API to invalidate a user session (DELETE /_session).
 
-When signing in, by default all local data gets cleared beforehand. Otherwise data that has been created beforehand (authenticated with another user account or anonymously) would be merged into the user account that signs in. That only applies if username isn't the same as current username.
-
-To prevent data loss, signIn can be called with ````options.moveData = true````, that will move all data from the anonymous account to the account the user signed into.
 
 ###### Example
 
 ```javascript
- $('#signInForm').submit(function (ev) {
-    ev.preventDefault();
-    var username = $('#signUpUsername').val();
-    var password = $('#signUpPassword').val();
-
-    hoodie.account.signIn(username, password);
-});
+hoodie.account.signOut();
 ```
 <br />
 ###### Notes
-> Please create an account with ````account.SignUp();````
+> -
 
 
 ### old ===========================
-
-
-
-
-
-
-### signOut
- // uses standard CouchDB API to invalidate a user session (DELETE /_session)
-
-<pre>
-hoodie.account.signOut();
-</pre>
 
 
 ### changePassword
