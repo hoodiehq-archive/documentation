@@ -1,5 +1,5 @@
 # hoodie.account 
-> **version:** 		*> 0.1* <br />
+> **version:** 		*> 0.1.0* <br />
 > **source:** 		*hoodie/src/hoodie/account.js*<br />
 > **tutorial:** 	*http://hood.ie/tutorial/accounts*<br />
 
@@ -17,7 +17,7 @@
 ## Methods
 
 - signUp()
-- [signIn](#signin)
+- signIn()
 - signOut() // please add anchors
 - changePassword()
 - resetPassword()
@@ -47,22 +47,107 @@
 - cleanup
 - signout (username)
 
+### account.signUp() 
+> **version:** 		*> 0.2.0* 
 
-### account.signIn() (> v.0.2)
-<a id="signin"></a>
-*Sign in for the user.*
 
 ```javascript
-hoodie.account.signIn('user', 'password');
+hoodie.account.signUp('user', 'password', 'password2');
 ```
 
-| option     | type | desc | optional |
-| ------------- |:-------------:| -----:| -----:|
-| user     | String | username | no |
-| password      | String      |   the valid password | no |
+| option     | type   | description     | required |
+| ---------- |:------:|:---------------:|:--------:|
+| user       | String | username        | yes      |
+| password   | String | valid password  | yes      |
+| password2  | String | repeat password | yes      |
+
+<br />
+
+
+SignUp uses standard CouchDB API to create a new document in _users db.
+
+The backend will automatically create a userDB based on the username address and approve the account by adding a 'confirmed' role to the user doc. The account confirmation might take a while, so we keep trying to sign in with a 300ms timeout.
+
+###### Example
+
+```javascript
+ $('#signInForm').submit(function (ev) {
+    ev.preventDefault();
+    var username  = $('#signUpUsername').val();
+    var password  = $('#signUpPassword').val();
+    var password2 = $('#signUpPassword2').val();
+
+    hoodie.account.signUp(username, password, password2);
+});
+```
+
+###### Notes
+> - You need to signIn after a signUp!
+> - Second password does not get checked at the moment. It is still a bug. 
+> Please make sure to validate this on the frontend side.
 
 
 <br />
+### account.signIn() 
+> **version:** 		*> 0.2.0* 
+
+
+```javascript
+hoodie.account.signIn('user', 'password', options);
+```
+
+| option     | type   | description    | required |
+| ---------- |:------:|:--------------:|:--------:|
+| user       | String | username       | yes      |
+| password   | String | valid password | yes      |
+| options    |        | moveData       | no       |
+
+<br />
+
+SignIn() uses the standard CouchDB API to create a new user session (POST /_session).
+Besides the standard sign in, hoodie also checks if the account has been confirmed (roles include 'confirmed' role).
+
+When signing in, by default all local data gets cleared beforehand. Otherwise data that has been created beforehand (authenticated with another user account or anonymously) would be merged into the user account that signs in. That only applies if username isn't the same as current username.
+
+To prevent data loss, signIn can be called with ````options.moveData = true````, that will move all data from the anonymous account to the account the user signed into.
+
+###### Example
+
+```javascript
+ $('#signInForm').submit(function (ev) {
+    ev.preventDefault();
+    var username = $('#signUpUsername').val();
+    var password = $('#signUpPassword').val();
+
+    hoodie.account.signIn(username, password);
+});
+```
+###### Notes
+> - Please create an account with ````account.SignUp();````
+
+
+<br />
+### account.signOut() 
+> **version:** 		*> 0.2.0* 
+
+
+```javascript
+hoodie.account.signOut('username');
+```
+
+| option     | type   | description    | required |
+| ---------- |:------:|:--------------:|:--------:|
+| options    | ------ | --------       | no       |
+
+<br />
+
+SignIn() uses the standard CouchDB API to create a new user session (POST /_session).
+Besides the standard sign in, hoodie also checks if the account has been confirmed (roles include 'confirmed' role).
+
+When signing in, by default all local data gets cleared beforehand. Otherwise data that has been created beforehand (authenticated with another user account or anonymously) would be merged into the user account that signs in. That only applies if username isn't the same as current username.
+
+To prevent data loss, signIn can be called with ````options.moveData = true````, that will move all data from the anonymous account to the account the user signed into.
+
 ###### Example
 
 ```javascript
@@ -76,65 +161,13 @@ hoodie.account.signIn('user', 'password');
 ```
 <br />
 ###### Notes
-> There is no validation provided here. Please make this work on the frontend side.
-> User need existing account.
 > Please create an account with ````account.SignUp();````
 
-CAUTION! This might be a problem… // show the user if anything could go wrong & why!
-// add errorhandling → FAQ
+
+### old ===========================
 
 
 
-
-
-
-
----
-layout: layout
----
-
-
-
-### signIn123
-// uses standard CouchDB API to create a new user session (POST /_session).
-// Besides the standard sign in we also check if the account has been confirmed
-// (roles include 'confirmed' role).
-//
-// When signing in, by default all local data gets cleared beforehand.
-// Otherwise data that has been created beforehand (authenticated with another user
-// account or anonymously) would be merged into the user account that signs in.
-// That only applies if username isn't the same as current username.
-//
-// To prevent data loss, signIn can be called with options.moveData = true, that wll
-// move all data from the anonymous account to the account the user signed into.
-
-<pre>
-hoodie.account.signIn('joe@example.com', 'secret');
-</pre>
-
-
-<pre>
-hoodie.account.signIn('joe@example.com', 'secret');
-</pre>
-
-
-### signUp
-// sign up with username & password
-// ----------------------------------
-
-// uses standard CouchDB API to create a new document in _users db.
-// The backend will automatically create a userDB based on the username
-// address and approve the account by adding a 'confirmed' role to the
-// user doc. The account confirmation might take a while, so we keep trying
-// to sign in with a 300ms timeout.
-
-<pre>
-hoodie.account.signUp('joe@example.com', 'secret', 'secret');
-</pre>
-
-#### 
-// you need to signIn after a signUp!
-// is the check second PW bug fixed finally?
 
 
 
