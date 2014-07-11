@@ -1,65 +1,32 @@
 # hoodie.account 
-> **version:** 		*> 0.1* <br />
-> **source:** 		*hoodie/src/hoodie/account.js*<br />
-> **tutorial:** 	*http://hood.ie/tutorial/accounts*<br />
+**version:** 	*> 0.2*
+**source:** 	*hoodie/src/hoodie/account.js*
 
-**<br />after reading this you will know:**
-- how to sign up / in / out a user
-- how to get information about the user and store it
-- how to listen to account even
+#### after reading this you will know
+> - how to sign up / in / out a user
+> - how to get information about the user and store it
+> - how to listen to account even
 
-## Introduction
-
-*The account object gives you the methods to create, update and delete an account. Your data will be stored locally and synced by saving to the server. After logging in on another device you can access it again, because your data is always bound to the account by default.*
-
+What is an account and what can it provide?
 
 
 ## Methods
 
 - signUp()
-- [signIn](#signin)
+- signIn()
 - signOut() // please add anchors
-- changePassword()
-- resetPassword()
-- changeUsername()
-- destroy()
-- isSignedIn() // tba
-- confirm(options) // tba
-- checkAvailability(username) // tba
-- userData() // tba
-
-
-## Events
-
-- signup (username)
-- signup:anonymous
-- signin:anonymous (username)
-- movedata
-- reauthenticated (newUsername)
-- signin (newUsername, newHoodieId, options)
-- changepassword
-- resetpassword
-- error:passwordreset (error, username)
-- changeusername (newUsername)
-- error:unauthenticated
-- passwordreset (username)
-- signup (username)
-- cleanup
-- signout (username)
-
 
 ### account.signIn() (> v.0.2)
-<a id="signin"></a>
-*Sign in for the user.*
+*Signin a user.*
 
 ```javascript
 hoodie.account.signIn('user', 'password');
 ```
 
-| option     | type | desc | optional |
-| ------------- |:-------------:| -----:| -----:|
-| user     | String | username | no |
-| password      | String      |   the valid password | no |
+| option     | type | desc |
+| ------------- |:-------------:| -----:|
+| user     | String | username |
+| password      | String      |   the valid password |
 
 
 <br />
@@ -95,7 +62,7 @@ layout: layout
 
 
 
-### signIn123
+### signIn
 // uses standard CouchDB API to create a new user session (POST /_session).
 // Besides the standard sign in we also check if the account has been confirmed
 // (roles include 'confirmed' role).
@@ -136,6 +103,23 @@ hoodie.account.signUp('joe@example.com', 'secret', 'secret');
 // you need to signIn after a signUp!
 // is the check second PW bug fixed finally?
 
+
+### anonymousSignUp
+
+// anonymous sign up
+  // -------------------
+
+  // If the user did not sign up yet, but data needs to be transferred
+  // to the couch, e.g. to send an email or to share data, the anonymousSignUp
+  // method can be used. It generates a random password and stores it locally
+  // in the browser.
+  //
+  // If the user signs up for real later, we 'upgrade' the account, meaning we
+  // change the username and password internally instead of creating another user.
+
+<pre>
+hoodie.account.anonymousSignUp();
+</pre>
 
 
 ### signOut
@@ -182,13 +166,28 @@ hoodie.account.resetPassword('joe@example.com');
 </pre>
 
 
+### checkPasswordReset
+// check for the status of a password reset. It might take
+// a while until the password reset worker picks up the job
+// and updates it
+//
+// If a password reset request was successful, the $passwordRequest
+// doc gets removed from _users by the worker, therefore a 401 is
+// what we are waiting for.
+//
+// Once called, it continues to request the status update with a
+// one second timeout
+
+<pre>
+hoodie.account.checkPasswordReset('joe@example.com');
+</pre>
 
 
 ### destroy
 // destroys a user's account
 
 <pre>
-hoodie.account.destroy('password');
+hoodie.account.destroy();
 </pre>
 
 
@@ -198,6 +197,9 @@ hoodie.account.username;
 </pre>
 
 
+### authenticate
+// Use this method to assure that the user is authenticated:
+  // `hoodie.account.authenticate().done( doSomething ).fail( handleError )`
 
 ### hasAccount
 // anonymous accounts get created when data needs to be
@@ -214,6 +216,11 @@ hoodie.account.username;
 hoodie.account.hasAccount();
 </pre>
 
+### hasAnonymousAccount
+// checks if the user has an anonymous account
+<pre>
+hoodie.account.hasAnonymousAccount();
+</pre>
 
 
 ### hasInvalidSession
