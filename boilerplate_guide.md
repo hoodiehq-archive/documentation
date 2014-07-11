@@ -28,7 +28,7 @@ hoodie.account.signIn('user', 'password');
 | password      | String      |   the valid password |
 
 
-
+<br />
 ###### Example
 
 ```javascript
@@ -40,6 +40,7 @@ hoodie.account.signIn('user', 'password');
     hoodie.account.signIn(username, password);
 });
 ```
+<br />
 ###### Notes
 > There is no validation provided here. Please make this work on the frontend side.
 > User need existing account.
