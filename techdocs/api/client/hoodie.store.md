@@ -1,7 +1,3 @@
----
-layout: layout
----
-
 # hoodie.store
 *available since 0.2*
 
@@ -74,16 +70,19 @@ The options that are available for most of these methods are listed below. For d
 - [unbind](#unbind)
 
 
-### store
+### store() (> v.0.2)
 <a id="store"></a>
+
+*missing short description*
 
 ```javascript
 hoodie.store('type', 'id');
 ```
 
-| option     | type | desc |
-| ------------- |:-------------:| -----:|
-| type     | String | store type |
+| option     | type | desc | optional |
+| ------------- |:-------------:| -----:| -----:|
+| type     | String | store type | yes |
+| id     | int | index of store obj | yes |
 
 <br />
 ###### Example
