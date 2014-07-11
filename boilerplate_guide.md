@@ -22,10 +22,10 @@ What is an account and what can it provide?
 hoodie.account.signIn('user', 'password');
 ```
 
-| option     | type | desc |
-| ------------- |:-------------:| -----:|
-| user     | String | username |
-| password      | String      |   the valid password |
+| option     | type | desc | optional |
+| ------------- |:-------------:| -----:| -------- :|
+| user     | String | username | needed |
+| password      | String      |   the valid password | needed |
 
 
 <br />
