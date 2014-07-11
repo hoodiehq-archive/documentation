@@ -16,20 +16,20 @@ What is an account and what can it provide?
 - signOut() // please add anchors
 
 ### account.signIn() (> v.0.2)
-Signin a user in. 
+*Signin a user.*
 
 ```javascript
 hoodie.account.signIn('user', 'password');
 ```
-user      = String
-password  = String
+
+| option     | type | desc |
+| ------------- |:-------------:| -----:|
+| user     | String | username |
+| password      | String      |   the valid password |
 
 
-User need existing account.
-Please create an account with ````account.SignUp();````
 
-
-#### example
+###### Example
 
 ```javascript
  $('#signInForm').submit(function (ev) {
@@ -40,4 +40,7 @@ Please create an account with ````account.SignUp();````
     hoodie.account.signIn(username, password);
 });
 ```
+###### Notes
 > There is no validation provided here. Please make this work on the frontend side.
+> User need existing account.
+> Please create an account with ````account.SignUp();````
