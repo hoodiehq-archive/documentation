@@ -2,9 +2,14 @@
 layout: layout
 ---
 
-# Hoodie.Store
+# hoodie.store
+*available since 0.2*
 
-*Source: hoodie/src/lib/store/scoped.js*
+#### after reading this you will know
+> - how to create data
+> - how to read data
+> - how to update data
+> - how to listen to store events
 
 This class defines the API that `hoodie.store` (local store) and `hoodie.open`
 (remote store) implement to assure a coherent API. It also implements some
@@ -49,51 +54,71 @@ The options that are available for most of these methods are listed below. For d
 | silent        | `true`, `false`  | false   | If set to `true`, this will stop the triggers from sending events about store changes. Otherwise the store informs all listeners, when events like addig or removing a data object occurs. Using the silent option might be interesting in cases you don't want to inform the event listeners about store changes. For instance when setting up the store for the first time or just storing application irrelevant meta/configuration data. |
 
 
-
 ## Methods
 
+- [store](#store)
+- [validate](#validate)
+- [save](#save)
+- [add](#add)
+- [findOrAdd](#findOrAdd)
+- [findAll](#findAll)
+- [update](#update)
+- [updateAll](#updateAll)
+- [remove](#remove)
+- [removeAll](#removeAll)
+- [on](#on)
+- [one](#one)
+- [trigger](#trigger)
+- [off](#off)
+- [bind](#bind)
+- [unbind](#unbind)
+
+
 ### store
-`hoodie.store(_type_, _id_)`
+<a id="store"></a>
 
+```javascript
+hoodie.store('type', 'id');
+```
 
-It is most likely, that your application will have more than one type of store object. Even if you have just a single object `hoodie.store(type)`
-comes handy. Say you have to work with objects of the type `todo`, you usually
-do something like the following:
+| option     | type | desc |
+| ------------- |:-------------:| -----:|
+| type     | String | store type |
 
-<pre>
+<br />
+###### Example
+
+It is most likely, that your application will have more than one type of store object. Even if you have just a single object hoodie.store(type) comes handy. Say you have to work with objects of the type todo, you usually do something like the following:
+
+```javascript
 hoodie.store.add('todo', { title: 'Getting Coffee' });
 hoodie.store.findAll('todo').done(function(allTodos) { /* ... */ });
-</pre>
+```
 
-The `hoodie.store` method offers you a short handle here, so you can create
-designated store context objects to work with:
+The hoodie.store method offers you a short handle here, so you can create designated store context objects to work with:
 
-<pre>
+```javascript
 var todoStore = hoodie.store('todo');
 
 todoStore.add({ title: 'Getting Coffee' });
 todoStore.findAll().done(function(allTodos) { /*...*/ });
-</pre>
+```
 
-The benefit of this variant might not be clear at first glance. The primary benefit is, that you must set your object type only
-once. So in case you want to rename you object type *"todo"* to *"things-to-be-done"*
-in a later phase of development, you have to change this in significantly fewer
-areas on you application code. By this you also avoid typos by reducing the
-amount of occurrences, where you can make the mistake at.
+The benefit of this variant might not be clear at first glance. The primary benefit is, that you must set your object type only once. So in case you want to rename you object type "todo" to "things-to-be-done" in a later phase of development, you have to change this in significantly fewer areas on you application code. By this you also avoid typos by reducing the amount of occurrences, where you can make the mistake at.
 
-Imagine having the type of *"todoo"* with a double o at the end. This would be a
-dramatic bug if it comes to storing a new todo object, because when reading all
-"todo" (with single o this time) the new entries can't be found.
+Imagine having the type of "todoo" with a double o at the end. This would be a dramatic bug if it comes to storing a new todo object, because when reading all "todo" (with single o this time) the new entries can't be found.
 
 You can also create a very particular store, to work with access to just one specific stored object.
 
-<pre>
+```javascript
 var singleStore = hoodie.store( 'todo', 'id123' );
-</pre>
+```
 
 For the call like illustrated in the last example, only a minimal subset of functions will be available on the created store context. Every method those purpose is to target more than one stored object, will be left out (f.e. findAll). This is because we already specified a particular object form the store to work with.
 
 ### validate
+<a id="validate"></a>
+
 
 `hoodie.store.validate(object, _options_)`
 
@@ -126,6 +151,8 @@ todoStore.save('abc4567', {title: 'Still Getting Coffee', done: false });
 </pre>
 
 ### add
+<a id="add"></a>
+
 
 `hoodie.store.add(type, properties)`
 
@@ -139,6 +166,8 @@ hoodie.store
 </pre>
 
 ### find
+<a id="find"></a>
+
 
 `hoodie.store.find(id)`
 
@@ -152,6 +181,8 @@ hoodie.store('todo')
 </pre>
 
 ### findOrAdd
+<a id="findOrAdd"></a>
+
 
 `hoodie.store.findOrAdd(type, id, properties)`
 
@@ -267,6 +298,8 @@ todoStore
 There aren't any [callback closure functions](http://), like many other JavaScript libraries use to work with asynchronous flows. Hoodie uses so called **promises** to handle async flows. If you would like to now more about promises in hoodie, please see the [Hoodie promises Section](http://) for further details.
 
 ### update
+<a id="update"></a>
+
 
 `hoodie.store.update(type, id, properties)`
 `hoodie.store.update(type, id, updateFunction)`
@@ -360,6 +393,7 @@ todoStore
 </pre>
 
 ### updateAll
+<a id="updateAll"></a>
 
 `hoodie.store.updateAll(updateObject)`
 `hoodie.store(type).updateAll(updateObject)`
@@ -397,6 +431,8 @@ todoStore
 </pre>
 
 ### remove
+<a id="remove"></a>
+
 
 `hoodie.store.remove(id)`
 `hoodie.store(type).remove(id)`
@@ -426,6 +462,7 @@ todoStore
 </pre>
 
 ### removeAll
+<a id="removeAll"></a>
 
 `hoodie.store.remove()`
 `hoodie.store(type).removeAll()`
@@ -444,9 +481,9 @@ todoStore
 });
 </pre>
 
-### decoratePromises
-
 ### on
+<a id="on"></a>
+
 
 `hoodie.store.on(event, handlerFunction)`
 
@@ -493,6 +530,8 @@ You can also listen to custom events you trigger by yourself. See `hoodie.store.
 
 
 ### trigger
+<a id="trigger"></a>
+
 
 `hoodie.store.trigger(event, paramOne, ..., paramN)`
 
@@ -565,15 +604,13 @@ todoStore.findAll().then(function(allTodos) {
 
 
 ### bind
+<a id="bind"></a>
+
 
 `hoodie.store.on` is an alias for `hoodie.store.bind`. Please see `hoodie.store.on` for details.
 
 ### unbind
+<a id="unbind"></a>
 
 `hoodie.store.off` is an alias for `hoodie.store.unbind`. Please see `hoodie.store.off` for details.
 
-
-## Code Example
-
-<pre>
-</pre>
