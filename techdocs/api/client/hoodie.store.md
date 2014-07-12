@@ -1,7 +1,3 @@
----
-layout: layout
----
-
 # hoodie.store
 > **version:**      *> 0.1.0* <br />
 > **source:**       *hoodie/src/hoodie/store.js*<br />
@@ -80,7 +76,6 @@ hoodie.store('type', 'id');
 | id         | String | index of store obj | no    |
 | options    | Object | ------------       | no    |
 
-
 <br />
 ###### Example
 
@@ -115,11 +110,22 @@ For the call like illustrated in the last example, only a minimal subset of func
 ### store.validate()
 > **version:**      *> 0.2.0*
 
-`hoodie.store.validate(object, _options_)`
+*By default `hoodie.store.validate` only checks for a valid object `type` and object `id`. The `type` as well as the `id` may not contain any slash ("/").*
 
-By default `hoodie.store.validate` only checks for a valid object `type` and object `id`. The `type` as well as the `id` may not contain any slash ("/").
-This is due to the format, hoodie stores your object into the database.
-Every stored database entry has an internal identifier. It is a combination of both, formatted as *"type/id"*. Therefore it is absolutely permitted to have a slashes in neither of both.
+```javascript
+hoodie.store.validate('type', object, options);
+hoodie.store('type').validate(object, options);
+```
+
+| option     | type   | description     | required |
+| ---------- |:------:|:---------------:|:--------:|
+| type       | Object | data object to verify | yes |
+| object     | Object | data object to verify | yes |
+| options    | Object |    ------------       | no  |
+
+###### Notes
+- id is a combination of both, formatted as *"type/id"*.
+- slashes for id or type are permitted.
 
 All other characters are allowed, though it might be the best, to stick with
 alphabetical characters and numbers. But you are still free to choose.
@@ -128,66 +134,115 @@ If `hoodie.store.validate` returns nothing, the passed **object** is valid.
 Otherwise it returns an **[HoodieError]<#>**.
 
 ### store.save()
+> **version:**      *> 0.2.0*
 
-`hoodie.store.save(type, _id_, properties)`
+*Creates or replaces an an eventually existing object in the store, that is of the same `type` and the same `id`.*
 
-Creates or replaces an an eventually existing object in the store, that is of the same `type` and the same `id`.
+```javascript
+hoodie.store.save('type', 'id', properties, options);
+hoodie.store('type').validate('id', properties, options);
+```
+
+| option     | type   | description     | required |
+| ---------- |:------:|:---------------:|:--------:|
+| type       | String | type of the store         | yes |
+| id         | String | type of the store         | no  |
+| properties | Object | object properties to save | yes |
+| options    | Object |        ------------       | no  |
+
+<br />
+###### Example
 
 When the `id` is of value *undefined*, the passed object will be created from scratch.
 
-**IMPORTANT**: If you want to just to partially update an existing object, please see `hoodie.store.update(type, id, objectUpdate)`. The method `hoodie.store.save` will completely replace an existing object.
+If you want to just to partially update an existing object, please see `hoodie.store.update(type, id, objectUpdate)`. The method `hoodie.store.save` will completely replace an existing object.
 
-<pre>
+```javascript
 var todoStore = hoodie.store('todo');
 
 // this will create a new todo
 todoStore.save(undefined, {title: 'Getting Coffee', done: false });
 todoStore.save('abc4567', {title: 'Still Getting Coffee', done: false });
-</pre>
+```
 
 ### store.add()
 > **version:**      *> 0.2.0*
 
+*Creates a new entry in your local store. It is the shorter version of a complete save. This means you can not pass the id of an existing property.*
 
-`hoodie.store.add(type, properties)`
+```javascript
+hoodie.store.add('type', properties, options);
+hoodie.store('type').add(properties, options);
+```
 
-Creates a new entry in your local store. It is the shorter version of a complete save. This means you can not pass the id of an existing property. In fact `hoodie.store.add` will force `hoodie.store.save` to create a new object with the passed object properties of the `properties` parameter.
+| option     | type   | description     | required |
+| ---------- |:------:|:---------------:|:--------:|
+| type       | String | type of the store         | yes |
+| properties | Object | object properties to save | yes |
+| options    | Object |        ------------       | no  |
 
-<pre>
+<br />
+###### Example
+
+In fact `hoodie.store.add` will force `hoodie.store.save` to create a new object with the passed object properties of the `properties` parameter.
+
+```javascript
 hoodie.store
 	.add('todo', { title: 'Getting Coffee' })
 	.done(function(todo) { /* success handling */ });
 	.fail(function(todo) { /* error handling */ });
-</pre>
+```
 
 ### store.find()
 > **version:**      *> 0.2.0*
 
+*Searches the store for a stored object with a particular `id`.*
 
-`hoodie.store.find(id)`
+```javascript
+hoodie.store.find('type', 'id', options);
+hoodie.store('type').find('id', options);
+```
 
-Searches the store for a stored object with a particular `id`. Returns a promise so success and failure can be handled. A failure occurs for example when no object
+| option     | type   | description     | required |
+| ---------- |:------:|:---------------:|:--------:|
+| type       | String | type of the store         | yes |
+| id         | String | id of the object to find  | yes |
+| options    | Object |        ------------       | no  |
 
-<pre>
+
+###### Example
+
+Returns a promise so success and failure can be handled. A failure occurs for example when no object
+
+```javascript
 hoodie.store('todo')
 	.find('hrmvby9')
 	.done(function(todo) { /* success handling */ });
 	.fail(function(todo) { /* error handling */ });
-</pre>
+```
 
 ### store.findOrAdd()
-<a id="findOrAdd"></a>
+> **version:**      *> 0.2.0*
 
+*This is a convenient combination of hoodie.store.find and hoodie.store.add. You can
+use this if you would like to work with a particular store object, which existence
+you are not sure about yet.*
 
-`hoodie.store.findOrAdd(type, id, properties)`
+```javascript
+hoodie.store.findOrAdd('type', 'id', properties, options);
+hoodie.store('type').findOrAdd('id', properties, options);
+```
 
-This is a convenient combination of hoodie.store.find and hoodie.store.add. Use can
-use if you would like to work with a particular store object, which existence
-you are not sure about yet. Which cases would be worth using this?
-Well for example if you want to read a particular settings object, you want to
-work with in a later step.
+| option     | type   | description     | required |
+| ---------- |:------:|:---------------:|:--------:|
+| type       | String | type of the store                           | yes |
+| id         | String | id of the object to find                    | no  |
+| properties | Object | object to be created if no entry matches id | yes |
+| options    | Object |                          ------------       | no  |
 
-<pre>
+Which cases would be worth using this? Well for example if you want to read a particular settings object, you want to work with in a later step.
+
+```javascript
 // pre-conditions: You already read a user's account object.
 var configBlueprint = { language: 'en/en', appTheme: 'default' };
 var configId        = account.id + '_config';
@@ -197,24 +252,20 @@ hoodie.store
 	.done(function(appConfig) {
 		console.log('work with config', appConfig)
 	});
-</pre>
+```
 
-hoodie.store.findOrCreate takes three arguments here. All of them are required.
+###### Notes
+> - the `properties` parameter has no influence on the search itself.
 
- * `type`       => The kind of document you want to search the store for.
- * `id`         => The unique id of the document to search the store for.
- * `properties` => The blueprint of the document to be created, in case nothing could be found.
-
-The important thing to notice here is, that the `properties` parameter has no
-influence on the search itself. Unlike you may have used store searches
-with other frameworks, this will **not** use the `properties` parameter
+Unlike you may have used store searches with other frameworks, this will **not** use the `properties` parameter
 as further conditions to match a particular store entry. The only conditions the
 store will be searched for are the document `type` and `id`.
 
+###### Example
 Just to demonstrates the convenience of hoodie.store.findOrAdd, the below example
 illustrates the more complex alternative way of find and add:
 
-<pre>
+```javascript
 // IMPORTANT: BAD VARIATION
 
 // pre-conditions: You already read a user's account object.
@@ -236,17 +287,26 @@ hoodie.store
 	});
 
 // IMPORTANT: BAD VARIATION
-</pre>
+```
 
 ### store.findAll()
 > **version:**      *> 0.2.0*
 
-`hoodie.store.findAll(type)`
-`hoodie.store(type).findAll()`
+*With this you can retrieve all objects of a particular `type` from the store.*
 
-With this you can retrieve all objects of a particular `type` from the store. Todos for instance. Given, that you already have existing todo objects stored, you can retrieve all of them like in the following example.
+```javascript
+hoodie.store.findAll('type');
+hoodie.store('type').findAll();
+```
 
-<pre>
+| option     | type   | description     | required |
+| ---------- |:------:|:---------------:|:--------:|
+| type       | String | type of the store    | yes |
+| options    | Object |   ------------       | no  |
+
+Todos for instance. Given, that you already have existing todo objects stored, you can retrieve all of them like in the following example.
+
+```javascript
 
 var todoStore = hoodie.store('todo');
 
@@ -261,11 +321,11 @@ todoStore
         console.log('successfully finished findAll');
     });
 
-</pre>
+```
 
 What you really have to recognized here is that there is a mayor difference between the methods `then` and `done`. While `done` suggests that you can handle all the retrieved objects with it, actually it is `then` where `findAll` will deliver your data to. `done` on the other hand gets called when all other `then` calls have been passed. Yes you can utilize this mechanism to work with your data in several steps.
 
-<pre>
+```javascript
 var todoStore = hoodie.store('todo');
 
 console.log(todoStore.findAll());
@@ -289,21 +349,31 @@ todoStore
         // this gets called on the end
         console.log('successfully finished findAll');
     });
-</pre>
+```
 
 There aren't any [callback closure functions](http://), like many other JavaScript libraries use to work with asynchronous flows. Hoodie uses so called **promises** to handle async flows. If you would like to now more about promises in hoodie, please see the [Hoodie promises Section](http://) for further details.
 
 ### store.update()
 > **version:**      *> 0.2.0*
 
+*In contrast to `.save`, the `.update` method does not replace the stored object, but only changes the passed attributes of an existing object, if it exists. Requires one of both: an properties or and update function.*
 
-`hoodie.store.update(type, id, properties)`
-`hoodie.store.update(type, id, updateFunction)`
-`hoodie.store(type).update(id, properties)`
-`hoodie.store(type).update(id, updateFunction)`
+```javascript
+hoodie.store.update('type', 'id', properties)
+hoodie.store.update('type', 'id', updateFunction)
+hoodie.store('type').update('id', properties)
+hoodie.store('type').update('id', updateFunction)
+```
 
-In contrast to `.save`, the `.update` method does not replace the stored object,
-but only changes the passed attributes of an existing object, if it exists. By this you are able to just update particular parts/attributes of your object. This is great for updating objects that are very large in bytes.
+| option     | type   | description     | required |
+| ---------- |:------:|:---------------:|:--------:|
+| type           | String | type of the store                   | yes |
+| properties     | Object | object updates                      | no  |
+| updateFunction | String | function doing object updates       | no  |
+| options        | Object |   ------------                      | no  |
+
+
+By this you are able to just update particular parts/attributes of your object. This is great for updating objects that are very large in bytes.
 
 <pre>
 // Example for store updates
