@@ -48,9 +48,9 @@ The options that are available for most of these methods are listed below. For d
 - [removeAll](#storeremoveall)
 
 ## Events
-- [type:add(object)]()
-- [type:update(object)]()
-- [type:remove(object)]()
+- [type:add](#event-typeadd)
+- [type:update](#event-typeupdate)
+- [type:remove](#event-typeremove)
 
 ## Deprecated
 - [decoratePromises](storedecoratepromises)
@@ -656,7 +656,7 @@ hoodie.store.on('todo:update', function(updatedTodo) {
 });
 ```
 
-### Event 'type:update'
+### Event 'type:remove'
 > **version:**      *> 0.2.0*
 
 *Gets triggered when an existing object of matching type/store has been removed.*
