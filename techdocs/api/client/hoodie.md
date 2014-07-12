@@ -1,4 +1,4 @@
-# hoodie.store
+# hoodie
 > **version:**      *> 0.1.0* <br />
 > **source:**       *hoodie/src/hoodie/???.js*<br />
 
@@ -7,58 +7,184 @@
 
 ## Introduction
 
+This document describes the functionality of the hoodie base object.
+
 ## Methods
 
-- [on](#on)
-- [one](#one)
-- [trigger](#trigger)
-- [off](#off)
 - [bind](#bind)
+- [trigger](#trigger)
 - [unbind](#unbind)
+- [one](#one)
+- [on](#on)
+- [off](#off)
 
-### store()
-> **version:**      *> 0.2.0*
+### bind()
+> - **version:**      *> 0.2.0*
 
-*Getting access to the store or scoped access if a type is defined.*
+*Bind an event handler to a certain event so you get informed in case it gets triggered.*
 
 ```javascript
-hoodie.store('type', 'id');
+hoodie.bind('event', eventHandler);
 ```
 
 | option     | type   | description     | required |
 | ---------- |:------:|:---------------:|:--------:|
-| type       | String | type of the store  | yes   |
-| id         | String | index of store obj | no    |
-| options    | Object | ------------       | no    |
+| event        | String   | custom event identifier            | yes |
+| eventHandler | Function | Function handling triggered event. | yes |
+
+Hoodie informs you about several things happening. For instance every time a store object has been added, saved or removed. In order to catch those messages you can register a function for handling those events. Those functions are called **eventHandlers**. You can register also for events you created and triggered yourself. See [trigger](#trigger) for further information.
+
+<br />
+###### Example
+```javascript
+hoodie.store.on('event', function(createdTodo) {
+	console.log('A todo has been added => ', createdTodo);
+});
+```
+
+### trigger
+
+> - **version:**      *> 0.2.0*
+
+*Trigger a certain event. This includes custom and predefined events.*
+
+```javascript
+hoodie.trigger('event', param, param, param ...);
+```
+
+| option     | type   | description     | required |
+| ---------- |:------:|:---------------:|:--------:|
+| event      | String | custom event identifier.                                 | yes |
+| param      | Object | Detail information the event will pass to the listeners. | no |
+
+Since you can listen for store events using [bind](#bind) or [on](#on), this gives you the opportunity to send events of your own to the listeners. This includes the standard events as mentionend in for instance [hoodie.store.on](/techdocs/api/client/hoodie.store.html) as well as your personal custom events. Imagine you want to trigger an event when a todo is done. This could look something similiar to this:
+
+<br />
+###### Example
+```javascript
+var todoStore = hoodie.store('todo');
+
+function markAsDone(todo) {
+  // mark todo as done and trigger a custom done event
+  todo.done = true;
+  todoStore.trigger('todo:done', todo, new Date());
+}
+
+todoStore.on('todo:done', function(doneTodo, t) {
+  console.log(doneTodo.title, ' was done', t);
+});
+
+todoStore.findAll().then(function(allTodos) {
+  // take the first todo in list
+  // and mark it as done
+  markAsDone(allTodos[0]);
+});
+```
+
+<br />
+####### Notes
+> - it is a good idea to stick to an overall sane convention like 'object-type:what-happened' or 'what-happened' for event the descriptor.
+> - starting with the second parameter you are allowed to pass an unlimited amount of detail information.
+> - if you register an event handler with `hoodie.store('todo').on` and trigger the event just with `hoodie.store.trigger`, the previously registered event handler will never been called.
+
+<br />
+###### Examples
+```javascript
+	var todoStore = hoodie.store('todo');
+
+	todoStore.on('trigger-test', function(num) {
+		// will only be called by the second trigger
+		console.log('triggered by', num);
+	});
+
+	hoodie.store.trigger('trigger-test', 'number one');
+	todoStore.trigger('trigger-test', 'number two');
+	hoodie.store(hoodie).trigger('trigger-test', 'number three');
+```
+
+### unbind()
+> - **version:**      *> 0.2.0*
+
+*Unbind all eventhandlers from a certain event. The events won't be triggered anymore.*
+
+```javascript
+hoodie.unbind('event');
+```
+
+| option     | type   | description     | required |
+| ---------- |:------:|:---------------:|:--------:|
+| event      | String | custom event identifier. | yes |
+
+```javascript
+hoodie.on('event', eventHandler);
+```
+
+While `hoodie.store.bind` subscribes an handler function to a certain event `hoodie.store.unbind` does the opposite and will unsubscribe all previously registered handlers for the given event.
 
 <br />
 ###### Example
 
-It is most likely, that your application will have more than one type of store object. Even if you have just a single object hoodie.store(type) comes handy. Say you have to work with objects of the type todo, you usually do something like the following:
-
-```javascript
-hoodie.store.add('todo', { title: 'Getting Coffee' });
-hoodie.store.findAll('todo').done(function(allTodos) { /* ... */ });
-```
-
-The hoodie.store method offers you a short handle here, so you can create designated store context objects to work with:
-
 ```javascript
 var todoStore = hoodie.store('todo');
+todoStore.on('todo:done', function(doneTodo, t) {
+  // this will never be reached
+});
 
-todoStore.add({ title: 'Getting Coffee' });
-todoStore.findAll().done(function(allTodos) { /*...*/ });
+todoStore.on('todo:done', function(doneTodo, t) {
+  // this will never be reached neither
+});
+
+// this unsubscribes both of the previously
+// subscribed event handlers
+todoStore.off('todo:done');
+
+todoStore.findAll().then(function(allTodos) {
+  todoStore.trigger('todo:done', allTodos[0], new Date());
+});
 ```
 
-The benefit of this variant might not be clear at first glance. The primary benefit is, that you must set your object type only once. So in case you want to rename you object type "todo" to "things-to-be-done" in a later phase of development, you have to change this in significantly fewer areas on you application code. By this you also avoid typos by reducing the amount of occurrences, where you can make the mistake at.
+### one()
+> - **version:**      *> 0.2.0*
 
-Imagine having the type of "todoo" with a double o at the end. This would be a dramatic bug if it comes to storing a new todo object, because when reading all "todo" (with single o this time) the new entries can't be found.
-
-You can also create a very particular store, to work with access to just one specific stored object.
+*Is the one-time variant of [bind](#bind) plus [unbind](#unbind). Once the event has been caught, it will be unbound automatically.*
 
 ```javascript
-var singleStore = hoodie.store( 'todo', 'id123' );
+hoodie.one('event', eventHandler);
 ```
 
-For the call like illustrated in the last example, only a minimal subset of functions will be available on the created store context. Every method those purpose is to target more than one stored object, will be left out (f.e. findAll). This is because we already specified a particular object form the store to work with.
+| option     | type   | description     | required |
+| ---------- |:------:|:---------------:|:--------:|
+| event        | String   | custom event identifier            | yes |
+| eventHandler | Function | Function handling triggered event. | yes |
 
+
+### on()
+> - **version:**      *> 0.2.0*
+
+*Bind an event handler to a certain event so you get informed in case it gets triggered.*
+
+```javascript
+hoodie.on('event', eventHandler);
+```
+
+| option     | type   | description     | required |
+| ---------- |:------:|:---------------:|:--------:|
+| event        | String   | custom event identifier            | yes |
+| eventHandler | Function | Function handling triggered event. | yes |
+
+Alias for [bind](#bind).
+
+### off()
+> - **version:**      *> 0.2.0*
+
+*Unbind all eventhandlers from a certain event. The events won't be triggered anymore.*
+
+```javascript
+hoodie.off('event');
+```
+
+| option     | type   | description     | required |
+| ---------- |:------:|:---------------:|:--------:|
+| event        | String   | custom event identifier            | yes |
+
+Alias for [bind](#bind).
