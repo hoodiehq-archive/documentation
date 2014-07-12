@@ -285,7 +285,7 @@ table.codehilitetable td.code div pre {
 <th>option</th>
 <th align="center">type</th>
 <th align="center">description</th>
-<th align="right">required</th>
+<th align="center">required</th>
 </tr>
 </thead>
 <tbody>
@@ -293,19 +293,19 @@ table.codehilitetable td.code div pre {
 <td>user</td>
 <td align="center">String</td>
 <td align="center">username</td>
-<td align="right">yes</td>
+<td align="center">yes</td>
 </tr>
 <tr>
 <td>password</td>
 <td align="center">String</td>
 <td align="center">valid password</td>
-<td align="right">yes</td>
+<td align="center">yes</td>
 </tr>
 <tr>
 <td>password2</td>
 <td align="center">String</td>
 <td align="center">repeat password</td>
-<td align="right">yes</td>
+<td align="center">yes</td>
 </tr>
 </tbody>
 </table>
@@ -336,7 +336,7 @@ Please make sure to validate this on the frontend side.</li>
 <blockquote>
 <p><strong>version:</strong>      <em>&gt; 0.2.0</em> </p>
 </blockquote>
-<pre><code class="javascript">hoodie.account.signIn('user', 'password');
+<pre><code class="javascript">hoodie.account.signIn('user', 'password', options);
 </code></pre>
 
 <table>
@@ -345,7 +345,7 @@ Please make sure to validate this on the frontend side.</li>
 <th>option</th>
 <th align="center">type</th>
 <th align="center">description</th>
-<th align="right">required</th>
+<th align="center">required</th>
 </tr>
 </thead>
 <tbody>
@@ -353,13 +353,19 @@ Please make sure to validate this on the frontend side.</li>
 <td>user</td>
 <td align="center">String</td>
 <td align="center">username</td>
-<td align="right">yes</td>
+<td align="center">yes</td>
 </tr>
 <tr>
 <td>password</td>
 <td align="center">String</td>
 <td align="center">valid password</td>
-<td align="right">yes</td>
+<td align="center">yes</td>
+</tr>
+<tr>
+<td>options</td>
+<td align="center"></td>
+<td align="center">moveData</td>
+<td align="center">no</td>
 </tr>
 </tbody>
 </table>
@@ -389,7 +395,7 @@ Besides the standard sign in, hoodie also checks if the account has been confirm
 <blockquote>
 <p><strong>version:</strong>      <em>&gt; 0.2.0</em> </p>
 </blockquote>
-<pre><code class="javascript">hoodie.account.signOut('username');
+<pre><code class="javascript">hoodie.account.signOut(options);
 </code></pre>
 
 <table>
@@ -398,45 +404,30 @@ Besides the standard sign in, hoodie also checks if the account has been confirm
 <th>option</th>
 <th align="center">type</th>
 <th align="center">description</th>
-<th align="right">required</th>
+<th align="center">required</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>user</td>
-<td align="center">String</td>
-<td align="center">username</td>
-<td align="right">no</td>
+<td>options</td>
+<td align="center">------</td>
+<td align="center">--------</td>
+<td align="center">no</td>
 </tr>
 </tbody>
 </table>
 <p><br /></p>
-<p>SignIn() uses the standard CouchDB API to create a new user session (POST /_session).<br />
-Besides the standard sign in, hoodie also checks if the account has been confirmed (roles include &lsquo;confirmed&rsquo; role).</p>
-<p>When signing in, by default all local data gets cleared beforehand. Otherwise data that has been created beforehand (authenticated with another user account or anonymously) would be merged into the user account that signs in. That only applies if username isn&rsquo;t the same as current username.</p>
-<p>To prevent data loss, signIn can be called with <code>options.moveData = true</code>, that will move all data from the anonymous account to the account the user signed into.</p>
+<p>SignOut() uses standard CouchDB API to invalidate a user session (DELETE /_session).</p>
 <h6 id="example_2"><a name="user-content-example_2" href="#example_2" class="headeranchor-link"  aria-hidden="true"><span class="headeranchor"></span></a>Example</h6>
-<pre><code class="javascript"> $('#signInForm').submit(function (ev) {
-    ev.preventDefault();
-    var username = $('#signUpUsername').val();
-    var password = $('#signUpPassword').val();
-
-    hoodie.account.signIn(username, password);
-});
+<pre><code class="javascript">hoodie.account.signOut();
 </code></pre>
 
 <p><br /></p>
 <h6 id="notes_2"><a name="user-content-notes_2" href="#notes_2" class="headeranchor-link"  aria-hidden="true"><span class="headeranchor"></span></a>Notes</h6>
 <blockquote>
-<p>Please create an account with <code>account.SignUp();</code></p>
+<p>-</p>
 </blockquote>
 <h3 id="old"><a name="user-content-old" href="#old" class="headeranchor-link"  aria-hidden="true"><span class="headeranchor"></span></a>old ===========================</h3>
-<h3 id="signout"><a name="user-content-signout" href="#signout" class="headeranchor-link"  aria-hidden="true"><span class="headeranchor"></span></a>signOut</h3>
-<p>// uses standard CouchDB API to invalidate a user session (DELETE /_session)</p>
-<pre>
-hoodie.account.signOut();
-</pre>
-
 <h3 id="changepassword"><a name="user-content-changepassword" href="#changepassword" class="headeranchor-link"  aria-hidden="true"><span class="headeranchor"></span></a>changePassword</h3>
 <p>// Note: the hoodie API requires the currentPassword for security reasons,<br />
 // but couchDb doesn&rsquo;t require it for a password change, so it&rsquo;s ignored<br />

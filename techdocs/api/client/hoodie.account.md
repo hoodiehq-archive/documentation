@@ -16,7 +16,7 @@
 
 ## Methods
 
-- signUp()
+- [signUp](#accountsignup)
 - signIn()
 - signOut() // please add anchors
 - changePassword()
@@ -47,12 +47,14 @@
 - cleanup
 - signout (username)
 
+
+<a name="accountsignup" id="accountsignup"></a>
 ### account.signUp() 
 > **version:** 		*> 0.2.0* 
 
 
 ```javascript
-hoodie.account.signUp('user', 'password', 'password2');
+hoodie.account.signUp(user, password, password2);
 ```
 
 | option     | type   | description     | required |
@@ -71,7 +73,7 @@ The backend will automatically create a userDB based on the username address and
 ###### Example
 
 ```javascript
- $('#signInForm').submit(function (ev) {
+ $('#signUpForm').submit(function (ev) {
     ev.preventDefault();
     var username  = $('#signUpUsername').val();
     var password  = $('#signUpPassword').val();
@@ -93,14 +95,15 @@ The backend will automatically create a userDB based on the username address and
 
 
 ```javascript
-hoodie.account.signIn('user', 'password', options);
+hoodie.account.signIn(user, password, options);
 ```
 
-| option     | type   | description    | required |
-| ---------- |:------:|:--------------:|:--------:|
-| user       | String | username       | yes      |
-| password   | String | valid password | yes      |
-| options    |        | moveData       | no       |
+| option     | type    | description    | required |
+| ---------- |:-------:|:--------------:|:--------:|
+| user       | String  | username       | yes      |
+| password   | String  | valid password | yes      |
+| options    | Boolean | moveData       | no       |
+| options    | Boolean | silent         | no       |
 
 <br />
 
@@ -135,13 +138,15 @@ To prevent data loss, signIn can be called with ````options.moveData = true````,
 hoodie.account.signOut(options);
 ```
 
-| option     | type   | description    | required |
-| ---------- |:------:|:--------------:|:--------:|
-| options    | ------ | --------       | no       |
+| option     | type    | description    | required |
+| ---------- |:-------:|:--------------:|:--------:|
+| options    | Boolean | cleanup        | no       |
+| options    | Boolean | silent         | no       |
 
 <br />
 
 SignOut() uses standard CouchDB API to invalidate a user session (DELETE /_session).
+Calling signOut() with ````options.cleanup = true```` cleans the localStorage. All local changes get deleted without sync to the server.
 
 
 ###### Example
@@ -153,17 +158,172 @@ hoodie.account.signOut();
 ###### Notes
 > -
 
+<br />
+### account.changePassword() 
+> **version:** 		*> 0.2.0* 
+
+
+```javascript
+hoodie.account.changePassword(currentpassword, newpassword);
+```
+
+| option         | type   | description      | required |
+| -------------- |:------:|:----------------:|:--------:|
+| currentpassword| String | current password | no       |
+| newpassword    | String | new password     | no       |
+
+<br />
+
+===
+
+###### Example
+
+```javascript
+$('#editUserForm').submit(function (ev) {
+    ev.preventDefault();
+    var currentpassword = $('#pw1').val();
+    var newpassword = $('#pw2').val();
+
+    hoodie.account.changePassword(pw1, pw2);
+});
+```
+<br />
+###### Notes
+> - The hoodie API requires the currentPassword for security reasons, but couchDb doesn't require it for a password change, so it's ignored in this implementation of the hoodie API.
+
+
+<br />
+### account.resetPassword() 
+> **version:** 		*> 0.2.0* 
+
+
+```javascript
+hoodie.account.resetPassword(username);
+```
+
+| option         | type   | description      | required |
+| -------------- |:------:|:----------------:|:--------:|
+| currentpassword| String | current password | no       |
+| newpassword    | String | new password     | no       |
+
+<br />
+
+===
+
+###### Example
+
+```javascript
+$('#editUserForm').submit(function (ev) {
+    ev.preventDefault();
+    var currentpassword = $('#pw1').val();
+    var newpassword = $('#pw2').val();
+
+    hoodie.account.changePassword(pw1, pw2);
+});
+```
+<br />
+###### Notes
+> - The hoodie API requires the currentPassword for security reasons, but couchDb doesn't require it for a password change, so it's ignored in this implementation of the hoodie API.
+
+
+
+### 
+// This is kind of a hack. We need to create an object anonymously
+// that is not exposed to others. The only CouchDB API offering such
+// functionality is the _users database.
+//
+// So we actually sign up a new couchDB user with some special attributes.
+// It will be picked up by the pa
+
+<pre>
+hoodie.account.resetPassword('joe@example.com');
+</pre>
+
+
+
+
+
+
+<br />
+### account.changePassword() 
+> **version:** 		*> 0.2.0* 
+
+
+```javascript
+hoodie.account.changePassword('currentpassword', 'newpassword');
+```
+
+| option         | type   | description      | required |
+| -------------- |:------:|:----------------:|:--------:|
+| currentpassword| String | current password | no       |
+| newpassword    | String | new password     | no       |
+
+<br />
+
+===
+
+###### Example
+
+```javascript
+$('#editUserForm').submit(function (ev) {
+    ev.preventDefault();
+    var currentpassword = $('#pw1').val();
+    var newpassword = $('#pw2').val();
+
+    hoodie.account.changePassword(pw1, pw2);
+});
+```
+<br />
+###### Notes
+> - The hoodie API requires the currentPassword for security reasons, but couchDb doesn't require it for a password change, so it's ignored in this implementation of the hoodie API.
+
+
+<br />
+### account.changePassword() 
+> **version:** 		*> 0.2.0* 
+
+
+```javascript
+hoodie.account.changePassword('currentpassword', 'newpassword');
+```
+
+| option         | type   | description      | required |
+| -------------- |:------:|:----------------:|:--------:|
+| currentpassword| String | current password | no       |
+| newpassword    | String | new password     | no       |
+
+<br />
+
+===
+
+###### Example
+
+```javascript
+$('#editUserForm').submit(function (ev) {
+    ev.preventDefault();
+    var currentpassword = $('#pw1').val();
+    var newpassword = $('#pw2').val();
+
+    hoodie.account.changePassword(pw1, pw2);
+});
+```
+<br />
+###### Notes
+> - The hoodie API requires the currentPassword for security reasons, but couchDb doesn't require it for a password change, so it's ignored in this implementation of the hoodie API.
+
+
+
+
+
 
 ### old ===========================
 
 
-### changePassword
-// Note: the hoodie API requires the currentPassword for security reasons,
-// but couchDb doesn't require it for a password change, so it's ignored
-// in this implementation of the hoodie API.
+### 
+
 
 <pre>
-hoodie.account.changePassword('currentpassword', 'newpassword');
+
 </pre>
 
 
@@ -180,17 +340,7 @@ hoodie.account.changeUsername('currentpassword', 'newusername');
 </pre>
 
 
-### resetPassword
-// This is kind of a hack. We need to create an object anonymously
-// that is not exposed to others. The only CouchDB API offering such
-// functionality is the _users database.
-//
-// So we actually sign up a new couchDB user with some special attributes.
-// It will be picked up by the pa
 
-<pre>
-hoodie.account.resetPassword('joe@example.com');
-</pre>
 
 
 
