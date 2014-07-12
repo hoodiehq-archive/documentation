@@ -52,6 +52,9 @@ The options that are available for most of these methods are listed below. For d
 - [type:update(object)]()
 - [type:remove(object)]()
 
+## Deprecated
+- [decoratePromises](storedecoratepromises)
+
 - [on](#on)
 - [one](#one)
 - [trigger](#trigger)
@@ -372,10 +375,11 @@ hoodie.store('type').update('id', updateFunction)
 | updateFunction | String | function doing object updates       | no  |
 | options        | Object |   ------------                      | no  |
 
-
 By this you are able to just update particular parts/attributes of your object. This is great for updating objects that are very large in bytes.
 
-<pre>
+###### Example
+
+```javascript
 // Example for store updates
 // using JavaScript plain objects as update parameter.
 //
@@ -418,7 +422,7 @@ todoStore
                 console.log('the update failed with', error);
             });
     });
-</pre>
+```
 
 The example updates the todo object, which owns the `dueDate` of the first found todo object to `Date.now()`, which is the timestamp of right now. Every other attribute stays the same.
 
@@ -461,12 +465,23 @@ todoStore
 ### store.updateAll()
 > **version:**      *> 0.2.0*
 
-`hoodie.store.updateAll(updateObject)`
-`hoodie.store(type).updateAll(updateObject)`
+*updateAll will update all your objects of a specific store.*
 
-Update all will update all your objects of a specific store. The changes to be applied are defined by an update object. Just configure the specific attributes to the values the way you want to have your objects updated.
+```javascript
+hoodie.store.updateAll(updateObject)
+hoodie.store('type').updateAll(updateObject)
+```
 
-<pre>
+| option     | type   | description     | required |
+| ---------- |:------:|:---------------:|:--------:|
+| type           | String | type of the store                   | no |
+| updateObject   | Object | object updates                      | yes |
+| options        | Object |   ------------                      | no  |
+
+The changes to be applied are defined by an update object. Just configure the specific attributes to the values the way you want to have your objects updated.
+
+###### Example
+```javascript
 var todoStore    = hoodie.store('todo'),
 	objectUpdate = {done: true};
 
@@ -475,11 +490,12 @@ todoStore
 	.then(function(updates) {
 		console.log('the following todos are done', updates);
 	});
-</pre>
+````
 
-Like with `hoodie.store.update` you can pass an update function instead of an update object. So if you want update only a particular set of store objects, passing an update function is your friend. This is what comes close to a WHERE clause you may probably now from SQL. When using an update function to modify stored data, please make sure, to return the updated object at the end of the update function.
+Like with (hoodie.store.update)[storeupdate] you can pass an update function instead of an update object. So if you want update only a particular set of store objects, passing an update function is your friend. This is what comes close to a WHERE clause you may probably now from SQL. When using an update function to modify stored data, please make sure, to return the updated object at the end of the update function.
 
-<pre>
+###### Example
+```javascript
 var todoStore  = hoodie.store('todo'),
 	updateFunc = function(todo) {
 		if(todo.done != true) {
@@ -494,18 +510,28 @@ todoStore
 	.then(function(updates) {
 		console.log('the following todos are done', updates);
 	});
-</pre>
+```
 
 ### store.remove()
 > **version:**      *> 0.2.0*
 
+*This simple deletes one entriy of the defined `type` identified by it's `id` from a user's store. 
 
-`hoodie.store.remove(id)`
-`hoodie.store(type).remove(id)`
+```javascript
+hoodie.store.remove('id')
+hoodie.store('type').remove('id')
+```
 
-This simple deletes one entriy of the defined `type` identified by it's `id` from a user's store. Please be aware that the data gets deleted immediately.
+| option     | type   | description     | required |
+| ---------- |:------:|:---------------:|:--------:|
+| type           | String | type of the store         | no |
+| id           | String | id of the object to remove | yes |
 
-<pre>
+####### Notes
+> - Please be aware that the data gets deleted immediately.
+
+####### Example
+```javascript
 // deletes the first found entry from the todo store
 
 var todoStore = hoodie.store('todo'),
@@ -525,17 +551,28 @@ todoStore
 				console.log('Error while removing todo', error);
 			});
 });
-</pre>
+```
 
 ### store.removeAll()
 > **version:**      *> 0.2.0*
 
-`hoodie.store.remove()`
-`hoodie.store(type).removeAll()`
+*Deletes all entries of the defined `type` from a user's store.*
 
-This simple deletes all entries of the defined `type` from a user's store. Please be aware that the data gets deleted immediately.
+```javascript
+hoodie.store.removeAll()
+hoodie.store('type').removeAll()
+```
 
-<pre>
+| option     | type   | description     | required |
+| ---------- |:------:|:---------------:|:--------:|
+| type           | String | type of the store                   | no |
+| options        | Object |   ------------                      | no  |
+
+###### Notes
+> - Please be aware that the data gets deleted immediately.
+
+###### Example
+```javascript
 // deletes all objects from store
 
 var todoStore = hoodie.store('todo');
@@ -545,7 +582,7 @@ todoStore
 	.then(function(removedTodos) {
 		console.log(removedTodos);
 });
-</pre>
+```
 
 ### on
 
@@ -677,4 +714,10 @@ todoStore.findAll().then(function(allTodos) {
 <a id="unbind"></a>
 
 `hoodie.store.off` is an alias for `hoodie.store.unbind`. Please see `hoodie.store.off` for details.
+
+
+### store.remove()
+> **version:**      *> 0.2.0*
+> **deprecated:**   *soon*
+
 
