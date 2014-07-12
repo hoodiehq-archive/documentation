@@ -6,7 +6,7 @@
 > - how to create data
 > - how to read data
 > - how to update data
-> - how to listen to store events
+> - how to listen to store eventsn
 
 ## Introduction
 
@@ -698,10 +698,12 @@ Here is a list of events `hoodie.store` emits and you can listen to:
 | **update**     | 'todo:update'  | An existing object has been updated from the store.|
 | **remove**     | 'todo:add'     | An existing object has been removed from the store.|
 
-As the above table already describes, the event messages are emitted as type `string`. Please note the format of the event message is always **type of store object** followed by a **:** and the type of the event. So if you listen to the event for a **todo* store object, you would have to listen to **todo:add**.
+As the above table already describes, the event messages are emitted as type `string`. 
+
+###### Notes
+> The format of the event message is always **type of store object** followed by a **:** and the type of the event. So if you listen to the event for a **todo* store object, you would have to listen to **todo:add**.
 
 <pre>
-
 hoodie.store.on('todo:update', function(updatedTodo) {
 	console.log('A todo has been updated => ', updatedTodo);
 });
@@ -710,7 +712,10 @@ hoodie.store.on('todo:update', function(updatedTodo) {
 
 One of the major reasons, you usually want to get informed about store changes is, that you application can react and adapt to those changes. If you are creating a new store object with (`hoodie.store.add`)[http://] for instance, your application would want to know about that change, so it can update it's current data and views. Just calling (`hoodie.store.add`)[http://] alone will have no update effect on the displayed data. The same goes for `update` and `remove`.
 
-The event handlers of the above examples are only expecting to be called with a single function parameter. Please note that this only applies in the example. Depending on the type of the event, it is also possible to receive two or more parameters.
+The event handlers of the above examples are only expecting to be called with a single function parameter. 
+
+###### Notes
+> Please note that this only applies in the example. Depending on the type of the event, it is also possible to receive two or more parameters.
 
 If you are already familiar with the (concept of synchronization)[http://] you are probably wondering now, if those event handlers are also called when the local receives changes concerning the data store. The answer here is: Yes, the events got also emitted when sync happens.
 
