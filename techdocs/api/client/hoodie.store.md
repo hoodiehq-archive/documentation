@@ -1,39 +1,27 @@
-# hoodie.store
-*available since 0.2*
+---
+layout: layout
+---
 
-#### after reading this you will know
+# hoodie.store
+> **version:**      *> 0.1.0* <br />
+> **source:**       *hoodie/src/hoodie/store.js*<br />
+
+***<br />after reading this you will know***
 > - how to create data
 > - how to read data
 > - how to update data
 > - how to listen to store events
 
+## Introduction
+
 This class defines the API that `hoodie.store` (local store) and `hoodie.open`
 (remote store) implement to assure a coherent API. It also implements some
 basic validations.
 
-The returned API can be called as function returning a store scoped by the
-passed type, for example
-
-<pre>
-var todoStore = hoodie.store('todo');
-
-todoStore.findAll().then(showAllTasks);
-todoStore.update('id123', {done: true});
-</pre>
-
-An important thing to note is that storing and accessing objects with hoodie always means accessing you personal, local objects. All stored data has a fixed association to the user who created them. So you won't be able to access other user's data by default.
-
-Never the less there are some community contributed solutions, available as [Hoodie Plugins](http://). Each one offers a different level of data privacy:
-
-* [hoodie-plugin-shares](https://github.com/hoodiehq/hoodie-plugin-shares) share particular store objects, with particular rights to particular people. Also can invite people by mail.
-* [hoodie-plugin-global-share](https://github.com/hoodiehq/hoodie-plugin-global-share) shares particular store objects to all people within the same application.
-* [hoodie-plugin-punk](https://github.com/olizilla/hoodie-plugin-punk) share just everything to everyone within the same application.
-
-**Attention!** Please note that most of these are community contributions and may have flaws or are just outdated. Always feel free to adopt an ophaned plugin of contribute your own.
-
-The objects you save with the `hoodie.store` are saved to yourbrowsers local data storage. This is one of the most important key concepts of hoodie itself. Otherwise we would yet have still very limited possibilities to build offline first applications. Since hoodie is also designed to also store data on the serverside, there has to be a sync. Currently hoodie uses long polling to achieve this. In future releases, we will make use of [PouchDB](http://pouchdb.com), a [CouchDB](http://couchdb.apache.org) compatible JavaScript implemantation.
-
-Please note that generally, in order save objects to the server's store, you need to be logged in with a valid user. Learn more about the hoodie user system at [`Hoodie.User`](./hoodie.user.md).
+###### Notes
+> - storing and accessing objects with hoodie always means accessing you personal, local objects.
+> - All stored data has a fixed association to the user who created them. So you won't be able to access other user's data by default.
+> - in order save objects to the server's store, you need to be logged in with a valid user. Learn more about the hoodie user system at [`Hoodie.User`](./hoodie.user.md).
 
 ## The General `options` Parameter
 
@@ -53,15 +41,21 @@ The options that are available for most of these methods are listed below. For d
 ## Methods
 
 - [store](#store)
-- [validate](#validate)
-- [save](#save)
-- [add](#add)
-- [findOrAdd](#findOrAdd)
-- [findAll](#findAll)
-- [update](#update)
-- [updateAll](#updateAll)
-- [remove](#remove)
-- [removeAll](#removeAll)
+- [validate](#storevalidate)
+- [save](#storesave)
+- [add](#storeadd)
+- [findOrAdd](#storefindoradd)
+- [findAll](#storefindall)
+- [update](#storeupdate)
+- [updateAll](#storeupdateall)
+- [remove](#storeremove)
+- [removeAll](#storeremoveall)
+
+## Events
+- [type:add(object)]()
+- [type:update(object)]()
+- [type:remove(object)]()
+
 - [on](#on)
 - [one](#one)
 - [trigger](#trigger)
@@ -70,19 +64,22 @@ The options that are available for most of these methods are listed below. For d
 - [unbind](#unbind)
 
 
-### store() (> v.0.2)
-<a id="store"></a>
 
-*missing short description*
+### store()
+> **version:**      *> 0.2.0*
+
+*Getting access to the store or scoped access if a type is defined.*
 
 ```javascript
 hoodie.store('type', 'id');
 ```
 
-| option     | type | desc | optional |
-| ------------- |:-------------:| -----:| -----:|
-| type     | String | store type | yes |
-| id     | int | index of store obj | yes |
+| option     | type   | description     | required |
+| ---------- |:------:|:---------------:|:--------:|
+| type       | String | type of the store  | yes   |
+| id         | String | index of store obj | no    |
+| options    | Object | ------------       | no    |
+
 
 <br />
 ###### Example
@@ -115,9 +112,8 @@ var singleStore = hoodie.store( 'todo', 'id123' );
 
 For the call like illustrated in the last example, only a minimal subset of functions will be available on the created store context. Every method those purpose is to target more than one stored object, will be left out (f.e. findAll). This is because we already specified a particular object form the store to work with.
 
-### validate
-<a id="validate"></a>
-
+### store.validate()
+> **version:**      *> 0.2.0*
 
 `hoodie.store.validate(object, _options_)`
 
@@ -131,7 +127,7 @@ alphabetical characters and numbers. But you are still free to choose.
 If `hoodie.store.validate` returns nothing, the passed **object** is valid.
 Otherwise it returns an **[HoodieError]<#>**.
 
-### save
+### store.save()
 
 `hoodie.store.save(type, _id_, properties)`
 
@@ -149,8 +145,8 @@ todoStore.save(undefined, {title: 'Getting Coffee', done: false });
 todoStore.save('abc4567', {title: 'Still Getting Coffee', done: false });
 </pre>
 
-### add
-<a id="add"></a>
+### store.add()
+> **version:**      *> 0.2.0*
 
 
 `hoodie.store.add(type, properties)`
@@ -164,8 +160,8 @@ hoodie.store
 	.fail(function(todo) { /* error handling */ });
 </pre>
 
-### find
-<a id="find"></a>
+### store.find()
+> **version:**      *> 0.2.0*
 
 
 `hoodie.store.find(id)`
@@ -179,7 +175,7 @@ hoodie.store('todo')
 	.fail(function(todo) { /* error handling */ });
 </pre>
 
-### findOrAdd
+### store.findOrAdd()
 <a id="findOrAdd"></a>
 
 
@@ -242,7 +238,8 @@ hoodie.store
 // IMPORTANT: BAD VARIATION
 </pre>
 
-### findAll
+### store.findAll()
+> **version:**      *> 0.2.0*
 
 `hoodie.store.findAll(type)`
 `hoodie.store(type).findAll()`
@@ -296,8 +293,8 @@ todoStore
 
 There aren't any [callback closure functions](http://), like many other JavaScript libraries use to work with asynchronous flows. Hoodie uses so called **promises** to handle async flows. If you would like to now more about promises in hoodie, please see the [Hoodie promises Section](http://) for further details.
 
-### update
-<a id="update"></a>
+### store.update()
+> **version:**      *> 0.2.0*
 
 
 `hoodie.store.update(type, id, properties)`
@@ -391,8 +388,8 @@ todoStore
     });
 </pre>
 
-### updateAll
-<a id="updateAll"></a>
+### store.updateAll()
+> **version:**      *> 0.2.0*
 
 `hoodie.store.updateAll(updateObject)`
 `hoodie.store(type).updateAll(updateObject)`
@@ -429,8 +426,8 @@ todoStore
 	});
 </pre>
 
-### remove
-<a id="remove"></a>
+### store.remove()
+> **version:**      *> 0.2.0*
 
 
 `hoodie.store.remove(id)`
@@ -460,8 +457,8 @@ todoStore
 });
 </pre>
 
-### removeAll
-<a id="removeAll"></a>
+### store.removeAll()
+> **version:**      *> 0.2.0*
 
 `hoodie.store.remove()`
 `hoodie.store(type).removeAll()`
@@ -481,7 +478,6 @@ todoStore
 </pre>
 
 ### on
-<a id="on"></a>
 
 
 `hoodie.store.on(event, handlerFunction)`
@@ -529,7 +525,6 @@ You can also listen to custom events you trigger by yourself. See `hoodie.store.
 
 
 ### trigger
-<a id="trigger"></a>
 
 
 `hoodie.store.trigger(event, paramOne, ..., paramN)`
