@@ -126,6 +126,7 @@ hoodie.store('type').validate(object, options);
 | object     | Object | data object to verify | yes |
 | options    | Object |    ------------       | no  |
 
+<br />
 ###### Notes
 - id is a combination of both, formatted as *"type/id"*.
 - slashes for id or type are permitted.
@@ -153,12 +154,12 @@ hoodie.store('type').validate('id', properties, options);
 | properties | Object | object properties to save | yes |
 | options    | Object |        ------------       | no  |
 
-<br />
-###### Example
-
 When the `id` is of value *undefined*, the passed object will be created from scratch.
 
 If you want to just to partially update an existing object, please see `hoodie.store.update(type, id, objectUpdate)`. The method `hoodie.store.save` will completely replace an existing object.
+
+<br />
+###### Example
 
 ```javascript
 var todoStore = hoodie.store('todo');
@@ -184,10 +185,10 @@ hoodie.store('type').add(properties, options);
 | properties | Object | object properties to save | yes |
 | options    | Object |        ------------       | no  |
 
+In fact `hoodie.store.add` will force `hoodie.store.save` to create a new object with the passed object properties of the `properties` parameter.
+
 <br />
 ###### Example
-
-In fact `hoodie.store.add` will force `hoodie.store.save` to create a new object with the passed object properties of the `properties` parameter.
 
 ```javascript
 hoodie.store
@@ -212,10 +213,10 @@ hoodie.store('type').find('id', options);
 | id         | String | id of the object to find  | yes |
 | options    | Object |        ------------       | no  |
 
-
-###### Example
-
 Returns a promise so success and failure can be handled. A failure occurs for example when no object
+
+<br />
+###### Example
 
 ```javascript
 hoodie.store('todo')
@@ -245,6 +246,9 @@ hoodie.store('type').findOrAdd('id', properties, options);
 
 Which cases would be worth using this? Well for example if you want to read a particular settings object, you want to work with in a later step.
 
+<br />
+###### Example
+
 ```javascript
 // pre-conditions: You already read a user's account object.
 var configBlueprint = { language: 'en/en', appTheme: 'default' };
@@ -257,6 +261,7 @@ hoodie.store
 	});
 ```
 
+<br />
 ###### Notes
 > - the `properties` parameter has no influence on the search itself.
 
@@ -264,9 +269,11 @@ Unlike you may have used store searches with other frameworks, this will **not**
 as further conditions to match a particular store entry. The only conditions the
 store will be searched for are the document `type` and `id`.
 
-###### Example
 Just to demonstrates the convenience of hoodie.store.findOrAdd, the below example
 illustrates the more complex alternative way of find and add:
+
+<br />
+###### Example
 
 ```javascript
 // IMPORTANT: BAD VARIATION
@@ -309,6 +316,9 @@ hoodie.store('type').findAll();
 
 Todos for instance. Given, that you already have existing todo objects stored, you can retrieve all of them like in the following example.
 
+<br />
+###### Example
+
 ```javascript
 
 var todoStore = hoodie.store('todo');
@@ -327,6 +337,9 @@ todoStore
 ```
 
 What you really have to recognized here is that there is a mayor difference between the methods `then` and `done`. While `done` suggests that you can handle all the retrieved objects with it, actually it is `then` where `findAll` will deliver your data to. `done` on the other hand gets called when all other `then` calls have been passed. Yes you can utilize this mechanism to work with your data in several steps.
+
+<br />
+###### Example
 
 ```javascript
 var todoStore = hoodie.store('todo');
@@ -377,6 +390,7 @@ hoodie.store('type').update('id', updateFunction)
 
 By this you are able to just update particular parts/attributes of your object. This is great for updating objects that are very large in bytes.
 
+<br />
 ###### Example
 
 ```javascript
@@ -432,7 +446,10 @@ The `update` methods have a certain speciality. Beside that you can pass a plain
 
 Cases when this advantage can be very useful are applying calculations or for conditioned updates. This will come mist handy when combined with `hoodie.store.updateAll`.
 
-<pre>
+<br />
+###### Example
+
+```javascript
 // example for store updates
 // using functions as update parameter
 
@@ -460,7 +477,7 @@ todoStore
         });
 
     });
-</pre>
+```
 
 ### store.updateAll()
 > **version:**      *> 0.2.0*
@@ -480,7 +497,9 @@ hoodie.store('type').updateAll(updateObject)
 
 The changes to be applied are defined by an update object. Just configure the specific attributes to the values the way you want to have your objects updated.
 
+<br />
 ###### Example
+
 ```javascript
 var todoStore    = hoodie.store('todo'),
 	objectUpdate = {done: true};
@@ -527,10 +546,13 @@ hoodie.store('type').remove('id')
 | type           | String | type of the store         | no |
 | id           | String | id of the object to remove | yes |
 
-####### Notes
+<br />
+###### Notes
 > - Please be aware that the data gets deleted immediately.
 
-####### Example
+<br />
+###### Example
+
 ```javascript
 // deletes the first found entry from the todo store
 
@@ -568,9 +590,11 @@ hoodie.store('type').removeAll()
 | type           | String | type of the store                   | no |
 | options        | Object |   ------------                      | no  |
 
+<br />
 ###### Notes
 > - Please be aware that the data gets deleted immediately.
 
+<br />
 ###### Example
 ```javascript
 // deletes all objects from store
