@@ -608,6 +608,80 @@ todoStore
 });
 ```
 
+### Event 'type:add'
+> **version:**      *> 0.2.0*
+
+*Gets triggered when a new object of matching type/store has been added to the store.*
+
+```javascript
+hoodie.store.on('type:add', eventHandler);
+```
+
+| option     | type   | description     | required |
+| ---------- |:------:|:---------------:|:--------:|
+| event        | String   | Event identifier, consisting from type of object and ':add' | yes |
+| eventHandler | Function | Function hanldling the triggered event.                     | yes |
+
+The `hoodie.store` informs you about several things happening with the stored objects. In order to catch those messages you can register a function for handling those events. Those functions are also called **event handlers**.
+
+<br />
+###### Example
+```javascript
+hoodie.store.on('event', function(createdTodo) {
+	console.log('A todo has been added => ', createdTodo);
+});
+```
+
+### Event 'type:update'
+> **version:**      *> 0.2.0*
+
+*Gets triggered when an existing object of matching type/store has been updated.*
+
+```javascript
+hoodie.store.on('event', eventHandler);
+```
+
+| option     | type   | description     | required |
+| ---------- |:------:|:---------------:|:--------:|
+| event        | String   | Event identifier, consisting from type of object and ':update' | yes |
+| eventHandler | Function | Function hanldling the triggered event.                        | yes |
+
+The `hoodie.store` informs you about several things happening with the stored objects. In order to catch those messages you can register a function for handling those events. Those functions are also called **event handlers**.
+
+<br />
+###### Example
+```javascript
+hoodie.store.on('todo:update', function(updatedTodo) {
+	console.log('A todo has been updated => ', updatedTodo);
+});
+```
+
+### Event 'type:update'
+> **version:**      *> 0.2.0*
+
+*Gets triggered when an existing object of matching type/store has been removed.*
+
+```javascript
+hoodie.store.on('event', eventHandler);
+```
+
+| option     | type   | description     | required |
+| ---------- |:------:|:---------------:|:--------:|
+| event        | String   | Event identifier, consisting from type of object and ':remove' | yes |
+| eventHandler | Function | Function hanldling the triggered event.                        | yes |
+
+The `hoodie.store` informs you about several things happening with the stored objects. In order to catch those messages you can register a function for handling those events. Those functions are also called **event handlers**.
+
+<br />
+###### Example
+```javascript
+hoodie.store.on('todo:remove', function(removedTodo) {
+	console.log('A todo has been removed => ', removedTodo);
+});
+```
+
+
+
 ### on
 
 
@@ -627,14 +701,6 @@ Here is a list of events `hoodie.store` emits and you can listen to:
 As the above table already describes, the event messages are emitted as type `string`. Please note the format of the event message is always **type of store object** followed by a **:** and the type of the event. So if you listen to the event for a **todo* store object, you would have to listen to **todo:add**.
 
 <pre>
-
-hoodie.store.on('todo:add', function(createdTodo) {
-	console.log('A todo has been added => ', createdTodo);
-});
-
-hoodie.store.on('todo:remove', function(removedTodo) {
-	console.log('A todo has been removed => ', removedTodo);
-});
 
 hoodie.store.on('todo:update', function(updatedTodo) {
 	console.log('A todo has been updated => ', updatedTodo);
