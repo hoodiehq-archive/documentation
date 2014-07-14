@@ -4,7 +4,7 @@
 
 * ##Global Store
 
-	The global store doesn't exist yet. 
+	The global store doesn't exist yet. 2
 
 * ##Hoodie App
 
@@ -26,7 +26,7 @@
 
 * ##Sharing
 
-	Hoodie allows users to have publicly readable data (see **Public User Data**), but they will also br able to share data for collaborative editing in the near future. 
+	Hoodie allows users to have publicly readable data (see **Public User Data**), but they will also be able to share data for collaborative editing in the near future. 
 
 * ##Workers
 
