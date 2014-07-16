@@ -4,7 +4,10 @@ layout: layout
 
 # Prerequisites before getting started with Hoodie
 
-This is a list of everything you should prepare *before* finally starting with Hoodie. For all OS, you'll need to install [Node.JS](http://nodejs.org/), [Apache CouchDB](http://couchdb.apache.org/) and [git](http://git-scm.com/). This file will show you how to do this for your OS, so you can finally get started with Hoodie.
+This is a list of everything you should prepare *before* finally starting with Hoodie. For all OS, you'll need to install [Node.JS](http://nodejs.org/), [Apache CouchDB](http://couchdb.apache.org/) and [git](http://git-scm.com/). 
+
+This file will show you how to do this for your OS, so you can finally get started with Hoodie.
+
 If you already installed them, you can skip this tutorial and check out our tutorial for [getting started with Hoodie](MISSING LINK TO TUTORIAL).
 
 ## Operating Systems
@@ -37,9 +40,11 @@ The download for Mac is [here](http://git-scm.com/download/win).
 This is an Ubuntu-specific guide courtesy of Stuart Langridge. 
 1.  Install node.js
 On Ubuntu, you don't have to build Node.js from source, you can install it as a package instead. Add Chris Lea's Node.js PPA and install from it:
+
   $ sudo add-apt-repository ppa:chris-lea/node.js
   $ sudo apt-get update
   $ sudo apt-get install nodejs
+  
 2.  Install CouchDB
   $ sudo apt-get update
   $ sudo apt-get install couchdb-bin git
