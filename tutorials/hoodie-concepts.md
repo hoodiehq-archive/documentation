@@ -4,6 +4,8 @@ layout: layout
 
 # Hoodie's Concepts: noBackend, Offline First, Dreamcode
 
+A major part of the magic behind Hoodie are concepts that make it so powerful. These concepts are deeply embedded in Hoodie's code and functionalities, and here's an introduction to each of them.
+
 ## Table of Content
 - <a href="#noBackend">noBackend</a>
 - <a href="#Offline-First">Offline First</a>
