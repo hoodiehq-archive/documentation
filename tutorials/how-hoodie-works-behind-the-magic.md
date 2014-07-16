@@ -25,10 +25,18 @@ You can replace localstorage with any in-browser storage of your choice.
 
 And at this point, you could already stop if you wanted. This, by itself, is already enough for an app. Still, if you want to bring this entire thing online now, you'll need something in addition.
 
-Hoodie relies on [CouchDB](http://couchdb.apache.org), the database that replicates. In CouchdB, each user has their own private database which only they can access. And all data is private by default, but it can be shared to the public if the user decides to.
+Hoodie relies on [CouchDB](http://couchdb.apache.org), the database that replicates. In CouchDB, each user has their own private database which only they can access. And all data is private by default, but it can be shared to the public if the user decides to.
 <p><img src="http://blog.hood.ie/wp-content/uploads/2014/07/Screen-Shot-2014-07-16-at-14.25.37.png"</p>
 
-There are plugins based on node.js that bring Hoodie’s core features like the user signup and administration, data storage, data loading & sync, data shares, emails and payments. These plugins are Hoodie's core plugins. In addition, anyone can build plugins themselves to extend Hoodie's core (see tutorial for [building plugins to extend Hoodie](https://github.com/hoodiehq/documentation/blob/gh-pages/tutorials/hoodie-plugin-tutorial/index.md)).
+There are plugins based on node.js that bring Hoodie’s core features:
+* user signup and administration
+* data storage
+* data loading & sync
+* data shares
+* emails
+* payments. 
+
+These plugins are Hoodie's core plugins. In addition, anyone can build plugins themselves to extend Hoodie's core (see tutorial for [building plugins to extend Hoodie](https://github.com/hoodiehq/documentation/blob/gh-pages/tutorials/hoodie-plugin-tutorial/index.md)).
 <p><img src="http://blog.hood.ie/wp-content/uploads/2014/07/Screen-Shot-2014-07-16-at-14.25.46.png"</p>
 
 This means: with Hoodie, frontend and backend never talk directly to each other. They only leave each other messages and tasks.
