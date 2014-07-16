@@ -22,23 +22,30 @@ Hoodie has support for Mac OS X, Windows and Linux. This file covers installatio
 
 ### Mac OS X
 *  Install node.js
+
 We recommend using the nodejs.org .pkg file to install node, you can download it [here](http://nodejs.org/download/). 
 *  Install CouchDB
+
 You can download the installer for the latest version of CouchDB [here](http://couchdb.apache.org/#download).
 *  Install git
+
 The download for Mac is [here](http://git-scm.com/download/mac). 
 
 ### Windows
 *  Install node.js
+
 You can download node.js for Windows [here](http://nodejs.org/download/). 
 *  Install CouchDB
+
 You can download the latest version of CouchDB [here](http://couchdb.apache.org/#download).
 *  Install git
+
 The download for Mac is [here](http://git-scm.com/download/win). 
 
 ### Linux – Ubuntu
 This is an Ubuntu-specific guide courtesy of Stuart Langridge. 
 *  Install node.js
+
 On Ubuntu, you don't have to build Node.js from source, you can install it as a package instead. Add Chris Lea's Node.js PPA and install from it:
 
   $ sudo add-apt-repository ppa:chris-lea/node.js
