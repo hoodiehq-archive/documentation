@@ -21,30 +21,25 @@ Hoodie has support for Mac OS X, Windows and Linux. This file covers installatio
 - <a href="#Linux-Fedora">Linux-Fedora</a>
 
 ### Mac OS X
-*  Install node.js
-
+#### Install node.js
 We recommend using the nodejs.org .pkg file to install node, you can download it [here](http://nodejs.org/download/). 
-*  Install CouchDB
-
+#### Install CouchDB
 You can download the installer for the latest version of CouchDB [here](http://couchdb.apache.org/#download).
-*  Install git
+#### Install git
 
 The download for Mac is [here](http://git-scm.com/download/mac). 
 
 ### Windows
-*  Install node.js
-
+#### Install node.js
 You can download node.js for Windows [here](http://nodejs.org/download/). 
-*  Install CouchDB
-
+#### Install CouchDB
 You can download the latest version of CouchDB [here](http://couchdb.apache.org/#download).
-*  Install git
-
+#### Install git
 The download for Mac is [here](http://git-scm.com/download/win). 
 
 ### Linux – Ubuntu
 This is an Ubuntu-specific guide courtesy of Stuart Langridge. 
-*  Install node.js
+#### Install node.js
 
 On Ubuntu, you don't have to build Node.js from source, you can install it as a package instead. Add Chris Lea's Node.js PPA and install from it:
 
@@ -52,13 +47,13 @@ On Ubuntu, you don't have to build Node.js from source, you can install it as a 
   $ sudo apt-get update
   $ sudo apt-get install nodejs
   
-*  Install CouchDB
+#### Install CouchDB
 
   $ sudo apt-get update
   $ sudo apt-get install couchdb-bin git
   
 ### Linux – Fedora 19+
-*  Install CouchDB, Git and node.js
+#### Install CouchDB, Git and node.js
 
   $ sudo yum install couchdb git nodejs npm
 
