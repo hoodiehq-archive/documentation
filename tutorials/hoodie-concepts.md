@@ -24,7 +24,7 @@ noBackend is an approach to decouple apps from backends, by abstracting backend 
 
 It ultimately leads to backends that can be used out of the box, empowering frontend developers to build entire apps (Examples) without thinking about backend at all. 
 
-#### More information on noBackend
+#### More information about noBackend
 See [nobackend.org](http://nobackend.org/), [Examples for noBackend solutions](http://nobackend.org/solutions.html) and Twitter [@nobackend](http://twitter.com/noBackend)
 
 ### Offline First
@@ -34,7 +34,7 @@ If you want to see how far this has gone: have you ever been on a train? Have yo
 
 This is what Offline First is there to solve. Offline First means: building applications with the permanent mindset of your users not being online. This has many great advantages: apps are way faster, because they’re usable with and without internet connection. And, of course, they can *always* be used, no matter if users are online or not. And these annoying error messages disappear that tell your users “you’re offline, you can’t do anything”. And of course your users are not disappointed but happy because the user experience is amazing - and they can always do what they want, and their data is always accessible.
 
-#### More information on Offline First
+#### More information about Offline First
 See [offlinefirst.org](http://offlinefirst.org/), [on GitHub](https://github.com/offlinefirst/) and [discussions and research](https://github.com/offlinefirst/research)
 
 ### Dreamcode
@@ -44,5 +44,10 @@ Dreamcode, or Dream-Driven development, means:
 3.  get excited. A lot.
 4.  built the API backwards
 5.  repeat
-6.  
+
 Dreamcode in Hoodie means: that Hoodie’s API is optimized for being awesome. And it’s optimized for making the lives of frontend developers as good as possible. It’s also an API first: it’s a promise - everything else can change or is replaceable. The API is all that matters.
+
+Forget all the constraints of today's browsers. Then write down the code of your dreams for all the tasks you need to build your app. This is dreamcode. 
+
+#### More information about Dreamcode
+See [this website](http://nobackend.org/dreamcode.html) for further information and links to Dreamcode examples.
