@@ -2,23 +2,30 @@
 layout: layout
 ---
 
-# Prerequisites before getting started with Hoodie
+# System Requirements, Browser Compatibilities and Prerequisites before getting started with Hoodie
 
-This is a list of everything you should prepare *before* finally starting with Hoodie. For all OS, you'll need to install [Node.JS](http://nodejs.org/), [Apache CouchDB](http://couchdb.apache.org/) and [git](http://git-scm.com/). 
-
-This file will show you how to do this for your OS, so you can finally get started with Hoodie.
-
-If you already installed them, you can skip this tutorial and check out our tutorial for [getting started with Hoodie](MISSING LINK TO TUTORIAL).
-
-## Operating Systems
-
-Hoodie has support for Mac OS X, Windows and Linux. This file covers installation of prerequisites for all Operating Systems.
+This is a list of everything you should know and prepare *before* finally starting with Hoodie. For all OS, you'll need to install [node.js](http://nodejs.org/), [Apache CouchDB](http://couchdb.apache.org/) and [git](http://git-scm.com/). If you already installed them, you can skip this tutorial and check out our tutorial for [getting started with Hoodie](MISSING LINK TO TUTORIAL).
 
 ## Table of Content
-- <a href="#mac-os-x">Mac OS X</a>
-- <a href="#Windows">Windows</a>
-- <a href="#Linux-Ubuntu">Linux-Ubuntu</a>
-- <a href="#Linux-Fedora">Linux-Fedora 19+</a>
+- <a href="#system-requirements">System Requirements</a>
+- <a href="#browser-compatibilities">Browser Compatibilities</a>
+- <a href="#Installation-of-Prerequisites">Installation of prerequisites: node.js, Apache CouchDB, git</a>
+  - <a href="#mac-os-x">Mac OS X</a>
+  - <a href="#Windows">Windows</a>
+  - <a href="#Linux-Ubuntu">Linux-Ubuntu</a>
+  - <a href="#Linux-Fedora">Linux-Fedora 19+</a>
+
+## System Requirements
+* Mac OS X
+* Windows (if you use Windows 7 on a 64bit machine, there's a special trick required to make Hoodie run, you'll find all details [here](https://github.com/hoodiehq/documentation/wiki/The-Hoodie-FAQ-%E2%80%93%C2%A0Work-in-Progress#windows-7-64-bit-installation-problem-error-spawn-enoent)
+* Linux (Ubuntu, Fedora 19+)
+
+## Browser Compatibilities
+
+[TO BE ADDED]
+
+
+## Installation of Prerequisites
 
 -------------------------------
 
