@@ -10,7 +10,7 @@
 
 ## Introduction
 
-This class defines the API that `hoodie.store` (local store) and `hoodie.open`
+This modules defines the API that `hoodie.store` (local store) and `hoodie.open`
 (remote store) implement to assure a coherent API. It also implements some
 basic validations.
 
@@ -526,7 +526,7 @@ todoStore
 ### store.remove()
 > **version:**      *> 0.2.0*
 
-*This simple deletes one entriy of the defined `type` identified by it's `id` from a user's store. 
+*This simple deletes one entriy of the defined `type` identified by it's `id` from a user's store.
 
 ```javascript
 hoodie.store.remove('id')
