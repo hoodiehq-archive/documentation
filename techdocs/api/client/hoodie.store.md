@@ -436,7 +436,7 @@ Further the example contains another example where we try to update an object, w
 
 The `update` methods have a certain speciality. Beside that you can pass a plain JavaScript object with attributes updates, you can also pass a function, that manipulates the the object matched by the given `id`.
 
-Cases when this advantage can be very useful are applying calculations or for conditioned updates. This will come mist handy when combined with `hoodie.store.updateAll`.
+Cases when this advantage can be very useful are applying calculations or for conditional updates. This will come mist handy when combined with `hoodie.store.updateAll`.
 
 <br />
 ###### Example
