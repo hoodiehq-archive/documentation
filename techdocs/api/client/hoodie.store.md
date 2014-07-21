@@ -6,7 +6,7 @@
 > - how to create data
 > - how to read data
 > - how to update data
-> - how to listen to store eventsn
+> - how to listen to store events
 
 ## Introduction
 
