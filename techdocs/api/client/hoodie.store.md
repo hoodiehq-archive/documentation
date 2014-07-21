@@ -186,7 +186,7 @@ In fact `hoodie.store.add` will force `hoodie.store.save` to create a new object
 hoodie.store
 	.add('todo', { title: 'Getting Coffee' })
 	.done(function(todo) { /* success handling */ });
-	.fail(function(todo) { /* error handling */ });
+	.fail(function(error) { /* error handling */ });
 ```
 
 ### store.find()
@@ -214,7 +214,7 @@ Returns a promise so success and failure can be handled. A failure occurs for ex
 hoodie.store('todo')
 	.find('hrmvby9')
 	.done(function(todo) { /* success handling */ });
-	.fail(function(todo) { /* error handling */ });
+	.fail(function(error) { /* error handling */ });
 ```
 
 ### store.findOrAdd()
