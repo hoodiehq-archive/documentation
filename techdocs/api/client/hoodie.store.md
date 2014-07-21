@@ -553,12 +553,12 @@ var todoStore = hoodie.store('todo'),
 
 todoStore
 	.findAll()
-	.then(function(todos) {
+	.done(function(todos) {
 		var todo = todos[0];
 
 		todoStore
 			.remove(todo.id)
-			.then(function(removedTodos) {
+			.done(function(removedTodos) {
 				console.log(removedTodos);
 			})
 			.fail(function(error) {
@@ -595,7 +595,7 @@ var todoStore = hoodie.store('todo');
 
 todoStore
 	.removeAll()
-	.then(function(removedTodos) {
+	.done(function(removedTodos) {
 		console.log(removedTodos);
 });
 ```
