@@ -247,7 +247,7 @@ var configBlueprint = { language: 'en/en', appTheme: 'default' };
 var configId        = account.id + '_config';
 
 hoodie.store
-	.findOrCreate('custom-config', configId, configBlueprint)
+	.findOrAdd('custom-config', configId, configBlueprint)
 	.done(function(appConfig) {
 		console.log('work with config', appConfig)
 	});
