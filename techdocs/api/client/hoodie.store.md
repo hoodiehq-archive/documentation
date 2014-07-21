@@ -276,7 +276,7 @@ var defaultConfig = {language: 'en/en', appTheme: 'default'},
 
 hoodie.store
 	.find('custom-config', configId, configBlueprint)
-	.done(function(appConfig) {
+	.then(function(appConfig) {
 		console.log('work with config', appConfig);
 
 		if(appConfig === undefined) {
@@ -285,7 +285,7 @@ hoodie.store
 				.done(function(newConfig) {
 					// work with the newConfig here
 				});
-            }
+    }
 	});
 
 // IMPORTANT: BAD VARIATION
@@ -402,7 +402,7 @@ var todoStore = hoodie.store('todo');
 
 todoStore
     .findAll()
-    .then(function(allTodos) {
+    .done(function(allTodos) {
         // just pick the first todo we can get
         var originTodo = allTodos.pop();
 
@@ -411,7 +411,7 @@ todoStore
         // update the picked todo and update it's dueDate to now
         todoStore
             .update(originTodo.id, { dueDate:(Date.now()) })
-            .then(function(updatedTodo) {
+            .done(function(updatedTodo) {
                 // beyond this point, please work with updatedTodo
                 // instead of the originTodo, because originTodo
                 // is outdated.
@@ -421,7 +421,7 @@ todoStore
         // update the picked todo and update it's dueDate to now
         todoStore
             .update('ID DOES NOT EXIST', { dueDate:(Date.now()) })
-            .then(function(updatedTodo) {
+            .done(function(updatedTodo) {
                 console.log('will never happen.');
             })
             .fail(function(error) {
