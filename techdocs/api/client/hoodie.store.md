@@ -24,7 +24,7 @@ basic validations.
 Most of the `hoodie.store` functions come with an `options` parameter, that is always passed as last parameter of a function call. This parameter was created to pass optional configurations to the certain function call. Like the following.
 
 <pre>
-	hoodie.store('todo').remove(id, {silent: true})
+hoodie.store('todo').remove(id, {silent: true})
 </pre>
 
 The options that are available for most of these methods are listed below. For details on `options` parameters of particular functions, please see the section of the particular function itself.
