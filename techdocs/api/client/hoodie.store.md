@@ -59,7 +59,7 @@ The options that are available for most of these methods are listed below. For d
 ### store()
 > **version:**      *> 0.2.0*
 
-*Getting access to the store or scoped access if a type is defined.*
+*Creates a store instance that is scoped by type, or by type & id.*
 
 ```javascript
 hoodie.store('type', 'id');
