@@ -503,7 +503,7 @@ todoStore
 	});
 ````
 
-Like with (hoodie.store.update)[storeupdate] you can pass an update function instead of an update object. So if you want update only a particular set of store objects, passing an update function is your friend. This is what comes close to a WHERE clause you may probably now from SQL. When using an update function to modify stored data, please make sure, to return the updated object at the end of the update function.
+Like with (hoodie.store.update)[storeupdate] you can pass an update function instead of an update object. So if you want update only a particular set of store objects, passing an update function is your friend. This is what comes close to a WHERE clause you may probably know from SQL. When using an update function to modify stored data, please make sure, to return the updated object at the end of the update function.
 
 ###### Example
 ```javascript
