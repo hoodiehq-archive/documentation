@@ -261,7 +261,7 @@ Unlike you may have used store searches with other frameworks, this will **not**
 as further conditions to match a particular store entry. The only conditions the
 store will be searched for are the document's `type` and `id`.
 
-Just to demonstrate the convenience of hoodie.store.findOrAdd, the below example
+Just to demonstrate the convenience of `hoodie.store.findOrAdd`, the below example
 illustrates the more complex alternative way of find and add:
 
 <br />
