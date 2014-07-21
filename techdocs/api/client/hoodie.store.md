@@ -619,8 +619,8 @@ The `hoodie.store` informs you about several things happening with the stored ob
 <br />
 ###### Example
 ```javascript
-hoodie.store.on('event', function(createdTodo) {
-	console.log('A todo has been added => ', createdTodo);
+hoodie.store.on('todo:add', function(createdTodo) {
+	console.log('A todo has been created => ', createdTodo);
 });
 ```
 
@@ -630,7 +630,7 @@ hoodie.store.on('event', function(createdTodo) {
 *Gets triggered when an existing object of matching type/store has been updated.*
 
 ```javascript
-hoodie.store.on('event', eventHandler);
+hoodie.store.on('type:update', eventHandler);
 ```
 
 | option     | type   | description     | required |
@@ -654,7 +654,7 @@ hoodie.store.on('todo:update', function(updatedTodo) {
 *Gets triggered when an existing object of matching type/store has been removed.*
 
 ```javascript
-hoodie.store.on('event', eventHandler);
+hoodie.store.on('type:remove', eventHandler);
 ```
 
 | option     | type   | description     | required |
