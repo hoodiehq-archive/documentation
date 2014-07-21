@@ -404,16 +404,16 @@ todoStore
     .findAll()
     .done(function(allTodos) {
         // just pick the first todo we can get
-        var originTodo = allTodos.pop();
+        var origininalTodo = allTodos.pop();
 
-        console.log(originTodo.id, '=>', originTodo.dueDate)
+        console.log(origininalTodo.id, '=>', origininalTodo.dueDate)
 
         // update the picked todo and update it's dueDate to now
         todoStore
-            .update(originTodo.id, { dueDate:(Date.now()) })
+            .update(origininalTodo.id, { dueDate:(Date.now()) })
             .done(function(updatedTodo) {
                 // beyond this point, please work with updatedTodo
-                // instead of the originTodo, because originTodo
+                // instead of the origininalTodo, because origininalTodo
                 // is outdated.
                 console.log(updatedTodo.id, '=>', updatedTodo.dueDate);
             });
@@ -451,9 +451,9 @@ todoStore
     .findAll()
     .done(function(allTodos) {
         // just pick the first todo we can get
-        var originTodo = allTodos.pop();
+        var origininalTodo = allTodos.pop();
 
-        todoStore.update(originTodo.id, function(oneTodo) {
+        todoStore.update(origininalTodo.id, function(oneTodo) {
 
             // Apply update only if conditions matches.
             if( Math.random() > 0.5) {
