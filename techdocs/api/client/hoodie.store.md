@@ -100,7 +100,7 @@ You can also create a very particular store, to work with access to just one spe
 var singleStore = hoodie.store( 'todo', 'id123' );
 ```
 
-For the call like illustrated in the last example, only a minimal subset of functions will be available on the created store context. Every method those purpose is to target more than one stored object, will be left out (f.e. findAll). This is because we already specified a particular object form the store to work with.
+For the call like illustrated in the last example, only a minimal subset of functions will be available on the created store context. Every method those purpose is to target more than one stored object, will be left out (e.g. findAll). This is because we already specified a particular object form the store to work with.
 
 ### store.validate()
 > **version:**      *> 0.2.0*
