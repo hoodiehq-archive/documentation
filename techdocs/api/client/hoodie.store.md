@@ -17,7 +17,7 @@ basic validations.
 ###### Notes
 > - storing and accessing objects with hoodie always means accessing you personal, local objects.
 > - All stored data has a fixed association to the user who created them. So you won't be able to access other user's data by default.
-> - in order save objects to the server's store, you need to be logged in with a valid user. Learn more about the hoodie user system at [`Hoodie.User`](./hoodie.user.md).
+> - in order save objects to the server's store, you need to be logged in with a valid user. Learn more about the hoodie user system at [`hoodie.account`](./hoodie.account.md).
 
 ## The General `options` Parameter
 
