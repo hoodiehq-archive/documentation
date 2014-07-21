@@ -74,7 +74,7 @@ hoodie.store('type', 'id');
 <br />
 ###### Example
 
-It is most likely, that your application will have more than one type of store object. Even if you have just a single object hoodie.store(type) comes handy. Say you have to work with objects of the type todo, you usually do something like the following:
+It is most likely, that your application will have more than one type of store objects. Even if you have just a single object hoodie.store(type) comes handy. Say you have to work with objects of the type todo, you usually do something like the following:
 
 ```javascript
 hoodie.store.add('todo', { title: 'Getting Coffee' });
