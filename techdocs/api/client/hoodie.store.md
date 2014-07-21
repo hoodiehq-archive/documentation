@@ -449,7 +449,7 @@ var todoStore = hoodie.store('todo');
 
 todoStore
     .findAll()
-    .then(function(allTodos) {
+    .done(function(allTodos) {
         // just pick the first todo we can get
         var originTodo = allTodos.pop();
 
@@ -462,7 +462,7 @@ todoStore
             }
 
             return oneTodo;
-        }).then(function(updatedTodo) {
+        }).done(function(updatedTodo) {
             console.log('update success', updatedTodo);
         }).fail(function(error) {
             console.log('failed update with', error);
