@@ -498,7 +498,7 @@ var todoStore    = hoodie.store('todo'),
 
 todoStore
 	.updateAll(objectUpdate)
-	.then(function(updates) {
+	.done(function(updates) {
 		console.log('the following todos are done', updates);
 	});
 ````
@@ -518,7 +518,7 @@ var todoStore  = hoodie.store('todo'),
 
 todoStore
 	.updateAll(updateFunc)
-	.then(function(updates) {
+	.done(function(updates) {
 		console.log('the following todos are done', updates);
 	});
 ```
