@@ -1,8 +1,11 @@
 status: first outline (draft, WIP)
 
+discussion is [here](https://github.com/hoodiehq/documentation/issues/65), looking forward to reading your comments and input! <3
+
 ## About this document
 
-*"Being a committer does not mean you commit code, it means you are committed to the project."*  ([Apache Software Foundation](https://community.apache.org/contributors/))
+*"Being a committer does not mean you commit code, it means you are committed to the project."*  
+([Apache Software Foundation](https://community.apache.org/contributors/))
 
 This doc aims to document our onboarding process for new people who want to join us in the work on Hoodie. According to our [Code of Conduct](http://hood.ie/code-of-conduct.html), we're aiming to provide a safe space for everyone in this community. And we're happy to welcome both developers and people who want to become one of our non-coding contributors. 
 
