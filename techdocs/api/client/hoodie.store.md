@@ -38,7 +38,6 @@ The options that are available for most of these methods are listed below. For d
 
 - [store](#store)
 - [validate](#storevalidate)
-- [save](#storesave)
 - [add](#storeadd)
 - [findOrAdd](#storefindoradd)
 - [findAll](#storefindall)
@@ -54,6 +53,7 @@ The options that are available for most of these methods are listed below. For d
 
 ## Deprecated
 - [decoratePromises](storedecoratepromises)
+- [save](#storesave)
 
 
 ### store()
@@ -130,9 +130,14 @@ If `hoodie.store.validate` returns nothing, the passed **object** is valid.
 Otherwise it returns an **[HoodieError]<#>**.
 
 ### store.save()
+> **deprecated:**   *> 1.0*<br />
 > **version:**      *> 0.2.0*
 
 *Creates or replaces an an eventually existing object in the store, that is of the same `type` and the same `id`.*
+
+###### Notes
+- While it is still in the public API, it will be removed before 1.0, as it is destructive. Please use `store.add` and `store.update` instead.
+
 
 ```javascript
 hoodie.store.save('type', 'id', properties, options);
