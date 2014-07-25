@@ -120,7 +120,6 @@ hoodie.store('type').validate(object, options);
 
 <br />
 ###### Notes
-- id is a combination of both, formatted as *"type/id"*.
 - slashes for id or type are permitted.
 
 All other characters are allowed, though it might be the best, to stick with
