@@ -265,36 +265,6 @@ Unlike you may have used store searches with other frameworks, this will **not**
 as further conditions to match a particular store entry. The only conditions the
 store will be searched for are the document's `type` and `id`.
 
-Just to demonstrate the convenience of `hoodie.store.findOrAdd`, the below example
-illustrates the more complex alternative way of find and add:
-
-<br />
-###### Example
-
-```javascript
-// IMPORTANT: BAD VARIATION
-
-// pre-conditions: You already read a user's account object.
-var defaultConfig = {language: 'en/en', appTheme: 'default'},
-	configId      = account.id + '_config';
-
-hoodie.store
-	.find('custom-config', configId, configBlueprint)
-	.then(function(appConfig) {
-		console.log('work with config', appConfig);
-
-		if(appConfig === undefined) {
-			hoodie.store
-				.add('custom-config', bluePrint)
-				.done(function(newConfig) {
-					// work with the newConfig here
-				});
-    }
-	});
-
-// IMPORTANT: BAD VARIATION
-```
-
 ### store.findAll()
 > **version:**      *> 0.2.0*
 
