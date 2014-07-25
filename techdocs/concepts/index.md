@@ -58,19 +58,19 @@ The User Module gives you an easy API to start all these actions:
 
 Account verification and password forget require the sending of emails. The Email Module takes care of that. This is an example where one Module depends on another for some of its work.
 
-Modules are activated in the [Hoodie Application Admin Interface]() that we’ll explain next.
+Modules are activated in the [Hoodie Application Admin Dashboard]() that we’ll explain next.
 
 Other modules include Payments, Receive Email, Data Sharing. Refer to the [List of Hoodie Modules]() for others.
 
 
-## The Application Admin Interface
+## The Application Admin Dashboard
 
-Each Hoodie application automatically gets an Admin interface. The Hoodie Application Admin Interface gives you access to various pieces of configuration for your Hoodie Front- and Backend.
+Each Hoodie application automatically gets an Admin dashboard. The Hoodie Application Admin Dashboard gives you access to various pieces of configuration for your Hoodie Front- and Backend.
 
 The Interface allows you to manage the Modules for your application. You can enable and disable Modules at will, and change their configurations.
 
 For example, you can customise email templates that are sent out to your users, or create payment plans that your users can sign up for.
 
-The Hoodie Admin Interface has access to the [List of Hoodie Modules]() and you can add new Modules at any time.
+The Hoodie Admin Dashboard has access to the [List of Hoodie Modules]() and you can add new Modules at any time.
 
-See the [Hoodie Application Admin Interface]() for further details.
+See the [Hoodie Application Admin Dashboard]() for further details.
