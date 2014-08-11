@@ -174,7 +174,6 @@ hoodie.account.changePassword(currentpassword, newpassword);
 
 <br />
 
-===
 
 ###### Example
 
@@ -203,160 +202,125 @@ hoodie.account.resetPassword(username);
 
 | option         | type   | description      | required |
 | -------------- |:------:|:----------------:|:--------:|
-| currentpassword| String | current password | no       |
-| newpassword    | String | new password     | no       |
+| username       | String | username         | yes      |
 
 <br />
 
-===
+Here we sign up a new CouchDB user with some special attributes, but this happends internally. It will be picked up by the password reset worker and removed once the password was reset.
 
 ###### Example
 
 ```javascript
 $('#editUserForm').submit(function (ev) {
     ev.preventDefault();
-    var currentpassword = $('#pw1').val();
-    var newpassword = $('#pw2').val();
+    var user = hoodie.account.username;
 
-    hoodie.account.changePassword(pw1, pw2);
+    if (user != undefined) {
+        hoodie.account.resetPassword(user);
+    } else {
+        alert('Please log in first!');
+    }
 });
 ```
 <br />
 ###### Notes
-> - The hoodie API requires the currentPassword for security reasons, but couchDb doesn't require it for a password change, so it's ignored in this implementation of the hoodie API.
-
-
-
-### 
-// This is kind of a hack. We need to create an object anonymously
-// that is not exposed to others. The only CouchDB API offering such
-// functionality is the _users database.
-//
-// So we actually sign up a new couchDB user with some special attributes.
-// It will be picked up by the pa
-
-<pre>
-hoodie.account.resetPassword('joe@example.com');
-</pre>
-
-
-
-
+> - We still need to check, if the passwordReset gets executed. There is already a filed issue to fix that.
 
 
 <br />
-### account.changePassword() 
+### account.checkPasswordReset() 
 > **version:** 		*> 0.2.0* 
 
 
 ```javascript
-hoodie.account.changePassword('currentpassword', 'newpassword');
+hoodie.account.checkPasswordReset(user);
 ```
 
-| option         | type   | description      | required |
-| -------------- |:------:|:----------------:|:--------:|
-| currentpassword| String | current password | no       |
-| newpassword    | String | new password     | no       |
+| option     | type   | description      | required |
+| ---------- |:------:|:----------------:|:--------:|
+| username   | String | username         | yes      |
 
 <br />
 
-===
+  The hoodie.account.checkPasswordReset() Method checks for the status of a password reset. It might take a while until the password reset worker picks up the job and updates it.
+
+  If a password reset request was successful, the $passwordRequest doc gets removed from _users by the worker, therefore a 401 is what we are waiting for.
+  
+  Once called, it continues to request the status update with a one second timeout.
 
 ###### Example
 
 ```javascript
 $('#editUserForm').submit(function (ev) {
-    ev.preventDefault();
-    var currentpassword = $('#pw1').val();
-    var newpassword = $('#pw2').val();
-
-    hoodie.account.changePassword(pw1, pw2);
+    // here goes some code!
 });
 ```
 <br />
 ###### Notes
-> - The hoodie API requires the currentPassword for security reasons, but couchDb doesn't require it for a password change, so it's ignored in this implementation of the hoodie API.
+> 
 
 
 <br />
-### account.changePassword() 
+### account.changeUsername(currentPassword, newUsername) 
 > **version:** 		*> 0.2.0* 
 
 
 ```javascript
-hoodie.account.changePassword('currentpassword', 'newpassword');
+hoodie.account.changeUsername(currentPassword, newUsername);
 ```
 
 | option         | type   | description      | required |
 | -------------- |:------:|:----------------:|:--------:|
-| currentpassword| String | current password | no       |
-| newpassword    | String | new password     | no       |
+| currentPassword| String | current password | yes      |
+| newUsername    | String | new username     | yes      |
 
 <br />
-
-===
 
 ###### Example
 
 ```javascript
 $('#editUserForm').submit(function (ev) {
     ev.preventDefault();
-    var currentpassword = $('#pw1').val();
-    var newpassword = $('#pw2').val();
+    var currentPassword = $('#pw').val();
+    var newUsername = $('#newUser').val();
 
-    hoodie.account.changePassword(pw1, pw2);
+    hoodie.account.changeUsername(currentPassword, newUsername);
 });
 ```
 <br />
 ###### Notes
-> - The hoodie API requires the currentPassword for security reasons, but couchDb doesn't require it for a password change, so it's ignored in this implementation of the hoodie API.
+> - The current password is needed to login with the new username.
+
+<br />
+### account.destroy() 
+> **version:**      *> 0.2.0* 
 
 
+```javascript
+hoodie.account.destroy();
+```
+
+| option         | type   | description      | required |
+| -------------- |:------:|:----------------:|:--------:|
+| -              | -      | -                | -        |
+
+<br />
+
+###### Example
+
+```javascript
+// add prompt
+
+hoodie.account.destroy();
+```
+<br />
+###### Notes
+> - The account get's destroyed right away, so please make sure to implement a checkback.
 
 
 
 
 ### old ===========================
-
-
-### 
-
-
-<pre>
-
-</pre>
-
-
-### changeUsername
-// Note: the hoodie API requires the current password for security reasons,
-// but technically we cannot (yet) prevent the user to change the username
-// without knowing the current password, so it's ignored in the current
-// implementation.
-//
-// But the current password is needed to login with the new username.
-
-<pre>
-hoodie.account.changeUsername('currentpassword', 'newusername');
-</pre>
-
-
-
-
-
-
-
-### destroy
-// destroys a user's account
-
-<pre>
-hoodie.account.destroy('password');
-</pre>
-
-
-### username
-<pre>
-hoodie.account.username;
-</pre>
 
 
 
