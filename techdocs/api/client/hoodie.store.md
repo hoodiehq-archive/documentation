@@ -1,47 +1,31 @@
 # hoodie.store
-*available since 0.2*
+> **version:**      *> 0.1.0* <br />
+> **source:**       *hoodie/src/hoodie/store.js*<br />
 
-#### after reading this you will know
+***<br />after reading this you will know***
 > - how to create data
 > - how to read data
 > - how to update data
 > - how to listen to store events
 
-This class defines the API that `hoodie.store` (local store) and `hoodie.open`
+## Introduction
+
+This modules defines the API that `hoodie.store` (local store) and `hoodie.open`
 (remote store) implement to assure a coherent API. It also implements some
 basic validations.
 
-The returned API can be called as function returning a store scoped by the
-passed type, for example
-
-<pre>
-var todoStore = hoodie.store('todo');
-
-todoStore.findAll().then(showAllTasks);
-todoStore.update('id123', {done: true});
-</pre>
-
-An important thing to note is that storing and accessing objects with hoodie always means accessing you personal, local objects. All stored data has a fixed association to the user who created them. So you won't be able to access other user's data by default.
-
-Never the less there are some community contributed solutions, available as [Hoodie Plugins](http://). Each one offers a different level of data privacy:
-
-* [hoodie-plugin-shares](https://github.com/hoodiehq/hoodie-plugin-shares) share particular store objects, with particular rights to particular people. Also can invite people by mail.
-* [hoodie-plugin-global-share](https://github.com/hoodiehq/hoodie-plugin-global-share) shares particular store objects to all people within the same application.
-* [hoodie-plugin-punk](https://github.com/olizilla/hoodie-plugin-punk) share just everything to everyone within the same application.
-
-**Attention!** Please note that most of these are community contributions and may have flaws or are just outdated. Always feel free to adopt an ophaned plugin of contribute your own.
-
-The objects you save with the `hoodie.store` are saved to yourbrowsers local data storage. This is one of the most important key concepts of hoodie itself. Otherwise we would yet have still very limited possibilities to build offline first applications. Since hoodie is also designed to also store data on the serverside, there has to be a sync. Currently hoodie uses long polling to achieve this. In future releases, we will make use of [PouchDB](http://pouchdb.com), a [CouchDB](http://couchdb.apache.org) compatible JavaScript implemantation.
-
-Please note that generally, in order save objects to the server's store, you need to be logged in with a valid user. Learn more about the hoodie user system at [`Hoodie.User`](./hoodie.user.md).
+###### Notes
+> - storing and accessing objects with hoodie always means accessing your personal, local objects.
+> - All stored data has a fixed association to the user who created them. So you won't be able to access other user's data by default.
+> - in order save objects to the server's store, you need to be logged in with a valid user. Learn more about the hoodie user system at [`hoodie.account`](./hoodie.account.md).
 
 ## The General `options` Parameter
 
 Most of the `hoodie.store` functions come with an `options` parameter, that is always passed as last parameter of a function call. This parameter was created to pass optional configurations to the certain function call. Like the following.
 
-<pre>
-	hoodie.store('todo').remove(id, {silent: true})
-</pre>
+```javascript
+hoodie.store('todo').remove(id, {silent: true})
+```
 
 The options that are available for most of these methods are listed below. For details on `options` parameters of particular functions, please see the section of the particular function itself.
 
@@ -53,41 +37,44 @@ The options that are available for most of these methods are listed below. For d
 ## Methods
 
 - [store](#store)
-- [validate](#validate)
-- [save](#save)
-- [add](#add)
-- [findOrAdd](#findOrAdd)
-- [findAll](#findAll)
-- [update](#update)
-- [updateAll](#updateAll)
-- [remove](#remove)
-- [removeAll](#removeAll)
-- [on](#on)
-- [one](#one)
-- [trigger](#trigger)
-- [off](#off)
-- [bind](#bind)
-- [unbind](#unbind)
+- [validate](#storevalidate)
+- [add](#storeadd)
+- [findOrAdd](#storefindoradd)
+- [findAll](#storefindall)
+- [update](#storeupdate)
+- [updateAll](#storeupdateall)
+- [remove](#storeremove)
+- [removeAll](#storeremoveall)
+
+## Events
+- [type:add](#event-typeadd)
+- [type:update](#event-typeupdate)
+- [type:remove](#event-typeremove)
+
+## Deprecated
+- [decoratePromises](storedecoratepromises)
+- [save](#storesave)
 
 
-### store() (> v.0.2)
-<a id="store"></a>
+### store()
+> **version:**      *> 0.2.0*
 
-*missing short description*
+*Creates a store instance that is scoped by type, or by type & id.*
 
 ```javascript
 hoodie.store('type', 'id');
 ```
 
-| option     | type | desc | optional |
-| ------------- |:-------------:| -----:| -----:|
-| type     | String | store type | yes |
-| id     | int | index of store obj | yes |
+| option     | type   | description     | required |
+| ---------- |:------:|:---------------:|:--------:|
+| type       | String | type of the store  | yes   |
+| id         | String | index of store obj | no    |
+| options    | Object | ------------       | no    |
 
 <br />
 ###### Example
 
-It is most likely, that your application will have more than one type of store object. Even if you have just a single object hoodie.store(type) comes handy. Say you have to work with objects of the type todo, you usually do something like the following:
+It is most likely, that your application will have more than one type of store objects. Even if you have just a single object hoodie.store(type) comes handy. Say you have to work with objects of the type todo, you usually do something like the following:
 
 ```javascript
 hoodie.store.add('todo', { title: 'Getting Coffee' });
@@ -113,17 +100,27 @@ You can also create a very particular store, to work with access to just one spe
 var singleStore = hoodie.store( 'todo', 'id123' );
 ```
 
-For the call like illustrated in the last example, only a minimal subset of functions will be available on the created store context. Every method those purpose is to target more than one stored object, will be left out (f.e. findAll). This is because we already specified a particular object form the store to work with.
+For the call like illustrated in the last example, only a minimal subset of functions will be available on the created store context. Every method those purpose is to target more than one stored object, will be left out (e.g. findAll). This is because we already specified a particular object form the store to work with.
 
-### validate
-<a id="validate"></a>
+### store.validate()
+> **version:**      *> 0.2.0*
 
+*By default `hoodie.store.validate` only checks for a valid object `type` and object `id`. The `type` as well as the `id` may not contain any slash ("/").*
 
-`hoodie.store.validate(object, _options_)`
+```javascript
+hoodie.store.validate('type', object, options);
+hoodie.store('type').validate(object, options);
+```
 
-By default `hoodie.store.validate` only checks for a valid object `type` and object `id`. The `type` as well as the `id` may not contain any slash ("/").
-This is due to the format, hoodie stores your object into the database.
-Every stored database entry has an internal identifier. It is a combination of both, formatted as *"type/id"*. Therefore it is absolutely permitted to have a slashes in neither of both.
+| option     | type   | description     | required |
+| ---------- |:------:|:---------------:|:--------:|
+| type       | Object | data object to verify | yes |
+| object     | Object | data object to verify | yes |
+| options    | Object |    ------------       | no  |
+
+<br />
+###### Notes
+- slashes for id or type are permitted.
 
 All other characters are allowed, though it might be the best, to stick with
 alphabetical characters and numbers. But you are still free to choose.
@@ -131,125 +128,164 @@ alphabetical characters and numbers. But you are still free to choose.
 If `hoodie.store.validate` returns nothing, the passed **object** is valid.
 Otherwise it returns an **[HoodieError]<#>**.
 
-### save
+### store.save()
+> **deprecated:**   *> 1.0*<br />
+> **version:**      *> 0.2.0*
 
-`hoodie.store.save(type, _id_, properties)`
+*Creates or replaces an an eventually existing object in the store, that is of the same `type` and the same `id`.*
 
-Creates or replaces an an eventually existing object in the store, that is of the same `type` and the same `id`.
+###### Notes
+- While it is still in the public API, it will be removed before 1.0, as it is destructive. Please use `store.add` and `store.update` instead.
+
+
+```javascript
+hoodie.store.save('type', 'id', properties, options);
+hoodie.store('type').validate('id', properties, options);
+```
+
+| option     | type   | description     | required |
+| ---------- |:------:|:---------------:|:--------:|
+| type       | String | type of the store         | yes |
+| id         | String | type of the store         | no  |
+| properties | Object | object properties to save | yes |
+| options    | Object |        ------------       | no  |
 
 When the `id` is of value *undefined*, the passed object will be created from scratch.
 
-**IMPORTANT**: If you want to just to partially update an existing object, please see `hoodie.store.update(type, id, objectUpdate)`. The method `hoodie.store.save` will completely replace an existing object.
+If you want to just to partially update an existing object, please see `hoodie.store.update(type, id, objectUpdate)`. The method `hoodie.store.save` will completely replace an existing object.
 
-<pre>
+<br />
+###### Example
+
+```javascript
 var todoStore = hoodie.store('todo');
 
 // this will create a new todo
 todoStore.save(undefined, {title: 'Getting Coffee', done: false });
 todoStore.save('abc4567', {title: 'Still Getting Coffee', done: false });
-</pre>
+```
 
-### add
-<a id="add"></a>
+### store.add()
+> **version:**      *> 0.2.0*
 
+*Creates a new entry in your local store. It is the shorter version of a complete save. This means you can not pass the id of an existing property.*
 
-`hoodie.store.add(type, properties)`
+```javascript
+hoodie.store.add('type', properties, options);
+hoodie.store('type').add(properties, options);
+```
 
-Creates a new entry in your local store. It is the shorter version of a complete save. This means you can not pass the id of an existing property. In fact `hoodie.store.add` will force `hoodie.store.save` to create a new object with the passed object properties of the `properties` parameter.
+| option     | type   | description     | required |
+| ---------- |:------:|:---------------:|:--------:|
+| type       | String | type of the store         | yes |
+| properties | Object | object properties to save | yes |
+| options    | Object |        ------------       | no  |
 
-<pre>
+In fact `hoodie.store.add` will force `hoodie.store.save` to create a new object with the passed object properties of the `properties` parameter.
+
+<br />
+###### Example
+
+```javascript
 hoodie.store
 	.add('todo', { title: 'Getting Coffee' })
 	.done(function(todo) { /* success handling */ });
-	.fail(function(todo) { /* error handling */ });
-</pre>
+	.fail(function(error) { /* error handling */ });
+```
 
-### find
-<a id="find"></a>
+### store.find()
+> **version:**      *> 0.2.0*
 
+*Searches the store for a stored object with a particular `id`.*
 
-`hoodie.store.find(id)`
+```javascript
+hoodie.store.find('type', 'id', options);
+hoodie.store('type').find('id', options);
+```
 
-Searches the store for a stored object with a particular `id`. Returns a promise so success and failure can be handled. A failure occurs for example when no object
+| option     | type   | description     | required |
+| ---------- |:------:|:---------------:|:--------:|
+| type       | String | type of the store         | yes |
+| id         | String | id of the object to find  | yes |
+| options    | Object |        ------------       | no  |
 
-<pre>
+Returns a promise so success and failure can be handled. A failure occurs for example when no object
+
+<br />
+###### Example
+
+```javascript
 hoodie.store('todo')
 	.find('hrmvby9')
 	.done(function(todo) { /* success handling */ });
-	.fail(function(todo) { /* error handling */ });
-</pre>
+	.fail(function(error) { /* error handling */ });
+```
 
-### findOrAdd
-<a id="findOrAdd"></a>
+### store.findOrAdd()
+> **version:**      *> 0.2.0*
 
+*This is a convenient combination of hoodie.store.find and hoodie.store.add. You can
+use this if you would like to work with a particular store object, which existence
+you are not sure about yet.*
 
-`hoodie.store.findOrAdd(type, id, properties)`
+```javascript
+hoodie.store.findOrAdd('type', 'id', properties, options);
+hoodie.store('type').findOrAdd('id', properties, options);
+```
 
-This is a convenient combination of hoodie.store.find and hoodie.store.add. Use can
-use if you would like to work with a particular store object, which existence
-you are not sure about yet. Which cases would be worth using this?
-Well for example if you want to read a particular settings object, you want to
-work with in a later step.
+| option     | type   | description     | required |
+| ---------- |:------:|:---------------:|:--------:|
+| type       | String | type of the store                           | yes |
+| id         | String | id of the object to find                    | no  |
+| properties | Object | object to be created if no entry matches id | yes |
+| options    | Object |                          ------------       | no  |
 
-<pre>
+Which cases would be worth using this? Well for example if you want to read a particular settings object, you want to work with in a later step.
+
+<br />
+###### Example
+
+```javascript
 // pre-conditions: You already read a user's account object.
 var configBlueprint = { language: 'en/en', appTheme: 'default' };
 var configId        = account.id + '_config';
 
 hoodie.store
-	.findOrCreate('custom-config', configId, configBlueprint)
+	.findOrAdd('custom-config', configId, configBlueprint)
 	.done(function(appConfig) {
 		console.log('work with config', appConfig)
 	});
-</pre>
+```
 
-hoodie.store.findOrCreate takes three arguments here. All of them are required.
+<br />
+###### Notes
+> - the `properties` parameter has no influence on the search itself.
 
- * `type`       => The kind of document you want to search the store for.
- * `id`         => The unique id of the document to search the store for.
- * `properties` => The blueprint of the document to be created, in case nothing could be found.
-
-The important thing to notice here is, that the `properties` parameter has no
-influence on the search itself. Unlike you may have used store searches
-with other frameworks, this will **not** use the `properties` parameter
+Unlike you may have used store searches with other frameworks, this will **not** use the `properties` parameter
 as further conditions to match a particular store entry. The only conditions the
-store will be searched for are the document `type` and `id`.
+store will be searched for are the document's `type` and `id`.
 
-Just to demonstrates the convenience of hoodie.store.findOrAdd, the below example
-illustrates the more complex alternative way of find and add:
+### store.findAll()
+> **version:**      *> 0.2.0*
 
-<pre>
-// IMPORTANT: BAD VARIATION
+*With this you can retrieve all objects of a particular `type` from the store.*
 
-// pre-conditions: You already read a user's account object.
-var defaultConfig = {language: 'en/en', appTheme: 'default'},
-	configId      = account.id + '_config';
+```javascript
+hoodie.store.findAll('type');
+hoodie.store('type').findAll();
+```
 
-hoodie.store
-	.find('custom-config', configId, configBlueprint)
-	.done(function(appConfig) {
-		console.log('work with config', appConfig);
+| option     | type   | description     | required |
+| ---------- |:------:|:---------------:|:--------:|
+| type       | String | type of the store    | yes |
+| options    | Object |   ------------       | no  |
 
-		if(appConfig === undefined) {
-			hoodie.store
-				.add('custom-config', bluePrint)
-				.done(function(newConfig) {
-					// work with the newConfig here
-				});
-            }
-	});
+Todos for instance. Given, that you already have existing todo objects stored, you can retrieve all of them like in the following example.
 
-// IMPORTANT: BAD VARIATION
-</pre>
+<br />
+###### Example
 
-### findAll
-
-`hoodie.store.findAll(type)`
-`hoodie.store(type).findAll()`
-
-With this you can retrieve all objects of a particular `type` from the store. Todos for instance. Given, that you already have existing todo objects stored, you can retrieve all of them like in the following example.
-
-<pre>
+```javascript
 
 var todoStore = hoodie.store('todo');
 
@@ -264,11 +300,14 @@ todoStore
         console.log('successfully finished findAll');
     });
 
-</pre>
+```
 
 What you really have to recognized here is that there is a mayor difference between the methods `then` and `done`. While `done` suggests that you can handle all the retrieved objects with it, actually it is `then` where `findAll` will deliver your data to. `done` on the other hand gets called when all other `then` calls have been passed. Yes you can utilize this mechanism to work with your data in several steps.
 
-<pre>
+<br />
+###### Example
+
+```javascript
 var todoStore = hoodie.store('todo');
 
 console.log(todoStore.findAll());
@@ -292,23 +331,35 @@ todoStore
         // this gets called on the end
         console.log('successfully finished findAll');
     });
-</pre>
+```
 
 There aren't any [callback closure functions](http://), like many other JavaScript libraries use to work with asynchronous flows. Hoodie uses so called **promises** to handle async flows. If you would like to now more about promises in hoodie, please see the [Hoodie promises Section](http://) for further details.
 
-### update
-<a id="update"></a>
+### store.update()
+> **version:**      *> 0.2.0*
 
+*In contrast to `.save`, the `.update` method does not replace the stored object, but only changes the passed attributes of an existing object, if it exists. Requires one of both: an properties or and update function.*
 
-`hoodie.store.update(type, id, properties)`
-`hoodie.store.update(type, id, updateFunction)`
-`hoodie.store(type).update(id, properties)`
-`hoodie.store(type).update(id, updateFunction)`
+```javascript
+hoodie.store.update('type', 'id', properties)
+hoodie.store.update('type', 'id', updateFunction)
+hoodie.store('type').update('id', properties)
+hoodie.store('type').update('id', updateFunction)
+```
 
-In contrast to `.save`, the `.update` method does not replace the stored object,
-but only changes the passed attributes of an existing object, if it exists. By this you are able to just update particular parts/attributes of your object. This is great for updating objects that are very large in bytes.
+| option     | type   | description     | required |
+| ---------- |:------:|:---------------:|:--------:|
+| type           | String | type of the store                   | yes |
+| properties     | Object | object updates                      | no  |
+| updateFunction | String | function doing object updates       | no  |
+| options        | Object |   ------------                      | no  |
 
-<pre>
+By this you are able to just update particular parts/attributes of your object. This is great for updating objects that are very large in bytes.
+
+<br />
+###### Example
+
+```javascript
 // Example for store updates
 // using JavaScript plain objects as update parameter.
 //
@@ -325,18 +376,18 @@ var todoStore = hoodie.store('todo');
 
 todoStore
     .findAll()
-    .then(function(allTodos) {
+    .done(function(allTodos) {
         // just pick the first todo we can get
-        var originTodo = allTodos.pop();
+        var origininalTodo = allTodos.pop();
 
-        console.log(originTodo.id, '=>', originTodo.dueDate)
+        console.log(origininalTodo.id, '=>', origininalTodo.dueDate)
 
         // update the picked todo and update it's dueDate to now
         todoStore
-            .update(originTodo.id, { dueDate:(Date.now()) })
-            .then(function(updatedTodo) {
+            .update(origininalTodo.id, { dueDate:(Date.now()) })
+            .done(function(updatedTodo) {
                 // beyond this point, please work with updatedTodo
-                // instead of the originTodo, because originTodo
+                // instead of the origininalTodo, because origininalTodo
                 // is outdated.
                 console.log(updatedTodo.id, '=>', updatedTodo.dueDate);
             });
@@ -344,14 +395,14 @@ todoStore
         // update the picked todo and update it's dueDate to now
         todoStore
             .update('ID DOES NOT EXIST', { dueDate:(Date.now()) })
-            .then(function(updatedTodo) {
+            .done(function(updatedTodo) {
                 console.log('will never happen.');
             })
             .fail(function(error) {
                 console.log('the update failed with', error);
             });
     });
-</pre>
+```
 
 The example updates the todo object, which owns the `dueDate` of the first found todo object to `Date.now()`, which is the timestamp of right now. Every other attribute stays the same.
 
@@ -359,9 +410,12 @@ Further the example contains another example where we try to update an object, w
 
 The `update` methods have a certain speciality. Beside that you can pass a plain JavaScript object with attributes updates, you can also pass a function, that manipulates the the object matched by the given `id`.
 
-Cases when this advantage can be very useful are applying calculations or for conditioned updates. This will come mist handy when combined with `hoodie.store.updateAll`.
+Cases when this advantage can be very useful are applying calculations or for conditional updates. This will come mist handy when combined with `hoodie.store.updateAll`.
 
-<pre>
+<br />
+###### Example
+
+```javascript
 // example for store updates
 // using functions as update parameter
 
@@ -369,11 +423,11 @@ var todoStore = hoodie.store('todo');
 
 todoStore
     .findAll()
-    .then(function(allTodos) {
+    .done(function(allTodos) {
         // just pick the first todo we can get
-        var originTodo = allTodos.pop();
+        var origininalTodo = allTodos.pop();
 
-        todoStore.update(originTodo.id, function(oneTodo) {
+        todoStore.update(origininalTodo.id, function(oneTodo) {
 
             // Apply update only if conditions matches.
             if( Math.random() > 0.5) {
@@ -382,37 +436,51 @@ todoStore
             }
 
             return oneTodo;
-        }).then(function(updatedTodo) {
+        }).done(function(updatedTodo) {
             console.log('update success', updatedTodo);
         }).fail(function(error) {
             console.log('failed update with', error);
         });
 
     });
-</pre>
+```
 
-### updateAll
-<a id="updateAll"></a>
+### store.updateAll()
+> **version:**      *> 0.2.0*
 
-`hoodie.store.updateAll(updateObject)`
-`hoodie.store(type).updateAll(updateObject)`
+*updateAll will update all your objects of a specific store.*
 
-Update all will update all your objects of a specific store. The changes to be applied are defined by an update object. Just configure the specific attributes to the values the way you want to have your objects updated.
+```javascript
+hoodie.store.updateAll(updateObject)
+hoodie.store('type').updateAll(updateObject)
+```
 
-<pre>
+| option     | type   | description     | required |
+| ---------- |:------:|:---------------:|:--------:|
+| type           | String | type of the store                   | no |
+| updateObject   | Object | object updates                      | yes |
+| options        | Object |   ------------                      | no  |
+
+The changes to be applied are defined by an update object. Just configure the specific attributes to the values the way you want to have your objects updated.
+
+<br />
+###### Example
+
+```javascript
 var todoStore    = hoodie.store('todo'),
 	objectUpdate = {done: true};
 
 todoStore
 	.updateAll(objectUpdate)
-	.then(function(updates) {
+	.done(function(updates) {
 		console.log('the following todos are done', updates);
 	});
-</pre>
+````
 
-Like with `hoodie.store.update` you can pass an update function instead of an update object. So if you want update only a particular set of store objects, passing an update function is your friend. This is what comes close to a WHERE clause you may probably now from SQL. When using an update function to modify stored data, please make sure, to return the updated object at the end of the update function.
+Like with (hoodie.store.update)[storeupdate] you can pass an update function instead of an update object. So if you want update only a particular set of store objects, passing an update function is your friend. This is what comes close to a WHERE clause you may probably know from SQL. When using an update function to modify stored data, please make sure, to return the updated object at the end of the update function.
 
-<pre>
+###### Example
+```javascript
 var todoStore  = hoodie.store('todo'),
 	updateFunc = function(todo) {
 		if(todo.done != true) {
@@ -424,21 +492,34 @@ var todoStore  = hoodie.store('todo'),
 
 todoStore
 	.updateAll(updateFunc)
-	.then(function(updates) {
+	.done(function(updates) {
 		console.log('the following todos are done', updates);
 	});
-</pre>
+```
 
-### remove
-<a id="remove"></a>
+### store.remove()
+> **version:**      *> 0.2.0*
 
+*This simple deletes one entriy of the defined `type` identified by it's `id` from a user's store.
 
-`hoodie.store.remove(id)`
-`hoodie.store(type).remove(id)`
+```javascript
+hoodie.store.remove('id')
+hoodie.store('type').remove('id')
+```
 
-This simple deletes one entriy of the defined `type` identified by it's `id` from a user's store. Please be aware that the data gets deleted immediately.
+| option     | type   | description     | required |
+| ---------- |:------:|:---------------:|:--------:|
+| type           | String | type of the store         | no |
+| id           | String | id of the object to remove | yes |
 
-<pre>
+<br />
+###### Notes
+> - Please be aware that the data gets deleted immediately.
+
+<br />
+###### Example
+
+```javascript
 // deletes the first found entry from the todo store
 
 var todoStore = hoodie.store('todo'),
@@ -446,170 +527,127 @@ var todoStore = hoodie.store('todo'),
 
 todoStore
 	.findAll()
-	.then(function(todos) {
+	.done(function(todos) {
 		var todo = todos[0];
 
 		todoStore
 			.remove(todo.id)
-			.then(function(removedTodos) {
+			.done(function(removedTodos) {
 				console.log(removedTodos);
 			})
 			.fail(function(error) {
 				console.log('Error while removing todo', error);
 			});
 });
-</pre>
+```
 
-### removeAll
-<a id="removeAll"></a>
+### store.removeAll()
+> **version:**      *> 0.2.0*
 
-`hoodie.store.remove()`
-`hoodie.store(type).removeAll()`
+*Deletes all entries of the defined `type` from a user's store.*
 
-This simple deletes all entries of the defined `type` from a user's store. Please be aware that the data gets deleted immediately.
+```javascript
+hoodie.store.removeAll()
+hoodie.store('type').removeAll()
+```
 
-<pre>
+| option     | type   | description     | required |
+| ---------- |:------:|:---------------:|:--------:|
+| type           | String | type of the store                   | no |
+| options        | Object |   ------------                      | no  |
+
+<br />
+###### Notes
+> - Please be aware that the data gets deleted immediately.
+
+<br />
+###### Example
+```javascript
 // deletes all objects from store
 
 var todoStore = hoodie.store('todo');
 
 todoStore
 	.removeAll()
-	.then(function(removedTodos) {
+	.done(function(removedTodos) {
 		console.log(removedTodos);
 });
-</pre>
+```
 
-### on
-<a id="on"></a>
+### Event 'type:add'
+> **version:**      *> 0.2.0*
 
+*Gets triggered when a new object of matching type/store has been added to the store.*
 
-`hoodie.store.on(event, handlerFunction)`
+```javascript
+hoodie.store.on('type:add', eventHandler);
+```
+
+| option     | type   | description     | required |
+| ---------- |:------:|:---------------:|:--------:|
+| event        | String   | Event identifier, consisting from type of object and ':add' | yes |
+| eventHandler | Function | Function hanldling the triggered event.                     | yes |
 
 The `hoodie.store` informs you about several things happening with the stored objects. In order to catch those messages you can register a function for handling those events. Those functions are also called **event handlers**.
 
-Here is a list of events `hoodie.store` emits and you can listen to:
-
-
-| Event       | Example        | Description |
-|-------------|----------------|------------|
-| **add**        | 'todo:add'     | A new object has been added to the store.|
-| **update**     | 'todo:update'  | An existing object has been updated from the store.|
-| **remove**     | 'todo:add'     | An existing object has been removed from the store.|
-
-As the above table already describes, the event messages are emitted as type `string`. Please note the format of the event message is always **type of store object** followed by a **:** and the type of the event. So if you listen to the event for a **todo* store object, you would have to listen to **todo:add**.
-
-<pre>
-
+<br />
+###### Example
+```javascript
 hoodie.store.on('todo:add', function(createdTodo) {
-	console.log('A todo has been added => ', createdTodo);
+	console.log('A todo has been created => ', createdTodo);
 });
+```
 
-hoodie.store.on('todo:remove', function(removedTodo) {
-	console.log('A todo has been removed => ', removedTodo);
-});
+### Event 'type:update'
+> **version:**      *> 0.2.0*
 
+*Gets triggered when an existing object of matching type/store has been updated.*
+
+```javascript
+hoodie.store.on('type:update', eventHandler);
+```
+
+| option     | type   | description     | required |
+| ---------- |:------:|:---------------:|:--------:|
+| event        | String   | Event identifier, consisting from type of object and ':update' | yes |
+| eventHandler | Function | Function hanldling the triggered event.                        | yes |
+
+The `hoodie.store` informs you about several things happening with the stored objects. In order to catch those messages you can register a function for handling those events. Those functions are also called **event handlers**.
+
+<br />
+###### Example
+```javascript
 hoodie.store.on('todo:update', function(updatedTodo) {
 	console.log('A todo has been updated => ', updatedTodo);
 });
+```
 
-</pre>
+### Event 'type:remove'
+> **version:**      *> 0.2.0*
 
-One of the major reasons, you usually want to get informed about store changes is, that you application can react and adapt to those changes. If you are creating a new store object with (`hoodie.store.add`)[http://] for instance, your application would want to know about that change, so it can update it's current data and views. Just calling (`hoodie.store.add`)[http://] alone will have no update effect on the displayed data. The same goes for `update` and `remove`.
+*Gets triggered when an existing object of matching type/store has been removed.*
 
-The event handlers of the above examples are only expecting to be called with a single function parameter. Please note that this only applies in the example. Depending on the type of the event, it is also possible to receive two or more parameters.
+```javascript
+hoodie.store.on('type:remove', eventHandler);
+```
 
-If you are already familiar with the (concept of synchronization)[http://] you are probably wondering now, if those event handlers are also called when the local receives changes concerning the data store. The answer here is: Yes, the events got also emitted when sync happens.
+| option     | type   | description     | required |
+| ---------- |:------:|:---------------:|:--------:|
+| event        | String   | Event identifier, consisting from type of object and ':remove' | yes |
+| eventHandler | Function | Function hanldling the triggered event.                        | yes |
 
-You can also listen to custom events you trigger by yourself. See `hoodie.store.trigger` for more details on how to do that.
+The `hoodie.store` informs you about several things happening with the stored objects. In order to catch those messages you can register a function for handling those events. Those functions are also called **event handlers**.
 
-### one
-
-`hoodie.store.one` is a special form of `hoodie.store.on` which will be executed only once, when the event has been caught. After that, it'll automatically unsubscribe from the event. This might be usefull in cases you want to handle an event only once. When waiting for the initial data for instance.
-
-
-### trigger
-<a id="trigger"></a>
-
-
-`hoodie.store.trigger(event, paramOne, ..., paramN)`
-
-Since you can listen for store events using `hoodie.store.on` or `hoodie.store.bind`, the `hoodie.store.trigger` function gives you the opportunity to send events of your own to the listeners. This includes the standard events as mentionend in the `hoodie.store.on` section as well as your personal custom events. Imagine you want to trigger an event when a todo is done. This could look something similiar to this:
-
-<pre>
-var todoStore = hoodie.store('todo');
-
-function markAsDone(todo) {
-  // mark todo as done and trigger a custom done event
-  todo.done = true;
-  todoStore.trigger('todo:done', todo, new Date());
-}
-
-todoStore.on('todo:done', function(doneTodo, t) {
-  console.log(doneTodo.title, ' was done', t);
+<br />
+###### Example
+```javascript
+hoodie.store.on('todo:remove', function(removedTodo) {
+	console.log('A todo has been removed => ', removedTodo);
 });
+```
 
-todoStore.findAll().then(function(allTodos) {
-  // take the first todo in list
-  // and mark it as done
-  markAsDone(allTodos[0]);
-});
-</pre>
+### store.remove()
+> - **version:**      *> 0.2.0*
+> - **deprecated:**   *soon*
 
-There are two important things concerning the parameters:
-
-1) The first parameter of 'hoodie.store.trigger' is usually a string that names the event. To keep the event handling sane, it is a good idea to stick to an overall convention like 'object-type:what-happened' or 'what-happened'. The event descriptor is required.
-
-2) Starting with the second parameter you are allowed to pass an unlimited amount of detail information. This usually means you pass the object or an collection of objects, that has been changed. When you want to pass multiple objects at the same time, we encourage using an Array/Collection instead of an endless parameter list. Depending on what kind of event message you want to trigger, you have to decide yourself what details you have to pass, though it usually won't be more than just a couple. Feel completely free to decide here.
-
-It is also very important to keep track of the the contexts you are listening and triggering on. Custom event handling is always applied per instance. So that if you register an event handler with `hoodie.store('todo').on` and trigger the event just with `hoodie.store.trigger`, the previously registered event handler is never been called.
-
-
-<pre>
-	var todoStore = hoodie.store('todo');
-
-	todoStore.on('trigger-test', function(num) {
-		// will only be called by the second trigger
-		console.log('triggered by', num);
-	});
-
-	hoodie.store.trigger('trigger-test', 'number one');
-	todoStore.trigger('trigger-test', 'number two');
-	hoodie.store(hoodie).trigger('trigger-test', 'number three');
-</pre>
-
-### off
-
-While `hoodie.store.on` subscribes an handler function to a certain event `hoodie.store.off` does the opposite and will unsubscribe all previously registered handlers for the given event.
-
-<pre>
-var todoStore = hoodie.store('todo');
-todoStore.on('todo:done', function(doneTodo, t) {
-  // this will never be reached, neither
-});
-
-todoStore.on('todo:done', function(doneTodo, t) {
-  // this will never be reached either
-});
-
-// this unsubscribes both of the previously
-// subscribed event handlers
-todoStore.off('todo:done');
-
-todoStore.findAll().then(function(allTodos) {
-  todoStore.trigger('todo:done', allTodos[0], new Date());
-});
-</pre>
-
-
-### bind
-<a id="bind"></a>
-
-
-`hoodie.store.on` is an alias for `hoodie.store.bind`. Please see `hoodie.store.on` for details.
-
-### unbind
-<a id="unbind"></a>
-
-`hoodie.store.off` is an alias for `hoodie.store.unbind`. Please see `hoodie.store.off` for details.
 
