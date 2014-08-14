@@ -3,9 +3,9 @@
 A major part of the magic behind Hoodie are concepts that make it so powerful. These concepts are deeply embedded in Hoodie's code and functionalities, and here's an introduction to each of them.
 
 ## Table of Content
-- <a href="#Dreamcode">Dreamcode</a>
-- <a href="#noBackend">noBackend</a>
-- <a href="#Offline-First">Offline First</a>
+- <a href="#dreamcode">Dreamcode</a>
+- <a href="#nobackend">noBackend</a>
+- <a href="#offline-first">Offline First</a>
 
 ### Dreamcode
 Dreamcode, or Dream-Driven development, means:<br />
