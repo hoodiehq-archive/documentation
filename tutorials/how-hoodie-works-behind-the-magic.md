@@ -5,6 +5,7 @@ This tutorial shows you how exactly all parts of Hoodie work together to create 
 ## Table of Content
 - <a href="#all-parts-of-hoodie">All parts of Hoodie</a>
 - <a href="#how-it-works-example-sending-an-email">How it works: example – sending an email</a>
+- - <a href="#how-it-works-example-sending-a-message">How do other devices know data was changed</a>
 
 ### All parts of Hoodie
 When we build an app with Hoodie, we have three parts: frontend, backend, and they’re connected with each other through the Hoodie sync.
@@ -46,8 +47,17 @@ Let’s see how this works when an email is moving through the system:
 
 1. The message is written in the app and send
 2. The message is passed to hoodie.store and the task "save the message" is send to the localstorage to be saved. 
-3. Also hoodie.store checks if the user is online. If so, the task is handed to the sync and through the REST layer the message is saved in our CouchDB database including the message. 
+3. Also hoodie.store checks if the user is online. If so, a task is handed to the sync and through the REST layer the message is saved in our CouchDB database including the message. 
 4. The CouchDB database gives a task to the Node.js plugin to send the message including the additional data and the message itself. 
 5. The Plugin sends the message.
 
 <p><img src="http://blog.hood.ie/wp-content/uploads/2014/07/Screen-Shot-2014-07-16-at-14.25.46.png" width="50%" height="50%"></p>
+
+
+
+### How do other devices know data was changed
+
+A huge benefit of Hoodie is not just it's offline first, also it has a build in functionality to send notifications to other devices, when data was added, changed or removed. This are also tasks handed to the app client, when something changes.
+
+This is how it works:
+When we add some data to our app, like saving a new message, it works like we described before. In addition to that, CouchDB sends out a task to the user data was changed, to update the data of your app and download it. So you do not have to do it on your own.
