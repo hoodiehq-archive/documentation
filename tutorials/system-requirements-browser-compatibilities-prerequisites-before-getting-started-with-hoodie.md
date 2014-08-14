@@ -22,8 +22,13 @@ This is a list of everything you should know and prepare *before* finally starti
 
 ## Browser Compatibilities
 
-[TO BE ADDED]
-
+* Firefox latest stable (v29)
+* Chrome latest stable (v34)
+* Desktop Safari latest stable (v7)
+* Internet Explorer v10+
+* Opera latest stable (v21)
+* Android 4.3+
+* iOS Safari latest stable (v7.1)
 
 ## Installation of Prerequisites
 
