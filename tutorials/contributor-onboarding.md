@@ -15,7 +15,7 @@ This document is and will always be work in progress. We are constantly trying t
 
 ###  Where can people contribute?
 
-Hoodie is a quite big project and we have various parts that need to be maintained and/or created. To find out where we need help, take a look at out [Contribute Site](#).
+Hoodie is a quite big project and we have various parts that need to be created and / or maintained. To find out where we need help, take a look at our [Contribute Site](#).
 
 ---------------
 
