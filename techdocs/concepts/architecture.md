@@ -1,3 +1,7 @@
+---
+layout: layout
+---
+
 # Architecture
 
 The way Hoodie is set up is trying to solve a number of things:

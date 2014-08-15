@@ -1,3 +1,7 @@
+---
+layout: layout
+---
+
 # Hoodie.Account
 
 *Source: hoodie/src/hoodie/account.js*
@@ -6,7 +10,7 @@
 ## Methods
 
 <hr />
-###### blueprint 
+###### blueprint
 account.signUp // headline
 
 account signUp // description
@@ -62,7 +66,7 @@ hoodie.account.signIn('joe@example.com', 'secret');
 <pre>
 hoodie.account.signIn('joe@example.com', 'secret');
 </pre>
- 
+
 
 ### signUp
 // sign up with username & password
@@ -95,7 +99,7 @@ hoodie.account.signUp('joe@example.com', 'secret', 'secret');
   //
   // If the user signs up for real later, we 'upgrade' the account, meaning we
   // change the username and password internally instead of creating another user.
- 
+
 <pre>
 hoodie.account.anonymousSignUp();
 </pre>
@@ -179,7 +183,7 @@ hoodie.account.username;
 ### authenticate
 // Use this method to assure that the user is authenticated:
   // `hoodie.account.authenticate().done( doSomething ).fail( handleError )`
-  
+
 ### hasAccount
 // anonymous accounts get created when data needs to be
 // synced without the user having an account. That happens

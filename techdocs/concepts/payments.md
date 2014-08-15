@@ -1,3 +1,7 @@
+---
+layout: layout
+---
+
 # Hoodie Payments
 
 This document describes how Hoodie payments work.
@@ -85,5 +89,3 @@ If you want to do a one-time charge, the `payments.charge` method is for you:
         id: "12345"
     };
     hoodie.payments.charge(charge);
-
-

@@ -1,7 +1,11 @@
-# Getting Started with Hood.ie
+---
+layout: layout
+---
+
+# Getting Started with Hood.ie on MacOSX
 
 
-### Step One - Installing Hoodie (on OS X)
+### Step One - Installing Hoodie
 
 Installing Hoodie on Mac OS X requires Homebrew (http://brew.sh/). Homebrew is a package manager for OS X, and makes installing things as easy as:
 
