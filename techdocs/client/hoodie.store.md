@@ -71,7 +71,7 @@ The options that are available for most of these methods are listed below. For d
 
 Creates or replaces an an eventually existing object in the store, that is of the same `type` and the same `id`.
 
-When the `id` is of value *undefined*, the passed object will be created from scratch.
+When the `id` is of value *undefined*, the passed object will receive an automatically generated id.
 
 **IMPORTANT**: If you want to just to partially update an existing object, please see `hoodie.store.update(type, id, objectUpdate)`. The method `hoodie.store.save` will completely replace an existing object.
 
