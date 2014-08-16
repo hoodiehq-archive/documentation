@@ -64,59 +64,6 @@ The options that are available for most of these methods are listed below. For d
 
 ## Methods
 
-### store
-`hoodie.store(_type_, _id_)`
-
-
-It is possble, that your application will have more than one type of store object. Even if you have just a single object `hoodie.store(type)` comes handy. Say you have to work with objects of the type `todo`, you usually
-do something like the following:
-
-<pre>
-hoodie.store.add('todo', { title: 'Getting Coffee' });
-hoodie.store.findAll('todo').done(function(allTodos) { /* ... */ });
-</pre>
-
-The `hoodie.store` method offers you a short handle here, so you can create
-designated store context objects to work with:
-
-<pre>
-var todoStore = hoodie.store('todo');
-
-todoStore.add({ title: 'Getting Coffee' });
-todoStore.findAll().done(function(allTodos) { /*...*/ });
-</pre>
-
-The benefit of this variant might not be clear at first glance. The primary benefit is, that you must set your object type only 
-once. So in case you want to rename you object type *"todo"* to *"things-to-be-done"*
-in a later phase of development, you have to change this in significantly fewer
-areas on you application code. By this you also avoid typos by reducing the 
-amount of occurrences, where you can make the mistake at.
-
-Imagine having the type of *"todoo"* with a double o at the end. This would be a 
-dramatic bug if it comes to storing a new todo object, because when reading all
-"todo" (with single o this time) the new entries can't be found.
-
-You can also create a very particular store, to work with access to just one specific stored object.
-
-<pre>
-var singleStore = hoodie.store( 'todo', 'id123' );
-</pre>
-
-For the call like illustrated in the last example, only a minimal subset of functions will be available on the created store context. Every method those purpose is to target more than one stored object, will be left out (f.e. findAll). This is because we already specified a particular object form the store to work with.
-
-### validate
-
-`hoodie.store.validate(object, _options_)`
-
-By default `hoodie.store.validate` only checks for a valid object `type` and object `id`. The `type` as well as the `id` may not contain any slash ("/"). 
-This is due to the format, hoodie stores your object into the database.
-Every stored database entry has an internal identifier. It is a combination of both, formatted as *"type/id"*. Therefore it is absolutely permitted to have a slashes in neither of both.
-
-All other characters are allowed, though it might be the best, to stick with
-alphabetical characters and numbers. But you are still free to choose.
-
-If `hoodie.store.validate` returns nothing, the passed **object** is valid. 
-Otherwise it returns an **[HoodieError]<#>**.
 
 ### save
 
@@ -454,8 +401,6 @@ todoStore
 		console.log(removedTodos);
 });
 </pre>
- 
-### decoratePromises
 
 ### on
 
@@ -573,6 +518,60 @@ todoStore.findAll().then(function(allTodos) {
   todoStore.trigger('todo:done', allTodos[0], new Date());
 });
 </pre>  
+
+### store
+`hoodie.store(_type_, _id_)`
+
+
+It is possble, that your application will have more than one type of store object. Even if you have just a single object `hoodie.store(type)` comes handy. Say you have to work with objects of the type `todo`, you usually
+do something like the following:
+
+<pre>
+hoodie.store.add('todo', { title: 'Getting Coffee' });
+hoodie.store.findAll('todo').done(function(allTodos) { /* ... */ });
+</pre>
+
+The `hoodie.store` method offers you a short handle here, so you can create
+designated store context objects to work with:
+
+<pre>
+var todoStore = hoodie.store('todo');
+
+todoStore.add({ title: 'Getting Coffee' });
+todoStore.findAll().done(function(allTodos) { /*...*/ });
+</pre>
+
+The benefit of this variant might not be clear at first glance. The primary benefit is, that you must set your object type only 
+once. So in case you want to rename you object type *"todo"* to *"things-to-be-done"*
+in a later phase of development, you have to change this in significantly fewer
+areas on you application code. By this you also avoid typos by reducing the 
+amount of occurrences, where you can make the mistake at.
+
+Imagine having the type of *"todoo"* with a double o at the end. This would be a 
+dramatic bug if it comes to storing a new todo object, because when reading all
+"todo" (with single o this time) the new entries can't be found.
+
+You can also create a very particular store, to work with access to just one specific stored object.
+
+<pre>
+var singleStore = hoodie.store( 'todo', 'id123' );
+</pre>
+
+For the call like illustrated in the last example, only a minimal subset of functions will be available on the created store context. Every method those purpose is to target more than one stored object, will be left out (f.e. findAll). This is because we already specified a particular object form the store to work with.
+
+### validate
+
+`hoodie.store.validate(object, _options_)`
+
+By default `hoodie.store.validate` only checks for a valid object `type` and object `id`. The `type` as well as the `id` may not contain any slash ("/"). 
+This is due to the format, hoodie stores your object into the database.
+Every stored database entry has an internal identifier. It is a combination of both, formatted as *"type/id"*. Therefore it is absolutely permitted to have a slashes in neither of both.
+
+All other characters are allowed, though it might be the best, to stick with
+alphabetical characters and numbers. But you are still free to choose.
+
+If `hoodie.store.validate` returns nothing, the passed **object** is valid. 
+Otherwise it returns an **[HoodieError]<#>**.
 
 
 ### bind
