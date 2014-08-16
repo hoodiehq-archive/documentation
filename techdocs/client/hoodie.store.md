@@ -16,7 +16,7 @@ todoStore.findAll().then(showAllTasks);
 todoStore.update('id123', {done: true});
 </pre>
 
-An important thing to note is that storing and accessing objects with hoodie always means accessing you personal, local objects. All stored data has a fixed association to the user who created them. So you won't be able to access other user's data by default. 
+An important thing to note is that storing and accessing objects with hoodie always means accessing your personal, local objects. All stored data has a fixed association to the user who created them. So you won't be able to access other user's data by default. 
 
 There are a number of [Hoodie Plugins](http://) that allow for various types of fine-grained data sharing. Each one offers a different level of data privacy:
 
