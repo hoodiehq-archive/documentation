@@ -60,22 +60,28 @@ This is an Ubuntu-specific guide courtesy of Stuart Langridge.
 #### Install node.js
 On Ubuntu, you don't have to build Node.js from source, you can install it as a package instead. Add Chris Lea's Node.js PPA and install from it:
 
+```
   $ sudo add-apt-repository ppa:chris-lea/node.js
   $ sudo apt-get update
   $ sudo apt-get install nodejs
-  
+```
+
 #### Install CouchDB
 
+```
   $ sudo apt-get update
   $ sudo apt-get install couchdb-bin git
-  
+```
+
 -------------------------------
 
 ### Linux – Fedora 19+
 #### Install CouchDB, Git and node.js
 
+```
   $ sudo yum install couchdb git nodejs npm
-  
+```
+
 -------------------------------
 
 Installation done! Time to [get started with Hoodie](MISSING LINK TO TUTORIAL).
