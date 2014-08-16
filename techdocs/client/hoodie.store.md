@@ -89,6 +89,8 @@ todoStore.save('abc4567', {title: 'Still Getting Coffee', done: false });
 
 Creates a new entry in the store. It is the shorter version of a complete save. This means you can not pass the id of an existing property. In fact `hoodie.store.add` will force `hoodie.store.save` to create a new object with the passed object properties of the `properties` parameter.
 
+// NOTE: I don’t understand the difference between save() and add()
+
 <pre>
 hoodie.store
 	.add('todo', { title: 'Getting Coffee' })
