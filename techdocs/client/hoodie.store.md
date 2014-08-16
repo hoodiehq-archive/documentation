@@ -8,11 +8,14 @@ basic validations.
 
 ## // TODO headline that explains stores are per-user
 
-An important thing to note is that storing and accessing objects with hoodie always means accessing your personal, local objects. All stored data has a fixed association to the user who created them. So you won't be able to access other user's data by default. 
+Hoodie Store works per-user. Storing data happens within a single user's context. All data you store into a particular instance of a store is only ever accessible by the user associated with the store.
 
-The objects you save with the `hoodie.store` are saved to your browser's local data storage. This is one of the most important key concepts of hoodie itself. Otherwise we would yet have still very limited possibilities to build offline first applications. Since hoodie is also designed to also store data on the serverside, there has to be a sync. Currently hoodie uses long polling to achieve this. In future releases, we will make use of [PouchDB](http://pouchdb.com), a [CouchDB](http://couchdb.apache.org) compatible JavaScript implemantation. 
+The store is automatically synced with the Hoodie backend. It can be shared between different devices that log into Hoodie as the same user. Other users never explicitly see this data. To share data with other users or the public, see “Sharing Data” below.
+
+The objects you save with the `hoodie.store` are saved to your browser's local data storage. This is one of the most important key concepts of Hoodie itself. Otherwise we would yet have still very limited possibilities to build offline first applications. Since Hoodie is also designed to also store data on the server side, there has to be a sync. Currently hoodie uses a custom sync solutoin to achieve this. In future releases, we will make use of [PouchDB](http://pouchdb.com).
 
 Please note that generally, in order save objects to the server's store, you need to be logged in with a valid user. Learn more about the hoodie user system at [`Hoodie.User`](./hoodie.user.md).
+
 
 ### Scoped Stores
 
@@ -27,6 +30,7 @@ todoStore.update('id123', {done: true});
 </pre>
 
 // TODO: explain was “scoped store” means
+
 
 ### Sharing Data
 
