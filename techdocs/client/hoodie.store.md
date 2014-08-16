@@ -6,6 +6,8 @@ This class defines the API that `hoodie.store` (local store) and `hoodie.open`
 (remote store) implement to assure a coherent API. It also implements some
 basic validations.
 
+// TOOD add simple exmaple that shows basic usage, like we have on the website
+
 ## // TODO headline that explains stores are per-user
 
 Hoodie Store works per-user. Storing data happens within a single user's context. All data you store into a particular instance of a store is only ever accessible by the user associated with the store.
