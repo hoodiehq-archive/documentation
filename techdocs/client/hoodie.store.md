@@ -249,7 +249,7 @@ but only changes the passed attributes of an existing object, if it exists. By t
 //	done: false,
 //	dueDate: 1381536000
 // }
-	
+
 var todoStore = hoodie.store('todo');
 
 todoStore
@@ -328,8 +328,8 @@ todoStore
 Update all will update all your objects of a specific store. The changes to be applied are defined by an update object. Just configure the specific attributes to the values the way you want to have your objects updated.
 
 <pre>
-var todoStore    = hoodie.store('todo'),
-	objectUpdate = {done: true};
+var todoStore = hoodie.store('todo'),
+    objectUpdate = {done: true};
 
 todoStore
 	.updateAll(objectUpdate)
@@ -544,11 +544,7 @@ todoStore.add({ title: 'Getting Coffee' });
 todoStore.findAll().done(function(allTodos) { /*...*/ });
 </pre>
 
-The benefit of this variant might not be clear at first glance. The primary benefit is, that you must set your object type only 
-once. So in case you want to rename you object type *"todo"* to *"things-to-be-done"*
-in a later phase of development, you have to change this in significantly fewer
-areas on you application code. By this you also avoid typos by reducing the 
-amount of occurrences, where you can make the mistake at.
+The benefit of this variant might not be clear at first glance. The primary benefit is, that you must set your object type only once. So in case you want to rename you object type *"todo"* to *"things-to-be-done"* in a later phase of development, you have to change this in significantly fewer areas on you application code. By this you also avoid typos by reducing the amount of occurrences, where you can make the mistake at.
 
 Imagine having the type of *"todoo"* with a double o at the end. This would be a 
 dramatic bug if it comes to storing a new todo object, because when reading all
@@ -568,7 +564,7 @@ For the call like illustrated in the last example, only a minimal subset of func
 
 By default `hoodie.store.validate` only checks for a valid object `type` and object `id`. The `type` as well as the `id` may not contain any slash ("/"). 
 This is due to the format, hoodie stores your object into the database.
-Every stored database entry has an internal identifier. It is a combination of both, formatted as *"type/id"*. Therefore it is absolutely permitted to have a slashes in neither of both.
+Every stored database entry has an internal identifier. It is a combination of both, formatted as *"type/id"*. Therefore it is absolutely not permitted to have a slashes in either of them.
 
 All other characters are allowed, though it might be the best, to stick with
 alphabetical characters and numbers. But you are still free to choose.
