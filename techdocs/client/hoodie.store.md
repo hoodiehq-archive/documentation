@@ -6,6 +6,16 @@ This class defines the API that `hoodie.store` (local store) and `hoodie.open`
 (remote store) implement to assure a coherent API. It also implements some
 basic validations.
 
+## // TODO headline that explains stores are per-user
+
+An important thing to note is that storing and accessing objects with hoodie always means accessing your personal, local objects. All stored data has a fixed association to the user who created them. So you won't be able to access other user's data by default. 
+
+The objects you save with the `hoodie.store` are saved to yourbrowsers local data storage. This is one of the most important key concepts of hoodie itself. Otherwise we would yet have still very limited possibilities to build offline first applications. Since hoodie is also designed to also store data on the serverside, there has to be a sync. Currently hoodie uses long polling to achieve this. In future releases, we will make use of [PouchDB](http://pouchdb.com), a [CouchDB](http://couchdb.apache.org) compatible JavaScript implemantation. 
+
+Please note that generally, in order save objects to the server's store, you need to be logged in with a valid user. Learn more about the hoodie user system at [`Hoodie.User`](./hoodie.user.md).
+
+### Scoped Stores
+
 The returned API can be called as function returning a store scoped by the 
 passed type, for example
 
@@ -16,7 +26,9 @@ todoStore.findAll().then(showAllTasks);
 todoStore.update('id123', {done: true});
 </pre>
 
-An important thing to note is that storing and accessing objects with hoodie always means accessing your personal, local objects. All stored data has a fixed association to the user who created them. So you won't be able to access other user's data by default. 
+// TODO: explain was “scoped store” means
+
+### Sharing Data
 
 There are a number of [Hoodie Plugins](http://) that allow for various types of fine-grained data sharing. Each one offers a different level of data privacy:
 
@@ -26,9 +38,7 @@ There are a number of [Hoodie Plugins](http://) that allow for various types of 
 
 **Attention!** Please note that most of these are community contributions and may have flaws or are just outdated. Always feel free to adopt an ophaned plugin of contribute your own.
 
-The objects you save with the `hoodie.store` are saved to yourbrowsers local data storage. This is one of the most important key concepts of hoodie itself. Otherwise we would yet have still very limited possibilities to build offline first applications. Since hoodie is also designed to also store data on the serverside, there has to be a sync. Currently hoodie uses long polling to achieve this. In future releases, we will make use of [PouchDB](http://pouchdb.com), a [CouchDB](http://couchdb.apache.org) compatible JavaScript implemantation. 
 
-Please note that generally, in order save objects to the server's store, you need to be logged in with a valid user. Learn more about the hoodie user system at [`Hoodie.User`](./hoodie.user.md).
 
 ## The General `options` Parameter
 
