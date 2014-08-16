@@ -118,8 +118,7 @@ hoodie.store('todo')
 `hoodie.store.findOrAdd(type, id, properties)`
 
 This is a convenient combination of hoodie.store.find and hoodie.store.add. Use can
-use if you would like to work with a particular store object, which existence 
-you are not sure about yet. Which cases would be worth using this? 
+use if you would like to work with a particular object, of which you don't know whether it exists. Which cases would be worth using this? 
 Well for example if you want to read a particular settings object, you want to 
 work with in a later step.
 
@@ -129,13 +128,13 @@ var configBlueprint = { language: 'en/en', appTheme: 'default' };
 var configId        = account.id + '_config';
 
 hoodie.store
-	.findOrCreate('custom-config', configId, configBlueprint)
+	.findOrAdd('custom-config', configId, configBlueprint)
 	.done(function(appConfig) { 
 		console.log('work with config', appConfig) 
 	});
 </pre>
 
-hoodie.store.findOrCreate takes three arguments here. All of them are required.
+hoodie.store.findOrAdd takes three arguments here. All of them are required.
 
  * `type`       => The kind of document you want to search the store for.
  * `id`         => The unique id of the document to search the store for.
@@ -151,7 +150,7 @@ Just to demonstrates the convenience of hoodie.store.findOrAdd, the below exampl
 illustrates the more complex alternative way of find and add:
 
 <pre>
-// IMPORTANT: BAD VARIATION
+// IMPORTANT: BAD VARIATION. USE `createOrAdd` INSTEAD
 	
 // pre-conditions: You already read a user's account object.
 var defaultConfig = {language: 'en/en', appTheme: 'default'},
@@ -171,7 +170,7 @@ hoodie.store
             }
 	});
         
-// IMPORTANT: BAD VARIATION
+// IMPORTANT: BAD VARIATION. USE `createOrAdd` INSTEAD
 </pre>
 
 ### findAll
@@ -198,7 +197,7 @@ todoStore
     
 </pre>
 
-What you really have to recognized here is that there is a mayor difference between the methods `then` and `done`. While `done` suggests that you can handle all the retrieved objects with it, actually it is `then` where `findAll` will deliver your data to. `done` on the other hand gets called when all other `then` calls have been passed. Yes you can utilize this mechanism to work with your data in several steps.
+What you really have to recognized here is that there is a mayor difference between the methods `then` and `done`. While `done` suggests that you can handle all the retrieved objects with it, actually it is `then` where `findAll` will deliver your data to. `done` on the other hand gets called when all other `then` calls have been passed.
 
 <pre>
 var todoStore = hoodie.store('todo');
