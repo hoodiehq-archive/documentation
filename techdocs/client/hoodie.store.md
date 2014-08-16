@@ -58,7 +58,7 @@ The options that are available for most of these methods are listed below. For d
 
 | Option        | Values           | Default | Description  |
 | ------------- |:----------------:| -------:| ------------:|
-| silent        | `true`, `false`  | false   | If set to `true`, this will stop the triggers from sending events about store changes. Otherwise the store informs all listeners, when events like addig or removing a data object occurs. Using the silent option might be interesting in cases you don't want to inform the event listeners about store changes. For instance when setting up the store for the first time or just storing application irrelevant meta/configuration data. |
+| silent        | `true`, `false`  | false   | If set to `true`, this will stop the triggers from sending events about store changes. Otherwise the store informs all listeners, when events like adding or removing a data object occurs. Using the silent option might be interesting in cases you don't want to inform the event listeners about store changes. For instance when setting up the store for the first time or just storing application irrelevant meta/configuration data. |
 
 
 
@@ -68,8 +68,7 @@ The options that are available for most of these methods are listed below. For d
 `hoodie.store(_type_, _id_)`
 
 
-It is most likely, that your application will have more than one type of store object. Even if you have just a single object `hoodie.store(type)` 
-comes handy. Say you have to work with objects of the type `todo`, you usually
+It is possble, that your application will have more than one type of store object. Even if you have just a single object `hoodie.store(type)` comes handy. Say you have to work with objects of the type `todo`, you usually
 do something like the following:
 
 <pre>
