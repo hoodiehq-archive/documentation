@@ -51,7 +51,7 @@ There are a number of [Hoodie Plugins](http://) that allow for various types of 
 Most of the `hoodie.store` functions come with an `options` parameter, that is always passed as last parameter of a function call. This parameter was created to pass optional configurations to the certain function call. Like the following.
 
 <pre>
-	hoodie.store('todo').remove(id, {silent: true})
+  hoodie.store('todo').remove(id, {silent: true})
 </pre>
 
 The options that are available for most of these methods are listed below. For details on `options` parameters of particular functions, please see the section of the particular function itself.
@@ -93,9 +93,9 @@ Creates a new entry in the store. It is the shorter version of a complete save. 
 
 <pre>
 hoodie.store
-	.add('todo', { title: 'Getting Coffee' })
-	.done(function(todo) { /* success handling */ });
-	.fail(function(todo) { /* error handling */ });
+  .add('todo', { title: 'Getting Coffee' })
+  .done(function(todo) { /* success handling */ });
+  .fail(function(todo) { /* error handling */ });
 </pre>
 
 ### find
@@ -108,9 +108,9 @@ Searches the store for a stored object with a particular `id`. Returns a promise
 
 <pre>
 hoodie.store('todo')
-	.find('hrmvby9')
-	.done(function(todo) { /* success handling */ });
-	.fail(function(todo) { /* error handling */ });
+  .find('hrmvby9')
+  .done(function(todo) { /* success handling */ });
+  .fail(function(todo) { /* error handling */ });
 </pre>
 
 ### findOrAdd
@@ -128,10 +128,10 @@ var configBlueprint = { language: 'en/en', appTheme: 'default' };
 var configId        = account.id + '_config';
 
 hoodie.store
-	.findOrAdd('custom-config', configId, configBlueprint)
-	.done(function(appConfig) { 
-		console.log('work with config', appConfig) 
-	});
+  .findOrAdd('custom-config', configId, configBlueprint)
+  .done(function(appConfig) { 
+    console.log('work with config', appConfig) 
+  });
 </pre>
 
 hoodie.store.findOrAdd takes three arguments here. All of them are required.
@@ -151,24 +151,24 @@ illustrates the more complex alternative way of find and add:
 
 <pre>
 // IMPORTANT: BAD VARIATION. USE `createOrAdd` INSTEAD
-	
+  
 // pre-conditions: You already read a user's account object.
 var defaultConfig = {language: 'en/en', appTheme: 'default'},
-	configId      = account.id + '_config';
+  configId      = account.id + '_config';
 
 hoodie.store
-	.find('custom-config', configId, configBlueprint)
-	.done(function(appConfig) {
-		console.log('work with config', appConfig);
+  .find('custom-config', configId, configBlueprint)
+  .done(function(appConfig) {
+    console.log('work with config', appConfig);
 
-		if(appConfig === undefined) {
-			hoodie.store
-				.add('custom-config', bluePrint)
-				.done(function(newConfig) {
-					// work with the newConfig here
-				});
+    if(appConfig === undefined) {
+      hoodie.store
+        .add('custom-config', bluePrint)
+        .done(function(newConfig) {
+          // work with the newConfig here
+        });
             }
-	});
+  });
         
 // IMPORTANT: BAD VARIATION. USE `createOrAdd` INSTEAD
 </pre>
@@ -180,7 +180,7 @@ hoodie.store
 
 With this you can retrieve all objects of a particular `type` from the store. Todos for instance. Given, that you already have existing todo objects stored, you can retrieve all of them like in the following example.
 
-<pre>	
+<pre> 
 
 var todoStore = hoodie.store('todo');
 
@@ -243,11 +243,11 @@ but only changes the passed attributes of an existing object, if it exists. By t
 //
 // A todo object could look like this:
 //
-// {	
-//	id:'abc4567',
-//	title: 'Start learning Hoodie', 
-//	done: false,
-//	dueDate: 1381536000
+// {  
+//  id:'abc4567',
+//  title: 'Start learning Hoodie', 
+//  done: false,
+//  dueDate: 1381536000
 // }
 
 var todoStore = hoodie.store('todo');
@@ -332,29 +332,29 @@ var todoStore = hoodie.store('todo'),
     objectUpdate = {done: true};
 
 todoStore
-	.updateAll(objectUpdate)
-	.then(function(updates) {
-		console.log('the following todos are done', updates);
-	});
+  .updateAll(objectUpdate)
+  .then(function(updates) {
+    console.log('the following todos are done', updates);
+  });
 </pre>
 
 Like with `hoodie.store.update` you can pass an update function instead of an update object. So if you want update only a particular set of store objects, passing an update function is your friend. This is what comes close to a WHERE clause you may probably now from SQL. When using an update function to modify stored data, please make sure, to return the updated object at the end of the update function.
 
 <pre>
 var todoStore  = hoodie.store('todo'),
-	updateFunc = function(todo) {
-		if(todo.done != true) {
-			todo.done = true;
-		}
-		
-		return todo;
-	};
+  updateFunc = function(todo) {
+    if(todo.done != true) {
+      todo.done = true;
+    }
+    
+    return todo;
+  };
 
 todoStore
-	.updateAll(updateFunc)
-	.then(function(updates) {
-		console.log('the following todos are done', updates);
-	});
+  .updateAll(updateFunc)
+  .then(function(updates) {
+    console.log('the following todos are done', updates);
+  });
 </pre>
 
 ### remove
@@ -368,21 +368,21 @@ This simple deletes one entriy of the defined `type` identified by it's `id` fro
 // deletes the first found entry from the todo store
 
 var todoStore = hoodie.store('todo'),
-	todo;
+  todo;
 
 todoStore
-	.findAll()
-	.then(function(todos) {
-		var todo = todos[0];
+  .findAll()
+  .then(function(todos) {
+    var todo = todos[0];
 
-		todoStore
-			.remove(todo.id)
-			.then(function(removedTodos) {
-				console.log(removedTodos);
-			})
-			.fail(function(error) {
-				console.log('Error while removing todo', error);
-			});
+    todoStore
+      .remove(todo.id)
+      .then(function(removedTodos) {
+        console.log(removedTodos);
+      })
+      .fail(function(error) {
+        console.log('Error while removing todo', error);
+      });
 });
 </pre>
 
@@ -399,9 +399,9 @@ This simple deletes all entries of the defined `type` from a user's store. Pleas
 var todoStore = hoodie.store('todo');
 
 todoStore
-	.removeAll()
-	.then(function(removedTodos) {
-		console.log(removedTodos);
+  .removeAll()
+  .then(function(removedTodos) {
+    console.log(removedTodos);
 });
 </pre>
 
@@ -425,15 +425,15 @@ As the above table already describes, the event messages are emitted as type `st
 <pre>
 
 hoodie.store.on('todo:add', function(createdTodo) {
-	console.log('A todo has been added => ', createdTodo);
+  console.log('A todo has been added => ', createdTodo);
 });
 
 hoodie.store.on('todo:remove', function(removedTodo) {
-	console.log('A todo has been removed => ', removedTodo);
+  console.log('A todo has been removed => ', removedTodo);
 });
 
 hoodie.store.on('todo:update', function(updatedTodo) {
-	console.log('A todo has been updated => ', updatedTodo);
+  console.log('A todo has been updated => ', updatedTodo);
 });
 
 </pre>
@@ -487,16 +487,16 @@ It is also very important to keep track of the the contexts you are listening an
 
 
 <pre>
-	var todoStore = hoodie.store('todo');
-	
-	todoStore.on('trigger-test', function(num) {
-		// will only be called by the second trigger
-		console.log('triggered by', num);
-	});
-	
-	hoodie.store.trigger('trigger-test', 'number one');
-	todoStore.trigger('trigger-test', 'number two');
-	hoodie.store(hoodie).trigger('trigger-test', 'number three');
+  var todoStore = hoodie.store('todo');
+  
+  todoStore.on('trigger-test', function(num) {
+    // will only be called by the second trigger
+    console.log('triggered by', num);
+  });
+  
+  hoodie.store.trigger('trigger-test', 'number one');
+  todoStore.trigger('trigger-test', 'number two');
+  hoodie.store(hoodie).trigger('trigger-test', 'number three');
 </pre>
 
 ### off
