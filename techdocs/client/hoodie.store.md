@@ -104,6 +104,8 @@ hoodie.store
 
 Searches the store for a stored object with a particular `id`. Returns a promise so success and failure can be handled. A failure occurs for example when no object
 
+// TODO: unfinished sentence, what is an error condition? Is no-results an error condition?
+
 <pre>
 hoodie.store('todo')
 	.find('hrmvby9')
