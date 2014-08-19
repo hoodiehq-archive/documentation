@@ -13,7 +13,7 @@ passed type, for example
 
 <pre>
     var taskStore = hoodie.store('task');
-    taskStore.findAll().then( showAllTasks );
+    taskStore.findAll().done( showAllTasks );
     taskStore.update('id123', {done: true});
 </pre>
 
