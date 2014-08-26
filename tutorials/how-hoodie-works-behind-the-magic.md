@@ -6,6 +6,7 @@ This tutorial shows you how exactly all parts of Hoodie work together to create 
 - <a href="#all-parts-of-hoodie">All parts of Hoodie</a>
 - <a href="#how-it-works-example-sending-an-email">How it works: example – sending an email</a>
 - - <a href="#how-it-works-example-sending-a-message">How do other devices know data was changed</a>
+- [Keeping multiple devices in sync](#keeping-multiple-devices-in-sync)
 
 ### All parts of Hoodie
 When we build an app with Hoodie, we have three parts: frontend, backend, and they’re connected with each other through the Hoodie sync.
@@ -61,3 +62,35 @@ A huge benefit of Hoodie is not just it's offline first, also it has a build in 
 
 This is how it works:
 When we add some data to our app, like saving a new message, it works like we described before. In addition to that, CouchDB sends out a task to the user data was changed, to update the data of your app and download it. So you do not have to do it on your own.
+
+### Keeping multiple devices in sync
+
+Imagine the user opened your app in two browser tabs at once or both on their phone and tablet at the same time. Without automatically keeping the data in sync we would soon run into problems where the application and data state is no longer immediately obvious.
+
+Imagine one modifies data in your app, then continues research and comes back to your app to continue data entry. For whatever reason this time they ended up in another open tab and now their previous edits are gone. There are many ways to solve this particular situation, but they always include some kind of manual reload, data merging and most certainly frustration with your app.
+
+To prevent this situation entirely we should automatically update the data that is displayed and even though that is really hard to build on your own – guess what – Hoodie offer this for free.
+
+Using [CouchDB's `_changes` feed](http://docs.couchdb.org/en/latest/api/database/changes.html?highlight=_changes#post--db-_changes) Hoodie is always aware of things that happen to the user's data and makes them available via events.
+
+```js
+hoodie.store.on('add:todo', function(doc) {
+  renderTodo(doc);
+});
+```
+
+The above code example shows an `add` event for the store type `todo`.
+You're most certainly handling this event in order to manage changes to local data already, but you should be aware that this also contains remote data.
+
+You heard that right, the standard `add` event already contains remote data, which means for basic use cases remote sync just happens automatically. Magic indeed.
+
+```js
+hoodie.store.on('add:todo', function(doc, options) {
+  if (options.remote) {
+    return renderRemoteTodo(doc);
+  }
+  renderTodo(doc);
+});
+```
+
+There might be use cases where you want to handle remote data explicitly, which is why the options object passed to the event handler contains information about the change's origin.
