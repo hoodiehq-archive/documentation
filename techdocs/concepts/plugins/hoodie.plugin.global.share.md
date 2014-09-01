@@ -1,3 +1,7 @@
+---
+layout: layout
+---
+
 # hoodie-plugin-global-share  [![Build Status](https://travis-ci.org/hoodiehq/hoodie-plugin-global-share.png?branch=master)](https://travis-ci.org/hoodiehq/hoodie-plugin-global-share)
 
 ### Installation:
@@ -60,4 +64,3 @@ hoodie.global.find('tasks').done(function(publicTasks) { ... });
 ```bash
 grunt
 ```
-

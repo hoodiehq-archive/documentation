@@ -1,43 +1,64 @@
-# Hoodie.Account
+# hoodie.account 
+**version:** 	*> 0.2*
+**source:** 	*hoodie/src/hoodie/account.js*
 
-*Source: hoodie/src/hoodie/account.js*
+#### after reading this you will know
+> - how to sign up / in / out a user
+> - how to get information about the user and store it
+> - how to listen to account even
+
+What is an account and what can it provide?
 
 
 ## Methods
 
-<hr />
-###### blueprint 
-account.signUp // headline
+- signUp()
+- signIn()
+- signOut() // please add anchors
 
-account signUp // description
+### account.signIn() (> v.0.2)
+*Signin a user.*
 
-.signUp(‘username’, ‘password’) // Options + hoodie version (since v 1.0 f.e.)
+```javascript
+hoodie.account.signIn('user', 'password');
+```
 
-var, type, description
-var, type, description
+| option     | type | desc |
+| ------------- |:-------------:| -----:|
+| user     | String | username |
+| password      | String      |   the valid password |
 
-longer description with all options.
 
-example of code:
-hoodie.account.signUp('joe@example.com', 'secret');
+<br />
+###### Example
 
-practical example:
- $('#signUpForm').submit(function (ev) {
-ev.preventDefault();
-var username = $('#signUpUsername').val();
-var password = $('#signUpPassword').val();
+```javascript
+ $('#signInForm').submit(function (ev) {
+    ev.preventDefault();
+    var username = $('#signUpUsername').val();
+    var password = $('#signUpPassword').val();
 
-hoodie.account.signUp(username, password);
+    hoodie.account.signIn(username, password);
 });
+```
+<br />
+###### Notes
+> There is no validation provided here. Please make this work on the frontend side.
+> User need existing account.
+> Please create an account with ````account.SignUp();````
 
 CAUTION! This might be a problem… // show the user if anything could go wrong & why!
 // add errorhandling → FAQ
 
 
 
-<hr />
 
 
+
+
+---
+layout: layout
+---
 
 
 
@@ -62,7 +83,7 @@ hoodie.account.signIn('joe@example.com', 'secret');
 <pre>
 hoodie.account.signIn('joe@example.com', 'secret');
 </pre>
- 
+
 
 ### signUp
 // sign up with username & password
@@ -78,7 +99,7 @@ hoodie.account.signIn('joe@example.com', 'secret');
 hoodie.account.signUp('joe@example.com', 'secret', 'secret');
 </pre>
 
-#### ?
+#### 
 // you need to signIn after a signUp!
 // is the check second PW bug fixed finally?
 
@@ -95,7 +116,7 @@ hoodie.account.signUp('joe@example.com', 'secret', 'secret');
   //
   // If the user signs up for real later, we 'upgrade' the account, meaning we
   // change the username and password internally instead of creating another user.
- 
+
 <pre>
 hoodie.account.anonymousSignUp();
 </pre>
@@ -179,7 +200,7 @@ hoodie.account.username;
 ### authenticate
 // Use this method to assure that the user is authenticated:
   // `hoodie.account.authenticate().done( doSomething ).fail( handleError )`
-  
+
 ### hasAccount
 // anonymous accounts get created when data needs to be
 // synced without the user having an account. That happens

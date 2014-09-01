@@ -1,0 +1,767 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><style>/* Fonts */
+@font-face{
+  font-family: octicons-anchor;
+  src: url(data:font/woff;charset=utf-8;base64,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) format('woff');
+}
+
+/* Body */
+html { font-size: 100%; overflow-y: scroll; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
+
+body{
+  color:#4d4d4c;
+  font-family:Georgia, Palatino, 'Palatino Linotype', Times, 'Times New Roman',
+              "Hiragino Sans GB", "STXihei", "微软雅黑", serif;
+  font-size:12px;
+  line-height:1.5em;
+  background:#fefefe;
+  width: 45em;
+  margin: 10px auto;
+  padding: 30px;
+  border: 1px solid #ddd;
+  outline: 1300px solid #f8f8f8;
+}
+
+/* Links */
+a{ color: #06d; text-decoration:none; }
+a:hover{ color: #06e; text-decoration: underline; }
+a:active{ color:#faa700; }
+a:focus{ outline: thin dotted; }
+a:hover, a:active{ outline: 0; }
+
+::-moz-selection { background:rgba(255,255,0,0.3); color:#000 }
+::selection { background:rgba(255,255,0,0.3); color:#000 }
+
+a::-moz-selection { background:rgba(255,255,0,0.3); color:#0645ad }
+a::selection { background:rgba(255,255,0,0.3); color:#0645ad }
+
+/* Header Anchor Links*/
+.headeranchor-link {
+  color:#111;
+  border: 0;
+  margin-left: -20px;
+  padding-right: 6px;
+  cursor: pointer;
+  position: absolute;
+  display: block;
+  top: 0;
+  left: 0;
+  bottom: 0;
+}
+
+.headeranchor {
+  font: normal normal 16px octicons-anchor;
+  line-height: 1;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.headeranchor-link:hover,
+.headeranchor-link:visited,
+.headeranchor-link:active
+{ text-decoration: none; color:#4d4d4c; }
+.headeranchor-link:hover .headeranchor:before,
+h1:hover .headeranchor:before,
+h2:hover .headeranchor:before,
+h3:hover .headeranchor:before,
+h4:hover .headeranchor:before,
+h5:hover .headeranchor:before,
+h6:hover .headeranchor:before
+{ content: '\f05c'; }
+
+abbr { cursor: pointer; }
+
+/* Paragraphs */
+p { margin:1em 0; }
+
+/* Images */
+img {
+  max-width:100%;
+  border: 0;
+  -ms-interpolation-mode: bicubic;
+  vertical-align: middle;
+}
+
+/* Headers */
+h1,h2,h3,h4,h5,h6 {
+  font-weight:normal;
+  color:#111;
+  line-height: 1.7;
+  position: relative;
+}
+h4,h5,h6{ font-weight: bold; }
+h1 { font-size:2.5em; border-bottom: 1px solid #ddd;}
+h2 { font-size:2em; border-bottom:1px solid #eee; padding-bottom: 5px; }
+h3 { font-size:1.5em; }
+h4 { font-size:1.2em; }
+h5 { font-size:1em; }
+h6 { font-size:0.9em; }
+
+/* Block Quotes */
+blockquote {
+  color:#666666;
+  margin:0;
+  padding-left: 3em;
+  border-left: 0.5em #EEE solid;
+}
+hr { display: block; height: 2px; border: 0; border-top: 1px solid #aaa;border-bottom: 1px solid #eee; margin: 1em 0; padding: 0; }
+
+/* Raw Blocks */
+pre, code, kbd, samp {
+  color: #000;
+  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  font-size: 0.88em;
+  background-color: #F8F8F8;
+  border: 1px solid #CCC;
+}
+
+pre {
+  padding: 10px;
+  overflow: auto;
+}
+
+code { padding: 0 3px 0 3px; }
+pre code { border: 0; padding: 0; }
+
+/* Admonition */
+.admonition {
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  font-size: 0.88em;
+  padding: 0.5em 1em 0.5em 1em;
+  margin: 10px auto;
+}
+
+.admonition p {
+  padding: 0;
+  margin: 0.5em 0 0.5em 0;
+}
+
+.admonition-title {
+  font-weight: bold;
+}
+
+.admonition.attention {
+  color: #4F8A10;
+  background-color: #DFF2BF;
+  border: 1px solid #4F8A10;
+}
+
+.admonition.caution {
+  color: #9F6000;
+  background-color: #FEEFB3;
+  border: 1px solid #9F6000;
+}
+
+.admonition.hint {
+  color: #00529B;
+  background-color: #BDE5F8;
+  border: 1px solid #00529B;
+}
+
+.admonition.danger {
+  color: #D8000C;
+  background-color: #FFBABA;
+  border: 1px solid #D8000C;
+}
+
+.admonition.note {
+  color: #888888;
+  background-color: #F8F8F8;
+  border: 1px solid #888888;
+}
+
+/* Inlines */
+b, strong { font-weight: bold; }
+
+ins { background: #ff9; color: #000; text-decoration: none; }
+
+mark { background: #ff0; color: #000; font-style: italic; font-weight: bold; }
+
+sub, sup { font-size: 75%; line-height: 0; position: relative; vertical-align: baseline; }
+sup { top: -0.5em; }
+sub { bottom: -0.25em; }
+
+dfn { font-style: italic; }
+
+/* Lists */
+ul, ol { padding-left: 30px; }
+li p:last-child { margin:0 }
+.task-list-item { list-style-type: none; }
+.task-list-item input { float:left; margin-left: -20px; margin-top: 6px; }
+dt { font-weight: bold; font-style: italic;}
+dd { margin: 0 0 0 2em; }
+
+/* Tables */
+table { width: 100%; border-collapse: collapse; overflow-x: auto; overflow-y: hidden; display: block;}
+table tr { background-color: #fefefe; }
+table tr:nth-child(2n) { background-color: #f8f8f8; }
+td, th { border: 1px solid #ddd; padding: 6px 13px; }
+
+/* Codehilite Tables */
+.codehilitetable { border: 0; border-spacing: 0; }
+.linenos, .code, .codehilitetable td { border: 0; padding: 0; }
+td:not(.linenos) .linenodiv { padding: 0 !important; }
+.code { width: 100%; }
+.linenos div pre, .linenodiv pre {
+  border: 0;
+  border-top: 1px solid #CCC;
+  border-left: 1px solid #CCC;
+  border-right: 1px solid #CCC;
+  border-bottom: 1px solid #CCC;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+  -webkit-border-top-left-radius: 3px;
+  -webkit-border-bottom-left-radius: 3px;
+  -moz-border-radius-topleft: 3px;
+  -moz-border-radius-bottomleft: 3px;
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+}
+
+.code div pre {
+  border: 0;
+  border-top: 1px solid #CCC;
+  border-right: 1px solid #CCC;
+  border-bottom: 1px solid #CCC;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+  -webkit-border-top-right-radius: 3px;
+  -webkit-border-bottom-right-radius: 3px;
+  -moz-border-radius-topright: 3px;
+  -moz-border-radius-bottomright: 3px;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+
+/* Media */
+@media only screen and (min-width: 480px) {
+  body{ font-size:14px; }
+}
+
+@media only screen and (min-width: 768px) {
+  body{ font-size:16px; }
+}
+
+@media print {
+  * { background: transparent !important; color: black !important; filter:none !important; -ms-filter: none !important; }
+  body{ font-size:12pt; max-width:100%; outline:none; border: 0;}
+  a, a:visited { text-decoration: underline; }
+  .headeranchor-link { display: none; }
+  hr { height: 1px; border:0; border-bottom:1px solid black; }
+  a[href]:after { content: " (" attr(href) ")"; }
+  abbr[title]:after { content: " (" attr(title) ")"; }
+  .ir a:after, a[href^="javascript:"]:after, a[href^="#"]:after { content: ""; }
+  pre { white-space: pre; white-space: pre-wrap; word-wrap: break-word; }
+  pre, blockquote { border: 1px solid #999; padding-right: 1em; page-break-inside: avoid; }
+  tr, img { page-break-inside: avoid; }
+  img { max-width: 100% !important; }
+  p, h2, h3 { orphans: 3; widows: 3; }
+  h2, h3 { page-break-after: avoid; }
+}
+</style><title>hoodie.account</title></head><body><h1 id="hoodieaccount"><a name="user-content-hoodieaccount" href="#hoodieaccount" class="headeranchor-link"  aria-hidden="true"><span class="headeranchor"></span></a>hoodie.account</h1>
+<blockquote>
+<p><strong>version:</strong>      <em>&gt; 0.1.0</em> <br /><br />
+<strong>source:</strong>       <em>hoodie/src/hoodie/account.js</em><br /><br />
+<strong>tutorial:</strong>     *<a href="http://hood.ie/tutorial/accounts*">http://hood.ie/tutorial/accounts*</a><br /></p>
+</blockquote>
+<p><strong><br />after reading this you will know:</strong><br />
+- how to sign up / in / out a user<br />
+- how to get information about the user and store it<br />
+- how to listen to account even</p>
+<h2 id="introduction"><a name="user-content-introduction" href="#introduction" class="headeranchor-link"  aria-hidden="true"><span class="headeranchor"></span></a>Introduction</h2>
+<p><em>The account object gives you the methods to create, update and delete an account. Your data will be stored locally and synced by saving to the server. After logging in on another device you can access it again, because your data is always bound to the account by default.</em></p>
+<h2 id="methods"><a name="user-content-methods" href="#methods" class="headeranchor-link"  aria-hidden="true"><span class="headeranchor"></span></a>Methods</h2>
+<ul>
+<li><a href="#accountsignup">signUp</a></li>
+<li>signIn()</li>
+<li>signOut() // please add anchors</li>
+<li>changePassword()</li>
+<li>resetPassword()</li>
+<li>changeUsername()</li>
+<li>destroy()</li>
+<li>isSignedIn() // tba</li>
+<li>confirm(options) // tba</li>
+<li>checkAvailability(username) // tba</li>
+<li>userData() // tba</li>
+</ul>
+<h2 id="events"><a name="user-content-events" href="#events" class="headeranchor-link"  aria-hidden="true"><span class="headeranchor"></span></a>Events</h2>
+<ul>
+<li>signup (username)</li>
+<li>signup:anonymous</li>
+<li>signin:anonymous (username)</li>
+<li>movedata</li>
+<li>reauthenticated (newUsername)</li>
+<li>signin (newUsername, newHoodieId, options)</li>
+<li>changepassword</li>
+<li>resetpassword</li>
+<li>error:passwordreset (error, username)</li>
+<li>changeusername (newUsername)</li>
+<li>error:unauthenticated</li>
+<li>passwordreset (username)</li>
+<li>signup (username)</li>
+<li>cleanup</li>
+<li>signout (username)</li>
+</ul>
+<p><a name="accountsignup" id="accountsignup"></a></p>
+<h3 id="accountsignup"><a name="user-content-accountsignup" href="#accountsignup" class="headeranchor-link"  aria-hidden="true"><span class="headeranchor"></span></a>account.signUp()</h3>
+<blockquote>
+<p><strong>version:</strong>      <em>&gt; 0.2.0</em> </p>
+</blockquote>
+<pre><code class="javascript">hoodie.account.signUp(user, password, password2);
+</code></pre>
+
+<table>
+<thead>
+<tr>
+<th>option</th>
+<th align="center">type</th>
+<th align="center">description</th>
+<th align="center">required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>user</td>
+<td align="center">String</td>
+<td align="center">username</td>
+<td align="center">yes</td>
+</tr>
+<tr>
+<td>password</td>
+<td align="center">String</td>
+<td align="center">valid password</td>
+<td align="center">yes</td>
+</tr>
+<tr>
+<td>password2</td>
+<td align="center">String</td>
+<td align="center">repeat password</td>
+<td align="center">yes</td>
+</tr>
+</tbody>
+</table>
+<p><br /></p>
+<p>SignUp uses standard CouchDB API to create a new document in _users db.</p>
+<p>The backend will automatically create a userDB based on the username address and approve the account by adding a &lsquo;confirmed&rsquo; role to the user doc. The account confirmation might take a while, so we keep trying to sign in with a 300ms timeout.</p>
+<h6 id="example"><a name="user-content-example" href="#example" class="headeranchor-link"  aria-hidden="true"><span class="headeranchor"></span></a>Example</h6>
+<pre><code class="javascript"> $('#signUpForm').submit(function (ev) {
+    ev.preventDefault();
+    var username  = $('#signUpUsername').val();
+    var password  = $('#signUpPassword').val();
+    var password2 = $('#signUpPassword2').val();
+
+    hoodie.account.signUp(username, password, password2);
+});
+</code></pre>
+
+<h6 id="notes"><a name="user-content-notes" href="#notes" class="headeranchor-link"  aria-hidden="true"><span class="headeranchor"></span></a>Notes</h6>
+<blockquote>
+<ul>
+<li>You need to signIn after a signUp!</li>
+<li>Second password does not get checked at the moment. It is still a bug. <br />
+Please make sure to validate this on the frontend side.</li>
+</ul>
+</blockquote>
+<p><br /></p>
+<h3 id="accountsignin"><a name="user-content-accountsignin" href="#accountsignin" class="headeranchor-link"  aria-hidden="true"><span class="headeranchor"></span></a>account.signIn()</h3>
+<blockquote>
+<p><strong>version:</strong>      <em>&gt; 0.2.0</em> </p>
+</blockquote>
+<pre><code class="javascript">hoodie.account.signIn(user, password, options);
+</code></pre>
+
+<table>
+<thead>
+<tr>
+<th>option</th>
+<th align="center">type</th>
+<th align="center">description</th>
+<th align="center">required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>user</td>
+<td align="center">String</td>
+<td align="center">username</td>
+<td align="center">yes</td>
+</tr>
+<tr>
+<td>password</td>
+<td align="center">String</td>
+<td align="center">valid password</td>
+<td align="center">yes</td>
+</tr>
+<tr>
+<td>options</td>
+<td align="center">Boolean</td>
+<td align="center">moveData</td>
+<td align="center">no</td>
+</tr>
+<tr>
+<td>options</td>
+<td align="center">Boolean</td>
+<td align="center">silent</td>
+<td align="center">no</td>
+</tr>
+</tbody>
+</table>
+<p><br /></p>
+<p>SignIn() uses the standard CouchDB API to create a new user session (POST /_session).<br />
+Besides the standard sign in, hoodie also checks if the account has been confirmed (roles include &lsquo;confirmed&rsquo; role).</p>
+<p>When signing in, by default all local data gets cleared beforehand. Otherwise data that has been created beforehand (authenticated with another user account or anonymously) would be merged into the user account that signs in. That only applies if username isn&rsquo;t the same as current username.</p>
+<p>To prevent data loss, signIn can be called with <code>options.moveData = true</code>, that will move all data from the anonymous account to the account the user signed into.</p>
+<h6 id="example_1"><a name="user-content-example_1" href="#example_1" class="headeranchor-link"  aria-hidden="true"><span class="headeranchor"></span></a>Example</h6>
+<pre><code class="javascript"> $('#signInForm').submit(function (ev) {
+    ev.preventDefault();
+    var username = $('#signUpUsername').val();
+    var password = $('#signUpPassword').val();
+
+    hoodie.account.signIn(username, password);
+});
+</code></pre>
+
+<h6 id="notes_1"><a name="user-content-notes_1" href="#notes_1" class="headeranchor-link"  aria-hidden="true"><span class="headeranchor"></span></a>Notes</h6>
+<blockquote>
+<ul>
+<li>Please create an account with <code>account.SignUp();</code></li>
+</ul>
+</blockquote>
+<p><br /></p>
+<h3 id="accountsignout"><a name="user-content-accountsignout" href="#accountsignout" class="headeranchor-link"  aria-hidden="true"><span class="headeranchor"></span></a>account.signOut()</h3>
+<blockquote>
+<p><strong>version:</strong>      <em>&gt; 0.2.0</em> </p>
+</blockquote>
+<pre><code class="javascript">hoodie.account.signOut(options);
+</code></pre>
+
+<table>
+<thead>
+<tr>
+<th>option</th>
+<th align="center">type</th>
+<th align="center">description</th>
+<th align="center">required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>options</td>
+<td align="center">Boolean</td>
+<td align="center">cleanup</td>
+<td align="center">no</td>
+</tr>
+<tr>
+<td>options</td>
+<td align="center">Boolean</td>
+<td align="center">silent</td>
+<td align="center">no</td>
+</tr>
+</tbody>
+</table>
+<p><br /></p>
+<p>SignOut() uses standard CouchDB API to invalidate a user session (DELETE /_session).<br />
+Calling signOut() with <code>options.cleanup = true</code> cleans the localStorage. All local changes get deleted without sync to the server.</p>
+<h6 id="example_2"><a name="user-content-example_2" href="#example_2" class="headeranchor-link"  aria-hidden="true"><span class="headeranchor"></span></a>Example</h6>
+<pre><code class="javascript">hoodie.account.signOut();
+</code></pre>
+
+<p><br /></p>
+<h6 id="notes_2"><a name="user-content-notes_2" href="#notes_2" class="headeranchor-link"  aria-hidden="true"><span class="headeranchor"></span></a>Notes</h6>
+<blockquote>
+<p>-</p>
+</blockquote>
+<p><br /></p>
+<h3 id="accountchangepassword"><a name="user-content-accountchangepassword" href="#accountchangepassword" class="headeranchor-link"  aria-hidden="true"><span class="headeranchor"></span></a>account.changePassword()</h3>
+<blockquote>
+<p><strong>version:</strong>      <em>&gt; 0.2.0</em> </p>
+</blockquote>
+<pre><code class="javascript">hoodie.account.changePassword(currentpassword, newpassword);
+</code></pre>
+
+<table>
+<thead>
+<tr>
+<th>option</th>
+<th align="center">type</th>
+<th align="center">description</th>
+<th align="center">required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>currentpassword</td>
+<td align="center">String</td>
+<td align="center">current password</td>
+<td align="center">no</td>
+</tr>
+<tr>
+<td>newpassword</td>
+<td align="center">String</td>
+<td align="center">new password</td>
+<td align="center">no</td>
+</tr>
+</tbody>
+</table>
+<p><br /></p>
+<h6 id="example_3"><a name="user-content-example_3" href="#example_3" class="headeranchor-link"  aria-hidden="true"><span class="headeranchor"></span></a>Example</h6>
+<pre><code class="javascript">$('#editUserForm').submit(function (ev) {
+    ev.preventDefault();
+    var currentpassword = $('#pw1').val();
+    var newpassword = $('#pw2').val();
+
+    hoodie.account.changePassword(pw1, pw2);
+});
+</code></pre>
+
+<p><br /></p>
+<h6 id="notes_3"><a name="user-content-notes_3" href="#notes_3" class="headeranchor-link"  aria-hidden="true"><span class="headeranchor"></span></a>Notes</h6>
+<blockquote>
+<ul>
+<li>The hoodie API requires the currentPassword for security reasons, but couchDb doesn&rsquo;t require it for a password change, so it&rsquo;s ignored in this implementation of the hoodie API.</li>
+</ul>
+</blockquote>
+<p><br /></p>
+<h3 id="accountresetpassword"><a name="user-content-accountresetpassword" href="#accountresetpassword" class="headeranchor-link"  aria-hidden="true"><span class="headeranchor"></span></a>account.resetPassword()</h3>
+<blockquote>
+<p><strong>version:</strong>      <em>&gt; 0.2.0</em> </p>
+</blockquote>
+<pre><code class="javascript">hoodie.account.resetPassword(username);
+</code></pre>
+
+<table>
+<thead>
+<tr>
+<th>option</th>
+<th align="center">type</th>
+<th align="center">description</th>
+<th align="center">required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>username</td>
+<td align="center">String</td>
+<td align="center">username</td>
+<td align="center">yes</td>
+</tr>
+</tbody>
+</table>
+<p><br /></p>
+<p>Here we sign up a new CouchDB user with some special attributes, but this happends internally. It will be picked up by the password reset worker and removed once the password was reset.</p>
+<h6 id="example_4"><a name="user-content-example_4" href="#example_4" class="headeranchor-link"  aria-hidden="true"><span class="headeranchor"></span></a>Example</h6>
+<pre><code class="javascript">$('#editUserForm').submit(function (ev) {
+    ev.preventDefault();
+    var user = hoodie.account.username;
+
+    if (user != undefined) {
+        hoodie.account.resetPassword(user);
+    } else {
+        alert('Please log in first!');
+    }
+});
+</code></pre>
+
+<p><br /></p>
+<h6 id="notes_4"><a name="user-content-notes_4" href="#notes_4" class="headeranchor-link"  aria-hidden="true"><span class="headeranchor"></span></a>Notes</h6>
+<blockquote>
+<ul>
+<li>We still need to check, if the passwordReset gets executed. There is already a filed issue to fix that.</li>
+</ul>
+</blockquote>
+<p><br /></p>
+<h3 id="accountcheckpasswordreset"><a name="user-content-accountcheckpasswordreset" href="#accountcheckpasswordreset" class="headeranchor-link"  aria-hidden="true"><span class="headeranchor"></span></a>account.checkPasswordReset()</h3>
+<blockquote>
+<p><strong>version:</strong>      <em>&gt; 0.2.0</em> </p>
+</blockquote>
+<pre><code class="javascript">hoodie.account.checkPasswordReset(user);
+</code></pre>
+
+<table>
+<thead>
+<tr>
+<th>option</th>
+<th align="center">type</th>
+<th align="center">description</th>
+<th align="center">required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>username</td>
+<td align="center">String</td>
+<td align="center">username</td>
+<td align="center">yes</td>
+</tr>
+</tbody>
+</table>
+<p><br /></p>
+<p>The hoodie.account.checkPasswordReset() Method checks for the status of a password reset. It might take a while until the password reset worker picks up the job and updates it.</p>
+<p>If a password reset request was successful, the $passwordRequest doc gets removed from _users by the worker, therefore a 401 is what we are waiting for.</p>
+<p>Once called, it continues to request the status update with a one second timeout.</p>
+<h6 id="example_5"><a name="user-content-example_5" href="#example_5" class="headeranchor-link"  aria-hidden="true"><span class="headeranchor"></span></a>Example</h6>
+<pre><code class="javascript">$('#editUserForm').submit(function (ev) {
+    // here goes some code!
+});
+</code></pre>
+
+<p><br /></p>
+<h6 id="notes_5"><a name="user-content-notes_5" href="#notes_5" class="headeranchor-link"  aria-hidden="true"><span class="headeranchor"></span></a>Notes</h6>
+<blockquote></blockquote>
+<p><br /></p>
+<h3 id="accountchangeusernamecurrentpassword-newusername"><a name="user-content-accountchangeusernamecurrentpassword-newusername" href="#accountchangeusernamecurrentpassword-newusername" class="headeranchor-link"  aria-hidden="true"><span class="headeranchor"></span></a>account.changeUsername(currentPassword, newUsername)</h3>
+<blockquote>
+<p><strong>version:</strong>      <em>&gt; 0.2.0</em> </p>
+</blockquote>
+<pre><code class="javascript">hoodie.account.changeUsername(currentPassword, newUsername);
+</code></pre>
+
+<table>
+<thead>
+<tr>
+<th>option</th>
+<th align="center">type</th>
+<th align="center">description</th>
+<th align="center">required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>currentPassword</td>
+<td align="center">String</td>
+<td align="center">current password</td>
+<td align="center">yes</td>
+</tr>
+<tr>
+<td>newUsername</td>
+<td align="center">String</td>
+<td align="center">new username</td>
+<td align="center">yes</td>
+</tr>
+</tbody>
+</table>
+<p><br /></p>
+<h6 id="example_6"><a name="user-content-example_6" href="#example_6" class="headeranchor-link"  aria-hidden="true"><span class="headeranchor"></span></a>Example</h6>
+<pre><code class="javascript">$('#editUserForm').submit(function (ev) {
+    ev.preventDefault();
+    var currentPassword = $('#pw').val();
+    var newUsername = $('#newUser').val();
+
+    hoodie.account.changeUsername(currentPassword, newUsername);
+});
+</code></pre>
+
+<p><br /></p>
+<h6 id="notes_6"><a name="user-content-notes_6" href="#notes_6" class="headeranchor-link"  aria-hidden="true"><span class="headeranchor"></span></a>Notes</h6>
+<blockquote>
+<ul>
+<li>The current password is needed to login with the new username.</li>
+</ul>
+</blockquote>
+<p><br /></p>
+<h3 id="accountdestroy"><a name="user-content-accountdestroy" href="#accountdestroy" class="headeranchor-link"  aria-hidden="true"><span class="headeranchor"></span></a>account.destroy()</h3>
+<blockquote>
+<p><strong>version:</strong>      <em>&gt; 0.2.0</em> </p>
+</blockquote>
+<pre><code class="javascript">hoodie.account.changeUsername(currentPassword, newUsername);
+</code></pre>
+
+<table>
+<thead>
+<tr>
+<th>option</th>
+<th align="center">type</th>
+<th align="center">description</th>
+<th align="center">required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>currentPassword</td>
+<td align="center">String</td>
+<td align="center">current password</td>
+<td align="center">yes</td>
+</tr>
+<tr>
+<td>newUsername</td>
+<td align="center">String</td>
+<td align="center">new username</td>
+<td align="center">yes</td>
+</tr>
+</tbody>
+</table>
+<p><br /></p>
+<h6 id="example_7"><a name="user-content-example_7" href="#example_7" class="headeranchor-link"  aria-hidden="true"><span class="headeranchor"></span></a>Example</h6>
+<pre><code class="javascript">$('#editUserForm').submit(function (ev) {
+    ev.preventDefault();
+    var currentPassword = $('#pw').val();
+    var newUsername = $('#newUser').val();
+
+    hoodie.account.changeUsername(currentPassword, newUsername);
+});
+</code></pre>
+
+<p><br /></p>
+<h6 id="notes_7"><a name="user-content-notes_7" href="#notes_7" class="headeranchor-link"  aria-hidden="true"><span class="headeranchor"></span></a>Notes</h6>
+<blockquote>
+<ul>
+<li>The current password is needed to login with the new username.</li>
+</ul>
+</blockquote>
+<h3 id="old"><a name="user-content-old" href="#old" class="headeranchor-link"  aria-hidden="true"><span class="headeranchor"></span></a>old ===========================</h3>
+<h3 id="destroy"><a name="user-content-destroy" href="#destroy" class="headeranchor-link"  aria-hidden="true"><span class="headeranchor"></span></a>destroy</h3>
+<p>// destroys a user&rsquo;s account</p>
+<pre>
+hoodie.account.destroy('password');
+</pre>
+
+<h3 id="username"><a name="user-content-username" href="#username" class="headeranchor-link"  aria-hidden="true"><span class="headeranchor"></span></a>username</h3>
+<p><pre><br />
+hoodie.account.username;<br />
+</pre></p>
+<h3 id="hasaccount"><a name="user-content-hasaccount" href="#hasaccount" class="headeranchor-link"  aria-hidden="true"><span class="headeranchor"></span></a>hasAccount</h3>
+<p>// anonymous accounts get created when data needs to be<br />
+// synced without the user having an account. That happens<br />
+// automatically when the user creates a task, but can also<br />
+// be done manually using hoodie.account.anonymousSignUp(),<br />
+// e.g. to prevent data loss.<br />
+//<br />
+// To determine between anonymous and &ldquo;real&rdquo; accounts, we<br />
+// can compare the username to the hoodie.id, which is the<br />
+// same for anonymous accounts.</p>
+<pre>
+hoodie.account.hasAccount();
+</pre>
+
+<h3 id="hasinvalidsession"><a name="user-content-hasinvalidsession" href="#hasinvalidsession" class="headeranchor-link"  aria-hidden="true"><span class="headeranchor"></span></a>hasInvalidSession</h3>
+<p>// returns true if the user is signed in, but does not have a valid cookie<br />
+<pre><br />
+hoodie.account.hasInvalidSession();<br />
+</pre></p>
+<h3 id="hasownproperty"><a name="user-content-hasownproperty" href="#hasownproperty" class="headeranchor-link"  aria-hidden="true"><span class="headeranchor"></span></a>hasOwnProperty</h3>
+<h3 id="hasvalidsession"><a name="user-content-hasvalidsession" href="#hasvalidsession" class="headeranchor-link"  aria-hidden="true"><span class="headeranchor"></span></a>hasValidSession</h3>
+<p>// returns true if the user is signed in, and has a valid cookie.</p>
+<pre>
+hoodie.account.hasValidSession();
+</pre>
+
+<h3 id="on"><a name="user-content-on" href="#on" class="headeranchor-link"  aria-hidden="true"><span class="headeranchor"></span></a>on</h3>
+<p>// user has signed up (this also triggers the authenticated event, see below)<br />
+hoodie.account.on(&lsquo;signup&rsquo;, function (user) {});</p>
+<p>// user has signed in (this also triggers the authenticated event, see below)<br />
+hoodie.account.on(&lsquo;signin&rsquo;, function (user) {});</p>
+<p>// user has signed out<br />
+hoodie.account.on(&lsquo;signout&rsquo;, function (user) {});</p>
+<p>// user has re-authenticated after their session timed out (this does <em>not</em> trigger the signin event)<br />
+hoodie.account.on(&lsquo;authenticated&rsquo;, function (user) {});</p>
+<p>// user&rsquo;s session has timed out. This means the user is still signed in locally, but Hoodie cannot sync remotely, so the user must sign in again<br />
+hoodie.account.on(&lsquo;unauthenticated&rsquo;, function (user) {});</p></body></html>
