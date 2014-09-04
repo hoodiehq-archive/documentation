@@ -16,11 +16,11 @@
 *The account object gives you the methods to create, update and delete an account. A user's data is always bound to the user's account, and will automatically be synchronized when signend in on different devices.*
 
 
-## Properties
+### Properties
 - [username](#accountusername)
 
 
-## Methods
+### Methods
 - [signUp()](#accountsignup)
 - [signIn()](#accountsignin)
 - [signOut()](#accountsignout)
@@ -29,7 +29,10 @@
 - [resetPassword()](#accountresetpassword)
 - [destroy()](#accountdestroy)
 
-## [Events](account-events)
+### [Events](account-events)
+
+
+## Properties
 
 <br>
 ### account.username
@@ -54,6 +57,8 @@ if (hoodie.account.username) {
   // user is anonymous
 }
 ```
+
+## Methods
 
 <br>
 ### account.signUp()
@@ -389,7 +394,7 @@ hoodie.account.destroy()
 
 
 <br />
-### Account events
+## Account events
 
 | name | arguments | description |
 | ---- | --------- | ----------- |
