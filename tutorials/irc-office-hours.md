@@ -44,8 +44,8 @@ And, yes, the GIF "rule" applies here as well.
 - Remember our [Code of Conduct](http://hood.ie/code-of-conduct.html) and *strictly* enforce it.
 - Be friendly and patient.
 - If you can't answer a question yourself, please 
--   check our [FAQ](http://faq.hood.ie)
--   ask the person who sent it to file an issue in our ["discussions" repo](https://github.com/hoodiehq/discussion/issues/new) or in the [FAQ](https://github.com/hoodiehq/faq/issues/new)
+  - check our [FAQ](http://faq.hood.ie)
+  - ask the person who sent it to file an issue in our ["discussions" repo](https://github.com/hoodiehq/discussion/issues/new) or in the [FAQ](https://github.com/hoodiehq/faq/issues/new)
 - If you have to leave the channel or pause for any reasons, please take care that someone else can take over the responsibility.
 
 Please try to avoid asking other community members to jump into conversations, unless it's a really urgent case or they have stated otherwise beforehand. You can handle this, and we'll then try everything to resolve the issue posted as soon as we can.
@@ -56,7 +56,7 @@ When Office Hours are over, say goodbye on IRC and leave a message where people 
 
 - These were our Office Hours for today. Thanks to all of you for being here today with me, and have a nice evening! If you have questions or feedback later, please check out this page http://hood.ie/irc with all places for filing issues. We'll take care of it then as soon as we can. Thank you!
 - Our Office Hours are now over. It was great to chat with you, and I wish you a nice day. See you soon! For those of you who enter this channel later, you can find all places for filing questions, giving feedback of submitting issues here: http://hood.ie/irc Looking forward to hearing from you!
-- …
+- … [whatever floats your boat]
 
 And … maybe add an [appropriate GIF](http://www.tehcute.com/pics/201204/bunny-falls-asleep-at-desk.jpg). If you want to.
 
