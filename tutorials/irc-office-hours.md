@@ -31,7 +31,7 @@ Oh, yeah, and you may of course add a GIF (not necessarily [this one](http://www
 
 ####2b) send a Tweet
 
-Send a short Tweet from the @hoodiehq account or, if you want, your personal Twitter account. Maybe something like …
+Send a short Tweet from the @hoodiehq account or, if you want, your personal Twitter account. If you don't have access to @hoodiehq, just post a Tweet from your account so it can be retweeted from @hoodiehq (yep, we're quick with that). Your Tweet could maybe be something like …
 
 - Time for our IRC Office Hours! We're answering your questions in Freenode #hoodie from 2-6pm UTC+2 today. And we're happy to help!
 - It's Hoodie IRC Office Hours again! We're happy to answer your questions or feedback until 6pm UTC+2 today. Find all details here: http://hood.ie/irc
