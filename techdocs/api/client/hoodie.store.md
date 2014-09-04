@@ -10,22 +10,22 @@
 
 ## Introduction
 
-This class defines the API that `hoodie.store` (local store) and `hoodie.open`
+This modules defines the API that `hoodie.store` (local store) and `hoodie.open`
 (remote store) implement to assure a coherent API. It also implements some
 basic validations.
 
 ###### Notes
-> - storing and accessing objects with hoodie always means accessing you personal, local objects.
+> - storing and accessing objects with hoodie always means accessing your personal, local objects.
 > - All stored data has a fixed association to the user who created them. So you won't be able to access other user's data by default.
-> - in order save objects to the server's store, you need to be logged in with a valid user. Learn more about the hoodie user system at [`Hoodie.User`](./hoodie.user.md).
+> - in order save objects to the server's store, you need to be logged in with a valid user. Learn more about the hoodie user system at [`hoodie.account`](./hoodie.account.md).
 
 ## The General `options` Parameter
 
 Most of the `hoodie.store` functions come with an `options` parameter, that is always passed as last parameter of a function call. This parameter was created to pass optional configurations to the certain function call. Like the following.
 
-<pre>
-	hoodie.store('todo').remove(id, {silent: true})
-</pre>
+```javascript
+hoodie.store('todo').remove(id, {silent: true})
+```
 
 The options that are available for most of these methods are listed below. For details on `options` parameters of particular functions, please see the section of the particular function itself.
 
@@ -38,7 +38,6 @@ The options that are available for most of these methods are listed below. For d
 
 - [store](#store)
 - [validate](#storevalidate)
-- [save](#storesave)
 - [add](#storeadd)
 - [findOrAdd](#storefindoradd)
 - [findAll](#storefindall)
@@ -54,12 +53,13 @@ The options that are available for most of these methods are listed below. For d
 
 ## Deprecated
 - [decoratePromises](storedecoratepromises)
+- [save](#storesave)
 
 
 ### store()
 > **version:**      *> 0.2.0*
 
-*Getting access to the store or scoped access if a type is defined.*
+*Creates a store instance that is scoped by type, or by type & id.*
 
 ```javascript
 hoodie.store('type', 'id');
@@ -74,7 +74,7 @@ hoodie.store('type', 'id');
 <br />
 ###### Example
 
-It is most likely, that your application will have more than one type of store object. Even if you have just a single object hoodie.store(type) comes handy. Say you have to work with objects of the type todo, you usually do something like the following:
+It is most likely, that your application will have more than one type of store objects. Even if you have just a single object hoodie.store(type) comes handy. Say you have to work with objects of the type todo, you usually do something like the following:
 
 ```javascript
 hoodie.store.add('todo', { title: 'Getting Coffee' });
@@ -100,7 +100,7 @@ You can also create a very particular store, to work with access to just one spe
 var singleStore = hoodie.store( 'todo', 'id123' );
 ```
 
-For the call like illustrated in the last example, only a minimal subset of functions will be available on the created store context. Every method those purpose is to target more than one stored object, will be left out (f.e. findAll). This is because we already specified a particular object form the store to work with.
+For the call like illustrated in the last example, only a minimal subset of functions will be available on the created store context. Every method those purpose is to target more than one stored object, will be left out (e.g. findAll). This is because we already specified a particular object form the store to work with.
 
 ### store.validate()
 > **version:**      *> 0.2.0*
@@ -120,7 +120,6 @@ hoodie.store('type').validate(object, options);
 
 <br />
 ###### Notes
-- id is a combination of both, formatted as *"type/id"*.
 - slashes for id or type are permitted.
 
 All other characters are allowed, though it might be the best, to stick with
@@ -130,9 +129,14 @@ If `hoodie.store.validate` returns nothing, the passed **object** is valid.
 Otherwise it returns an **[HoodieError]<#>**.
 
 ### store.save()
+> **deprecated:**   *> 1.0*<br />
 > **version:**      *> 0.2.0*
 
 *Creates or replaces an an eventually existing object in the store, that is of the same `type` and the same `id`.*
+
+###### Notes
+- While it is still in the public API, it will be removed before 1.0, as it is destructive. Please use `store.add` and `store.update` instead.
+
 
 ```javascript
 hoodie.store.save('type', 'id', properties, options);
@@ -186,7 +190,7 @@ In fact `hoodie.store.add` will force `hoodie.store.save` to create a new object
 hoodie.store
 	.add('todo', { title: 'Getting Coffee' })
 	.done(function(todo) { /* success handling */ });
-	.fail(function(todo) { /* error handling */ });
+	.fail(function(error) { /* error handling */ });
 ```
 
 ### store.find()
@@ -214,7 +218,7 @@ Returns a promise so success and failure can be handled. A failure occurs for ex
 hoodie.store('todo')
 	.find('hrmvby9')
 	.done(function(todo) { /* success handling */ });
-	.fail(function(todo) { /* error handling */ });
+	.fail(function(error) { /* error handling */ });
 ```
 
 ### store.findOrAdd()
@@ -247,7 +251,7 @@ var configBlueprint = { language: 'en/en', appTheme: 'default' };
 var configId        = account.id + '_config';
 
 hoodie.store
-	.findOrCreate('custom-config', configId, configBlueprint)
+	.findOrAdd('custom-config', configId, configBlueprint)
 	.done(function(appConfig) {
 		console.log('work with config', appConfig)
 	});
@@ -259,37 +263,7 @@ hoodie.store
 
 Unlike you may have used store searches with other frameworks, this will **not** use the `properties` parameter
 as further conditions to match a particular store entry. The only conditions the
-store will be searched for are the document `type` and `id`.
-
-Just to demonstrates the convenience of hoodie.store.findOrAdd, the below example
-illustrates the more complex alternative way of find and add:
-
-<br />
-###### Example
-
-```javascript
-// IMPORTANT: BAD VARIATION
-
-// pre-conditions: You already read a user's account object.
-var defaultConfig = {language: 'en/en', appTheme: 'default'},
-	configId      = account.id + '_config';
-
-hoodie.store
-	.find('custom-config', configId, configBlueprint)
-	.done(function(appConfig) {
-		console.log('work with config', appConfig);
-
-		if(appConfig === undefined) {
-			hoodie.store
-				.add('custom-config', bluePrint)
-				.done(function(newConfig) {
-					// work with the newConfig here
-				});
-            }
-	});
-
-// IMPORTANT: BAD VARIATION
-```
+store will be searched for are the document's `type` and `id`.
 
 ### store.findAll()
 > **version:**      *> 0.2.0*
@@ -402,18 +376,18 @@ var todoStore = hoodie.store('todo');
 
 todoStore
     .findAll()
-    .then(function(allTodos) {
+    .done(function(allTodos) {
         // just pick the first todo we can get
-        var originTodo = allTodos.pop();
+        var origininalTodo = allTodos.pop();
 
-        console.log(originTodo.id, '=>', originTodo.dueDate)
+        console.log(origininalTodo.id, '=>', origininalTodo.dueDate)
 
         // update the picked todo and update it's dueDate to now
         todoStore
-            .update(originTodo.id, { dueDate:(Date.now()) })
-            .then(function(updatedTodo) {
+            .update(origininalTodo.id, { dueDate:(Date.now()) })
+            .done(function(updatedTodo) {
                 // beyond this point, please work with updatedTodo
-                // instead of the originTodo, because originTodo
+                // instead of the origininalTodo, because origininalTodo
                 // is outdated.
                 console.log(updatedTodo.id, '=>', updatedTodo.dueDate);
             });
@@ -421,7 +395,7 @@ todoStore
         // update the picked todo and update it's dueDate to now
         todoStore
             .update('ID DOES NOT EXIST', { dueDate:(Date.now()) })
-            .then(function(updatedTodo) {
+            .done(function(updatedTodo) {
                 console.log('will never happen.');
             })
             .fail(function(error) {
@@ -436,7 +410,7 @@ Further the example contains another example where we try to update an object, w
 
 The `update` methods have a certain speciality. Beside that you can pass a plain JavaScript object with attributes updates, you can also pass a function, that manipulates the the object matched by the given `id`.
 
-Cases when this advantage can be very useful are applying calculations or for conditioned updates. This will come mist handy when combined with `hoodie.store.updateAll`.
+Cases when this advantage can be very useful are applying calculations or for conditional updates. This will come mist handy when combined with `hoodie.store.updateAll`.
 
 <br />
 ###### Example
@@ -449,11 +423,11 @@ var todoStore = hoodie.store('todo');
 
 todoStore
     .findAll()
-    .then(function(allTodos) {
+    .done(function(allTodos) {
         // just pick the first todo we can get
-        var originTodo = allTodos.pop();
+        var origininalTodo = allTodos.pop();
 
-        todoStore.update(originTodo.id, function(oneTodo) {
+        todoStore.update(origininalTodo.id, function(oneTodo) {
 
             // Apply update only if conditions matches.
             if( Math.random() > 0.5) {
@@ -462,7 +436,7 @@ todoStore
             }
 
             return oneTodo;
-        }).then(function(updatedTodo) {
+        }).done(function(updatedTodo) {
             console.log('update success', updatedTodo);
         }).fail(function(error) {
             console.log('failed update with', error);
@@ -498,12 +472,12 @@ var todoStore    = hoodie.store('todo'),
 
 todoStore
 	.updateAll(objectUpdate)
-	.then(function(updates) {
+	.done(function(updates) {
 		console.log('the following todos are done', updates);
 	});
 ````
 
-Like with (hoodie.store.update)[storeupdate] you can pass an update function instead of an update object. So if you want update only a particular set of store objects, passing an update function is your friend. This is what comes close to a WHERE clause you may probably now from SQL. When using an update function to modify stored data, please make sure, to return the updated object at the end of the update function.
+Like with (hoodie.store.update)[storeupdate] you can pass an update function instead of an update object. So if you want update only a particular set of store objects, passing an update function is your friend. This is what comes close to a WHERE clause you may probably know from SQL. When using an update function to modify stored data, please make sure, to return the updated object at the end of the update function.
 
 ###### Example
 ```javascript
@@ -518,7 +492,7 @@ var todoStore  = hoodie.store('todo'),
 
 todoStore
 	.updateAll(updateFunc)
-	.then(function(updates) {
+	.done(function(updates) {
 		console.log('the following todos are done', updates);
 	});
 ```
@@ -526,7 +500,7 @@ todoStore
 ### store.remove()
 > **version:**      *> 0.2.0*
 
-*This simple deletes one entriy of the defined `type` identified by it's `id` from a user's store. 
+*This simple deletes one entriy of the defined `type` identified by it's `id` from a user's store.
 
 ```javascript
 hoodie.store.remove('id')
@@ -553,12 +527,12 @@ var todoStore = hoodie.store('todo'),
 
 todoStore
 	.findAll()
-	.then(function(todos) {
+	.done(function(todos) {
 		var todo = todos[0];
 
 		todoStore
 			.remove(todo.id)
-			.then(function(removedTodos) {
+			.done(function(removedTodos) {
 				console.log(removedTodos);
 			})
 			.fail(function(error) {
@@ -595,7 +569,7 @@ var todoStore = hoodie.store('todo');
 
 todoStore
 	.removeAll()
-	.then(function(removedTodos) {
+	.done(function(removedTodos) {
 		console.log(removedTodos);
 });
 ```
@@ -619,8 +593,8 @@ The `hoodie.store` informs you about several things happening with the stored ob
 <br />
 ###### Example
 ```javascript
-hoodie.store.on('event', function(createdTodo) {
-	console.log('A todo has been added => ', createdTodo);
+hoodie.store.on('todo:add', function(createdTodo) {
+	console.log('A todo has been created => ', createdTodo);
 });
 ```
 
@@ -630,7 +604,7 @@ hoodie.store.on('event', function(createdTodo) {
 *Gets triggered when an existing object of matching type/store has been updated.*
 
 ```javascript
-hoodie.store.on('event', eventHandler);
+hoodie.store.on('type:update', eventHandler);
 ```
 
 | option     | type   | description     | required |
@@ -654,7 +628,7 @@ hoodie.store.on('todo:update', function(updatedTodo) {
 *Gets triggered when an existing object of matching type/store has been removed.*
 
 ```javascript
-hoodie.store.on('event', eventHandler);
+hoodie.store.on('type:remove', eventHandler);
 ```
 
 | option     | type   | description     | required |

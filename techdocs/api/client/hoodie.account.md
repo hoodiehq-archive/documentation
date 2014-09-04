@@ -20,6 +20,7 @@
 - [username](#accountusername)
 
 
+<<<<<<< HEAD
 ### Methods
 - [signUp()](#accountsignup)
 - [signIn()](#accountsignin)
@@ -34,12 +35,42 @@
 - signin
 - signout
 - reauthenticated
+=======
+- [signUp](#accountsignup)
+- signIn()
+- signOut() // please add anchors
+- changePassword()
+- resetPassword()
+- changeUsername()
+- destroy()
+- isSignedIn() // tba
+- confirm(options) // tba
+- checkAvailability(username) // tba
+- userData() // tba
+
+
+## Events
+
+- signup (username)
+- signup:anonymous
+- signin:anonymous (username)
+- movedata
+- reauthenticated (newUsername)
+- signin (newUsername, newHoodieId, options)
+>>>>>>> gh-pages
 - changepassword
 - changeusername
 - passwordreset
 - error:passwordreset
 - error:unauthenticated
 
+<<<<<<< HEAD
+=======
+
+<a name="accountsignup" id="accountsignup"></a>
+### account.signUp() 
+> **version:** 		*> 0.2.0* 
+>>>>>>> gh-pages
 
 
 ## Properties
@@ -49,7 +80,11 @@
 > **version:**    *> 0.2.0*
 
 ```javascript
+<<<<<<< HEAD
 hoodie.account.username
+=======
+hoodie.account.signUp(user, password, password2);
+>>>>>>> gh-pages
 ```
 
 `hoodie.account.username` gets automatically set / unset when signing in, signing up, changing username
@@ -76,6 +111,7 @@ if (hoodie.account.username) {
 
 
 ```javascript
+<<<<<<< HEAD
 hoodie.account.signUp('user', 'password');
 ```
 
@@ -115,6 +151,13 @@ after the user-specific database has been created, where all the user's data get
 synchronized to.
 
 ###### Example
+=======
+ $('#signUpForm').submit(function (ev) {
+    ev.preventDefault();
+    var username  = $('#signUpUsername').val();
+    var password  = $('#signUpPassword').val();
+    var password2 = $('#signUpPassword2').val();
+>>>>>>> gh-pages
 
 ```javascript
 $('#signUpForm').submit(function (event) {
@@ -140,6 +183,7 @@ $('#signUpForm').submit(function (event) {
 
 
 ```javascript
+<<<<<<< HEAD
 hoodie.account.signIn('user', 'password');
 ```
 
@@ -165,6 +209,17 @@ hoodie.account.signIn('user', 'password');
 | HoodieAccountNotFoundError     | Account could not be found |
 | HoodieError                    | _A custom error can be set by plugins, e.g. the account could be blocked due to missing payments_ |
 | HoodieConnectionError | Could not connect to Server                 |
+=======
+hoodie.account.signIn(user, password, options);
+```
+
+| option     | type    | description    | required |
+| ---------- |:-------:|:--------------:|:--------:|
+| user       | String  | username       | yes      |
+| password   | String  | valid password | yes      |
+| options    | Boolean | moveData       | no       |
+| options    | Boolean | silent         | no       |
+>>>>>>> gh-pages
 
 <br />
 
@@ -196,6 +251,7 @@ $('#signInForm').submit(function (event) {
 hoodie.account.signOut(options);
 ```
 
+<<<<<<< HEAD
 
 ###### Arguments
 
@@ -236,6 +292,12 @@ hoodie.account.signOut()
 > - `HoodieAccountLocalChangesError` does currently not get returned, instead cryptic errors
 >   may be returned, about the user not being authenticated or a failed request. See [#358](https://github.com/hoodiehq/hoodie.js/issues/358)
 
+=======
+| option     | type    | description    | required |
+| ---------- |:-------:|:--------------:|:--------:|
+| options    | Boolean | cleanup        | no       |
+| options    | Boolean | silent         | no       |
+>>>>>>> gh-pages
 
 <br />
 ### account.changePassword()
@@ -247,7 +309,12 @@ hoodie.account.changePassword(currentPassword, newPassword);
 ```
 
 
+<<<<<<< HEAD
 ###### Arguments
+=======
+SignOut() uses standard CouchDB API to invalidate a user session (DELETE /_session).
+Calling signOut() with ````options.cleanup = true```` cleans the localStorage. All local changes get deleted without sync to the server.
+>>>>>>> gh-pages
 
 | Nr | option           | type   | description                           | required |
 | --:| ---------------- |:------:|:-------------------------------------:|:--------:|
@@ -309,6 +376,7 @@ _resolves without argument_
 | HoodieConflictError        | `<newUsername>` is taken |
 
 <br />
+<<<<<<< HEAD
 ###### Example
 
 ```javascript
@@ -316,17 +384,35 @@ hoodie.account.changeUsername('secret', 'newusername')
   .done(showSuccessMessage)
   .fail(showErrorMessage)
 ```
+=======
+### account.changePassword() 
+> **version:** 		*> 0.2.0* 
 
+>>>>>>> gh-pages
 
+```javascript
+hoodie.account.changePassword(currentpassword, newpassword);
+```
+
+<<<<<<< HEAD
 <br />
 ### account.resetPassword(username)
 > **version:**    *> 0.2.0*
 
+=======
+| option         | type   | description      | required |
+| -------------- |:------:|:----------------:|:--------:|
+| currentpassword| String | current password | no       |
+| newpassword    | String | new password     | no       |
+
+<br />
+>>>>>>> gh-pages
 
 ```javascript
 hoodie.account.resetPassword('joe@example.com')
 ```
 
+<<<<<<< HEAD
 
 ###### Arguments
 
@@ -362,11 +448,160 @@ hoodie.account.resetPassword('joe@example.com')
 ###### Notes
 > - We currently generate a new password and send it out via email.
 >   In future, we will send a token instead, see [#360](https://github.com/hoodiehq/hoodie.js/issues/360)
+=======
+###### Example
+
+```javascript
+$('#editUserForm').submit(function (ev) {
+    ev.preventDefault();
+    var currentpassword = $('#pw1').val();
+    var newpassword = $('#pw2').val();
+
+    hoodie.account.changePassword(pw1, pw2);
+});
+```
+<br />
+###### Notes
+> - The hoodie API requires the currentPassword for security reasons, but couchDb doesn't require it for a password change, so it's ignored in this implementation of the hoodie API.
 
 
 <br />
+### account.resetPassword() 
+> **version:** 		*> 0.2.0* 
+
+
+```javascript
+hoodie.account.resetPassword(username);
+```
+
+| option         | type   | description      | required |
+| -------------- |:------:|:----------------:|:--------:|
+| username       | String | username         | yes      |
+
+<br />
+
+Here we sign up a new CouchDB user with some special attributes, but this happends internally. It will be picked up by the password reset worker and removed once the password was reset.
+
+###### Example
+>>>>>>> gh-pages
+
+```javascript
+$('#editUserForm').submit(function (ev) {
+    ev.preventDefault();
+    var user = hoodie.account.username;
+
+<<<<<<< HEAD
+<br />
 ### account.destroy()
 > **version:**    *> 0.2.0*
+=======
+    if (user != undefined) {
+        hoodie.account.resetPassword(user);
+    } else {
+        alert('Please log in first!');
+    }
+});
+```
+<br />
+###### Notes
+> - We still need to check, if the passwordReset gets executed. There is already a filed issue to fix that.
+
+
+<br />
+### account.checkPasswordReset() 
+> **version:** 		*> 0.2.0* 
+
+
+```javascript
+hoodie.account.checkPasswordReset(user);
+```
+
+| option     | type   | description      | required |
+| ---------- |:------:|:----------------:|:--------:|
+| username   | String | username         | yes      |
+
+<br />
+
+  The hoodie.account.checkPasswordReset() Method checks for the status of a password reset. It might take a while until the password reset worker picks up the job and updates it.
+
+  If a password reset request was successful, the $passwordRequest doc gets removed from _users by the worker, therefore a 401 is what we are waiting for.
+  
+  Once called, it continues to request the status update with a one second timeout.
+
+###### Example
+
+```javascript
+$('#editUserForm').submit(function (ev) {
+    // here goes some code!
+});
+```
+<br />
+###### Notes
+> 
+
+
+<br />
+### account.changeUsername(currentPassword, newUsername) 
+> **version:** 		*> 0.2.0* 
+
+
+```javascript
+hoodie.account.changeUsername(currentPassword, newUsername);
+```
+
+| option         | type   | description      | required |
+| -------------- |:------:|:----------------:|:--------:|
+| currentPassword| String | current password | yes      |
+| newUsername    | String | new username     | yes      |
+
+<br />
+
+###### Example
+
+```javascript
+$('#editUserForm').submit(function (ev) {
+    ev.preventDefault();
+    var currentPassword = $('#pw').val();
+    var newUsername = $('#newUser').val();
+
+    hoodie.account.changeUsername(currentPassword, newUsername);
+});
+```
+<br />
+###### Notes
+> - The current password is needed to login with the new username.
+
+<br />
+### account.destroy() 
+> **version:**      *> 0.2.0* 
+
+
+```javascript
+hoodie.account.destroy();
+```
+
+| option         | type   | description      | required |
+| -------------- |:------:|:----------------:|:--------:|
+| -              | -      | -                | -        |
+
+<br />
+
+###### Example
+
+```javascript
+// add prompt
+
+hoodie.account.destroy();
+```
+<br />
+###### Notes
+> - The account get's destroyed right away, so please make sure to implement a checkback.
+
+
+
+
+### old ===========================
+>>>>>>> gh-pages
 
 
 ```javascript
