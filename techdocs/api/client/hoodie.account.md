@@ -53,21 +53,40 @@ coming soon:
 
 
 ```javascript
-hoodie.account.signUp('user', 'password', 'password2');
+promise = hoodie.account.signUp('user', 'password');
 ```
+
+###### Options
 
 | option     | type   | description     | required |
 | ---------- |:------:|:---------------:|:--------:|
 | user       | String | username        | yes      |
 | password   | String | valid password  | yes      |
-| password2  | String | repeat password | yes      |
+
+###### Resolves with
+
+* `username`
+
+###### Progresses with
+
+* `no arguments`
+  Once the account is created, but not yet confirmed.
+
+###### Rejects with
+
+* HoodieError: `Username must be set`
+* HoodieError: `Must sign out first`
+* HoodieConflictError: `Username <username> already exists`
+* HoodieConnectionError: `Could not connect to Server`
 
 <br />
 
+SignUp creates a new user account on the Hoodie server. The account is currently confirmed automatically,
+but the confirmation workflow will be customizable in future.
 
-SignUp uses standard CouchDB API to create a new document in _users db.
+Once an account is confirmed, a user-specific database gets created where all the user's data gets
+automatically synchronized to.
 
-The backend will automatically create a userDB based on the username address and approve the account by adding a 'confirmed' role to the user doc. The account confirmation might take a while, so we keep trying to sign in with a 300ms timeout.
 
 ###### Example
 
@@ -76,16 +95,16 @@ The backend will automatically create a userDB based on the username address and
     ev.preventDefault();
     var username  = $('#signUpUsername').val();
     var password  = $('#signUpPassword').val();
-    var password2 = $('#signUpPassword2').val();
 
-    hoodie.account.signUp(username, password, password2);
+    hoodie.account.signUp(username, password)
+      .done(welcomeNewUser)
+      .fail(showErrorMessage);
 });
 ```
 
 ###### Notes
-> - You need to signIn after a signUp!
-> - Second password does not get checked at the moment. It is still a bug.
-> Please make sure to validate this on the frontend side.
+> - there is no feature built-in to compare the password to a password confirmation.
+>   If you need this logic, please validate this beforehand in your app.
 
 
 <br />
@@ -94,18 +113,21 @@ The backend will automatically create a userDB based on the username address and
 
 
 ```javascript
-hoodie.account.signIn('user', 'password', options);
+promise = hoodie.account.signIn('user', 'password', options);
 ```
 
 | option     | type   | description    | required |
 | ---------- |:------:|:--------------:|:--------:|
 | user       | String | username       | yes      |
 | password   | String | valid password | yes      |
-| options    |        | moveData       | no       |
+| options    | Object | {moveData}     | no       |
 
 <br />
 
-SignIn() uses the standard CouchDB API to create a new user session (POST /_session).
+
+SignIn()
+
+uses the standard CouchDB API to create a new user session (POST /_session).
 Besides the standard sign in, hoodie also checks if the account has been confirmed (roles include 'confirmed' role).
 
 When signing in, by default all local data gets cleared beforehand. Otherwise data that has been created beforehand (authenticated with another user account or anonymously) would be merged into the user account that signs in. That only applies if username isn't the same as current username.
