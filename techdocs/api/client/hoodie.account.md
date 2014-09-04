@@ -53,26 +53,26 @@ coming soon:
 
 
 ```javascript
-promise = hoodie.account.signUp('user', 'password');
+hoodie.account.signUp('user', 'password');
 ```
 
 ###### Arguments
 
 | Nr | argument   | type   | description     | required |
 | --:| ---------- |:------:|:---------------:|:--------:|
-|  1 | user       | String | username        | yes      |
+|  1 | username   | String | username        | yes      |
 |  2 | password   | String | valid password  | yes      |
 
 ###### Resolves with
 
 | argument    | description                                          |
-| ------------| ---------------------------------------------------- |
+| ----------- | ---------------------------------------------------- |
 | username    | the username the user signed up with                 |
 
 ###### Progresses with
 
 | argument    | when                                                 |
-| ------------| ---------------------------------------------------- |
+| ----------- | ---------------------------------------------------- |
 | -           | after account created on server, before confirmation |
 
 ###### Rejects with
@@ -87,7 +87,7 @@ promise = hoodie.account.signUp('user', 'password');
 
 <br />
 
-SignUp creates a new user account on the Hoodie server. The account is confirmed automatically,
+`signUp` creates a new user account on the Hoodie server. The account is confirmed automatically,
 after the user-specific database has been created, where all the user's data gets automatically
 synchronized to.
 
@@ -96,8 +96,8 @@ synchronized to.
 ```javascript
  $('#signInForm').submit(function (ev) {
     ev.preventDefault();
-    var username  = $('#signUpUsername').val();
-    var password  = $('#signUpPassword').val();
+    var username  = $('#username').val();
+    var password  = $('#password').val();
 
     hoodie.account.signUp(username, password)
       .done(welcomeNewUser)
@@ -117,41 +117,53 @@ synchronized to.
 
 
 ```javascript
-promise = hoodie.account.signIn('user', 'password', options);
+hoodie.account.signIn('user', 'password');
 ```
 
-| option     | type   | description    | required |
-| ---------- |:------:|:--------------:|:--------:|
-| user       | String | username       | yes      |
-| password   | String | valid password | yes      |
-| options    | Object | {moveData}     | no       |
+###### Arguments
+
+| Nr | option     | type   | description             | required |
+| --:| ---------- |:------:|:-----------------------:|:--------:|
+|  1 | user       | String | username                | yes      |
+|  2 | password   | String | valid password          | yes      |
+|  3 | options    | Object | {moveData: true/false}  | no       |
+
+###### Resolves with
+
+| argument    | description                                          |
+| ----------- | ---------------------------------------------------- |
+| username    | the username the user signed in with                 |
+
+###### Rejects with
+
+| error                          | message                                     |
+| ------------------------------ | ------------------------------------------- |
+| HoodieAccountUnconfirmedError  | Account has not been confirmed yet |
+| HoodieAccountNotFoundError     | Account could not be found |
+| HoodieError                    | _A custom error can be set by plugins, e.g. the account could be blocked due to missing payments_ |
+| HoodieConnectionError | Could not connect to Server                 |
 
 <br />
 
 
-SignIn()
+`signIn` tries to sign in the user to an existing account.
 
-uses the standard CouchDB API to create a new user session (POST /_session).
-Besides the standard sign in, hoodie also checks if the account has been confirmed (roles include 'confirmed' role).
-
-When signing in, by default all local data gets cleared beforehand. Otherwise data that has been created beforehand (authenticated with another user account or anonymously) would be merged into the user account that signs in. That only applies if username isn't the same as current username.
-
-To prevent data loss, signIn can be called with ````options.moveData = true````, that will move all data from the anonymous account to the account the user signed into.
+All local data that exists locally before signin in gets cleared. To prevent data loss, you can pass `{moveData: true}`
+as the options argument, this will move current data (created anonymously or by another account) to the account the user signs in to.
 
 ###### Example
 
 ```javascript
  $('#signInForm').submit(function (ev) {
     ev.preventDefault();
-    var username = $('#signUpUsername').val();
-    var password = $('#signUpPassword').val();
+    var username = $('#sername').val();
+    var password = $('#password').val();
 
-    hoodie.account.signIn(username, password);
+    hoodie.account.signIn(username, password)
+      .done(welcomeUser)
+      .fail(showErrorMessage);
 });
 ```
-###### Notes
-> - Please create an account with ````account.SignUp();````
-
 
 <br />
 ### account.signOut()
