@@ -65,7 +65,7 @@ When Office Hours are over, say goodbye on IRC and leave a message where people 
 And … maybe add an [appropriate GIF](http://www.tehcute.com/pics/201204/bunny-falls-asleep-at-desk.jpg). If you want to.
 
 
-If you have any questions, don't hesitate to ask any of your community members anytime.
+If you have any questions, don't hesitate to ask any Hoodie community member anytime.
 
 Thanks for supporting this project!
 
