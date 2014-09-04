@@ -22,32 +22,31 @@
 - signIn()
 - signOut() // please add anchors
 - changePassword()
-- resetPassword()
 - changeUsername()
+- resetPassword()
 - destroy()
-- isSignedIn() // tba
-- confirm(options) // tba
-- checkAvailability(username) // tba
-- userData() // tba
+
+coming soon:
+
+- isSignedIn()
+- confirm(options)
+- checkAvailability(username)
+- userData()
 
 
 ## Events
 
 - signup (username)
-- signup:anonymous
-- signin:anonymous (username)
-- movedata
-- reauthenticated (newUsername)
+- reauthenticated (username)
 - signin (newUsername, newHoodieId, options)
-- changepassword
-- resetpassword
-- error:passwordreset (error, username)
-- changeusername (newUsername)
-- error:unauthenticated
-- passwordreset (username)
 - signup (username)
-- cleanup
 - signout (username)
+- reauthenticated
+- changepassword
+- changeusername (newUsername)
+- passwordreset (username)
+- error:passwordreset (error, username)
+- error:unauthenticated
 
 ### account.signUp()
 > **version:** 		*> 0.2.0*
