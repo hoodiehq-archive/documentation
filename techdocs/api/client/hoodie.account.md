@@ -56,37 +56,40 @@ coming soon:
 promise = hoodie.account.signUp('user', 'password');
 ```
 
-###### Options
+###### Arguments
 
-| option     | type   | description     | required |
-| ---------- |:------:|:---------------:|:--------:|
-| user       | String | username        | yes      |
-| password   | String | valid password  | yes      |
+| Nr | argument   | type   | description     | required |
+| --:| ---------- |:------:|:---------------:|:--------:|
+|  1 | user       | String | username        | yes      |
+|  2 | password   | String | valid password  | yes      |
 
 ###### Resolves with
 
-* `username`
+| argument    | description                                          |
+| ------------| ---------------------------------------------------- |
+| username    | the username the user signed up with                 |
 
 ###### Progresses with
 
-* `no arguments`
-  Once the account is created, but not yet confirmed.
+| argument    | when                                                 |
+| ------------| ---------------------------------------------------- |
+| -           | after account created on server, before confirmation |
 
 ###### Rejects with
 
-* HoodieError: `Username must be set`
-* HoodieError: `Must sign out first`
-* HoodieConflictError: `Username <username> already exists`
-* HoodieConnectionError: `Could not connect to Server`
+| error                 | message                                     |
+| --------------------- | ------------------------------------------- |
+| HoodieError           | Username must be set                        |
+| HoodieError           | Must sign out first                         |
+| HoodieConflictError   | Username `<username>` already exists        |
+| HoodieConnectionError | Could not connect to Server                 |
+
 
 <br />
 
-SignUp creates a new user account on the Hoodie server. The account is currently confirmed automatically,
-but the confirmation workflow will be customizable in future.
-
-Once an account is confirmed, a user-specific database gets created where all the user's data gets
-automatically synchronized to.
-
+SignUp creates a new user account on the Hoodie server. The account is confirmed automatically,
+after the user-specific database has been created, where all the user's data gets automatically
+synchronized to.
 
 ###### Example
 
@@ -103,6 +106,7 @@ automatically synchronized to.
 ```
 
 ###### Notes
+> - The confirmation workflow will be customizable in future
 > - there is no feature built-in to compare the password to a password confirmation.
 >   If you need this logic, please validate this beforehand in your app.
 
