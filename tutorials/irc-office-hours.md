@@ -18,7 +18,7 @@ Please keep in mind that not everyone in the channel is on the same time zone, s
 
 When it's time to start the Office Hours (please start on time), we'd ask you to:
 
-####2a say hi in IRC
+####2a) say hi in IRC
 
 Send a short "hi everyone, I'm here now" message in IRC. Here are some sample messages you may want to use or re-write:
 
@@ -29,7 +29,7 @@ Send a short "hi everyone, I'm here now" message in IRC. Here are some sample me
 
 Oh, yeah, and you may of course add a GIF (not necessarily [this one](http://www.tehcute.com/pics/201204/bunny-falls-asleep-at-desk.jpg) anytime (turns out the Hoodie Community loves GIFs).
 
-####2b send a Tweet
+####2b) send a Tweet
 
 Send a short Tweet from the @hoodiehq account or, if you want, your personal Twitter account. Maybe something like …
 
