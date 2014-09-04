@@ -17,33 +17,19 @@
 
 
 ## Properties
-
-- username
+- [username](#accountusername)
 
 
 ## Methods
+- [signUp()](#accountsignup)
+- [signIn()](#accountsignin)
+- [signOut()](#accountsignout)
+- [changePassword()](#accountchangepassword)
+- [changeUsername()](#accountchangeusername)
+- [resetPassword()](#accountresetpassword)
+- [destroy()](#accountdestroy)
 
-- signUp()
-- signIn()
-- signOut() // please add anchors
-- changePassword()
-- changeUsername()
-- resetPassword()
-- destroy()
-
-## Events
-
-- signup (username)
-- reauthenticated (username)
-- signin (username)
-- signup (username)
-- signout (username)
-- reauthenticated
-- changepassword
-- changeusername (newUsername)
-- passwordreset (username)
-- error:passwordreset (error, username)
-- error:unauthenticated
+## [Events](account-events)
 
 <br>
 ### account.username
