@@ -1,17 +1,19 @@
-# hoodie.account 
+# hoodie.account
 > **version:** 		*> 0.1.0* <br />
 > **source:** 		*hoodie/src/hoodie/account.js*<br />
 > **tutorial:** 	*http://hood.ie/tutorial/accounts*<br />
 
 **<br />after reading this you will know:**
 - how to sign up / in / out a user
-- how to get information about the user and store it
-- how to listen to account even
+- how to check if a user is signed in
+- how to change username or password
+- how to reset a password
+- how to listen to account events
+- how to destroy a user account
 
 ## Introduction
 
-*The account object gives you the methods to create, update and delete an account. Your data will be stored locally and synced by saving to the server. After logging in on another device you can access it again, because your data is always bound to the account by default.*
-
+*The account object gives you the methods to create, update and delete an account. A user's data is always bound to the user's account, and will automatically be synchronized when signend in on different devices.*
 
 
 ## Methods
@@ -47,8 +49,8 @@
 - cleanup
 - signout (username)
 
-### account.signUp() 
-> **version:** 		*> 0.2.0* 
+### account.signUp()
+> **version:** 		*> 0.2.0*
 
 
 ```javascript
@@ -83,13 +85,13 @@ The backend will automatically create a userDB based on the username address and
 
 ###### Notes
 > - You need to signIn after a signUp!
-> - Second password does not get checked at the moment. It is still a bug. 
+> - Second password does not get checked at the moment. It is still a bug.
 > Please make sure to validate this on the frontend side.
 
 
 <br />
-### account.signIn() 
-> **version:** 		*> 0.2.0* 
+### account.signIn()
+> **version:** 		*> 0.2.0*
 
 
 ```javascript
@@ -127,8 +129,8 @@ To prevent data loss, signIn can be called with ````options.moveData = true````,
 
 
 <br />
-### account.signOut() 
-> **version:** 		*> 0.2.0* 
+### account.signOut()
+> **version:** 		*> 0.2.0*
 
 
 ```javascript
