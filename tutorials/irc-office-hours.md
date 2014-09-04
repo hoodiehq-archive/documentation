@@ -50,7 +50,11 @@ And, yes, the GIF "rule" applies here as well.
 
 Please try to avoid asking other community members to jump into conversations, unless it's a really urgent case or they have stated otherwise beforehand. You can handle this, and we'll then try everything to resolve the issue posted as soon as we can.
 
-###4. Say bye on IRC
+###4. Remember our FAQ
+
+If you have an interesting question from someone which might be interesting to a broader amount of people, please [post it to our FAQ](https://github.com/hoodiehq/faq/issues/new), ideally including the solution, or just copy-paste it and safe it somewhere so you can add it later. This helps a lot with recurring questions and is a good way to make content accessible to everyone and do support in a sustainable way.
+
+###5. Say bye on IRC
 
 When Office Hours are over, say goodbye on IRC and leave a message where people can get in touch with us (this is also stated in the IRC channel welcome message, but it's still good to show we're also thinking about this). It could e.g. look like this:
 
