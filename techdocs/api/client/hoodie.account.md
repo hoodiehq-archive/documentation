@@ -30,6 +30,16 @@
 - [destroy()](#accountdestroy)
 
 ### [Events](account-events)
+- signup
+- signin
+- signout
+- reauthenticated
+- changepassword
+- changeusername
+- passwordreset
+- error:passwordreset
+- error:unauthenticated
+
 
 
 ## Properties
