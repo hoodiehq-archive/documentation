@@ -46,8 +46,9 @@ And, yes, the GIF "rule" applies here as well.
 - If you can't answer a question yourself, please 
 -   check our [FAQ](http://faq.hood.ie)
 -   ask the person who sent it to file an issue in our ["discussions" repo](https://github.com/hoodiehq/discussion/issues/new) or in the [FAQ](https://github.com/hoodiehq/faq/issues/new)
+- If you have to leave the channel or pause for any reasons, please take care that someone else can take over the responsibility.
 
-Please try to avoid asking other community members, unless it's a really urgent case. You can handle this, and we'll then try everything to resolve the issue posted as soon as we can.
+Please try to avoid asking other community members to jump into conversations, unless it's a really urgent case or they have stated otherwise beforehand. You can handle this, and we'll then try everything to resolve the issue posted as soon as we can.
 
 ###4. Say bye on IRC
 
