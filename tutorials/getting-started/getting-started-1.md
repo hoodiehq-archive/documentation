@@ -22,7 +22,7 @@ This is how it works: ([Windows](#), [Mac](#), [Linux](#))
 ## Introduction
 
 Hello!
-![doc doc doc chicken](./img/hoo-dog-small.png)
+![doc doc doc chicken](./dist/hoo-dog-small.png)
 
 This is the first part of Getting Started with Hoodie, which describes the first steps after you've successfully installed it. 
 
@@ -38,7 +38,7 @@ The very first step is using Hoodie CLI to instantiate your new application. In 
 `$ hoodie new testapp`
 
 This is what you'll get:
-![screenshot 1 - hoodie-cli](./img/scs1.png)
+![screenshot 1 - hoodie-cli](./dist/scs1.png)
 
 If you'll experience any problems, please make sure to check the [FAQ](http://faq.hood.ie).
 
