@@ -291,7 +291,7 @@ var todoStore = hoodie.store('todo');
 
 todoStore
     .findAll()
-    .then(function(allTodos) {
+    .done(function(allTodos) {
         allTodos.forEach(function(oneTodo) {
             console.log('found', oneTodo);
         });
@@ -314,14 +314,14 @@ console.log(todoStore.findAll());
 
 todoStore
     .findAll()
-    .then(function(allTodos) {
+    .done(function(allTodos) {
         // get an array with all things
         // you have on your todo list
         return allTodos.map(function(todo) {
            return todo.title;
         });
     })
-    .then(function(titles) {
+    .done(function(titles) {
         // print out all the things you have todo
         titles.forEach(function(title) {
             console.log('You have to => ', title);

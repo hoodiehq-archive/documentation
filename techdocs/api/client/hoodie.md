@@ -74,7 +74,7 @@ todoStore.on('todo:done', function(doneTodo, t) {
   console.log(doneTodo.title, ' was done', t);
 });
 
-todoStore.findAll().then(function(allTodos) {
+todoStore.findAll().done(function(allTodos) {
   // take the first todo in list
   // and mark it as done
   markAsDone(allTodos[0]);
@@ -138,7 +138,7 @@ todoStore.on('todo:done', function(doneTodo, t) {
 // subscribed event handlers
 todoStore.off('todo:done');
 
-todoStore.findAll().then(function(allTodos) {
+todoStore.findAll().done(function(allTodos) {
   todoStore.trigger('todo:done', allTodos[0], new Date());
 });
 ```
