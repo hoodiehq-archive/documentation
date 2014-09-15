@@ -26,10 +26,9 @@ This opens the standard browser on http://hoodie.local (http://localhost:1234) w
   $ hoodie new app
   $ cd app # where your app lives, all of this lives in your version control
   $ ls
-  hoodie/ # core hoodie files
-  worker/ # worker installed for your app
+  node_modules/ # core hoodie components (and others)
   www/ # static site assets, document root for hoodie_web
-  config/ # configuration files
+  package.json/ # configuration file
   $ hoodie start
   Launching app...done. Please visit http://app.hoodie.local (http://localhost:1235)
 
@@ -38,6 +37,6 @@ This opens the standard browser on http://hoodie.local (http://localhost:1234) w
 Launches $pwd/hoodie/bin/hoodie_web on $PORT
 
 
-## Install a Worker
+## Install a Plugin
 
-  $ hoodie worker new name # runs npm install name in workers/
+  $ hoodie install <name>
