@@ -52,7 +52,7 @@ $ hoodie start
 
 You'll be prompted to enter a password for the Admin Dashboard, just pick something simple for now, like `123`.
 
-![screenshot 2 - hoodie-cli](./img/scs2.png)
+![screenshot 2 - hoodie-cli](./dist/scs2.png)
 
 That's it, your app should now start up and tell you a bunch of things about itself, for example at what URL you can access your app and which plugins it is running. The first thing you'll notice though is that Hoodie opens a browser with the demo app already running in it. 
 
@@ -61,7 +61,7 @@ As a side note, if you don't want Hoodie to open a browser, start the Hoodie ser
 Let's scan through the CLI output really quickly:
 
     
-![screenshot 3 - hoodie-cli](./img/scs3.png)
+![screenshot 3 - hoodie-cli](./dist/scs3.png)
 
 There are three URLs in here:
 
@@ -82,7 +82,7 @@ So what's in here?
 $ ls
 ```
 
-![screenshot 4 - hoodie-cli](./img/scs4.png)
+![screenshot 4 - hoodie-cli](./dist/scs4.png)
 
 ## The `README.md` file
 
