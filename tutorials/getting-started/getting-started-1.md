@@ -22,7 +22,7 @@ This is how it works: ([Windows](https://github.com/ffffux/documentation/blob/gh
 ## Introduction
 
 Hello!
-![doc doc doc chicken](#)
+![picture](#)
 
 This is the first part of Getting Started with Hoodie, which describes the first steps after you've successfully installed it. In this doc you'll learn how to create a demo Hoodie app, learn about the basic structure of a Hoodie project and its folders, the endpoints and app URLs and how to include and use the Hoodie library in your project.
 
