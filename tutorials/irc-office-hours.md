@@ -43,6 +43,7 @@ And, yes, the GIF "rule" applies here as well.
 
 - Remember our [Code of Conduct](http://hood.ie/code-of-conduct.html) and *strictly* enforce it.
 - Be friendly and patient.
+- If you need more than 1-2 minute to answer a question, please let the other party know that you are still there and on it
 - If you can't answer a question yourself, please 
   - check our [FAQ](http://faq.hood.ie)
   - ask the person who sent it to file an issue in our ["discussions" repo](https://github.com/hoodiehq/discussion/issues/new) or in the [FAQ](https://github.com/hoodiehq/faq/issues/new)
