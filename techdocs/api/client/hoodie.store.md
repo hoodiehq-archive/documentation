@@ -35,7 +35,6 @@ different devices.
 - [store.updateAll()](#storeupdateall)
 - [store.remove()](#storeremove)
 - [store.removeAll()](#storeremoveall)
-- [store.validate()](#storevalidate)
 - [store()](#store)
 
 ## Events
