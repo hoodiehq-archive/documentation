@@ -16,12 +16,12 @@ update and remove objects. You can listen to object changes, e.g.
 to update your apps user interface. `hoodie.store` is user-specific,
 that means that a user can only access the objects of the current account.
 It works anonymously, too. Once signed up using the `hoodie.account` api,
-all data gets synchronized automatically, so it can be accessed from
+all objects get synchronized automatically, so it can be accessed from
 different devices.
 
 ###### Notes
 > - storing and accessing objects with hoodie always means accessing your personal, local objects.
-> - All stored data has a fixed association to the user who created them. So you won't be able to access other user's data by default.
+> - all stored objects have a fixed association to the user who created them. So you won't be able to access other user's objects by default.
 > - in order save objects to the server's store, you need to be logged in with a valid user. Learn more about the hoodie user system at [`hoodie.account`](./hoodie.account.md).
 
 
@@ -504,8 +504,7 @@ hoodie.store.on('config:app:remove', function(eventName, removedAppConfig) {});
 hoodie.store.on('clear', function(){});
 ```
 
-`clear` gets triggered when a user signed out, or called `hoodie.account.destroy()`. It gets also triggered when the user signs in, to clear up
-the local data before loading the data of the account the user signed into.
+`clear` gets triggered when a user signed out, or called `hoodie.account.destroy()`. It gets also triggered when the user signs in, to clear up the local objects before loading the objects of the account the user signed into.
 
 Note that no `remove` events get triggered when the store gets cleared,
 as the objects do not necessarly get removed for the user's account, but
