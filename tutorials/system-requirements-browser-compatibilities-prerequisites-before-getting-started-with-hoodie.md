@@ -40,6 +40,8 @@ We recommend using the nodejs.org .pkg file to install node, you can download it
 #### Install CouchDB
 You can download the installer for the latest version of CouchDB [here](http://couchdb.apache.org/#download).
 #### Install git
+#### Install Hoodie-CLI
+With npm install -g hoodie-cli
 
 The download for Mac is [here](http://git-scm.com/download/mac).
 
@@ -52,6 +54,10 @@ You can download node.js for Windows [here](http://nodejs.org/download/).
 You can download the latest version of CouchDB [here](http://couchdb.apache.org/#download).
 #### Install git
 The download for Mac is [here](http://git-scm.com/download/win). 
+#### Install Hoodie-CLI
+```
+  $ npm install -g hoodie-cli
+```
 
 -------------------------------
 
@@ -72,6 +78,11 @@ On Ubuntu, you don't have to build Node.js from source, you can install it as a 
   $ sudo apt-get update
   $ sudo apt-get install couchdb-bin git
 ```
+#### Install Hoodie-CLI
+```
+  $ npm install -g hoodie-cli
+```
+
 
 -------------------------------
 
@@ -80,6 +91,10 @@ On Ubuntu, you don't have to build Node.js from source, you can install it as a 
 
 ```
   $ sudo yum install couchdb git nodejs npm
+```
+#### Install Hoodie-CLI
+```
+  $ npm install -g hoodie-cli
 ```
 
 -------------------------------
