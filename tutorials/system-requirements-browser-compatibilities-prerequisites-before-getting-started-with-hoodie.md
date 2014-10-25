@@ -10,10 +10,10 @@ This is a list of everything you should know and prepare *before* finally starti
 - <a href="#system-requirements">System Requirements</a>
 - <a href="#browser-compatibilities">Browser Compatibilities</a>
 - <a href="#Installation-of-Prerequisites">Installation of prerequisites: node.js, Apache CouchDB, git</a>
-  - <a href="#mac-os-x">Mac OS X</a>
-  - <a href="#Windows">Windows</a>
-  - <a href="#Linux-Ubuntu">Linux-Ubuntu</a>
-  - <a href="#Linux-Fedora">Linux-Fedora 19+</a>
+  - [https://github.com/hoodiehq/documentation/blob/gh-pages/tutorials/system-requirements-browser-compatibilities-prerequisites-before-getting-started-with-hoodie.md#mac-os-x](Mac OS X)
+  - [https://github.com/hoodiehq/documentation/blob/gh-pages/tutorials/system-requirements-browser-compatibilities-prerequisites-before-getting-started-with-hoodie.md#windows](Windows)
+  - [https://github.com/hoodiehq/documentation/blob/gh-pages/tutorials/system-requirements-browser-compatibilities-prerequisites-before-getting-started-with-hoodie.md#linux-ubuntu](Linux-Ubuntu)
+  - [https://github.com/hoodiehq/documentation/blob/gh-pages/tutorials/system-requirements-browser-compatibilities-prerequisites-before-getting-started-with-hoodie.md#linux-fedora-19](Linux-Fedora 19+)
 
 ## System Requirements
 * Mac OS X
