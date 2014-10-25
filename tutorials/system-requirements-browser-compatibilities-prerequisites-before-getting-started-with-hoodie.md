@@ -38,10 +38,13 @@ This is a list of everything you should know and prepare *before* finally starti
 #### Install node.js
 We recommend using the nodejs.org .pkg file to install node, you can download it [here](http://nodejs.org/download/). 
 #### Install CouchDB
-You can download the installer for the latest version of CouchDB [here](http://couchdb.apache.org/#download).
+You can download the installer for the latest version of [CouchDB for Mac](http://couchdb.apache.org/#download).
 #### Install git
+git for Mac can be downloaded [here](http://git-scm.com/download/mac).
 #### Install Hoodie-CLI
-With npm install -g hoodie-cli
+```
+  $ npm install -g hoodie-cli
+```
 
 The download for Mac is [here](http://git-scm.com/download/mac).
 
@@ -49,11 +52,11 @@ The download for Mac is [here](http://git-scm.com/download/mac).
 
 ### Windows
 #### Install node.js
-You can download node.js for Windows [here](http://nodejs.org/download/). 
+You can download [Node.js for Windows here](http://nodejs.org/download/). 
 #### Install CouchDB
-You can download the latest version of CouchDB [here](http://couchdb.apache.org/#download).
+You can download the latest version of [CouchDB for Windows here](http://couchdb.apache.org/#download).
 #### Install git
-The download for Mac is [here](http://git-scm.com/download/win). 
+The download of [git for Windows is here](http://git-scm.com/download/win). 
 #### Install Hoodie-CLI
 ```
   $ npm install -g hoodie-cli
