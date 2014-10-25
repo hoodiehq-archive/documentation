@@ -102,4 +102,12 @@ On Ubuntu, you don't have to build Node.js from source, you can install it as a 
 
 -------------------------------
 
-Installation done! Time to [get started with Hoodie](MISSING LINK TO TUTORIAL).
+Installation done! Now you can 
+### Follow our guides for getting started 
+- <a href="https://github.com/hoodiehq/documentation/blob/gh-pages/tutorials/installation/development-osx.md" target="_blank">Mac OS X</a>, 
+- <a href="https://github.com/hoodiehq/documentation/blob/gh-pages/tutorials/installation/development-windows.md" target="_blank">Windows</a>
+
+or
+
+### Find out how to …
+create a new Hoodie app, how its admin interface works, how Hoodie projects are structured and more in our tutorial <a href="https://github.com/hoodiehq/documentation/blob/gh-pages/tutorials/getting-started/getting-started-1.md" target="_blank">"Getting started with Hoodie, part 1"</a>.
