@@ -106,6 +106,7 @@ Installation done! Now you can
 ### Follow our guides for getting started 
 - <a href="https://github.com/hoodiehq/documentation/blob/gh-pages/tutorials/installation/development-osx.md" target="_blank">Mac OS X</a>, 
 - <a href="https://github.com/hoodiehq/documentation/blob/gh-pages/tutorials/installation/development-windows.md" target="_blank">Windows</a>
+- <a href="https://github.com/hoodiehq/documentation/blob/gh-pages/tutorials/installation/development-linux.md" target="_blank">Linux</a>
 
 or
 
