@@ -42,7 +42,6 @@ If they don’t have one yet, ask them to install an Editor (ideally send a list
 
 ## Running Order
 
-### Welcome
 - Welcome everyone
 - Talk about Code of Conduct (name welcome / unwelcome behaviour explicitly) and that it will be enforced
 - Ask who knows hat Hoodie is and does, if not all, give a short introduction to Hoodie
