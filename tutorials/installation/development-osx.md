@@ -72,6 +72,7 @@ You’ll be prompted for an admin password.
 From the command line type
 
 ```
+cd hoodietut
 hoodie start
 ```
 
