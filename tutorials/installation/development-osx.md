@@ -7,6 +7,7 @@ layout: layout
 
 ### Step One - Installing Hoodie
 
+#### The Easy Way
 Hoodie depsnds on Node.js and CouchDB. The easiest way to get them installed on Mac OS X is downloading the binary packages from the respective sites:
 
 - [Node.js](http://nodejs.org/download/)
@@ -14,7 +15,8 @@ Hoodie depsnds on Node.js and CouchDB. The easiest way to get them installed on 
 
 For Node.js, double click the installer, and follow its instructions. For CouchDB, double click the .zip file to unpack CouchDB — and that’s it, nothing else required.
 
-#### Homebrew
+#### The Slightly Less Easy Way
+##### Homebrew
 
 If you like [Homebrew](http://brew.sh/), you can use it to install Node.js and CouchDB, but we recommend the binary packages above.
 
