@@ -46,8 +46,6 @@ git for Mac can be downloaded [here](http://git-scm.com/download/mac).
   $ npm install -g hoodie-cli
 ```
 
-The download for Mac is [here](http://git-scm.com/download/mac).
-
 -------------------------------
 
 ### Windows
