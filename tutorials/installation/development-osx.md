@@ -8,7 +8,7 @@ layout: layout
 ### Step One - Installing Hoodie
 
 #### The Easy Way
-Hoodie depsnds on Node.js and CouchDB. The easiest way to get them installed on Mac OS X is downloading the binary packages from the respective sites:
+Hoodie depends on Node.js and CouchDB. The easiest way to get them installed on Mac OS X is downloading the binary packages from the respective sites:
 
 - [Node.js](http://nodejs.org/download/)
 - [CouchDB](http://couchdb.apache.org/#download)
