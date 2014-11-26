@@ -5,15 +5,15 @@ layout: layout
 # Getting Started with Hood.ie on MacOSX
 
 
-### Step One - Installing Hoodie
+### Step One – Installing Hoodie
 
 #### The Easy Way
-Hoodie depsnds on Node.js and CouchDB. The easiest way to get them installed on Mac OS X is downloading the binary packages from the respective sites:
+Hoodie depends on Node.js and CouchDB. The easiest way to get them installed on Mac OS X is downloading the binary packages from the respective sites:
 
 - [Node.js](http://nodejs.org/download/)
-- [CouchDB](http://couchdb.apache.org/#download)
+- [CouchDB](http://CouchDB.apache.org/#download)
 
-For Node.js, double click the installer, and follow its instructions. For CouchDB, double click the .zip file to unpack CouchDB — and that’s it, nothing else required.
+For Node.js, double click the installer and follow its instructions. For CouchDB, double click the .zip file to unpack it and start the included app — and that's it, nothing else required.
 
 #### The Slightly Less Easy Way
 ##### Homebrew
@@ -35,10 +35,10 @@ brew update
 Then we'll pull in Hoodie's dependencies with the following command:
 
 ```
-brew install git node couchdb
+brew install git node CouchDB
 ```
 
-These modules are what power Hoodie, and each have their own roles.
+These modules are what power Hoodie, and each have their own role.
 
 **Git** is a distributed version control software that Hoodie uses to store the Hoodie source code, and using it within Hoodie allows us to keep the installation process simple, and grab the latest files from our repositories.
 
@@ -46,7 +46,7 @@ These modules are what power Hoodie, and each have their own roles.
 
 **CouchDB** is a NoSQL database that stores its data in JSON format, and JavaScript as its query language, which is great from Hoodie's point of view because, alongside **Node**, it allows really powerful handling of data in JavaScript.
 
-When you install **Node** via **Homebrew**, **npm** comes bundled with it. **npm** is a fantastic package manager for all CommonJS applications (CommonJS being JavaScript being used outside the browser), and it's how we'll install Hoodie.
+When you install **Node** via **Homebrew**, **npm** comes bundled with it. **npm** is a fantastic package manager for all CommonJS applications (CommonJS being JavaScript used outside the browser), and it's how we'll install Hoodie.
 
 ```
 npm install -g hoodie-cli
@@ -56,155 +56,154 @@ Notice that we passed npm a *-g* option. This tells npm to install the module *g
 
 However for our purposes, a global install works best, and now we can move on to the next step.
 
-### Step Two - Create Hoodie Project
+### Step Two – Create your first Hoodie Project
 
-You’ll need a folder for your project. Hoodie command line interface does this and populates it with the required files and folders.
+You'll need a folder for your project. The Hoodie command line interface does this automatically  and populates it with the required files and folders.
 
-In my case, in a folder I typed:
+Invoke the following via the shell:
 
 ```
 hoodie new hoodietut
 ```
 
-You’ll be prompted for an admin password.
+You'll be prompted for an admin password.
 
 
-### Step Three - Start Your App and Test It
+### Step Three – Start Your App and Test It
 
-From the command line type
+Again from the command line type ...
 
 ```
 cd hoodietut
 hoodie start
 ```
 
-and it opened up a browser tab at
+It'll open up your default browser at ...
 
 ```
-http://127.0.0.1: 6004
+http://127.0.0.1:6001
 ```
 
-You should see a hoodie app in your browser with a subtitle of ‘hoodie playground’. This ‘test’ shows that hoodie is working.
+You should see a hoodie app with a subtitle of 'hoodie playground'. This shows that hoodie is working.
 
-The command line output also shows you this information which you’ll use later:
+The command line output also shows you this information which you'll use later:
 
 ```
-CouchDB started: http://127.0.0.1:6006
-Admin: http://127.0.0.1:6005
+CouchDB started: http://127.0.0.1:6003
+WWW:    http://127.0.0.1:6001
+Admin:  http://127.0.0.1:6002
 ```
 
-### Step Four - Play with the App
+### Step Four – Play with the App
 
 The demo todo app shows off what you can do with hoodie. You will probably notice that it looks like a Bootstrap app. Though the app uses Bootstrap, hoodie has no dependency on Bootstrap and any CSS framework can be used.
 
-In the upper right, there is a drop down for Sign Up. Click on it and created an account with username and password. Now you should login because only then will data be saved.
+In the upper right, there is a drop down for "Sign Up". Click on it and create an account with your desired username and password. After that you should be logged in automatically – only in this case your todos will be saved.
 
-Type in a few todos like “learn hoodie” and “steps 5, 6, 7 and 8”. You should see your todos displayed.
+Type in a few todos like "learn hoodie" and "steps 5, 6, 7 and 8". You should see your todos displayed directly.
 
-Nice to see a hoodie demo after just three steps!
+Nice to see a working hoodie after just three steps!
 
 
-### Step Five - Tabs for CouchDB and Admin
+### Step Five – Tabs for CouchDB and Admin
 
-The hood.ie demo app is already opened in your browser. Start two more tabs for CouchDB and admin. For CouchDB I wanted to see the Futon app, so these where the two urls I used:
+Our hood.ie demo app should already opened in your browser (if not, go to http://127.0.0.1:6001/new.html). Start two more tabs for CouchDB and the admin interface:
 
 ```
-http://127.0.0.1:6006/_utils
-http://127.0.0.1:6005
+http://127.0.0.1:6003/_utils
+http://127.0.0.1:6002/
 ```
 
-While I did not use the admin *(:6005)* yet, it was good to know it was there. You don’t need Couchdb except for monitoring the hoodie magic.
+We won't use the admin *(:6002)* yet, but good to know it's ready. You also don't need CouchDB, except for monitoring the hoodie magic.
 
 
 # Part Two: Make Hoodie Your Own: Go Nuts
 
-In the next several steps the todo app will be modified to give todos a priority of 1, 2 or 3. The list of todos will be sorted on priority.
+In the next several steps our demo todo app will be modified to give todos a priority of 1, 2 or 3. Also the list of todos will be sorted by priority.
 
 
-### Step Six - Open your text editor
+### Step Six – Open your text editor
 
-At this point the hood.ie site tells you to “go nuts”.  There are a few more steps you need to take before you can write your own hoodie app.
+At this point the hood.ie site tells you to "go nuts". There are a few more steps you need to take before you can write your own hoodie app.
 
-In my case, I started sublime text with a new project for /dalyapps/hoodietut. This was the folder created by hoodie in Step Two.
+In my case, I started sublime text with a new project for `hoodietut`. This was the folder created by hoodie in Step Two.
 
-You should see folders of data, node_modules and www. Hoodie command line has set up files for both hoodie and the demo todo app.
+Open the `hoodietut` folder created in step two with your editor/IDE of choice. You should see the folders `data`, `node_modules` and `www`. The hoodie command line client has set up files for both hoodie and the demo todo app.
 
-We are going to be working in assets folder of www.
+We will be working in the `assets` folder of `www`.
 
 
-### Step Seven - Edit your first hoodie files
+### Step Seven – Edit your first hoodie files
 
-To start creating you own App there are two files you’ll want to copy. In /hoodietut/www/ copy index.html and name the copy new.html. In /www/assets/assets/ copy main.js and rename the copy to new.js.
+To start creating you own app there are two files you'll want to copy. In `/hoodietut/www/` copy `index.html` and name the copy `new.html`. In `/www/assets/` copy `main.js` and rename the copy to `new.js`.
 
-In sublime (your text editor) open new.html. On the last line you’ll see
-
-```html
-<script src="“assets/main.js”"></script>
-```
-
-Change that line from main.js to new.js
+Now open `new.html` and the last line should be ...
 
 ```html
-<script src="“assets/new.js”"></script>
+<script src="assets/main.js"></script>
 ```
 
-Open a new tab in the browser and go to
-
-```
-http://127.0.0.1:6004/new.html
-```
-
-This displays the file you just copied.
-
-In the start of the body you’ll see the line “hoodie playground”. Modify that to read “my first hoodie app”. When you reload the browser you should see your first modification to a a hoodie app.
-
-
-### Step Eight - Button Please
-
-The demo todo app lets you type in a new todo. It saves it when you hit the Return key. This works fine for a single input. But more because priority will be a new input, a submit button would be a more appropriate.
-
-First, add a button to the new.html file. Look for the text input - search for “todoinput”. In the line after that add a button with an id. I used:
+Change that line from `main.js` to `new.js` ...
 
 ```html
-<button id=“addBut”>Add</button>
+<script src="assets/new.js"></script>
 ```
 
-Second, change new.js so the addTodo is triggered when the button is clicked instead of on keypress. Replace the six lines of code after //handle creating a new task with
+Open a new tab in the browser and go to ...
+
+```
+http://127.0.0.1:6001/new.html
+```
+
+This displays the file you just created.
+
+In the first part of the `<body>` you'll see the line "hoodie playground". Modify that to read "my first hoodie app". When you reload the browser you should see your first modification to your hoodie app.
+
+
+### Step Eight – Button Please
+
+The demo todo app lets you type in new todos and saves them when you invoke the Return key. This works fine for a single input, but as we will be adding another form field for a priority later on, a submit button will be more appropriate.
+
+First add a button to the `new.html` file. Look for the text input with the id `todoinput`. In the line after it add a button with the id `addBut`:
+
+```html
+<button id="addBut">Add</button>
+```
+
+Second, change `new.js` so a new todo is added when the button is clicked instead of a keypress. Replace the six lines of code after `// handle creating a new task` with ...
 
 ```javascript
-// handle creating a new vendor
+// handle creating a new task
 $('#addBut').on('click', function() {
   hoodie.store.add('todo', {title: $("#todoinput").val()});
   $("#todoinput").val('');
 });
 ```
 
-The first line here looks for a click on our button. When the button is clicked second line adds a new task into hoodie using the hoodie.store.add method. This method takes two parameters: type and a data object where the task is defined. The third line clears the input.
+The first line binds to a click on our newly created button. When the button is clicked the second line adds a new todo using the `hoodie.store.add` method. The third line within our new function clears the input.
 
 Save these files and run your modified app at:
 
 ```
-http://127.0.0.1:6004/new.html
+http://127.0.0.1:6001/new.html
 ```
 
-Enter a new task. You should see it displayed when clicking on the “Add” button.
+Enter a new task. You should see it rendered after clicking the "Add" button.
 
-### Step Nine - Understanding Type
+### Step Nine – Understanding Type
 
-Type is an important convention to understand when working with Hoodie or Couchdb. Type is a convention to deal with the lack of schemas in Couchdb.
+Type is an important convention to understand when working with Hoodie or CouchDB. Type is a convention to deal with the lack of schemas in CouchDB.
 
-In Couchdb the same database can contain a wide variety of different records. For example, you might have records on people and records on location. Type is used to distinguish one record from another. So the people records would have fields like fist name, last name, etc and a record called “type” with a value of “people”. The location record would have fields like street, country, etc and a record called “type” with a value of “location”
+In CouchDB the same database can contain a wide variety of different records. For example, you might have records on people and records on location. Type is used to distinguish one record from another. So the people records would have fields like `first name`, `last name`, etc. and a record called `type` with a value of `people`. The location record would have fields like `street`, `country`, etc. and a record called `type` with a value of `location`.
 
-Hoodie uses type the same way. It is a way to store different ‘types’ of records in the same database. In this demo only the “todo” type is used.
+Hoodie uses type the same way. It is a way to store different 'types' of records in the same database. In this demo only the "todo" type will be used.
 
-So while type is not critical for this application, more complex application will have several types.
+So while type is not critical for this application, more complex applications will have several types.
 
 
-###Step Ten - Adding Priority
+### Step Ten – Adding Priority
 
-Adding a priority requires an new input field, adding it to the display and modifying the add method we just worked with.
-
-In **new.html** add a select input before the button we added above:
+Adding a priority requires a new input element. Add a `<select>` input before the button we added above in `new.html`:
 
 ```html
 <select id="priorityinput" class="form-control">
@@ -215,7 +214,7 @@ In **new.html** add a select input before the button we added above:
 <button id="addBut">Add</button>
 ```
 
-Then in **new.js** modify the addBut handle to store the priority.
+Then modify the `#addBut` click method in `new.js` to store the priority:
 
 ```javascript
 // handle creating a new vendor
@@ -228,25 +227,37 @@ $('#addBut').on('click', function() {
 });
 ```
 
-Also in *new.js* modify the **addTodo** function to show the priority.
+Again in `new.js` modify the `paint` function to show the priority:
+
+Change ...
 
 ```javascript
-function addTodo( todo ) {
-  $('#todolist').append('<li>'+todo.priority+' '+todo.title+'</li>');
-}
+'<input type="checkbox"> <label>' + collection[i].title + '</label>' +
 ```
 
-At this point you should start seeing each task listed prefaced by a priority. Hoodie makes it pretty simple to add new fields to a store.
+to ...
 
-
-### Step Eleven - Sort By Priority
-
-Out todo list would look a lot nicer if they were listed by priority. So lets change the sort in *new.js*.
-
-```
-function sortByCreatedAt(a, b) {
-  return a.priority > b.priority;
-}
+```javascript
+'<input type="checkbox"> <label>' + collection[i].priority + ' ' + collection[i].title + '</label>' +
 ```
 
-Now your number one priorities show first.
+At this point you should start seeing that each task listed is prefaced by a priority. Hoodie makes it pretty easy to add new fields to a store.
+
+
+### Step Eleven – Sort By Priority
+
+Our todo list would look a lot nicer if it was also listed by our new priority. So let's change the sorting method in `new.js`:
+
+Replace ...
+
+```javascript
+return ( a.createdAt > b.createdAt ) ? 1 : -1;
+```
+
+... with ...
+
+```javascript
+return ( a.priority > b.priority ) ? 1 : -1;
+```
+
+Now your number one priorities show first and you hopefully got a good first impression on the hoodie way of development.
