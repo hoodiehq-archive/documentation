@@ -11,9 +11,9 @@ layout: layout
 Hoodie depends on Node.js and CouchDB. The easiest way to get them installed on Mac OS X is downloading the binary packages from the respective sites:
 
 - [Node.js](http://nodejs.org/download/)
-- [CouchDB](http://CouchDB.apache.org/#download)
+- [CouchDB](http://couchdb.apache.org/#download)
 
-For Node.js, double click the installer and follow its instructions. For CouchDB, double click the .zip file to unpack it and start the included app — and that's it, nothing else required.
+For Node.js, double click the installer and follow its instructions. For CouchDB, double click the .zip file to unpack it and start the included app — and that’s it, nothing else required.
 
 #### The Slightly Less Easy Way
 ##### Homebrew
@@ -32,33 +32,33 @@ So with that in mind, our first step is to make sure that our homebrew package l
 brew update
 ```
 
-Then we'll pull in Hoodie's dependencies with the following command:
+Then we’ll pull in Hoodie’s dependencies with the following command:
 
 ```
-brew install git node CouchDB
+brew install git node couchdb
 ```
 
 These modules are what power Hoodie, and each have their own role.
 
 **Git** is a distributed version control software that Hoodie uses to store the Hoodie source code, and using it within Hoodie allows us to keep the installation process simple, and grab the latest files from our repositories.
 
-**Node** is a way for Hoodie to be developed using JavaScript on every layer, as it provides a runtime that can be run across operating systems with no changes. It's fantastic for server-side and networking applications, and suits Hoodie well.
+**Node** is a way for Hoodie to be developed using JavaScript on every layer, as it provides a runtime that can be run across operating systems with no changes. It’s fantastic for server-side and networking applications, and suits Hoodie well.
 
-**CouchDB** is a NoSQL database that stores its data in JSON format, and JavaScript as its query language, which is great from Hoodie's point of view because, alongside **Node**, it allows really powerful handling of data in JavaScript.
+**CouchDB** is a NoSQL database that stores its data in JSON format, and JavaScript as its query language, which is great from Hoodie’s point of view because, alongside **Node**, it allows really powerful handling of data in JavaScript.
 
-When you install **Node** via **Homebrew**, **npm** comes bundled with it. **npm** is a fantastic package manager for all CommonJS applications (CommonJS being JavaScript used outside the browser), and it's how we'll install Hoodie.
+When you install **Node** via **Homebrew**, **npm** comes bundled with it. **npm** is a fantastic package manager for all CommonJS applications (CommonJS being JavaScript used outside the browser), and it’s how we’ll install Hoodie.
 
 ```
 npm install -g hoodie-cli
 ```
 
-Notice that we passed npm a *-g* option. This tells npm to install the module *globally*, and this allows you to not be confined to a specific place to run the hoodie commands. It also highlights another strength of **npm**, as we can actually have different versions of the same npm module installed on our computer for compatibility reasons with different apps. If we don't pass the *-g* option, then the module is installed inside a *node_modules/* folder within the folder you are in, which can be really handy if a module hasn't been updated to use the latest version of something.
+Notice that we passed npm a *-g* option. This tells npm to install the module *globally*, and this allows you to not be confined to a specific place to run the hoodie commands. It also highlights another strength of **npm**, as we can actually have different versions of the same npm module installed on our computer for compatibility reasons with different apps. If we don’t pass the *-g* option, then the module is installed inside a *node_modules/* folder within the folder you are in, which can be really handy if a module hasn’t been updated to use the latest version of something.
 
 However for our purposes, a global install works best, and now we can move on to the next step.
 
 ### Step Two – Create your first Hoodie Project
 
-You'll need a folder for your project. The Hoodie command line interface does this automatically  and populates it with the required files and folders.
+You’ll need a folder for your project. The Hoodie command line interface does this automatically and populates it with the required files and folders.
 
 Invoke the following via the shell:
 
@@ -66,7 +66,7 @@ Invoke the following via the shell:
 hoodie new hoodietut
 ```
 
-You'll be prompted for an admin password.
+You’ll be prompted for an admin password.
 
 
 ### Step Three – Start Your App and Test It
@@ -78,15 +78,15 @@ cd hoodietut
 hoodie start
 ```
 
-It'll open up your default browser at ...
+It’ll open up your default browser at ...
 
 ```
 http://127.0.0.1:6001
 ```
 
-You should see a hoodie app with a subtitle of 'hoodie playground'. This shows that hoodie is working.
+You should see a hoodie app with a subtitle of ‘hoodie playground’. This shows that hoodie is working.
 
-The command line output also shows you this information which you'll use later:
+The command line output also shows you this information which you’ll use later:
 
 ```
 CouchDB started: http://127.0.0.1:6003
@@ -98,23 +98,23 @@ Admin:  http://127.0.0.1:6002
 
 The demo todo app shows off what you can do with hoodie. You will probably notice that it looks like a Bootstrap app. Though the app uses Bootstrap, hoodie has no dependency on Bootstrap and any CSS framework can be used.
 
-In the upper right, there is a drop down for "Sign Up". Click on it and create an account with your desired username and password. After that you should be logged in automatically – only in this case your todos will be saved.
+In the upper right, there is a drop down for “Sign Up”. Click on it and create an account with your desired username and password. After that you should be logged in automatically – only in this case your todos will be saved.
 
-Type in a few todos like "learn hoodie" and "steps 5, 6, 7 and 8". You should see your todos displayed directly.
+Type in a few todos like “learn hoodie” and “steps 5, 6, 7 and 8”. You should see your todos displayed directly.
 
 Nice to see a working hoodie after just three steps!
 
 
 ### Step Five – Tabs for CouchDB and Admin
 
-Our hood.ie demo app should already opened in your browser (if not, go to http://127.0.0.1:6001/new.html). Start two more tabs for CouchDB and the admin interface:
+Our hood.ie demo app should already be opened in your browser (if not, go to http://127.0.0.1:6001/new.html). Start two more tabs for CouchDB and the admin interface:
 
 ```
 http://127.0.0.1:6003/_utils
 http://127.0.0.1:6002/
 ```
 
-We won't use the admin *(:6002)* yet, but good to know it's ready. You also don't need CouchDB, except for monitoring the hoodie magic.
+We won’t use the admin *(:6002)* yet, but good to know it’s ready. You also don’t need CouchDB, except for monitoring the hoodie magic.
 
 
 # Part Two: Make Hoodie Your Own: Go Nuts
@@ -124,7 +124,7 @@ In the next several steps our demo todo app will be modified to give todos a pri
 
 ### Step Six – Open your text editor
 
-At this point the hood.ie site tells you to "go nuts". There are a few more steps you need to take before you can write your own hoodie app.
+At this point the hood.ie site tells you to “go nuts”. There are a few more steps you need to take before you can write your own hoodie app.
 
 In my case, I started sublime text with a new project for `hoodietut`. This was the folder created by hoodie in Step Two.
 
@@ -135,7 +135,7 @@ We will be working in the `assets` folder of `www`.
 
 ### Step Seven – Edit your first hoodie files
 
-To start creating you own app there are two files you'll want to copy. In `/hoodietut/www/` copy `index.html` and name the copy `new.html`. In `/www/assets/` copy `main.js` and rename the copy to `new.js`.
+To start creating you own app there are two files you’ll want to copy. In `/hoodietut/www/` copy `index.html` and name the copy `new.html`. In `/www/assets/` copy `main.js` and rename the copy to `new.js`.
 
 Now open `new.html` and the last line should be ...
 
@@ -157,7 +157,7 @@ http://127.0.0.1:6001/new.html
 
 This displays the file you just created.
 
-In the first part of the `<body>` you'll see the line "hoodie playground". Modify that to read "my first hoodie app". When you reload the browser you should see your first modification to your hoodie app.
+In the first part of the `<body>` you’ll see the line “hoodie playground”. Modify that to read “my first hoodie app”. When you reload the browser you should see your first modification to your hoodie app.
 
 
 ### Step Eight – Button Please
@@ -188,7 +188,7 @@ Save these files and run your modified app at:
 http://127.0.0.1:6001/new.html
 ```
 
-Enter a new task. You should see it rendered after clicking the "Add" button.
+Enter a new task. You should see it rendered after clicking the “Add” button.
 
 ### Step Nine – Understanding Type
 
@@ -196,7 +196,7 @@ Type is an important convention to understand when working with Hoodie or CouchD
 
 In CouchDB the same database can contain a wide variety of different records. For example, you might have records on people and records on location. Type is used to distinguish one record from another. So the people records would have fields like `first name`, `last name`, etc. and a record called `type` with a value of `people`. The location record would have fields like `street`, `country`, etc. and a record called `type` with a value of `location`.
 
-Hoodie uses type the same way. It is a way to store different 'types' of records in the same database. In this demo only the "todo" type will be used.
+Hoodie uses type the same way. It is a way to store different ‘types’ of records in the same database. In this demo only the “todo” type will be used.
 
 So while type is not critical for this application, more complex applications will have several types.
 
@@ -246,7 +246,7 @@ At this point you should start seeing that each task listed is prefaced by a pri
 
 ### Step Eleven – Sort By Priority
 
-Our todo list would look a lot nicer if it was also listed by our new priority. So let's change the sorting method in `new.js`:
+Our todo list would look a lot nicer if it was also listed by our new priority. So let’s change the sorting method in `new.js`:
 
 Replace ...
 
