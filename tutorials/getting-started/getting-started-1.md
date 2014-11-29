@@ -143,7 +143,7 @@ Hoodie is designed to let you build frontends the way you like to build frontend
 
 Go ahead, open the app in your browser, open your browser's dev tools and type `hoodie.`, it'll show you all of the globally available methods, like `hoodie.account` and `hoodie.store`, which are the most important ones. We'll cover these two in the next part of this series.
 
-For now, congratulations! You've created a demo Hoodie app, learned about the basic structure of a Hoodie project, you know all about the endpoints and app URLs and how to include and use the Hoodie library in your project. I'd say you're all set for [part two](#)!
+For now, congratulations! You've created a demo Hoodie app, learned about the basic structure of a Hoodie project, you know all about the endpoints and app URLs and how to include and use the Hoodie library in your project. 
 
 
 
