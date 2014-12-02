@@ -1,3 +1,6 @@
+---
+layout: layout-get-help
+---
 # hoodie.email 
 
 *The email plugin gives you a method to send email from the client.*

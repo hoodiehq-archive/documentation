@@ -1,3 +1,6 @@
+---
+layout: layout-get-help
+---
 # Behind the Magic – a detailed explanation how Hoodie works
 
 This tutorial shows you how exactly all parts of Hoodie work together to create a seamless, consistent user experience.

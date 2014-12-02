@@ -1,5 +1,5 @@
 ---
-layout: layout
+layout: layout-get-help
 ---
 
 # Getting Started with Hood.ie on MacOSX

@@ -1,3 +1,7 @@
+---
+layout: layout-get-help
+---
+
 # Getting Started with Hoodie - Part One
 
 ## Prequisites
