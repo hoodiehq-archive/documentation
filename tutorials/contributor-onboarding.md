@@ -1,3 +1,6 @@
+---
+layout: layout-get-help
+---
 status: first outline (draft, WIP)
 
 Discussion is [here](https://github.com/hoodiehq/documentation/issues/65), looking forward to reading your comments and input! <3

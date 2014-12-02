@@ -1,3 +1,6 @@
+---
+layout: layout-get-help
+---
 # hoodie.store
 > **version:**      *> 0.1.0* <br />
 > **source:**       *hoodie/src/hoodie/store.js*<br />

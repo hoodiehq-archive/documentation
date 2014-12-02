@@ -1,3 +1,6 @@
+---
+layout: layout-get-help
+---
 #Intro 
 
 Dedicated to the Hoodie community members and contributors who sign up for being responsible for the Hoodie IRC Office Hours. These Office Hours are also documented on [the Hoodie Website](http://hood.ie/irc).

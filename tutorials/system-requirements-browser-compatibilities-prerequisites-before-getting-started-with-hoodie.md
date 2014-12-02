@@ -1,5 +1,5 @@
 ---
-layout: layout
+layout: layout-get-help
 ---
 
 # System Requirements, Browser Compatibilities and Prerequisites before getting started with Hoodie
