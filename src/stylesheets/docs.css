@@ -17,6 +17,10 @@
 			font-size: 0.9em;
 		}
 
+			#api_nav li a:hover {
+				text-decoration: underline;
+			}
+
 	.docs pre {
 		margin-bottom: 1.6em;
 		padding: 0 1.4em 1em;
