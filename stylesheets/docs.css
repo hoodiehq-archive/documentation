@@ -20,3 +20,18 @@
 			background-image: none !important;
 			font-size: 0.9em;
 		}
+
+	.docs pre {
+		margin-bottom: 1.6em;
+		padding: 0 1.4em 1em;
+		background-color: #fdfdfd;
+	}
+
+		.docs pre code {
+			white-space: pre !important;
+			font-size: 1em;
+		}
+
+	.docs h2 {
+		margin-top: 2em;
+	}
