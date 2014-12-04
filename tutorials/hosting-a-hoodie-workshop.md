@@ -1,3 +1,7 @@
+---
+layout: layout-get-help
+---
+
 # Hosting a Hoodie Workshop 
 
 *This is a living document and work in progress. If you want to add your feedback or experiences, please [contact us](http://hood.ie/contact).*

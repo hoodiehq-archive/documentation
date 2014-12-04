@@ -1,3 +1,7 @@
+---
+layout: layout-get-help
+---
+
 # Glossary of Terms
 
 * ##CouchDB
