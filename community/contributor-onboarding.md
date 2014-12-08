@@ -1,5 +1,5 @@
 ---
-layout: layout-get-help
+layout: layout-community
 ---
 status: first outline (draft, WIP)
 

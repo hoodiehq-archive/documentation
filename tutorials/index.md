@@ -1,48 +1,36 @@
 ---
-layout: layout-get-help
+layout: layout-tutorials
 ---
 
-# code the first app
+# Getting started - Part 2
 
-### Step Two – Create your first Hoodie Project
+### 0. Make a new hoodie app
 
-You’ll need a folder for your project. The Hoodie command line interface does this automatically and populates it with the required files and folders.
+Let's make a new hoodie app, so we can play around! If you are good with the one you've just created, make sure 
+that you are in your app folder, not in **www**, **node_modules** or other.
 
-Invoke the following via the shell:
+If you want to check your current path, just type
+<pre><code>$ pwd</code></pre>
 
-```
-hoodie new hoodietut
-```
+Going one level up, just type
+<pre><code>$ cd ..</code></pre>
 
-You’ll be prompted for an admin password.
+You would love to have a new app? Sure! 
+<pre><code>$ hoodie new hoodietut</code></pre>
 
+Please make sure to be on the right path. If you are not sure, if you are, use **pwd**. Hoodie creates your new folder with all includes and files in the current path, you are on right now.
 
-### Step Three – Start Your App and Test It
+### 1. Start Your App and Test It
 
 Again from the command line type ...
 
-```
-cd hoodietut
-hoodie start
-```
+<pre><code>$ cd hoodietut
+$ hoodie start
+</code></pre>
 
-It’ll open up your default browser at ...
+It’ll open up your default browser.
 
-```
-http://127.0.0.1:6001
-```
-
-You should see a hoodie app with a subtitle of ‘hoodie playground’. This shows that hoodie is working.
-
-The command line output also shows you this information which you’ll use later:
-
-```
-CouchDB started: http://127.0.0.1:6003
-WWW:    http://127.0.0.1:6001
-Admin:  http://127.0.0.1:6002
-```
-
-### Step Four – Play with the App
+### 2. Play with the App
 
 The demo todo app shows off what you can do with hoodie. You will probably notice that it looks like a Bootstrap app. Though the app uses Bootstrap, hoodie has no dependency on Bootstrap and any CSS framework can be used.
 
@@ -50,12 +38,13 @@ In the upper right, there is a drop down for “Sign Up”. Click on it and crea
 
 Type in a few todos like “learn hoodie” and “steps 5, 6, 7 and 8”. You should see your todos displayed directly.
 
-Nice to see a working hoodie after just three steps!
+Nice to see a working hoodie after just two steps!
 
 
-### Step Five – Tabs for CouchDB and Admin
+### 3. Tabs for CouchDB and Admin
 
-Our hood.ie demo app should already be opened in your browser (if not, go to http://127.0.0.1:6001/new.html). Start two more tabs for CouchDB and the admin interface:
+Our hood.ie demo app should already be opened in your browser. 
+Start two more tabs for CouchDB and the admin interface:
 
 ```
 http://127.0.0.1:6003/_utils
@@ -65,16 +54,13 @@ http://127.0.0.1:6002/
 We won’t use the admin *(:6002)* yet, but good to know it’s ready. You also don’t need CouchDB, except for monitoring the hoodie magic.
 
 
-# Part Two: Make Hoodie Your Own: Go Nuts
+### 4. Make Hoodie Your Own: Go Nuts
 
 In the next several steps our demo todo app will be modified to give todos a priority of 1, 2 or 3. Also the list of todos will be sorted by priority.
 
-
-### Step Six – Open your text editor
-
 At this point the hood.ie site tells you to “go nuts”. There are a few more steps you need to take before you can write your own hoodie app.
 
-In my case, I started sublime text with a new project for `hoodietut`. This was the folder created by hoodie in Step Two.
+In my case, I started sublime text with a new project for **hoodietut**. This was the folder created by hoodie in Step Two.
 
 Open the `hoodietut` folder created in step two with your editor/IDE of choice. You should see the folders `data`, `node_modules` and `www`. The hoodie command line client has set up files for both hoodie and the demo todo app.
 
