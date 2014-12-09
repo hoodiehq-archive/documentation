@@ -9,7 +9,7 @@ layout: layout-start
 For all OS, you'll need to install <a href="http://nodejs.org/" target="_blank">Node.js</a>, <a href="http://couchdb.apache.org/" target="_blank">CouchDB</a> and <a href="http://git-scm.com/" target="_blank">Git</a>.
 
 Already installed it all?<br />
-Just jump straight in the <a href="/start">let's start</a> section!
+Just jump straight to <a href="/start/getting-started/getting-started-1.html">how to get started</a>!
 
 
 ### Installation on Mac OS X

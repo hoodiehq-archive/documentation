@@ -7,7 +7,7 @@ layout: layout-tutorials
 ### 0. Make a new hoodie app
 
 Let's make a new hoodie app, so we can play around! If you are good with the one you've just created, make sure 
-that you are in your app folder, not in **www**, **node_modules** or other.
+that you are in your app folder, not in www, node_modules or other.
 
 If you want to check your current path, just type
 <pre><code>$ pwd</code></pre>
@@ -18,7 +18,7 @@ Going one level up, just type
 You would love to have a new app? Sure! 
 <pre><code>$ hoodie new hoodietut</code></pre>
 
-Please make sure to be on the right path. If you are not sure, if you are, use **pwd**. Hoodie creates your new folder with all includes and files in the current path, you are on right now.
+Hoodie creates your new folder with all includes and files in the current path, you are on right now.
 
 ### 1. Start Your App and Test It
 
@@ -60,14 +60,14 @@ In the next several steps our demo todo app will be modified to give todos a pri
 
 At this point the hood.ie site tells you to “go nuts”. There are a few more steps you need to take before you can write your own hoodie app.
 
-In my case, I started sublime text with a new project for **hoodietut**. This was the folder created by hoodie in Step Two.
+In my case, I started <a href="http://www.sublimetext.com/" target="_blank">Sublime Text</a> with a new project for **hoodietut**. This was the folder created by hoodie before.
 
-Open the `hoodietut` folder created in step two with your editor/IDE of choice. You should see the folders `data`, `node_modules` and `www`. The hoodie command line client has set up files for both hoodie and the demo todo app.
+Open the **hoodietut** folder with your editor/IDE of choice. You should see the folders **data**, **node_modules** and **www**. The Hoodie-CLI has set up files for both hoodie and the demo todo app.
 
-We will be working in the `assets` folder of `www`.
+We will be working in the **assets** folder of **www**.
 
 
-### Step Seven – Edit your first hoodie files
+### 5. Edit your first hoodie files
 
 To start creating you own app there are two files you’ll want to copy. In `/hoodietut/www/` copy `index.html` and name the copy `new.html`. In `/www/assets/` copy `main.js` and rename the copy to `new.js`.
 

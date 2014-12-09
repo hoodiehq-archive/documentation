@@ -13,7 +13,7 @@ In order to make this as easy for you as possible, we'd ask you to follow this s
 
 ###1. Mind the time
 
-Hoodie IRC Office Hours take place daily on weekdays from 2-6pm UTC+2. When in doubt about timezones, check [this page](http://everytimezone.com/).
+Hoodie IRC Office Hours take place daily on weekdays from 2-6pm UTC+2. When in doubt about timezones, check <a href="http://everytimezone.com/" target="_blank">this page</a>.
 
 Please keep in mind that not everyone in the channel is on the same time zone, so it usually helps to add the time zone when talking about times and dates. :) 
 
@@ -30,7 +30,7 @@ Send a short "hi everyone, I'm here now" message in IRC. Here are some sample me
 - Hi all, we're back with our Hoodie Office Hours! I'm present to support you, if there's anything I can do for you: I'm online for 4 hours starting from now.
 - … [your idea goes here]
 
-Oh, yeah, and you may of course add a GIF (not necessarily [this one](http://www.tehcute.com/pics/201204/bunny-falls-asleep-at-desk.jpg) anytime (turns out the Hoodie Community loves GIFs).
+Oh, yeah, and you may of course add a GIF (not necessarily [this one](http://www.tehcute.com/pics/201204/bunny-falls-asleep-at-desk.jpg)) anytime... (turns out the Hoodie Community loves GIFs).
 
 ####2b) send a Tweet
 
