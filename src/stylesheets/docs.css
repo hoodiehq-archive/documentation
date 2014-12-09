@@ -36,7 +36,8 @@
 			font-size: 1em;
 		}
 
-	.docs h2 {
+	.docs h2,
+	.docs h4 {
 		margin-top: 2em;
 	}
 
@@ -61,6 +62,14 @@
 	}
 
 	.api .sub-nav li:nth-child(4) a {
+		text-decoration: underline;
+	}
+
+	.plugins .sub-nav li:nth-child(5) a {
+		text-decoration: underline;
+	}
+
+	.divedeep .sub-nav li:nth-child(6) a {
 		text-decoration: underline;
 	}
 
