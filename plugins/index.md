@@ -2,9 +2,9 @@
 layout: layout-plugins
 ---
 
-## Plugins
+# Plugins
 
-#### Core plugins
+### Core plugins
 
 Hoodie has a very slim core and can be extended with plugins. 
 Three plugins are always installed with the core. 
@@ -13,7 +13,7 @@ Three plugins are always installed with the core.
 - <a href="https://www.npmjs.org/package/hoodie-plugin-users" target="_blank">hoodie-plugin-users</a>
 - <a href="https://www.npmjs.org/package/hoodie-plugin-email" target="_blank">hoodie-plugin-email</a>
 
-#### Install plugins
+### Install plugins
 Every hoodie-plugin, published on npm can be installed by typing
 
 <pre><code>npm install hoodie-plugin-name</code></pre>
@@ -29,15 +29,15 @@ Here are some community favourites.
 - <a href="https://www.npmjs.org/package/hoodie-plugin-global-share" target="_blank">Share your content</a>
 
 
-#### Write plugin
+### Write plugin
 
 If you want to write your own plugin, check out [this](/plugins/plugins-tutorial.html) amazing tutorial.
 <br /><br /><br />
 ## Deployment
 
-#### Deploy on Linux
+### Deploy on Linux
 Here is a great tutorial, how you can <a href="/plugins/deployment-linux.html">deploy your app</a> on a Linux server.
 
-#### Deploy on hosting server
+### Deploy on hosting server
 <a href="https://wiki.uberspace.de/cool:hoodie">Hoodie at Uberspace</a>
 <a href="https://appback.com/">Hoodie + Appback</a>
