@@ -1,5 +1,5 @@
 ---
-layout: layout-get-help
+layout: layout-api
 ---
 
 # Hoodie Payments

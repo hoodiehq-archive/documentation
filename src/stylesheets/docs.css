@@ -80,3 +80,9 @@
 	.docs ul {
 		list-style-type: circle;
 	}
+
+	.docs .no-underlining {
+		text-decoration: none;
+		background-color: transparent;
+		background-image: none;
+	}

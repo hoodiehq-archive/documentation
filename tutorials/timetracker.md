@@ -2,7 +2,7 @@
 layout: layout-tutorials
 ---
 
-# Code your first hoodie app
+# Code a simple time tracker
 
 This is one of a soon to come **series of recepies** and will cover, how to start to code your first application from scratch and use the **hoodie.store**.
 
