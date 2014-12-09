@@ -17,8 +17,6 @@ Just jump straight to <a href="/start/getting-started/getting-started-1.html">ho
 We recommend using the nodejs.org .pkg file to install Node.js, you can <a href="http://nodejs.org/download/" target="_blank">download Node.js here</a>. 
 ##### Step two: CouchDB
 You can download the installer for the latest version of <a href="http://couchdb.apache.org/#download" target="_blank">CouchDB for Mac</a>.
-##### Step three: Git
-Git for Mac can be downloaded <a href="http://git-scm.com/download/mac" target="_blank">here</a>.
 ##### Step four: Hoodie-CLI
 Open your Terminal and type
 <pre><code>$ npm install -g hoodie-cli</code></pre>
