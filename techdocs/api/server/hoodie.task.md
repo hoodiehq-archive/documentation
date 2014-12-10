@@ -16,28 +16,53 @@ taskStore.findAll().done( showAllTasks );
 taskStore.update('id123', {done: true});
 </code></pre>
 
+## Class Methods
+- [store](#store)
+
+## Instance Methods
+- [validate](#validate)
+- [save](#save)
+- [add](#add)
+- [find](#find)
+- [findOrAdd](#findOrAdd)
+- [findAll](#findAll)
+- [update](#update)
+- [updateAll](#updateAll)
+- [remove](#remove)
+- [removeAll](#removeAll)
+- [decoratePromises](#decoratePromises)
+- [trigger](#trigger)
+- [on](#on)
+- [unbind](#unbind)
+
+
+
 
 ## Class Methods
-
-### store
+### store<a id="store"></a>
 
 It is most likely, that your application will have more than one type of object
 to we stored. Even if you have just a single object
 
 ## Instance Methods
 
+<a id="validate"></a>
 ### validate
 
+<a id="save"></a>
 ### save
 
+<a id="add"></a>
 ### add
 
 Creates a new entry in your local store.
 
 <pre><code>hoodie.store.add('todo', { title: 'Getting Coffee' });</code></pre>
 
+<a id="find"></a>
 ### find
 
+<a id="findOrAdd"></a>
 ### findOrAdd
 
 ##### hoodie.store.findOrAdd(type, id, properties)
@@ -104,21 +129,29 @@ hoodie.store
     });
 </code></pre>
 
-
+<a id="findAll"></a>
 ### findAll
 
+<a id="update"></a>
 ### update
 
+<a id="updateAll"></a>
 ### updateAll
 
+<a id="remove"></a>
 ### remove
 
+<a id="removeAll"></a>
 ### removeAll
 
+<a id="decoratePromises"></a>
 ### decoratePromises
 
+<a id="trigger"></a>
 ### trigger
 
+<a id="on"></a>
 ### on
 
+<a id="unbind"></a>
 ### unbind

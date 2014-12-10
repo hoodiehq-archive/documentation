@@ -2,7 +2,7 @@
 layout: layout-tutorials
 ---
 
-# Getting started - Part 2
+# Getting started with Hoodie - Part 2
 
 ### 0. Make a new hoodie app
 

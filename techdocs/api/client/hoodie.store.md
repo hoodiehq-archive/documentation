@@ -1,9 +1,9 @@
 ---
-layout: layout-get-help
+layout: layout-api
 ---
 # hoodie.store
-> **version:**      *> 0.1.0* <br />
-> **source:**       *hoodie/src/hoodie/store.js*<br />
+**version:**      *> 0.1.0* <br />
+**source:**       *hoodie/src/hoodie/store.js*<br />
 
 ***<br />after reading this you will know***
 > - how to add objects
@@ -14,18 +14,18 @@ layout: layout-get-help
 
 ## Introduction
 
-This modules defines the API that `hoodie.store` provides to add, find,
+This modules defines the API that **hoodie.store** provides to add, find,
 update and remove objects. You can listen to object changes, e.g.
-to update your apps user interface. `hoodie.store` is user-specific,
+to update your apps user interface. **hoodie.store** is user-specific,
 that means that a user can only access the objects of the current account.
-It works anonymously, too. Once signed up using the `hoodie.account` api,
+It works anonymously, too. Once signed up using the **hoodie.account** api,
 all objects get synchronized automatically, so it can be accessed from
 different devices.
 
-###### Notes
+##### Notes
 > - storing and accessing objects with hoodie always means accessing your personal, local objects.
 > - all stored objects have a fixed association to the user who created them. So you won't be able to access other user's objects by default.
-> - in order save objects to the server's store, you need to be logged in with a valid user. Learn more about the hoodie user system at [`hoodie.account`](./hoodie.account.md).
+> - in order save objects to the server's store, you need to be logged in with a valid user. Learn more about the hoodie user system at [**hoodie.account**](./hoodie.account.html).
 
 
 ## Methods
@@ -42,35 +42,31 @@ different devices.
 - [store()](#store)
 
 ## Events
-- [add](#event-add)
-- [update](#event-update)
-- [remove](#event-remove)
-- [change](#event-change)
-- [clear](#event-change)
+- add
+- update
+- remove
+- change
+- clear
 
-
+<a id="storeadd"></a>
 ### store.add()
-> **version:**      *> 0.2.0*
+**version:**      *> 0.2.0*
 
-*Creates a new objects in your local store. If `properties.id` is set, it will be used as the object's id, otherwise it gets auto generated*
+Creates a new objects in your local store. If **properties.id** is set, it will be used as the object's id, otherwise it gets auto generated.
 
-```javascript
-hoodie.store.add('type', properties, options);
-```
+<pre><code>hoodie.store.add('type', properties, options);</code></pre>
 
 | option     | type   | description     | required |
 | ---------- |:------:|:---------------:|:--------:|
 | type       | String | type of the store         | yes |
 | properties | Object | object properties to save | yes |
-| options.silent | Boolean  | If set to `true`, no events will be triggered from this call | no (default: false) |
+| options.silent | Boolean  | If set to **true**, no events will be triggered from this call | no (default: false) |
 
-Returns a promise. If succesful, it calls the
-`done` callback with the new object stored with new properties added to
-it (id (unless set before), createdBy, createdAt, updatedAt). If something
-goes wrong, the `fail` callback will be called instead and an error gets passed.
+Returns a promise. If succesful, it calls the **done** callback with the new object stored with new properties 
+added to it (id (unless set before), createdBy, createdAt, updatedAt). If something
+goes wrong, the **fail** callback will be called instead and an error gets passed.
 
-<br />
-###### Example
+##### Example
 
 ```javascript
 hoodie.store.add('todo', { title: 'Getting Coffee' })
