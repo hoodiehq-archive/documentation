@@ -10,12 +10,10 @@ The email plugin gives you a method to send email from the client.
 
 <a id="emailsend"></a>
 ### emai.send()
-> **version:**    *> 0.0.1* 
+**version:**    *> 0.1.0* 
 
 
-```javascript
-hoodie.email.send(payload);
-```
+<pre><code>hoodie.email.send(payload);</code></pre>
 
 | option              | type   | required |
 | ------------------- |:------:|:--------:|
