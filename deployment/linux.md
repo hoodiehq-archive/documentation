@@ -1,5 +1,5 @@
 ---
-layout: layout-plugins
+layout: layout-deployment
 ---
 
 # Hoodie Deployment Guide
