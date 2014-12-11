@@ -19,7 +19,7 @@ We recommend using the nodejs.org .pkg file to install Node.js, you can <a href=
 You can download the installer for the latest version of <a href="http://couchdb.apache.org/#download" target="_blank">CouchDB for Mac</a>.
 ##### Step three: Hoodie-CLI
 Open your Terminal and type
-<pre><code>$ npm install -g hoodie-cli</code></pre>
+<pre><code>npm install -g hoodie-cli</code></pre>
 
 
 
@@ -30,7 +30,7 @@ You can download Node.js for Windows <a href="http://nodejs.org/download/" targe
 You can download the latest version of <a href="http://couchdb.apache.org/#download" target="_blank">CouchDB for Windows</a>.
 ##### Step three: Hoodie-CLI
 Open your Terminal and type
-<pre><code>$ npm install -g hoodie-cli</code></pre>
+<pre><code>npm install -g hoodie-cli</code></pre>
 
 
 ### Installation on Linux – Ubuntu
@@ -38,31 +38,30 @@ This is an Ubuntu-specific guide courtesy of Stuart Langridge.
 ##### Step one: Node.js
 On Ubuntu, you don't have to build Node.js from source, you can install it as a package instead. Add Chris Lea's Node.js PPA and install from it:
 
-<pre><code>$ sudo add-apt-repository ppa:chris-lea/node.js
-$ sudo apt-get update
-$ sudo apt-get install nodejs
+<pre><code>sudo add-apt-repository ppa:chris-lea/node.js
+sudo apt-get update
+sudo apt-get install nodejs
 </code></pre>
 
 ##### Step two: CouchDB
 
-<pre><code>$ sudo apt-get update
-$ sudo apt-get install couchdb-bin git
+<pre><code>sudo apt-get update
+sudo apt-get install couchdb-bin git
 </code></pre>
 
 ##### Step three: Hoodie-CLI
-<pre><code>$ npm install -g hoodie-cli</code></pre>
+<pre><code>npm install -g hoodie-cli</code></pre>
 
 
 ### Linux – Fedora 19+
 ##### Step one: Node.js, CouchDB and Git  
 
-<pre><code>// Notice: Git is optional
-$ sudo yum install git
-$ sudo yum install couchdb nodejs npm
+<pre><code>
+sudo yum install couchdb nodejs npm
 </code></pre>
 
 ##### Step two: Hoodie-CLI
-<pre><code>$ npm install -g hoodie-cli
+<pre><code>npm install -g hoodie-cli
 </code></pre>
 
 ### Done!
