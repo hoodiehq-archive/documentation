@@ -54,10 +54,9 @@ sudo apt-get install couchdb-bin git
 
 
 ### Linux – Fedora 19+
-##### Step one: Node.js, CouchDB and Git  
+##### Step one: Node.js and CouchDB  
 
-<pre><code>
-sudo yum install couchdb nodejs npm
+<pre><code>sudo yum install couchdb nodejs npm
 </code></pre>
 
 ##### Step two: Hoodie-CLI
