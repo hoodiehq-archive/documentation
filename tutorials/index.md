@@ -54,7 +54,7 @@ http://127.0.0.1:6002/
 We won’t use the admin *(:6002)* yet, but good to know it’s ready. You also don’t need CouchDB, except for monitoring the hoodie magic.
 
 
-### 4. Make Hoodie Your Own: Go Nuts
+### 4. Make Hoodie Your Own: Go Wild
 
 In the next several steps our demo todo app will be modified to give todos a priority of 1, 2 or 3. Also the list of todos will be sorted by priority.
 

@@ -32,12 +32,3 @@ Here are some community favourites.
 ### Write plugin
 
 If you want to write your own plugin, check out [this](/plugins/plugins-tutorial.html) amazing tutorial.
-<br /><br /><br />
-## Deployment
-
-### Deploy on Linux
-Here is a great tutorial, how you can <a href="/plugins/deployment-linux.html">deploy your app</a> on a Linux server.
-
-### Deploy on hosting server
-<a href="https://wiki.uberspace.de/cool:hoodie">Hoodie at Uberspace</a>
-<a href="https://appback.com/">Hoodie + Appback</a>

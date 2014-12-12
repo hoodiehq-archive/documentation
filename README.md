@@ -4,6 +4,9 @@ Hoodie Documentationn
 ## State of Documentation
 This documentation is currently work in progress. We are constantly working and reworking certain parts of our documentation for the first final release of hoodie.
 
+Please see the https://github.com/hoodiehq/documentation/issues/87 for the roadmap.
+If you need any help, feel free to add comments with questions.
+
 ## Support the Team
 
 Your contribution can be various. Tutorials, screencasts, code examples or official hoodie techdocs. We'd be happy to have you! <3
