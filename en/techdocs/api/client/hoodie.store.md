@@ -39,7 +39,7 @@ different devices.
 - [store.updateAll()](#storeupdateall)
 - [store.remove()](#storeremove)
 - [store.removeAll()](#storeremoveall)
-- [store.on()](storeon)
+- [store.on()](#storeon)
 - [store()](#store)
 
 ## Events [>>](#storeevents)

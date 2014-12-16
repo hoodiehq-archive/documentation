@@ -53,7 +53,6 @@ locales:
       onboarding: "Onboarding"
       irc: "IRC office hours"
       workshop: "Hoodie workshop" 
-
   de:
     path: /de/
     label: de
@@ -73,10 +72,12 @@ locales:
       welcome: "Willkommen bei Hoodie"
       requirements: "Anforderungen"
       glossary: "Glossar"
+      next: "Los geht's"
     menustart: 
       installation: "Installation"
       started : "Starten mit - Nr1"
       tutorials: "Tutorials"
+      next: "Tutorials"
     menututorials: 
       started : "Starten mit - Nr2"
       timetracker: "Zeitstopper"

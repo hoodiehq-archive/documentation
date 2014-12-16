@@ -112,3 +112,7 @@
 	.api tr:nth-child(2n+1) td {
 		background-color: #fdfdfd;
 	}
+.docs .footer ul{
+	text-align: right;
+	list-style: none;
+}
