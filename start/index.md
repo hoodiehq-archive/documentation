@@ -33,7 +33,7 @@ Open your Terminal and type
 <pre><code>npm install -g hoodie-cli</code></pre>
 
 
-### Installation on Linux – Ubuntu
+### Installation on Linux – Ubuntu
 This is an Ubuntu-specific guide courtesy of Stuart Langridge. 
 ##### Step one: Node.js
 On Ubuntu, you don't have to build Node.js from source, you can install it as a package instead. Add Chris Lea's Node.js PPA and install from it:
@@ -53,11 +53,10 @@ sudo apt-get install couchdb-bin git
 <pre><code>npm install -g hoodie-cli</code></pre>
 
 
-### Linux – Fedora 19+
-##### Step one: Node.js, CouchDB and Git  
+### Linux – Fedora 19+
+##### Step one: Node.js and CouchDB  
 
-<pre><code>
-sudo yum install couchdb nodejs npm
+<pre><code>sudo yum install couchdb nodejs npm
 </code></pre>
 
 ##### Step two: Hoodie-CLI
