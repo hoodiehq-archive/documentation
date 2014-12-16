@@ -83,7 +83,7 @@ locales:
       unix: "Unix / Linux"
       next: "Community"
     menucommunity: 
-      intro: "We are community"
+      intro: "Wir sind eine Community"
       onboarding: "Onboarding"
-      irc: "IRC office hours"
-      workshop: "Hoodie workshop" 
+      irc: "IRC office Stunden"
+      workshop: "Hoodie Workshop" 
