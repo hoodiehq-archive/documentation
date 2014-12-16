@@ -10,7 +10,7 @@ locales: en
 For all OS, you'll need to install <a href="http://nodejs.org/" target="_blank">Node.js</a>, <a href="http://couchdb.apache.org/" target="_blank">CouchDB</a> and <a href="http://git-scm.com/" target="_blank">Git</a>.
 
 Already installed it all?<br />
-Just jump straight to <a href="/start/getting-started/getting-started-1.html">how to get started</a>!
+Just jump straight to <a href="../start/getting-started/getting-started-1.html">how to get started</a>!
 
 
 ### Installation on Mac OS X
@@ -65,4 +65,4 @@ sudo apt-get install couchdb-bin git
 </code></pre>
 
 ### Done!
-Installation done! Now you can find out how to create a new Hoodie app, how its admin interface works, how Hoodie projects are structured and more in <a href="/start/getting-started/getting-started-1.html">"Getting started with Hoodie, part 1"</a>.
+Installation done! Now you can find out how to create a new Hoodie app, how its admin interface works, how Hoodie projects are structured and more in <a href="../start/getting-started/getting-started-1.html">"Getting started with Hoodie, part 1"</a>.

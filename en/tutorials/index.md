@@ -176,4 +176,4 @@ Replace ...
 
 Now your number one priorities show first and you hopefully got a good first impression on the hoodie way of development.
 
-If you would love to see another tutorial, check out [the time tracker](/tutorials/timetracker.html).
+If you would love to see another tutorial, check out [the time tracker](../tutorials/timetracker.html).

@@ -6,7 +6,7 @@ locales: en
 ## About this document
 
  > "Being a committer does not mean you commit code, it means you are committed to the project."  
- > – [Apache Software Foundation](https://community.apache.org/contributors/)
+ > – <a href="https://community.apache.org/contributors/" target="_blank">Apache Software Foundation</a>
 
 In this document you will learn about our onboarding process for new people who want to join us in the work on Hoodie.
 
@@ -46,7 +46,7 @@ The easiest way to do this is a quick <a href="http://talky.io" target="_blank">
   - What do they want to work on?
   - What are their interests regarding personal skills?
   - Is there anything they want to improve at and / or with which we can help them learn? 
-3. Depending on their skills and knowledge, introduce them to Hoodie-related terms and processes (see [The Hoodie Glossary](http://docs.hood.ie/hoodieverse/glossary.html) and [FAQ](http://faq.hood.ie/) for more information).
+3. Depending on their skills and knowledge, introduce them to Hoodie-related terms and processes (see [The Hoodie Glossary](../hoodieverse/glossary.html) and [FAQ](http://faq.hood.ie/) for more information).
 
 
 ### 3. Introduce them to the surroundings
@@ -70,7 +70,7 @@ And, of course: make sure they know they can always contact you with any questio
 - how / why to submit pull requests
 
 #### Technical topics
-- how to read the [documentation](https://github.com/hoodiehq/documentation)
+- how to read the [documentation](../)
 - for developers
    - code review process
    - release process
@@ -83,7 +83,7 @@ And, of course: make sure they know they can always contact you with any questio
 Hoodie has a few tools and workflows that we created or agreed on using. Your job is to give the new contributor a quick overview of those tools and show how they can use or access them.
 
 - show our [Milestones](http://gr2m.github.io/milestones/)
-- show Hoodie [Showcases](#)
+- show Hoodie [Showcases](http://hood.ie/intro/#showcases)
 - show our [Ubersicht](http://espy.github.io/ubersicht/#hoodiehq)
 
 #### Accounts

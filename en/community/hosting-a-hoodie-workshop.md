@@ -19,7 +19,7 @@ locales: en
   - JavaScript
   - Terminal
 - If possible, arrange “Installation Party” before the actual workshop (Participants can meet and also they know, all is setup. So they will feel more comfortable the next day.)
-  - installation guide is [here](/start)
+  - installation guide is [here](../start)
 - Set up a Code of Conduct (e.g. similar to [Hoodie's Code of Conduct](http://hood.ie/code-of-conduct) or [how to design a Code of Conduct](https://adainitiative.org/2014/02/howto-design-a-code-of-conduct-for-your-community/))
 
 ## To prepare
@@ -30,7 +30,7 @@ locales: en
 - Prepare (if necessary) short Hoodie intro talk (see [sample talks](http://hood.ie/contribute#talks) or the [Hoodie Events page](http://hood.ie/events))
 - Prepare all important commands on slides or handout. 
 - If you have more than one person per laptop, please print out the tutorial you are teaching.
-- Print the [Hoodie Cheat Sheet](http://hood.ie//dist/presentations/hoodie-cheat-sheet-print.pdf) for each participant
+- Print the [Hoodie Cheat Sheet](http://hood.ie/dist/presentations/hoodie-cheat-sheet-print.pdf) for each participant
 - Prepare all important links as shortlinks
 - Prepare typical problems + solutions (also: check FAQ on “Known Errors”) for your coaches
 - Prepare a bunch of app ideas (beyond to do list apps) that people can then work on when they know enough about Hoodie, but don’t have a concrete app idea themselves
@@ -42,7 +42,7 @@ locales: en
 
 ## Prerequisites for attendees (to announce)
 - Bring own Laptop
-- Ask attendees to have the latest (or at least not too old) version of their Operating System and Browser – otherwise they run may into trouble. You can find Hoodies prequisites [here](http://docs.hood.ie/hoodieverse/system-requirements-browser-compatibilities-prerequisites-before-getting-started-with-hoodie.html)
+- Ask attendees to have the latest (or at least not too old) version of their Operating System and Browser – otherwise they run may into trouble. You can find Hoodies prequisites [here](../hoodieverse/system-requirements-browser-compatibilities-prerequisites-before-getting-started-with-hoodie.html)
 - If they don’t have one yet, ask them to install an Editor (ideally send a list of suggestions + links)
 - Accept Code of Conduct
 
@@ -54,7 +54,7 @@ locales: en
 - Ask everyone about their levels of experience + skills, motivation and let them tell you a bit about themselves
 - Installation (note: can take much longer than expected)
   - check if everyone has Hoodie up and running
-  - [installation guide](/start)
+  - [installation guide](../start)
   - note special issues which sometimes occur on Windows
 - if Hoodie is already installed, have them ensure they have the latest version by running
 <pre><code>hoodie new myApp</code></pre>
@@ -65,7 +65,7 @@ locales: en
 - Admin-Interface – http://127.0.0.1:6002
 - …
 - …
-- [Plugin Tutorial](https://github.com/hoodiehq/documentation/blob/gh-pages/tutorials/hoodie-plugin-tutorial/index.md) (for super advanced participants)
+- [Plugin Tutorial](../plugins/plugins-tutorial.html) (for super advanced participants)
 - Boilerplate: <pre><code>hoodie new awesomeApp /
 -t zoepage/hoodie-boilerplate</code></pre> 
 - …

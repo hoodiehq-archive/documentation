@@ -429,7 +429,8 @@ Then in the backend, you could check for the setting and reject messages that ar
 <pre><code>if (message.body.length > hoodie.config('maxLength')) {
   var error = {
     error: 'invalid',
-    message: 'Message is too long (hoodie.config('maxLength') + ' characters maximum).'
+    message: 'Message is too long (
+      hoodie.config('maxLength') + ' characters maximum).'
   };
   return hoodie.task.error(originDb, message, error);
 }</code></pre>
