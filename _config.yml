@@ -6,6 +6,14 @@ locales:
   en:  
     path: /en/
     label: en
+    nav:
+      hoodieverse: "Hoodieverse"
+      start: "Let's start"
+      tutorials: "Tutorials"
+      api: "API"
+      plugins: "Plugins"
+      deployment: "Deployment"
+      community: "Community"
     menu:
       start: "Let's start"
       next: "Next Chapter" 
@@ -49,6 +57,14 @@ locales:
   de:
     path: /de/
     label: de
+    nav:
+      hoodieverse: "Hoodieverse"
+      start: "Los geht's"
+      tutorials: "Tutorials"
+      api: "API"
+      plugins: "Plugins"
+      deployment: "Deployment"
+      community: "Community"
     menu:
       start: "Los geht's"
       next: "Nächstes Kapitel" 
