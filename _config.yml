@@ -6,7 +6,84 @@ locales:
   en:  
     path: /en/
     label: en
+    menu:
+      start: "Let's start"
+      next: "Next Chapter" 
+      recipes: "Recipes"
+    menuverse:
+      welcome: "Welcome to Hoodie"
+      requirements: "Requirements"
+      glossary: "Glossary"
+      next: "Let's start"
+    menustart: 
+      installation: "Installation"
+      started : "Getting started - pt1"
+      next: "Tutorials"
+    menututorials: 
+      started : "Getting started - pt2"
+      timetracker: "time tracker"
+      next: "API"
+    menuapi: 
+      hoodie : "hoodie"
+      account: "account"
+      store : "store"
+      task: "task"
+      email: "email"
+      global: "global share"
+      next: "Plugins &amp; deployment"
+    menuplugins:
+      intro: "Intro"
+      build: "Build your Plugin"
+      list: "List on npm"
+      next: "Deployment"
+    menudeploy:
+      intro: "Intro"
+      unix: "Unix / Linux"
+      next: "Community"
+    menucommunity: 
+      intro: "We are community"
+      onboarding: "Onboarding"
+      irc: "IRC office hours"
+      workshop: "Hoodie workshop" 
 
   de:
     path: /de/
     label: de
+    menu:
+      start: "Los geht's"
+      next: "Nächstes Kapitel" 
+      recipes: "Rezepte"
+    menuverse:
+      welcome: "Willkommen bei Hoodie"
+      requirements: "Anforderungen"
+      glossary: "Glossar"
+    menustart: 
+      installation: "Installation"
+      started : "Starten mit - Nr1"
+      tutorials: "Tutorials"
+    menututorials: 
+      started : "Starten mit - Nr2"
+      timetracker: "Zeitstopper"
+      next: "API"
+    menuapi: 
+      hoodie : "hoodie"
+      account: "account"
+      store : "store"
+      task: "task"
+      email: "email"
+      global: "global share"
+      next: "Plugins &amp; deployment"
+    menuplugins:
+      intro: "Einleitung"
+      build: "Baue dein Plugin"
+      list: "Liste auf npm"
+      next: "Deployment"
+    menudeploy:
+      intro: "Intro"
+      unix: "Unix / Linux"
+      next: "Community"
+    menucommunity: 
+      intro: "We are community"
+      onboarding: "Onboarding"
+      irc: "IRC office hours"
+      workshop: "Hoodie workshop" 
