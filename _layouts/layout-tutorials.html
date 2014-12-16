@@ -1,17 +1,17 @@
 <!DOCTYPE html>
-<html class="no-js">
+<html class="no-js" lang="{{ page.locales }}">
 {% include head.html %}
     <body class="blue docs tutorials">
-       {% include header-get-help.html %}
+       {% include /{{page.locales}}/header-get-help.html %}
         <div class="content">
         	
         	<div class="cb">
                 <aside>
-                    {% include menu-tutorials.html %}
+                    {% include /{{page.locales}}/menu-tutorials.html %}
                 </aside>
         		<article>
         			{{ content }}
         		</article>
            	</div>
         </div>
-        {% include footer.html %}
+        {% include /{{page.locales}}/footer.html %}

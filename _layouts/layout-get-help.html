@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html class="no-js">
+<html class="no-js" lang="{{ page.locales }}">
 {% include head.html %}
     <body class="blue docs">
-       {% include header-get-help.html %}
+       {% include /{{page.locales}}/header-get-help.html %}
         <div class="content">
         	
         	<div class="cb">
@@ -14,4 +14,4 @@
         		</article>
            	</div>
         </div>
-        {% include footer.html %}
+        {% include /{{page.locales}}/footer.html %}
