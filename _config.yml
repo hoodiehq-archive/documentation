@@ -5,7 +5,10 @@ redcarpet:
 locales:
   en:  
     path: /en/
-    label: en
+    lang: "Language"
+    label: 
+      en: "english"
+      de: "german"
     nav:
       hoodieverse: "Hoodieverse"
       start: "Let's start"
@@ -55,7 +58,10 @@ locales:
       workshop: "Hoodie workshop" 
   de:
     path: /de/
-    label: de
+    lang: "Sprache"
+    label: 
+      en: "englisch"
+      de: "deutsch"
     nav:
       hoodieverse: "Hoodieverse"
       start: "Los geht's"

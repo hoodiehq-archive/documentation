@@ -5,7 +5,10 @@ locales: en
 
 # Welcome to Hoodie
 
-These documents explain the Hoodieverse.
+These documents explain the Hoodieverse and are available in:
+
+- [german](/de/)
+- [english](/en/)
 
 ## What is Hoodie?
 
