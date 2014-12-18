@@ -5,7 +5,7 @@ locales: en
 
 # Hoodie Deployment Guide
 
-Note that this is a incomplete draft. It should get you going with production system, but there is no guarantee that there isn’t anything wrong with the setup form a performance or security perspective. Please check with your local sysadmin to make sure and please let us know if we can improve anything :)
+Note that this is an incomplete draft. It should get you going with a production system, but we can't guarantee that there isn’t anything wrong with the setup from a performance or security perspective. Please check with your local sysadmin to make sure and please let us know if we can improve anything :)
 
 This guide is for Linux only at this point. Other UNIXes should be covered too, with slight modifications.
 
@@ -18,21 +18,21 @@ This guide is for Linux only at this point. Other UNIXes should be covered too, 
  - Install git.
 
 
-### Set Up
+### Setup
 
 #### CouchDB:
 
-Hoodie is in development mode by default and there it starts its own CouchDB instance to manage. For production deployments, we recommend running CouchDB in a separate instance for various reasons like operational simplicity and security.
+Hoodie is in development mode by default and as such starts its own CouchDB instance. For production deployments, we recommend running CouchDB in a separate instance for various reasons, like operational simplicity and security.
 
 We assume you set up CouchDB with your package manager or manually following the installation procedure documented in the CouchDB source tree in the INSTALL.Unix file.
 
-If you are already using CouchDB for other things, recommend starting a second instance of CouchDB that is completely separate from your original one. See below* for instructions.
+If you are already using CouchDB for other things, we recommend starting a second instance of CouchDB that is completely separate from your original one. See below for instructions.
 
-For now we assume, your CouchDB is available at http://127.0.0.1:5984/
+In this guide, we assume that your CouchDB is available at [](http://127.0.0.1:5984/).
 
-Create a CouchDB admin user called “admin” with a strong password of your choice at http://127.0.0.1:5984/_utils/ by clicking on the “Fix this” link in the lower right corner. Remember that password.
+Create a CouchDB admin user called `admin` with a strong password of your choice at [](http://127.0.0.1:5984/_utils/) by clicking on the `Fix this` link in the lower right corner. Remember that password.
 
-Next we want to change CouchDB’s default configuration on a few points. The easiest thing is to go to http://127.0.0.1:5984/_utils/config.html and edit the following fields (double click the value to get into the editing mode):
+Next we want to change CouchDB’s default configuration on a few points. The easiest thing is to go to [](http://127.0.0.1:5984/_utils/config.html) and change the following fields (double click a value to enter the editing mode):
 
 <pre><code>couchdb -> delayed_commits: false
 couchdb -> max_dbs_open: 1024
@@ -41,7 +41,7 @@ couch_httpd_auth -> timeout: 1209600 ; that’s two weeks
 
 #### System
 
-Add this to /etc/security/limits.conf:
+Add this to `/etc/security/limits.conf`:
 
 <pre><code>hoodie    soft    nofile    768
 hoodie    hard    nofile    1024
@@ -59,7 +59,7 @@ Create a new system user:
        -c "Hoodie Administrator" hoodie
 </code></pre>
 
-This will create a new user and its home directory **/home/hoodie**.
+This will create a new user and its home directory `/home/hoodie`.
 
 **cd** in to that directory.
 
