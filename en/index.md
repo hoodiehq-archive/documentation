@@ -17,12 +17,12 @@ All of Hoodie is accessible through a simple script include:
 
 <pre><code>&lt;script src="hoodie.js"&gt;&lt;/script&gt;
 &lt;script type="javascript"&gt;
-	var hoodie = new Hoodie("https://api.hoodieapps.com");
+  var hoodie = new Hoodie();
 &lt;/script&gt;</code></pre>
+
 Hoodie is a frontend abstraction of a generic backend web service. Hoodie is agnostic to your choice of frontend application framework.
 
-For example, you can use jQuery for your web app, Hoodie for your connection to the backend, say, instead of raw 
-jQuery.xhr. You can also use Backbone on top of Hoodie, or any other framework, even vanilla.js.
+For example, you can use jQuery for your web app, Hoodie for your connection to the backend, say, instead of raw jQuery.xhr. You can also use Backbone on top of Hoodie, or any other framework, even vanilla.js.
 
 
 ## Open Source
