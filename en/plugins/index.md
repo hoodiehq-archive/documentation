@@ -25,7 +25,7 @@ You can see a full list of plugins <a href="http://plugins.hood.ie/" target="_bl
 Here are some community favourites. 
 
 - <a href="https://www.npmjs.org/package/hoodie-plugin-angularjs" target="_blank">Hoodie + Angularjs</a>
-- <a href="https://www.npmjs.org/package/backbone-hoodie" target="_blank">Hoodie + Backbone</a>
+- <a href="https://www.npmjs.org/package/hoodie-plugin-backbone" target="_blank">Hoodie + Backbone</a>
 - <a href="https://www.npmjs.org/package/hoodie-plugin-appcache" target="_blank">AppCache with manners</a>
 - <a href="https://www.npmjs.org/package/hoodie-plugin-global-share" target="_blank">Share your content</a>
 
