@@ -5,12 +5,6 @@ locales: de
 
 ## Very Important:
 
-This tutorial is still a work in progress.
-If you have any trouble, please ping us on irc.freenode.net/#hoodie or file an issue.
-
-Thank you! &lt;3
-
-
 ## Table of Content
 
 ##### 1. Introduction

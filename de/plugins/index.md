@@ -32,4 +32,4 @@ Here are some community favourites.
 
 ### Write plugin
 
-If you want to write your own plugin, check out [this](../plugins/plugins-tutorial.html) amazing tutorial.
+If you want to write your own plugin, check out [this](../plugins/tutorial.html) amazing tutorial.
