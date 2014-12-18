@@ -5,11 +5,6 @@ locales: en
 
 # Welcome to Hoodie
 
-These documents explain the Hoodieverse and are available in:
-
-- [german](/de/)
-- [english](/en/)
-
 ## What is Hoodie?
 
 Hoodie is framework for frontend web applications that abstracts away the backend. If you love working in jQuery, Backbone, Dojo, Ember, or any other frontend framework, but *dread* backend work, Hoodie is for you.
