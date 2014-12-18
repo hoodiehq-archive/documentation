@@ -8,7 +8,7 @@ locales: en
 These documents explain the Hoodieverse and are available in:
 
 <!-- - [german](/de/) -->
-- [english](/en/)
+- [English](/en/)
 
-You can **help us to translate** the content. Interessted?
-**Awesome!** Please follow [thiese steps](https://github.com/hoodiehq/documentation#translations). Still not sure, where to start? [Ask your question](https://github.com/hoodiehq/documentation/issues/new). We are happy to help!
+You can **help us to translate** the content. Interested?
+**Awesome!** Please follow [these steps](https://github.com/hoodiehq/documentation#translations). Still not sure, where to start? [Ask your question](https://github.com/hoodiehq/documentation/issues/new). We are happy to help!
