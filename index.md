@@ -3,7 +3,7 @@ layout: layout-chicken
 locales: en
 ---
 
-# Welcome to Hoodie
+# Welcome to the Hoodie Documentation
 
 These documents explain the Hoodieverse and are available in:
 
