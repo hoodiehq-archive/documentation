@@ -1,5 +1,17 @@
 .docs {
 	font-family: "Fira Sans";
+	font-weight: 300;
+}
+
+.docs header section .main-nav a,
+.docs header section .meta-nav li a,
+.docs header section .sub-nav li a,
+.docs .cb {
+	font-weight: 200;
+}
+
+.docs header section .meta-nav li a.active {
+	font-weight: 500;
 }
 
 	#api_nav {
@@ -34,6 +46,7 @@
 		.docs pre code {
 			white-space: pre !important;
 			font-size: 1em;
+			font-family: "Fira Mono", Courier, sans-serif;
 		}
 
 	.docs h2,
