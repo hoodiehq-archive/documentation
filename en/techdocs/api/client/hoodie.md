@@ -172,4 +172,4 @@ Alias for [bind](#bind).
 | ---------- |:------:|:---------------:|:--------:|
 | event        | String   | custom event identifier            | yes |
 
-Alias for [bind](#bind).
+Alias for [unbind](#unbind).
