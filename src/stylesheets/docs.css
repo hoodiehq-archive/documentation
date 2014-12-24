@@ -37,6 +37,18 @@
     font-style: normal;
 }
 
+@font-face {
+    font-family: 'FiraMono';
+    src: url('../font/FiraMono-Regular.eot');
+    src: url('../font/FiraMono-Regular.eot?#iefix') format('embedded-opentype'),
+         url('../font/FiraMono-Regular.woff') format('woff'),
+         url('../font/FiraMono-Regular.ttf') format('truetype'),
+         url('../font/FiraMono-Regular.svg#FiraSansMono') format('svg');
+    font-weight: 300;
+    font-style: normal;
+
+}
+
 .docs {
 	font-family: 'FiraSans', sans-serif;
 	font-size: 100%;
