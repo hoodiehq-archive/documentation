@@ -128,7 +128,7 @@
 		.docs pre code {
 			white-space: pre !important;
 			font-size: 1em;
-			font-family: "Fira Mono", Courier, sans-serif;
+			font-family: 'FiraMono', Courier, sans-serif;
 		}
 
 	.docs h2,
