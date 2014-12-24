@@ -1,13 +1,83 @@
+// 300
+@font-face {
+    font-family: 'FiraSans';
+    src: url('../font/FiraSans-Light.eot');
+    src: url('../font/FiraSans-Light.eot?#iefix') format('embedded-opentype'),
+         url('../font/FiraSans-Light.woff') format('woff'),
+         url('../font/FiraSans-Light.ttf') format('truetype'),
+         url('../font/FiraSans-Light.svg#FiraSansLight') format('svg');
+    font-weight: 300;
+    font-style: normal;
+
+}
+
+
+// 400
+@font-face {
+    font-family: 'FiraSans';
+    src: url('../font/FiraSans-Regular.eot');
+    src: url('../font/FiraSans-Regular.eot?#iefix') format('embedded-opentype'),
+         url('../font/FiraSans-Regular.woff') format('woff'),
+         url('../font/FiraSans-Regular.ttf') format('truetype'),
+         url('../font/FiraSans-Regular.svg#FiraSansRegular') format('svg');
+    font-weight: 400;
+    font-style: normal;
+
+}
+
+// 500
+@font-face {
+    font-family: 'FiraSans';
+    src: url('../font/FiraSans-Medium.eot');
+    src: url('../font/FiraSans-Medium.eot?#iefix') format('embedded-opentype'),
+         url('../font/FiraSans-Medium.woff') format('woff'),
+         url('../font/FiraSans-Medium.ttf') format('truetype'),
+         url('../font/FiraSans-Medium.svg#FiraSansMedium') format('svg');
+    font-weight: 500;
+    font-style: normal;
+}
+
 .docs {
-	font-family: "Fira Sans";
-	font-weight: 300;
+	font-family: 'FiraSans', sans-serif;
+	font-size: 100%;
+    line-height: 1.618;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-shadow: none !important;
+    
 }
 
 .docs header section .main-nav a,
-.docs header section .meta-nav li a,
-.docs header section .sub-nav li a,
-.docs .cb {
-	font-weight: 200;
+.docs header section .meta-nav li a
+{
+	text-shadow: 0px 0px 0px rgba(255, 255, 255, 1) !important;
+}
+
+.docs header section .sub-nav .sub-nav-list-item a
+{
+	text-shadow: 0px 0px 0px rgba(64, 64, 64, 1) !important;
+}
+
+
+.docs .cb article {
+	text-shadow: 0px 0px 0px rgba(64, 64, 64, 0.7);
+}
+.docs #api_nav a {
+	text-shadow: 0px 0px 0px rgba(64, 64, 64, 0.7);
+}
+
+.docs .cb article a{
+	text-shadow: 0px 0px 0px rgba(39, 49, 131, 0.7);
+}
+
+.docs .cb h1,
+.docs .cb h2,
+.docs .cb h3,
+.docs .cb h4,
+.docs .cb h5,
+.docs .cb h6 {
+    text-shadow: none !important;
 }
 
 .docs header section .meta-nav li a.active {
