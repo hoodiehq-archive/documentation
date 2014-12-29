@@ -12,7 +12,7 @@ locales: en
 - installed Hoodie-CLI
 
 Not done with the installation of all prerequisites yet? <br />
-<a href="../start/index.html">This is how it works!</a>
+<a href="../../start/">This is how it works!</a>
 
 
 ### Quick overview
