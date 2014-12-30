@@ -36,7 +36,7 @@ Hoodie comes with a command line tool, called Hoodie-CLI, which helps you with a
 
 <pre><code>$ hoodie -h</code></pre>
 
-Never worked with the terminal before? Here are some <a href="http://blog.teamtreehouse.com/introduction-to-the-mac-os-x-command-line" target="_blank">tipps and tricks</a>!
+Never worked with the terminal before? Here are some <a href="http://blog.teamtreehouse.com/introduction-to-the-mac-os-x-command-line" target="_blank">tips and tricks</a>!
 
 The very first step is using Hoodie-CLI to instantiate your new application. In your terminal, go to the directory you want your application to be in and enter:
 
