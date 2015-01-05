@@ -163,7 +163,7 @@ you can retrieve all of them like shown in the following example.
 
 <pre><code>hoodie.store.findAll('todo')
     .done(function(allTodos) {
-        console.log(oneTodo.length + ' todos found');
+        console.log(allTodos.length + ' todos found');
     })
 </code></pre>
 
