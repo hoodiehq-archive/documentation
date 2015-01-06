@@ -93,7 +93,7 @@ according error.
 
 ##### Example
 
-<pre><code>hoodie.store('todo').find('hrmvby9')
+<pre><code>hoodie.store.find('todo', 'hrmvby9')
 	.done(function(todo) { /* success handling */ });
 	.fail(function(error) { /* error handling */ });
 </code></pre>
