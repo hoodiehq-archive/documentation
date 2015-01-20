@@ -68,6 +68,8 @@ Let's check the CLI output really quickly:
 
 There are three URLs in here:
 
+**Note:** The ports may vary, due to the way Hoodie picks new and free ports with multiple apps. So if this is your first Hoodie app, your ports will start at 6001.
+
 ##### The CouchDB endpoint:
 
 <pre><code>CouchDB started: http://127.0.0.1:6042 </code></pre> 
