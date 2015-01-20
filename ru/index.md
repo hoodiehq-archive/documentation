@@ -3,7 +3,7 @@ layout: layout-hoodieverse
 locales: ru
 ---
 
-# Добро пожаловать в Hoodie
+# Добро пожаловать к Hoodie
 
 ## Что такое Hoodie?
 
