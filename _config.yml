@@ -9,6 +9,7 @@ locales:
     label: 
       en: "english"
       de: "german"
+      ru: "russian"
     nav:
       hoodieverse: "Hoodieverse"
       start: "Let's start"
@@ -62,6 +63,7 @@ locales:
     label: 
       en: "englisch"
       de: "deutsch"
+      ru: "russisch"
     nav:
       hoodieverse: "Hoodieverse"
       start: "Los geht's"
