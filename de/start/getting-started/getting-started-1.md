@@ -1,6 +1,6 @@
 ---
 layout: layout-start
-locales: de
+locales: en
 ---
 
 # Getting Started with Hoodie - Part 1
@@ -67,6 +67,8 @@ Let's check the CLI output really quickly:
 ![screenshot 3 - hoodie-cli](./dist/scs3.png)
 
 There are three URLs in here:
+
+**Note:** The ports may vary, due to the way Hoodie picks new and free ports with multiple apps. So if this is your first Hoodie app, your ports will start at 6001.
 
 ##### The CouchDB endpoint:
 
