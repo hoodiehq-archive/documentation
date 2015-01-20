@@ -34,6 +34,9 @@ If you want to translate the content in your language, please copy the `en` fold
 ### Menu + nav
 The Menu and the navigation are generated dynamically. All you have to do is to set the locales in your page and make sure you have translated all the strings. All the strigs are translated in the `_config.yml`.
 
+### Templates
+Always change the 'locales' from en to your language e.g. fr. This is also needed for the right path.
+
 ### New content
 If you add new content to the page, make sure to: 
 - add it in your language folder
