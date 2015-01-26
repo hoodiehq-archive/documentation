@@ -23,6 +23,7 @@ This document describes the functionality of the hoodie base object.
 - [trigger](#trigger)
 - [request](#request)
 - [open](#open)
+- [checkConnection](#checkConnection)
 - [extend](#extend)
 
 
@@ -239,6 +240,22 @@ hoodie.store(hoodie).trigger('trigger-test', 'number 3');
 chat.findAll('message')
 .done(renderMessages)
 .fail(handleError);
+</code></pre>
+
+
+<a id="checkConnection"></a>
+### checkConnection
+
+**version:**      *> 0.2.0*
+
+*Sends request to the Hoodie Server to check if it is reachable*
+
+<pre><code>hoodie.checkConnection();</code></pre>
+
+##### Example
+<pre><code>hoodie.checkConnection()
+.done(renderGreenLight)
+.fail(renderRedLight)
 </code></pre>
 
 
