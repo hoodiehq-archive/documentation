@@ -10,12 +10,35 @@ locales: en
 
 This document describes the functionality of the hoodie base object.
 
+### Properties
+
+- [baseUrl](#baseUrl)
+
 ## Methods
 
 - [on](#on)
 - [one](#one)
 - [off](#off)
 - [trigger](#trigger)
+
+
+<a id="baseUrl"></a>
+### hoodie.baseUrl
+**version:**    *> 0.2.0*
+
+<pre><code>hoodie.baseUrl</code></pre>
+
+The **hoodie.baseUrl** property gets automatically set on initialization.
+
+
+##### Example
+
+<pre><code>hoodie = new Hoodie('http://myhoodieapp.com')
+hoodie.baseUrl // 'http://myhoodieapp.com'
+
+hoodie = new Hoodie()
+hoodie.baseUrl // ''
+</code></pre>
 
 
 <a id="on"></a>
