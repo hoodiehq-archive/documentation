@@ -22,6 +22,7 @@ This document describes the functionality of the hoodie base object.
 - [off](#off)
 - [trigger](#trigger)
 - [request](#request)
+- [open](#open)
 - [extend](#extend)
 
 
@@ -218,6 +219,27 @@ hoodie.store(hoodie).trigger('trigger-test', 'number 3');
 .fail(handleError)
 </code></pre>
 
+
+<a id="open"></a>
+### open
+
+**version:**      *> 0.2.0*
+
+*Interact with a remote database*
+
+<pre><code>hoodie.open('db-name');</code></pre>
+
+| option     | type     | description            | required |
+| ---------- |:--------:|:----------------------:|:--------:|
+| name       | string   | name of the database   | yes      |
+
+
+##### Example
+<pre><code>var chat = hoodie.open('chatroom');
+chat.findAll('message')
+.done(renderMessages)
+.fail(handleError);
+</code></pre>
 
 
 <a id="extend"></a>
