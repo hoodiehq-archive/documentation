@@ -24,6 +24,7 @@ This document describes the functionality of the hoodie base object.
 - [request](#request)
 - [open](#open)
 - [checkConnection](#checkConnection)
+- [isConnected](#isConnected)
 - [extend](#extend)
 
 
@@ -256,6 +257,24 @@ chat.findAll('message')
 <pre><code>hoodie.checkConnection()
 .done(renderGreenLight)
 .fail(renderRedLight)
+</code></pre>
+
+
+<a id="isConnected"></a>
+### isConnected
+
+**version:**      *> 0.2.0*
+
+*Returns true if Hoodie backend can currently be reached, otherwise false*
+
+<pre><code>hoodie.isConnected();</code></pre>
+
+##### Example
+<pre><code>if (hoodie.isConnected()) {
+  alert('Looks like you are online!');
+} else {
+  alert('You are offline!');
+}
 </code></pre>
 
 
