@@ -21,6 +21,7 @@ This document describes the functionality of the hoodie base object.
 - [one](#one)
 - [off](#off)
 - [trigger](#trigger)
+- [extend](#extend)
 
 
 <a id="baseUrl"></a>
@@ -191,4 +192,32 @@ todoStore.on('trigger-test', function(num) {
 hoodie.store.trigger('trigger-test', 'number 1');
 todoStore.trigger('trigger-test', 'number 2');
 hoodie.store(hoodie).trigger('trigger-test', 'number 3');
+</code></pre>
+
+
+
+<a id="extend"></a>
+### extend
+
+**version:**      *> 0.2.0*
+
+*Extend the hoodie API with new functionality*
+
+<pre><code>hoodie.extend(plugin);</code></pre>
+
+| option     | type     | description     | required |
+| ---------- |:--------:|:---------------:|:--------:|
+| plugin     | function | extend the frontend API with whatever logic your plugin wants to expose | yes |
+
+
+
+
+##### Example
+<pre><code>hoodie.extend(function(hoodie, lib, util) {
+  hoodie.sayHi = function() {
+    alert('say hi!');
+  };
+});
+
+hoodie.sayHi() // shows alert
 </code></pre>
