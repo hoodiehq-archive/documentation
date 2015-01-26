@@ -21,6 +21,7 @@ This document describes the functionality of the hoodie base object.
 - [one](#one)
 - [off](#off)
 - [trigger](#trigger)
+- [request](#request)
 - [extend](#extend)
 
 
@@ -192,6 +193,29 @@ todoStore.on('trigger-test', function(num) {
 hoodie.store.trigger('trigger-test', 'number 1');
 todoStore.trigger('trigger-test', 'number 2');
 hoodie.store(hoodie).trigger('trigger-test', 'number 3');
+</code></pre>
+
+
+<a id="request"></a>
+### request
+
+**version:**      *> 0.2.0*
+
+*Send a request*
+
+<pre><code>hoodie.request(type, url, options);</code></pre>
+
+| option     | type     | description                                | required |
+| ---------- |:--------:|:------------------------------------------:|:--------:|
+| type       | string   | http verb, e.g. get, post, put or delete   | yes      |
+| url        | string   | relative path or absolute URL.             | yes      |
+| options    | object   | compare http://api.jquery.com/jquery.ajax/ | no       |
+
+
+##### Example
+<pre><code>hoodie.request('http://example.com/something')
+.done(renderSomething)
+.fail(handleError)
 </code></pre>
 
 
