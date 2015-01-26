@@ -1,5 +1,5 @@
 ---
-layout: layout-api  
+layout: layout-api
 locales: en
 ---
 # hoodie
@@ -12,20 +12,19 @@ This document describes the functionality of the hoodie base object.
 
 ## Methods
 
-- [bind](#bind)
-- [trigger](#trigger)
-- [unbind](#unbind)
-- [one](#one)
 - [on](#on)
+- [one](#one)
 - [off](#off)
+- [trigger](#trigger)
 
-<a id="bind"></a>
-### bind()
+
+<a id="on"></a>
+### on()
 **version:**      *> 0.2.0*
 
 *Bind an event handler to a certain event so you get informed in case it gets triggered.*
 
-<pre><code>hoodie.bind('event', eventHandler); </code></pre>
+<pre><code>hoodie.on('event', eventHandler); </code></pre>
 
 | option     | type   | description     | required |
 | ---------- |:------:|:---------------:|:--------:|
@@ -36,9 +35,61 @@ Hoodie informs you about several things happening. For instance every time a sto
 
 ##### Example
 <pre><code>hoodie.store.on('event', function(createdTodo) {
-	console.log('A todo has been added => ', createdTodo);
+  console.log('A todo has been added => ', createdTodo);
 });
 </code></pre>
+
+
+<a id="one"></a>
+### one()
+**version:**      *> 0.2.0*
+
+*Is the one-time variant of [on](#on) and [off](#off). Once the event has been caught, it will be unbound automatically.*
+
+<pre><code>hoodie.one('event', eventHandler);</code></pre>
+
+| option       | type     | description                        | required |
+| ------------ |:--------:|:----------------------------------:|:--------:|
+| event        | String   | custom event identifier            | yes      |
+| eventHandler | Function | Function handling triggered event. | yes      |
+
+
+<a id="off"></a>
+### off()
+**version:**      *> 0.2.0*
+
+*Unbind all eventhandlers from a certain event. The events won't be triggered anymore.*
+
+<pre><code>hoodie.off('event');</code></pre>
+
+| option     | type   | description     | required |
+| ---------- |:------:|:---------------:|:--------:|
+| event      | String | custom event identifier. | yes |
+
+<pre><code>hoodie.on('event', eventHandler);</code></pre>
+
+While **hoodie.store.on** subscribes an handler function to a certain event **hoodie.store.off** does the opposite and will unsubscribe all previously registered handlers for the given event.
+
+##### Example
+
+<pre><code>var todoStore = hoodie.store('todo');
+todoStore.on('todo:done', function(doneTodo, t) {
+  // this will never be reached
+});
+
+todoStore.on('todo:done', function(doneTodo, t) {
+  // this will never be reached neither
+});
+
+// this unsubscribes both of the previously
+// subscribed event handlers
+todoStore.off('todo:done');
+
+todoStore.findAll().done(function(allTodos) {
+  todoStore.trigger('todo:done', allTodos[0], new Date());
+});
+</code></pre>
+
 
 <a id="trigger"></a>
 ### trigger
@@ -54,7 +105,7 @@ Hoodie informs you about several things happening. For instance every time a sto
 | event      | String | custom event identifier.                                 | yes |
 | param      | Object | Detail information the event will pass to the listeners. | no |
 
-Since you can listen for store events using [bind](#bind) or [on](#on), this gives you the opportunity to send events of your own to the listeners. This includes the standard events as mentionend in for instance [hoodie.store.on](/techdocs/api/client/hoodie.store.html#storeon) as well as your personal custom events. Imagine you want to trigger an event when a todo is done. This could look something similiar to this:
+Since you can listen for store events using [on](#on), this gives you the opportunity to send events of your own to the listeners. This includes the standard events as mentionend in for instance [hoodie.store.on](/techdocs/api/client/hoodie.store.html#storeon) as well as your personal custom events. Imagine you want to trigger an event when a todo is done. This could look something similiar to this:
 
 
 ##### Example
@@ -86,90 +137,11 @@ todoStore.findAll().done(function(allTodos) {
 <pre><code>var todoStore = hoodie.store('todo');
 
 todoStore.on('trigger-test', function(num) {
-	// will only be called by the second trigger
-	console.log('triggered by', num);
+  // will only be called by the second trigger
+  console.log('triggered by', num);
 });
 
 hoodie.store.trigger('trigger-test', 'number 1');
 todoStore.trigger('trigger-test', 'number 2');
 hoodie.store(hoodie).trigger('trigger-test', 'number 3');
 </code></pre>
-
-<a id="unbind"></a>
-### unbind()
-**version:**      *> 0.2.0*
-
-*Unbind all eventhandlers from a certain event. The events won't be triggered anymore.*
-
-<pre><code>hoodie.unbind('event');</code></pre>
-
-| option     | type   | description     | required |
-| ---------- |:------:|:---------------:|:--------:|
-| event      | String | custom event identifier. | yes |
-
-<pre><code>hoodie.on('event', eventHandler);</code></pre>
-
-While **hoodie.store.bind** subscribes an handler function to a certain event **hoodie.store.unbind** does the opposite and will unsubscribe all previously registered handlers for the given event.
-
-##### Example
-
-<pre><code>var todoStore = hoodie.store('todo');
-todoStore.on('todo:done', function(doneTodo, t) {
-  // this will never be reached
-});
-
-todoStore.on('todo:done', function(doneTodo, t) {
-  // this will never be reached neither
-});
-
-// this unsubscribes both of the previously
-// subscribed event handlers
-todoStore.off('todo:done');
-
-todoStore.findAll().done(function(allTodos) {
-  todoStore.trigger('todo:done', allTodos[0], new Date());
-});
-</code></pre>
-
-<a id="one"></a>
-### one()
-**version:**      *> 0.2.0*
-
-*Is the one-time variant of [bind](#bind) plus [unbind](#unbind). Once the event has been caught, it will be unbound automatically.*
-
-<pre><code>hoodie.one('event', eventHandler);</code></pre>
-
-| option     | type   | description     | required |
-| ---------- |:------:|:---------------:|:--------:|
-| event        | String   | custom event identifier            | yes |
-| eventHandler | Function | Function handling triggered event. | yes |
-
-
-<a id="on"></a>
-### on()
-**version:**      *> 0.2.0*
-
-*Bind an event handler to a certain event so you get informed in case it gets triggered.*
-
-<pre><code>hoodie.on('event', eventHandler);</code></pre>
-
-| option     | type   | description     | required |
-| ---------- |:------:|:---------------:|:--------:|
-| event        | String   | custom event identifier            | yes |
-| eventHandler | Function | Function handling triggered event. | yes |
-
-Alias for [bind](#bind).
-
-<a id="off"></a>
-### off()
-**version:**      *> 0.2.0*
-
-*Unbind all eventhandlers from a certain event. The events won't be triggered anymore.*
-
-<pre><code>hoodie.off('event');</code></pre>
-
-| option     | type   | description     | required |
-| ---------- |:------:|:---------------:|:--------:|
-| event        | String   | custom event identifier            | yes |
-
-Alias for [unbind](#unbind).
