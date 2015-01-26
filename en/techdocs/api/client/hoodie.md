@@ -16,6 +16,7 @@ This document describes the functionality of the hoodie base object.
 
 ## Methods
 
+- [id](#id)
 - [on](#on)
 - [one](#one)
 - [off](#off)
@@ -38,6 +39,29 @@ hoodie.baseUrl // 'http://myhoodieapp.com'
 
 hoodie = new Hoodie()
 hoodie.baseUrl // ''
+</code></pre>
+
+
+<a id="id"></a>
+### id()
+**version:**      *> 0.2.0*
+
+*returns a unique, persistent identifier for the current user*
+
+<pre><code>hoodie.id();</code></pre>
+
+The first time <code>hoodie.id()</code> gets called, a unique
+identifier gets generated for the current user, and persisted
+in the browser's local store. When signing in to an account,
+<code>hoodie.id()</code> will return the id of the new user.
+On signout, hoodie.id() gets reset.
+
+##### Example
+<pre><code>
+hoodie.id(); // randomid123
+hoodie.account.signIn(username, password).done(function() {
+  hoodie.id(); // randomid456
+});
 </code></pre>
 
 
