@@ -51,21 +51,21 @@ hoodie.baseUrl // ''
 ### id()
 **version:**      *> 0.2.0*
 
-*returns a unique, persistent identifier for the current user*
+*Returns a unique, persistent identifier for the current user.*
 
 <pre><code>hoodie.id();</code></pre>
 
-The first time <code>hoodie.id()</code> gets called, a unique
+The first time **hoodie.id()** gets called, a unique
 identifier gets generated for the current user, and persisted
 in the browser's local store. When signing in to an account,
-<code>hoodie.id()</code> will return the id of the new user.
+**hoodie.id()** will return the id of the new user.
 On signout, hoodie.id() gets reset.
 
 ##### Example
-<pre><code>
-hoodie.id(); // randomid123
-hoodie.account.signIn(username, password).done(function() {
-  hoodie.id(); // randomid456
+<pre><code>hoodie.id(); // randomid123
+hoodie.account.signIn(username, password)
+  .done(function() {
+    hoodie.id(); // randomid456
 });
 </code></pre>
 
@@ -217,8 +217,8 @@ hoodie.store(hoodie).trigger('trigger-test', 'number 3');
 
 ##### Example
 <pre><code>hoodie.request('http://example.com/something')
-.done(renderSomething)
-.fail(handleError)
+  .done(renderSomething)
+  .fail(handleError);
 </code></pre>
 
 
@@ -239,8 +239,8 @@ hoodie.store(hoodie).trigger('trigger-test', 'number 3');
 ##### Example
 <pre><code>var chat = hoodie.open('chatroom');
 chat.findAll('message')
-.done(renderMessages)
-.fail(handleError);
+  .done(renderMessages)
+  .fail(handleError);
 </code></pre>
 
 
@@ -255,8 +255,8 @@ chat.findAll('message')
 
 ##### Example
 <pre><code>hoodie.checkConnection()
-.done(renderGreenLight)
-.fail(renderRedLight)
+  .done(renderGreenLight)
+  .fail(renderRedLight);
 </code></pre>
 
 
@@ -293,7 +293,6 @@ chat.findAll('message')
 
 
 
-
 ##### Example
 <pre><code>hoodie.extend(function(hoodie, lib, util) {
   hoodie.sayHi = function() {
@@ -301,5 +300,5 @@ chat.findAll('message')
   };
 });
 
-hoodie.sayHi() // shows alert
+hoodie.sayHi(); // shows alert
 </code></pre>
