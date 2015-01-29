@@ -144,7 +144,7 @@ todoStore.findAll().done(function(allTodos) {
 
 
 <a id="trigger"></a>
-### trigger
+### trigger()
 
 **version:**      *> 0.2.0*
 
@@ -200,7 +200,7 @@ hoodie.store(hoodie).trigger('trigger-test', 'number 3');
 
 
 <a id="request"></a>
-### request
+### request()
 
 **version:**      *> 0.2.0*
 
@@ -223,7 +223,7 @@ hoodie.store(hoodie).trigger('trigger-test', 'number 3');
 
 
 <a id="open"></a>
-### open
+### open()
 
 **version:**      *> 0.2.0*
 
@@ -245,7 +245,7 @@ chat.findAll('message')
 
 
 <a id="checkConnection"></a>
-### checkConnection
+### checkConnection()
 
 **version:**      *> 0.2.0*
 
@@ -261,7 +261,7 @@ chat.findAll('message')
 
 
 <a id="isConnected"></a>
-### isConnected
+### isConnected()
 
 **version:**      *> 0.2.0*
 
@@ -279,7 +279,7 @@ chat.findAll('message')
 
 
 <a id="extend"></a>
-### extend
+### extend()
 
 **version:**      *> 0.2.0*
 
