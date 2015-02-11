@@ -18,7 +18,7 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-shadow: none !important;
-    
+
 }
 .docs .cb h1,
 .docs .cb h2,
@@ -42,7 +42,7 @@
 	}
 
 	#api_nav li {
-		margin-bottom: 0.2em; 
+		margin-bottom: 0.2em;
 		font-size: 0.9em;
 	}
 
@@ -60,6 +60,7 @@
 		margin-bottom: 1.6em;
 		padding: 0 1.4em 1em;
 		background-color: #fdfdfd;
+    overflow: scroll;
 	}
 
 		.docs pre code {
