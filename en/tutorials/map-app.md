@@ -1,6 +1,6 @@
 ---
 layout: layout-tutorials
-locales: de
+locales: en
 ---
 
 # Tutorial - How to Build a Map App with Hoodie
