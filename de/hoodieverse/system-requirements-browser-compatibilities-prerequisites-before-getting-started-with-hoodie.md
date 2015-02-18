@@ -3,19 +3,18 @@ layout: layout-hoodieverse
 locales: de
 ---
 
-# System Requirements, Browser Compatibilities and Prerequisites
+# Systemvoraussetzungen, Browser-Kompatibilität und weitere Notwendigkeiten
 
-This is a list of everything you should know and prepare *before* finally start coding your app with Hoodie. 
+Dies ist eine Liste mit allem, was man wissen und vorbereiten sollte, *bevor* man endllich mit dem Entwickeln von Apps mit Hoodie beginnen kann.
 
-
-### System Requirements
+### Systemvoraussetzungen
 - Mac OSX
-- Windows 7 and up<br />
-<small>(Windows 7 on a 64bit machine? <a href="http://faq.hood.ie/#/question/38210291" target="_blank"> You might need this little trick. </a> )</small>
+- Windows 7 und höher<br />
+<small>(Windows 7 auf einem 64Bit-Rechner? <a href="http://faq.hood.ie/#/question/38210291" target="_blank"> Du musst eventuell ein bisschen tricksen.</a> )</small>
 - Linux (Ubuntu, Fedora 19+)
 
 
-### Browser Compatibilities <small>(all latest stable)</small>
+### Browser-Kompatibilität <small>(immer das aktuellste stabile Release)</small>
 
 * Firefox (29+)
 * Chrome (34+)
@@ -25,6 +24,5 @@ This is a list of everything you should know and prepare *before* finally start 
 * Android 4.3+
 * iOS Safari (7.1+)
 
-Might ask yourself why Hoodie has such high browser requirements? 
-
-This is because we use several browser storages, promises and other things, that require new browsers. We really want to make sure, your application will run smoothly later and you can use all of Hoodies features. 
+Jetzt fragst du dich vielleicht, warum Hoodie so hohe Ansprüche in Sachen Browser stellt.
+Das liegt daran, weil wir Dinge wie Browser-Speicher und Promises nutzen, die neue Browser voraussetzen. Wir wollen wirklich sicherstellen, dass deine Anwendung später problemlos läuft und du alle Funktionen von Hoodie nutzen kannst.
