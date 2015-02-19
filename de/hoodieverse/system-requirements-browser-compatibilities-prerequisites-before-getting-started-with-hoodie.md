@@ -3,7 +3,7 @@ layout: layout-hoodieverse
 locales: de
 ---
 
-# Systemvoraussetzungen, Browser-Kompatibilität und weitere Notwendigkeiten
+# Systemvoraussetzungen und Browser-Kompatibilität
 
 Dies ist eine Liste mit allem, was man wissen und vorbereiten sollte, *bevor* man endllich mit dem Entwickeln von Apps mit Hoodie beginnen kann.
 

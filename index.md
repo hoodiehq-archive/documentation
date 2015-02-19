@@ -1,14 +1,17 @@
 ---
 layout: layout-chicken
-locales: de
+locales: en
 ---
 
-# Willkommen in der Hoodie-Dokumentation
+# Welcome to the Hoodie Documentation
 
-Diese Seiten erklären das Hoodieverse und sind in den folgenden Sprachen verfügbar:
+These documents explain the Hoodieverse and are available in:  
+- [English](/en/)    
 
-<!-- - [Deutsch](/de/) -->
-- [Englisch](/en/)
+**Work in progress** (If you want to help, go for it!):  
+- [German](/de/)  
+- [French](https://github.com/hoodiehq/documentation/pull/123)  
+- [Russian](https://github.com/hoodiehq/documentation/pull/120)
 
-Du kannst **uns dabei helfen, ihren Inhalt zu übersetzen**. Interesse?
-**Großartig!** Bitte folge dabei [diesen Schritten](https://github.com/hoodiehq/documentation#translations). Immer noch nicht sicher, wo du am besten anfängst? [Stell' eine Frage!](https://github.com/hoodiehq/documentation/issues/new) Wir freuen uns, wenn wir dir helfen können!
+You can **help us to translate** the content. Interested?
+**Awesome!** Please follow [these steps](https://github.com/hoodiehq/documentation#translations). Still not sure, where to start? [Ask your question](https://github.com/hoodiehq/documentation/issues/new). We are happy to help!
