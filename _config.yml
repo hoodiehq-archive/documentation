@@ -23,6 +23,7 @@ locales:
       recipes: "Recipes"
     menuverse:
       welcome: "Welcome to Hoodie"
+      concepts: "Hoodie Concepts"
       requirements: "Requirements"
       glossary: "Glossary"
       next: "Let's start"
@@ -76,6 +77,7 @@ locales:
       recipes: "Rezepte"
     menuverse:
       welcome: "Willkommen bei Hoodie"
+      concepts: "Hoodie Konzepte"
       requirements: "Anforderungen"
       glossary: "Glossar"
       next: "Los geht's"
