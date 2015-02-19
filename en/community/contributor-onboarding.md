@@ -31,7 +31,7 @@ Hoodie is a quite big project and we have various parts that need to be created 
 
 Try to speak to the new contributor. We learned that this clears a lot of obstacles in communication and helps getting things going faster. Also, meeting new people is always fun!
 
-The easiest way to do this is a quick <a href="http://talky.io" target="_blank">Talky</a>, Skype call or Google Hangout with the person interested and at least one exsisiting contributer (this could be you already). If you happen to be in the same town, meeting for lunch, coffee or going on a walk is always the preferrable option.
+The easiest way to do this is a quick <a href="http://talky.io" target="_blank">Talky</a>, Skype call or Google Hangout with the person interested and at least one existing contributer (this could be you already). If you happen to be in the same town, meeting for lunch, coffee or going on a walk is always the preferrable option.
 
 ### 2. Get Started together
 
@@ -58,6 +58,7 @@ And, of course: make sure they know they can always contact you with any questio
 #### The IRC channel
 - how to access
   - if not clear: help find a good client (e.g. Textual for Mac or another client you can recommend)
+  - also mention Slack access, with invites available [http://hood.ie/chat/index.html](here)
 - what to post
 - how to ask
 - office hours, see [http://hood.ie/irc](IRC page) for details
@@ -101,7 +102,7 @@ Finally! Our new contributor is all set and ready to get started. You should now
 
 ### 5. Introduce them to the team
 
-Please introduce them to the other team members by sending a quick welcome email and maybe writing a blog post (e.g. a short interview for the ["A Hoodie for you"](http://blog.hood.ie/category/a-hoodie-for-you/) series, for the interview just send them our [Questionnaire Form](https://docs.google.com/forms/d/144uyYfrX1onnXiWV5wbA3qC_eOoUImolNaMXPdgDWMc/viewform)). Of course not only the team wants to know more about the contributors, but the contributors also want to get to know the team! Maybe you can help arranging short one-on-ones with other team members.
+Please introduce them to the other team members by sending a quick welcome email and maybe writing a blog post (e.g. a short interview for the ["A Hoodie for you"](http://blog.hood.ie/category/a-hoodie-for-you/) series, for the interview just send them our [Questionnaire Form](https://docs.google.com/forms/d/144uyYfrX1onnXiWV5wbA3qC_eOoUImolNaMXPdgDWMc/viewform)). Of course not only the team wants to know more about the contributors, but the contributors also want to get to know the team! Maybe you can help by arranging short one-on-ones with other team members.
 
 You should also add them to the the [team section](http://hood.ie/community/#community) of our website and post a tweet about their addition to the team.
 
@@ -109,7 +110,7 @@ You should also add them to the the [team section](http://hood.ie/community/#com
 
 ### 6. Stay in touch!
 
-The most diffucult job of onboarding is making sure the contributors are always motivated and never left alone, especially when they are having difficulties or problems. You can stay in touch by offering continuous mentoring and pairing (for example once a week or every two weeks, depending on the amount of work they can and want to contribute), and frequent quick chats or emails.
+The most difficult job of onboarding is making sure the contributors are always motivated and never left alone, especially when they are having difficulties or problems. You can stay in touch by offering continuous mentoring and pairing (for example once a week or every two weeks, depending on the amount of work they can and want to contribute), and frequent quick chats or emails.
 
 You can also ping them when they're online in IRC or another channel and ask how they're doing. We know many of you are doing this anyway because our community members are amazing, but it's good to keep it in mind. It helps strengthen our relationships and show our appreciation.
 
@@ -118,7 +119,7 @@ You can also ping them when they're online in IRC or another channel and ask how
 In case this is too much work for you or there are any issues, please bring up these topics immediately. Please check below how and where to talk about them:
 
 - If these are issues which are better not discussed with the group in the first place or if you not sure whether it's appropriate to bring them up in the community, please contact another community member first. This is especially applicable for all personal problems which may occur or topics related with the Code of Conduct. **For the latter, please ask the person who brought up the topic for their consensus to involve another person into addressing the issue first.**
-  - [Lena](https://twitter.com/lrnrd) and [Jan](http://twitter.com/janl) are also there to help you anytime.
+  - [Lena](https://twitter.com/lrnrd) and [Jan](https://twitter.com/janl) are also there to help you anytime.
 - If appropriate (see above for clarification), bring the topic(s) up in the community, e.g. by sending an email to everyone or bringing them up in the group chat.
 
 ### 8. Improve
