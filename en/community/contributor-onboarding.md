@@ -12,7 +12,7 @@ In this document you will learn about our onboarding process for new people who 
 
 This document is dedicated to community members. It aims to be a guide for important steps to take and a reminder for how we collaborate in this community.
 
-According to our [Code of Conduct](http://hood.ie/code-of-conduct.html), we are aiming to provide a safe space for everyone in this community. And we're happy to welcome everyone, including developers and people who want to become one of our non-coding contributors. 
+According to our [Code of Conduct](http://hood.ie/code-of-conduct.html), we are aiming to provide a safe space for everyone in this community. And we're happy to welcome everyone, including developers and people who want to become one of our non-coding contributors.
 
 This document is and will always be work in progress. We are constantly trying to improve our onboarding and community culture and always happy to get feedback!
 
@@ -24,14 +24,14 @@ Hoodie is a quite big project and we have various parts that need to be created 
 
 ### 1. Say hi!
 
-- As the first and frontmost contact for the new contributor, you are responsible for making them a part of community. 
-- If this doesn't make sense or is just not possible because of any reason, e.g. your own obligations, lack of time or personal reasons, please talk to the community as early as possible to see who can be their contact person and guide in the next weeks and months. 
+- As the first and frontmost contact for the new contributor, you are responsible for making them a part of community.
+- If this doesn't make sense or is just not possible because of any reason, e.g. your own obligations, lack of time or personal reasons, please talk to the community as early as possible to see who can be their contact person and guide in the next weeks and months.
 - Please also keep in mind that, ideally, the two people are sharing the same fields of work, interests or skills so both can learn from each other.
-- Once you found someone, give the two an introduction. 
+- Once you found someone, give the two an introduction.
 
 Try to speak to the new contributor. We learned that this clears a lot of obstacles in communication and helps getting things going faster. Also, meeting new people is always fun!
 
-The easiest way to do this is a quick <a href="http://talky.io" target="_blank">Talky</a>, Skype call or Google Hangout with the person interested and at least one existing contributer (this could be you already). If you happen to be in the same town, meeting for lunch, coffee or going on a walk is always the preferrable option.
+The easiest way to do this is a quick <a href="http://talky.io" target="_blank">Talky</a>, Skype call or Google Hangout with the person interested and at least one exisiting contributer (this could be you already). If you happen to be in the same town, meeting for lunch, coffee or going on a walk is always the preferrable option.
 
 ### 2. Get Started together
 
@@ -45,13 +45,13 @@ The easiest way to do this is a quick <a href="http://talky.io" target="_blank">
   - what are their interests in Hoodie?
   - What do they want to work on?
   - What are their interests regarding personal skills?
-  - Is there anything they want to improve at and / or with which we can help them learn? 
+  - Is there anything they want to improve at and / or with which we can help them learn?
 3. Depending on their skills and knowledge, introduce them to Hoodie-related terms and processes (see [The Hoodie Glossary](../hoodieverse/glossary.html) and [FAQ](http://faq.hood.ie/) for more information).
 
 
 ### 3. Introduce them to the surroundings
 
-Hoodie has various communication channels and workflows that can be quite confusing for people who are new to the community. During this time, your job is to make sure that they know how to effectively communicate with the rest of the community and make sure they are always in the loop. 
+Hoodie has various communication channels and workflows that can be quite confusing for people who are new to the community. During this time, your job is to make sure that they know how to effectively communicate with the rest of the community and make sure they are always in the loop.
 
 And, of course: make sure they know they can always contact you with any questions they have. :)
 
