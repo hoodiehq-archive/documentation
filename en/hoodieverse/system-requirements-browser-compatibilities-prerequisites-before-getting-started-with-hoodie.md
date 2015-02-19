@@ -3,7 +3,7 @@ layout: layout-hoodieverse
 locales: en
 ---
 
-# System Requirements, Browser Compatibilities and Prerequisites
+# System Requirements and Browser Compatibilities
 
 This is a list of everything you should know and prepare *before* finally start coding your app with Hoodie. 
 
