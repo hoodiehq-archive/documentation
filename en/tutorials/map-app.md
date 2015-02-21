@@ -7,7 +7,7 @@ locales: en
 
 *A tutorial describing how to start building a map app using Hoodie.*
 
-**TL;DR [The Repo](https://github.com/hoodiehe/hoodie-template-app-map)**
+**TL;DR [The Repo](https://github.com/hoodiehq/hoodie-template-app-map)**
 
 If you've gotten this far in the Docs, you should have Hoodie and its dependencies installed and know that Hoodie is a powerful tool for making simply awesome apps. Combine Hoodie with another strong tool, like [Leaflet](http://leafletjs.com/), and that app can become even greater. So, let's get started.
 
