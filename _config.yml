@@ -25,6 +25,7 @@ locales:
       welcome: "Welcome to Hoodie"
       concepts: "Hoodie Concepts"
       requirements: "Requirements"
+      works: "How Hoodie works"
       glossary: "Glossary"
       next: "Let's start"
     menustart: 
@@ -79,6 +80,7 @@ locales:
       welcome: "Willkommen bei Hoodie"
       concepts: "Hoodie Konzepte"
       requirements: "Anforderungen"
+      works: "Wie Hoodie funktioniert"
       glossary: "Glossar"
       next: "Los geht's"
     menustart: 
