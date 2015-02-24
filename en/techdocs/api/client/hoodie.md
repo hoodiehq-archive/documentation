@@ -212,7 +212,7 @@ hoodie.store(hoodie).trigger('trigger-test', 'number 3');
 | ---------- |:--------:|:------------------------------------------:|:--------:|
 | type       | string   | http verb, e.g. get, post, put or delete   | yes      |
 | url        | string   | relative path or absolute URL.             | yes      |
-| options    | object   | compare http://api.jquery.com/jquery.ajax/ | no       |
+| options    | object   | compare <a href="http://api.jquery.com/jquery.ajax/" target="_blank">http://api.jquery.com/jquery.ajax</a> | no       |
 
 
 ##### Example
