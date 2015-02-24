@@ -9,6 +9,7 @@ locales:
     label: 
       en: "english"
       de: "german"
+      fr: "french"
     nav:
       hoodieverse: "Hoodieverse"
       start: "Let's start"
@@ -64,6 +65,7 @@ locales:
     label: 
       en: "englisch"
       de: "deutsch"
+      fr: "französisch"
     nav:
       hoodieverse: "Hoodieverse"
       start: "Los geht's"
@@ -114,3 +116,57 @@ locales:
       onboarding: "Onboarding"
       irc: "IRC office Stunden"
       workshop: "Hoodie Workshop" 
+  fr:
+    path: /fr/
+    lang: "Langue"
+    label: 
+      en: "anglais"
+      de: "allemand"
+      fr: "français"
+    nav:
+      hoodieverse: "Hoodieverse"
+      start: "Pour commencer"
+      tutorials: "Tutoriaux"
+      api: "API"
+      plugins: "Plugins"
+      deployment: "Déploiement"
+      community: "Communauté"
+    menu:
+      start: "Pour commencer"
+      next: "Chapitre suivant"
+      recipes: "Recettes"
+    menuverse:
+      welcome: "Bienvenue chez Hoodie"
+      requirements: "Prérequis"
+      glossary: "Glossaire"
+      next: "Pour commencer"
+    menustart: 
+      installation: "Installation"
+      started : "Pour commencer (1)"
+      next: "Tutoriaux"
+    menututorials: 
+      started : "Pour commencer (2)"
+      timetracker: "Suivi de temps"
+      next: "API"
+    menuapi: 
+      hoodie : "hoodie"
+      account: "account"
+      store : "store"
+      task: "task"
+      email: "email"
+      global: "global share"
+      next: "Plugins &amp; deploiement"
+    menuplugins:
+      intro: "Intro"
+      build: "Construire votre Plugin"
+      list: "Publier sur npm"
+      next: "Déploiement"
+    menudeploy:
+      intro: "Intro"
+      unix: "Unix / Linux"
+      next: "Communauté"
+    menucommunity:
+      intro: "Nous sommes une communauté"
+      onboarding: "Accueil"
+      irc: "Heures de bureau sur IRC"
+      workshop: "Atelier Hoodie"
