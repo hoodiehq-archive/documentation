@@ -4,13 +4,7 @@ locales: en
 ---
 # Behind the Magic – a detailed explanation how Hoodie works
 
-This tutorial shows you how exactly all parts of Hoodie work together to create a seamless, consistent user experience.
-
-## Table of Content
-- <a href="#all-parts-of-hoodie">All parts of Hoodie</a>
-- <a href="#how-it-works-example-sending-an-email">How it works: example – sending an email</a>
-- - <a href="#how-it-works-example-sending-a-message">How do other devices know data was changed</a>
-- [Keeping multiple devices in sync](#keeping-multiple-devices-in-sync)
+This article shows you how exactly all parts of Hoodie work together to create a seamless, consistent user experience.
 
 ### All parts of Hoodie
 When we build an app with Hoodie, we have three parts: frontend, backend, and they’re connected with each other through the Hoodie sync.
@@ -27,18 +21,18 @@ You can replace localstorage with any in-browser storage of your choice. Here al
 
 And at this point, you could already stop if you wanted. This, by itself, is already enough for an app. Still, if you want to save your data on a server, you'll need something in addition.
 
-Hoodie relies on [CouchDB](http://couchdb.apache.org), the database that replicates. In CouchDB, each user has their own private database which only they can access. And all data is private by default. It can be shared to the public if the user decides to, but it can't happen by accident.
+Hoodie relies on <a href="http://couchdb.apache.org" target="_blank">CouchDB</a>, the database that replicates. In CouchDB, each user has their own private database which only they can access. And all data is private by default. It can be shared to the public if the user decides to, but it can't happen by accident.
 <p><img src="../../src/img/how-hoodie-works/5.png" width="50%" height="50%"></p>
 
 There are plugins based on node.js that bring Hoodie’s core features:
-* user signup and administration
-* data storage
-* data loading & sync
-* data shares // still in development
-* emails
-* payments. // still in development
+* user signup and administration  
+* data storage  
+* data loading & sync  
+* data shares    
+* emails  
+* payments. // almost there  
 
-These plugins are Hoodie's core plugins. In addition, anyone can build plugins themselves to extend Hoodie's core (see tutorial for [building plugins to extend Hoodie](https://github.com/hoodiehq/documentation/blob/gh-pages/tutorials/hoodie-plugin-tutorial/index.md)).
+These plugins are Hoodie's core plugins. In addition, anyone can build plugins themselves to extend Hoodie's core (see tutorial for [building plugins to extend Hoodie](http://docs.hood.ie/en/plugins/tutorial.html).
 <p><img src="../../src/img/how-hoodie-works/6.png" width="50%" height="50%"></p>
 
 This means: with Hoodie, frontend and backend never talk directly to each other. They only leave each other messages and tasks. It’s all very loosely-coupled and event-based, which means it can be interrupted at any stage without breaking. It’s designed for eventual consistency.
@@ -70,7 +64,7 @@ Imagine one modifies data in your app, then continues research and comes back to
 
 To prevent this situation entirely we should automatically update the data that is displayed and even though that is really hard to build on your own – guess what – Hoodie offer this for free.
 
-Using <a href="http://docs.couchdb.org/en/latest/api/database/changes.html?highlight=_changes#post--db-_changes" target="_blank">CouchDB's changes feed</a> Hoodie is always aware of things that happen to the user's data and makes them available via events.
+Using <a href="http://docs.couchdb.org/en/latest/api/database/changes.html?highlight=_changes#get--db-_changes" target="_blank">CouchDB's changes feed</a> Hoodie is always aware of things that happen to the user's data and makes them available via events.
 
 ```js
 hoodie.store.on('add:todo', function(doc) {
