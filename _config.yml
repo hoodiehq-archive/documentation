@@ -104,6 +104,7 @@ locales:
     menuplugins:
       intro: "Einleitung"
       build: "Baue dein Plugin"
+      api: "Plugin API"
       list: "Liste auf npm"
       next: "Deployment"
     menudeploy:
