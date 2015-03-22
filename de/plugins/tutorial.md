@@ -349,9 +349,9 @@ Put this in the
 </code></pre>
 
 And this before the closing 
-<pre><code>&lt;/body>
-&lt;script src="/&#95;api/&#95;plugins/&#95;assets/scripts/admin-dashboard-uikit.js">
+<pre><code>&lt;script src="/&#95;api/&#95;plugins/&#95;assets/scripts/admin-dashboard-uikit.js">
 &lt;/script>
+&lt;/body>
 </code></pre>
 
 The **admin-dashboard-uikit.js** includes a bunch of stuff, among them jQuery and the Bootstrap libraries, plus everything to make checkboxes, radio buttons and dropdowns nicer (this is all automatic), plus drag-n-drop file uploads with image previews. Please consult the <a href="http://hoodiehq.github.io/hoodie-admin-dashboard-UIKit/" target="_blank">UIKit guide</a> for further information, examples and copy-and-pastable markup.
