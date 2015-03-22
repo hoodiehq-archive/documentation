@@ -3,7 +3,7 @@ layout: layout-start
 locales: en
 ---
 
-# Installation 
+# Installation
 
 
 ### Installation of Prerequisites
@@ -15,18 +15,20 @@ Just jump straight to <a href="../start/getting-started/getting-started-1.html">
 
 ### Installation on Mac OS X
 ##### Step one: Node.js
-We recommend using the nodejs.org .pkg file to install Node.js, you can <a href="http://nodejs.org/download/" target="_blank">download Node.js here</a>. 
+We recommend using the nodejs.org .pkg file to install Node.js, you can <a href="http://nodejs.org/download/" target="_blank">download Node.js here</a>.
 ##### Step two: CouchDB
 You can download the installer for the latest version of <a href="http://couchdb.apache.org/#download" target="_blank">CouchDB for Mac</a>.
 ##### Step three: Hoodie-CLI
 Open your Terminal and type
 <pre><code>npm install -g hoodie-cli</code></pre>
 
+<p><small>(Hint: You can also install Node.js and CouchDB via Homebrew.)</small></p>
+
 
 
 ### Installation on Windows
 ##### Step one: Node.js
-You can download Node.js for Windows <a href="http://nodejs.org/download/" target="_blank">here</a>. 
+You can download Node.js for Windows <a href="http://nodejs.org/download/" target="_blank">here</a>.
 ##### Step two: CouchDB
 You can download the latest version of <a href="http://couchdb.apache.org/#download" target="_blank">CouchDB for Windows</a>.
 ##### Step three: Hoodie-CLI
@@ -35,7 +37,7 @@ Open your Terminal and type
 
 
 ### Installation on Linux – Ubuntu
-This is an Ubuntu-specific guide courtesy of Stuart Langridge. 
+This is an Ubuntu-specific guide courtesy of Stuart Langridge.
 ##### Step one: Node.js
 On Ubuntu, you don't have to build Node.js from source, you can install it as a package instead. Add Chris Lea's Node.js PPA and install from it:
 
@@ -55,7 +57,7 @@ sudo apt-get install couchdb-bin git
 
 
 ### Linux – Fedora 19+
-##### Step one: Node.js and CouchDB  
+##### Step one: Node.js and CouchDB
 
 <pre><code>sudo yum install couchdb nodejs npm
 </code></pre>
