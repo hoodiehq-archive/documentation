@@ -10,7 +10,7 @@ The email plugin gives you a method to send email from the client.
 - [send](#emailsend)
 
 <a id="emailsend"></a>
-### emai.send()
+### email.send()
 **version:**    *> 0.1.0* 
 
 
