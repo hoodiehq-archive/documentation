@@ -36,6 +36,7 @@ different devices.
 - [store.findOrAdd()](#storefindoradd)
 - [store.findAll()](#storefindall)
 - [store.update()](#storeupdate)
+- [store.updateOrAdd()](#storeupdateoradd)
 - [store.updateAll()](#storeupdateall)
 - [store.remove()](#storeremove)
 - [store.removeAll()](#storeremoveall)
@@ -234,6 +235,35 @@ hoodie.store.update('todo', 'abc4567', function(oneTodo) {
   .fail(function(error) {})
 </code></pre>
 
+<a id="storeupdateoradd"></a>
+### store.updateOrAdd()
+**version:**      *> 0.2.0*
+
+Changes the passed attributes of an existing object, if it exists; otherwise, creates a new objects in your local store.
+
+<pre><code>hoodie.store.updateOrAdd(type, id, updateObject);</code></pre>
+
+| option     | type   | description     | required |
+| ---------- |:------:|:---------------:|:--------:|
+| type           | String | type of the store                   | yes |
+| id         | String | id of the object to find                    | yes  |
+| updateObject     | Object | new object values                   | yes  |
+| options.silent | Boolean  | If set to **true**, no events will be triggered from this call | no (default: false) |
+
+Returns a promise. If succesful, it calls the **done** callback with the updated or new object stored with updated or new properties 
+added to it (id, createdBy, createdAt, updatedAt). If something
+goes wrong, the **fail** callback will be called instead and an error gets passed.
+
+##### Example
+
+<pre><code>hoodie.store.updateOrAdd('todo', 13, {title: 'New, Better Title'} )
+  .done(function(updates) {
+  	console.log('the following todos are done', updates);
+  })
+  .fail(function(error) {
+        console.log('An error happened while updating or adding a todo', error);
+  });</code></pre>
+
 <a id="storeupdateall"></a>
 ### store.updateAll()
 **version:**      *> 0.2.0*
@@ -259,7 +289,6 @@ callback gets called instead. </small>
   .done(function(updates) {
   	console.log('the following todos are done', updates);
   });</code></pre>
-
 
 <a id="storeremove"></a>
 ### store.remove()
