@@ -256,7 +256,7 @@ goes wrong, the **fail** callback will be called instead and an error gets passe
 
 ##### Example
 
-<pre><code>hoodie.store.updateOrAdd('todo', 13, {title: 'New, Better Title'} )
+<pre><code>hoodie.store.updateOrAdd('todo', abc456, {title: 'New, Better Title'} )
   .done(function(updates) {
   	console.log('the following todos are done', updates);
   })
