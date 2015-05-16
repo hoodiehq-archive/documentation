@@ -17,7 +17,7 @@ Not done with the installation of all prerequisites yet? <br />
 
 ### Quick overview
  
-1. Creating new app
+1. Creating a new app
 2. App, Admin and Futon URLs
 3. Structure of a Hoodie Project
 4. Including the Script
