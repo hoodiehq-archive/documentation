@@ -78,7 +78,7 @@ Now we'll move into the section with the class "content":
 </section>
 ```
 
-Before we get started with the JavaScript, we'll add some unqiue CSS to our **www/assets/main.css** file:
+Before we get started with the JavaScript, we'll add some unique CSS to our **www/assets/main.css** file:
 
 ```css
 .no-resize { resize: none; }
@@ -397,4 +397,4 @@ if ( hoodie.account.username ) {
 }
 ```
 
-This is definitely one of the more complex feature of our app but worth it to make this chat app feel more complete. As an extra challenge, try to add notifications for when the current user is @mentioned by another user in the chat by highlighting their messages with a unique background color. 
+This is definitely one of the more complex features of our app but worth it to make this chat app feel more complete. As an extra challenge, try to add notifications for when the current user is @mentioned by another user in the chat by highlighting their messages with a unique background color. 
