@@ -30,7 +30,7 @@ You can download Node.js for Windows <a href="http://nodejs.org/download/" targe
 ##### Step two: CouchDB
 You can download the latest version of <a href="http://couchdb.apache.org/#download" target="_blank">CouchDB for Windows</a>.
 ##### Step three: Hoodie-CLI
-Open your Terminal and type
+Open your command prompt and type
 <pre><code>npm install -g hoodie-cli</code></pre>
 
 
