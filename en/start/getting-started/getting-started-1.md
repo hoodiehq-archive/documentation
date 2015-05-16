@@ -5,7 +5,7 @@ locales: en
 
 # Getting Started with Hoodie - Part 1
 
-### Prequisites
+### Prerequisites
 - installed Nodejs
 - installed CouchDB
 - installed Git
