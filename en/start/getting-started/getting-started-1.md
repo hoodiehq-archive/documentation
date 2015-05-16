@@ -11,7 +11,7 @@ locales: en
 - installed Git
 - installed Hoodie-CLI
 
-Not done with the installation of all prerequisites yet? <br />
+Not done with the installation of all the prerequisites yet? <br />
 <a href="../../start/">This is how it works!</a>
 
 
