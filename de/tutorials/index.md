@@ -139,7 +139,7 @@ Adding a priority requires a new input element. Add a **&lt;select>** input befo
 
 Then modify the **#addBut** click method in **new.js** to store the priority:
 
-<pre><code>// handle creating a new vendor
+<pre><code>// handle creating a new task
 $('#addBut').on('click', function() {
   hoodie.store.add('todo', {
   title: $("#todoinput").val(),

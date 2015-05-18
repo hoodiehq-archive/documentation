@@ -139,7 +139,7 @@ Adding a priority requires a new input element. Add a **&lt;select>** input befo
 
 Then modify the **#addBut** click method in **new.js** to store the priority:
 
-<pre><code>// handle creating a new vendor
+<pre><code>// handle creating a new task
 $('#addBut').on('click', function() {
   hoodie.store.add('todo', {
   title: $("#todoinput").val(),
@@ -161,7 +161,7 @@ to ...
 
 At this point you should start seeing that each task listed is prefaced by a priority. Hoodie makes it pretty easy to add new fields to a store.
 
-If you haven't ticked of all old tasks ("old" meaning tasks which were created before we added the priority menu), those will now render "undefinded" in place of a priority. Now is a good time to tick off thoses old tasks until only tasks with a priority remain.
+If you haven't ticked off all the old tasks ("old" meaning tasks which were created before we added the priority menu), those will now render "undefined" in place of a priority. Now is a good time to tick off thoses old tasks until only tasks with a priority remain.
 
 
 ### 9. Sort By Priority
