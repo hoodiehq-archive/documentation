@@ -5,19 +5,19 @@ locales: en
 
 # Getting Started with Hoodie - Part 1
 
-### Prequisites
+### Prerequisites
 - installed Nodejs
 - installed CouchDB
 - installed Git
 - installed Hoodie-CLI
 
-Not done with the installation of all prerequisites yet? <br />
+Not done with the installation of all the prerequisites yet? <br />
 <a href="../../start/">This is how it works!</a>
 
 
 ### Quick overview
  
-1. Creating new app
+1. Creating a new app
 2. App, Admin and Futon URLs
 3. Structure of a Hoodie Project
 4. Including the Script
