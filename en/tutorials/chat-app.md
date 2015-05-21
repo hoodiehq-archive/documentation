@@ -165,13 +165,13 @@ function sendMessage(e) {
 
   if ( messageContent.length < 1 ) { return false; }
 
-  // create a new message model
+  // create a new message model, the messageModel function will be defined after sendMessage so stay tuned
   var message = new messageModel(messageContent);
 
   // using the global messageStore, add this message object and publish it to the global store.
   messageStore.add(message).publish();
 
-  trigger an immediate sync with the server for quicker updates
+  // trigger an immediate sync with the server for quicker updates
   hoodie.remote.push();
 
   // Dont't forget to clear out the charBox
