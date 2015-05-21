@@ -121,7 +121,7 @@ Now we can finally open up **www/assets/js/main.js** and start adding some funct
 
 ```js 
 // initialize Hoodie
-var hoodie  = new Hoodie();
+var hoodie = new Hoodie();
 ```
 
 From there, we can create some dedicated Stores for quickly saving and finding our messages and avatars:
