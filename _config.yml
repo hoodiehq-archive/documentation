@@ -34,6 +34,8 @@ locales:
       next: "Tutorials"
     menututorials: 
       started : "Getting started - pt2"
+      map: "map app"
+      chat: "chat app"
       timetracker: "time tracker"
       next: "API"
     menuapi: 
@@ -91,6 +93,8 @@ locales:
       next: "Tutorials"
     menututorials: 
       started : "Starten mit - Nr2"
+      map: "Kartenawendung"
+      chat: "Unterhaltung"
       timetracker: "Zeitstopper"
       next: "API"
     menuapi: 
