@@ -93,7 +93,7 @@ locales:
       next: "Tutorials"
     menututorials: 
       started : "Starten mit - Nr2"
-      map: "Kartenawendung"
+      map: "Karte"
       chat: "Unterhaltung"
       timetracker: "Zeitstopper"
       next: "API"
