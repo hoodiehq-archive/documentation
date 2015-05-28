@@ -6,7 +6,7 @@ locales: de
 
 A major part of the magic behind Hoodie are concepts that make it so powerful. These concepts are deeply embedded in Hoodie's code and functionalities, and here's an introduction to each of them.
 
-## Table of Content
+## Table of Contents
 - <a href="#dreamcode">Dreamcode</a>
 - <a href="#nobackend">noBackend</a>
 - <a href="#offline-first">Offline First</a>
@@ -30,7 +30,7 @@ See <a href="http://nobackend.org/dreamcode.html" target="_blank">this website</
 <br />
 <p><a id="nobackend"></a></p>
 ### noBackend
-**This is what building an app usually looks like:** you have an idea, and you turn this idea into a static HTML prototype. It’s already working, you can click things and edit fields, but it has none of the features that usually would require a backend. If you now want to add these features, you would need to setup a backend by yourself, or find someone who would do it for you.
+**This is what building an app usually looks like:** you have an idea, and you turn this idea into a static HTML prototype. It’s already working, you can click things and edit fields, but it has none of the features that would usually require a backend. If you now want to add these features, you would need to setup a backend by yourself, or find someone who would do it for you.
 
 Once the backend work has been done, you would get a RESTful API which then could be wired with the frontend with the jQuery Ajax methods. Then a beta version of the product could be launched, and finally, there would be a product that could generate some income.
 
@@ -39,7 +39,7 @@ If we compare that to the noBackend design process, we can stop, right at the fr
 
 noBackend is an approach to decouple apps from backends, by abstracting backend tasks with frontend code (Dreamcode). This allows frontend developers to focus on user experience and gives backend developers more flexibility on the implementation side.
 
-It ultimately leads to backends that can be used out of the box, empowering frontend developers to build entire apps <a href="http://hood.ie/#showcases" target="_blank">examples</a> without thinking about backend at all.
+It ultimately leads to backends that can be used out of the box, empowering frontend developers to build entire apps (<a href="http://hood.ie/#showcases" target="_blank">examples</a>) without thinking about backend at all.
 
 ##### More information about noBackend
 See <a href="http://nobackend.org/" target="_blank">nobackend.org</a>, <a href="http://nobackend.org/solutions.html" target="_blank">Examples for noBackend solutions</a> and Twitter <a href="http://twitter.com/noBackend" target="_blank">@nobackend</a>
@@ -57,4 +57,4 @@ This is what Offline First is there to solve. Offline First is a concept and mea
 See <a href="http://offlinefirst.org/" target="_blank">offlinefirst.org</a>, <a href="https://github.com/offlinefirst/" target="_blank">on GitHub</a> and <a href="https://github.com/offlinefirst/research" target="_blank">discussions and research</a>
 
 ### Mindblowing right?
-Now lets check the <a href="system-requirements-browser-compatibilities-prerequisites-before-getting-started-with-hoodie.html">requirements</a> for Hoodie.
+Now lets check out the <a href="system-requirements-browser-compatibilities-prerequisites-before-getting-started-with-hoodie.html">requirements</a> for Hoodie.
