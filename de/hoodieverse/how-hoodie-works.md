@@ -51,7 +51,7 @@ Let’s see how this works when an email is moving through the system:
 
 ### How do other devices know data was changed
 
-A huge benefit of Hoodie is not just it's offline first, also it has a build in functionality to send notifications to other devices, when data was added, changed or removed. This are also tasks handed to the app client, when something changes.
+A huge benefit of Hoodie is not just that it is offline first, it also has a built in functionality to send notifications to other devices, when data is added, changed or removed. These are also tasks handed to the app client, when something changes.
 
 This is how it works:
 When we add some data to our app, like saving a new message, it works like we described before. In addition to that, CouchDB sends out a task to the user data was changed, to update the data of your app and download it. So you do not have to do it on your own.
