@@ -32,7 +32,7 @@ There are plugins based on node.js that bring Hoodie’s core features:
 * emails  
 * payments. // almost there  
 
-These plugins are Hoodie's core plugins. In addition, anyone can build plugins themselves to extend Hoodie's core (see tutorial for [building plugins to extend Hoodie](http://docs.hood.ie/en/plugins/tutorial.html).
+These plugins are Hoodie's core plugins. In addition, anyone can build plugins themselves to extend Hoodie's core (see tutorial for [building plugins to extend Hoodie](http://docs.hood.ie/en/plugins/tutorial.html)).
 <p><img src="../../src/img/how-hoodie-works/6.png" width="50%" height="50%"></p>
 
 This means: with Hoodie, frontend and backend never talk directly to each other. They only leave each other messages and tasks. It’s all very loosely-coupled and event-based, which means it can be interrupted at any stage without breaking. It’s designed for eventual consistency.
