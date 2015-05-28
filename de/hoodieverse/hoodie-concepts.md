@@ -57,4 +57,4 @@ This is what Offline First is there to solve. Offline First is a concept and mea
 See <a href="http://offlinefirst.org/" target="_blank">offlinefirst.org</a>, <a href="https://github.com/offlinefirst/" target="_blank">on GitHub</a> and <a href="https://github.com/offlinefirst/research" target="_blank">discussions and research</a>
 
 ### Mindblowing right?
-Now lets check the <a href="system-requirements-browser-compatibilities-prerequisites-before-getting-started-with-hoodie.html">requirements</a> for Hoodie.
+Now lets check out the <a href="system-requirements-browser-compatibilities-prerequisites-before-getting-started-with-hoodie.html">requirements</a> for Hoodie.
