@@ -6,7 +6,7 @@ locales: de
 
 A major part of the magic behind Hoodie are concepts that make it so powerful. These concepts are deeply embedded in Hoodie's code and functionalities, and here's an introduction to each of them.
 
-## Table of Content
+## Table of Contents
 - <a href="#dreamcode">Dreamcode</a>
 - <a href="#nobackend">noBackend</a>
 - <a href="#offline-first">Offline First</a>
