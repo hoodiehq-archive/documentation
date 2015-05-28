@@ -41,8 +41,8 @@ This means: with Hoodie, frontend and backend never talk directly to each other.
 
 Let’s see how this works when an email is moving through the system:
 
-1. The message is written in the app and send
-2. The message is passed to hoodie.store and the task "save the message" is send to the localstorage to be saved. 
+1. The message is written in the app and sent
+2. The message is passed to hoodie.store and the task "save the message" is sent to the localstorage to be saved. 
 3. Also hoodie.store checks if the user is online. If so, a task is handed to the sync and through the REST layer the message is saved in our CouchDB database including the message. 
 4. The CouchDB database gives a task to the Node.js plugin to send the message including the additional data and the message itself. 
 5. The Plugin sends the message.
