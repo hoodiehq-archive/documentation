@@ -32,7 +32,7 @@ There are plugins based on node.js that bring Hoodie’s core features:
 * emails  
 * payments. // almost there  
 
-These plugins are Hoodie's core plugins. In addition, anyone can build plugins themselves to extend Hoodie's core (see tutorial for [building plugins to extend Hoodie](http://docs.hood.ie/en/plugins/tutorial.html).
+These plugins are Hoodie's core plugins. In addition, anyone can build plugins themselves to extend Hoodie's core (see tutorial for [building plugins to extend Hoodie](http://docs.hood.ie/en/plugins/tutorial.html)).
 <p><img src="../../src/img/how-hoodie-works/6.png" width="50%" height="50%"></p>
 
 This means: with Hoodie, frontend and backend never talk directly to each other. They only leave each other messages and tasks. It’s all very loosely-coupled and event-based, which means it can be interrupted at any stage without breaking. It’s designed for eventual consistency.
@@ -41,8 +41,8 @@ This means: with Hoodie, frontend and backend never talk directly to each other.
 
 Let’s see how this works when an email is moving through the system:
 
-1. The message is written in the app and send
-2. The message is passed to hoodie.store and the task "save the message" is send to the localstorage to be saved. 
+1. The message is written in the app and sent
+2. The message is passed to hoodie.store and the task "save the message" is sent to the localstorage to be saved. 
 3. Also hoodie.store checks if the user is online. If so, a task is handed to the sync and through the REST layer the message is saved in our CouchDB database including the message. 
 4. The CouchDB database gives a task to the Node.js plugin to send the message including the additional data and the message itself. 
 5. The Plugin sends the message.
@@ -51,7 +51,7 @@ Let’s see how this works when an email is moving through the system:
 
 ### How do other devices know data was changed
 
-A huge benefit of Hoodie is not just it's offline first, also it has a build in functionality to send notifications to other devices, when data was added, changed or removed. This are also tasks handed to the app client, when something changes.
+A huge benefit of Hoodie is not just that it is offline first, it also has a built in functionality to send notifications to other devices, when data is added, changed or removed. These are also tasks handed to the app client, when something changes.
 
 This is how it works:
 When we add some data to our app, like saving a new message, it works like we described before. In addition to that, CouchDB sends out a task to the user data was changed, to update the data of your app and download it. So you do not have to do it on your own.
