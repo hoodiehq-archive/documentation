@@ -34,7 +34,7 @@ You can find a full list <a href="http://www.nodemailer.com/#e-mail-message-fiel
 #### Example
 
 <pre><code>// send emails
-hoodie.sendEmail({
+hoodie.email.send({
   from: "Fred Foo <foo@blurdybloop.com>", // sender address
   to: "bar@blurdybloop.com, 
       baz@blurdybloop.com", // list of receivers
@@ -44,7 +44,7 @@ hoodie.sendEmail({
 });
 
 // you can also pass attachments as dataURIs:
-hoodie.sendEmail({
+hoodie.email.send({
   to: 'test@example.com',
   from: 'hoodie@example.com',
   subject: 'Greetings',
