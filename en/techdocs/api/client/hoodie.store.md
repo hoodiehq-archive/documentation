@@ -121,7 +121,7 @@ If not, it gets created with the passed **id** and **properties**. If something 
 the **fail** callback will be called with the according error.
 
 Which cases would be worth using this? Well for example if you want to read a particular settings object,
-ou want to work with in a later step.
+you want to work with in a later step.
 
 ##### Example
 
