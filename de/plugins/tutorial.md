@@ -215,7 +215,7 @@ __First things first__: this component will be written in node.js, and node in g
 
 Let's look at the whole thing first:
 
-<pre><code>module.exports = function(hoodie) {
+<pre><code>module.exports = function(hoodie, done) {
   hoodie.task.on('directmessage:add', handleNewMessage);
 
   function handleNewMessage(originDb, message) {
@@ -238,13 +238,14 @@ Let's look at the whole thing first:
     }
     return hoodie.task.success(originDb, message);
   };
+  done();
 };
 </code></pre>
 Again, let's go through line by line.
 
-<pre><code>module.exports = function(hoodie) {</code></pre>
+<pre><code>module.exports = function(hoodie, done) {</code></pre>
 
-Essentially a boilerplate container for the actual backend component code. Again, we're passing the hoodie object so we can use the API inside the component.
+Essentially a boilerplate container for the actual backend component code. Again, we're passing the hoodie object so we can use the API inside the component. We are also passing in a function called **done** which we will need to call later, to tell Hoodie that we are done loading our plugin. Watch out for this towards the end of this section.
 
 <pre><code>hoodie.task.on('directmessage:add', handleNewMessage);</code></pre>
 
@@ -297,6 +298,14 @@ Anyway, we're nearly there, we just have to clean up after ourselves:
 };
 </code></pre>
 Again, Hoodie knows which task **success** refers to through the **message** object and the unique id therein. Once you've called **success** on a task, it will be marked as deleted, and the frontend component (which is listening for **'directmessage:'+message.id+':remove**) will trigger the original API call's success promise. The task's life cycle is complete.
+
+<pre><code>
+  done();
+</code></pre>
+
+If you remember from when we started looking at this code, now is the time to tell Hoodie, that we are done with initiatlising our plugin. We do this by calling the **done** function that we got passed in as the second argument to our **module.exports** function at the top of the code.
+
+This concludes the work we have to do on the backend.
 
 #### Additional Notes on the Frontend Component and Application Frontend
 
