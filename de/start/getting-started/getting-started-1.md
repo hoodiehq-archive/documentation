@@ -16,7 +16,7 @@ Not done with the installation of all prerequisites yet? <br />
 
 
 ### Quick overview
- 
+
 1. Creating new app
 2. App, Admin and Futon URLs
 3. Structure of a Hoodie Project
@@ -34,7 +34,7 @@ If you experience any problems at any step of this doc, please make sure to chec
 
 Hoodie comes with a command line tool, called Hoodie-CLI, which helps you with a lot of Hoodie-related tasks, like setting up and running an app. If you're unsure about anything concerning CLI, just enter **hoodie -h** for some hints.
 
-<pre><code>$ hoodie -h</code></pre>
+<pre><code class="language-bash">$ hoodie -h</code></pre>
 
 Never worked with the terminal before? Here are some <a href="http://blog.teamtreehouse.com/introduction-to-the-mac-os-x-command-line" target="_blank">tips and tricks</a>!
 
@@ -57,13 +57,13 @@ You'll be prompted to enter a password for the Admin Dashboard, just pick someth
 
 ![screenshot 2 - hoodie-cli](./dist/scs2.png)
 
-That's it, your app should now start up and tell you a bunch of things about itself, for example at which URL you can access your app and which plugins it is running. The first thing you'll notice though is that Hoodie opens a browser with the demo app already running in it. 
+That's it, your app should now start up and tell you a bunch of things about itself, for example at which URL you can access your app and which plugins it is running. The first thing you'll notice though is that Hoodie opens a browser with the demo app already running in it.
 
 Side note: if you don't want Hoodie to open a browser, start the Hoodie server with **hoodie start -n**, for "no new browser tab please, I've already got one."
 
 Let's check the CLI output really quickly:
 
-    
+
 ![screenshot 3 - hoodie-cli](./dist/scs3.png)
 
 There are three URLs in here:
@@ -72,19 +72,19 @@ There are three URLs in here:
 
 ##### The CouchDB endpoint:
 
-<pre><code>CouchDB started: http://127.0.0.1:6042 </code></pre> 
+<pre><code>CouchDB started: http://127.0.0.1:6042 </code></pre>
 
 It's what the Hoodie library talks to when it fetches and stores data. You can append **/_utils** to it to reach the CouchDB database admin tool (similar to phpMyAdmin for MySQL), which is called Futon (and will soon be called Fauxton). You can sign in to Futon (Fauxton) with the admin password you set earlier. For now, you don't really have to bother with it.
 
 
-##### The application's URL 
+##### The application's URL
 
 <pre><code>WWW:    http://127.0.0.1:6040</code></pre>
 
 This is the URL that Hoodie just opened in a browser for you, it's where your app is running.
 
 
-##### The Admin Dashboard's URL 
+##### The Admin Dashboard's URL
 
 <pre><code>Admin:  http://127.0.0.1:6041</code></pre>
 
@@ -98,7 +98,7 @@ But before we look at the demo app, let's stop the server with **ctrl-c** (on Ma
 So what's in the app folder, we just created?
 You can lists your files and folders in your current directory by typing:
 
-<pre><code>$ ls</code></pre> 
+<pre><code>$ ls</code></pre>
 
 
 ![screenshot 4 - hoodie-cli](./dist/scs4.png)
@@ -118,9 +118,9 @@ This is where npm, the package management system for Node, keeps all its files. 
 
 Normally one has to execute the **npm install** command to get this folder and its contents, but **hoodie new** did this for us already.
 <pre><code>$ ls node_modules/<br />
-hoodie-plugin-appconfig 
-hoodie-plugin-email 
-hoodie-plugin-users 
+hoodie-plugin-appconfig
+hoodie-plugin-email
+hoodie-plugin-users
 hoodie-server
 </code></pre>
 
