@@ -29,6 +29,10 @@
     text-shadow: none !important;
 }
 
+.docs .cb li{
+    margin-bottom: 0;
+}
+
 .docs header section .meta-nav li a.active {
 	font-weight: 500;
 }
