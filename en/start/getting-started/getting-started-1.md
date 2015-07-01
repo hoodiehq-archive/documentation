@@ -172,7 +172,8 @@ For now, **congratulations!** You've created a demo Hoodie app, learned about th
 
 #### Had any Trouble?
 
-Please check the <a href="http://faq.hood.ie" target="_blank">FAQ</a> or [get in touch with us on IRC or Slack](http://hood.ie/chat).
+Please check the <a href="http://faq.hood.ie" target="_blank">FAQ</a> or [get in touch with us on IRC or Slack](http://hood.ie/chat). We'd also love to hear from you if things went well!
 
+Thanks for your interest and time!
 
 
