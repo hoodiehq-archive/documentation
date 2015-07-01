@@ -13,6 +13,15 @@ Your contribution can be various. Tutorials, screencasts, code examples or offic
 
 If you want to join our great Hoodie-Docs-Team and help us ship this, ping us on `irc.freenode.net` channel `#hoodie-docs`.
 
+## Running the doc site locally
+
+The docs are a `gh-pages` site and run on **Jekyll**, so you'll need that for development. [Installation instructions for Jekyll are here](http://jekyllrb.com/docs/installation/). Once you've got Jekyll installed on your system, serve the docs with
+
+```$ jekyll serve```
+
+That will host the docs at [http://127.0.0.1:4000/](http://127.0.0.1:4000/). 
+
+**Note:** We're in the process of refactoring the stylesheets for docs (and for the rest of the hood.ie websites, too), so please forgive us if those are currently unclear.  
 
 ## External Resources of Documentation
 
