@@ -1,112 +1,105 @@
 ---
 layout: layout-tutorials
-locales: en
+locales: ru
 ---
 
-# Getting started with Hoodie - Part 2
+# Начало работы с hoodie - Часть 2
 
-### 0. Make a new hoodie app
+### 0. Создание приложения
 
-Let's make a new hoodie app, so we can play around! If you are good with the one you've just created, make sure 
-that you are in your app folder, not in www, node_modules or other.
+Создадим новое приложение с Hoodie! Если вы начинаете с уже созданного, убедитесь что находитесь в корневом каталоге приложения, а не в www, node_modules итп
 
-If you want to check your current path, just type
+Чтобы узнать, где вы находитесь, наберите
 <pre><code>$ pwd</code></pre>
 
-Going one level up, just type
+Чтобы перейти на уровень выше
 <pre><code>$ cd ..</code></pre>
 
-You would love to have a new app? Sure! 
+Хотите создать новое приложени? Конечно!
 <pre><code>$ hoodie new hoodietut</code></pre>
 
-Hoodie creates your new folder with all includes and files in the current path, you are on right now.
+Hodie создаст новое приложение со всеми нужными зависимостями.
 
-### 1. Start Your App and Test It
+### 1. Запуск приложения и тестирование
 
-Again from the command line type ...
+Снова в коммандной строке намерите ...
 
 <pre><code>$ cd hoodietut
 $ hoodie start
 </code></pre>
 
-It’ll open up your default browser.
+Эта комманда откроет страницу с приложением в браузере.
 
-### 2. Play with the App
+### 2. Игра с приложением
 
-The demo todo app shows off what you can do with hoodie. You will probably notice that it looks like a Bootstrap app. Though the app uses Bootstrap, hoodie has no dependency on Bootstrap and any CSS framework can be used.
+Демонстрационное приложение показывает, что вы можете сделать с hoodie. Вымогли заметить, что оно выглядит как приложение на Bootstrap. Хотя приложение использует Bootstrap, но Hoodie не зависит от него или другого CSS фреймворка.
 
-In the upper right, there is a drop down for “Sign Up”. Click on it and create an account with your desired username and password. After that you should be logged in automatically – only in this case your todos will be saved.
+Вверхнем правом углу можно видеть кнопку “Sign Up”. Нажмите на неё и создайте аккаунт со своим именем и паролем. Сразу после этого вы должы быть автоматически залогинены, в результате чего выши TODO будут записаны.
 
-Type in a few todos like “learn hoodie” and “steps 5, 6, 7 and 8”. You should see your todos displayed directly.
+Создайте несколько todo, проверьте что они сохраняются между обновлением страницы.
 
-Nice to see a working hoodie after just two steps!
+Приятно видеть работающее приложение всего после двух шагов!
 
 
-### 3. Tabs for CouchDB and Admin
+### 3. CouchDB и администрирование
 
-Our hood.ie demo app should already be opened in your browser. 
-Start two more tabs for CouchDB and the admin interface:
+Наше приложение уже должно быть запущено. Откроем ещё две вкладки для CouchDB и админки.
 
 ```
 http://127.0.0.1:6003/_utils
 http://127.0.0.1:6002/
 ```
 
-We won’t use the admin *(:6002)* yet, but good to know it’s ready. You also don’t need CouchDB, except for monitoring the hoodie magic.
+Мы сейчас не будем использовать администрирование *(:6002)* , однако хорошо знать что оно работает.  CouchDB нужен для того чтобы наблюдать магию Hoodie.
 
 
-### 4. Make Hoodie Your Own: Go Wild
+### 4. Начнём развивать наше приложение
 
-In the next several steps our demo todo app will be modified to give todos a priority of 1, 2 or 3. Also the list of todos will be sorted by priority.
+За несколько следующих шагов мы добавим приоритеты нашим TODO, а также отсортируем их.
 
-At this point the hood.ie site tells you to “go nuts”. There are a few more steps you need to take before you can write your own hoodie app.
+Откроем редактор в каталоге, созданном ранее. Вы должны увидеть каталоги **data**, **node_modules** и **www**. 
 
-In my case, I started <a href="http://www.sublimetext.com/" target="_blank">Sublime Text</a> with a new project for **hoodietut**. This was the folder created by hoodie before.
+Мы будем работать в каталоге **assets** внутри **www**.
 
-Open the **hoodietut** folder with your editor/IDE of choice. You should see the folders **data**, **node_modules** and **www**. The Hoodie-CLI has set up files for both hoodie and the demo todo app.
+### 5. Отредактируем первые файлы Hoodie приложения
 
-We will be working in the **assets** folder of **www**.
+Для начала скопируем несколько файлов. В **/hoodietut/www/** скопируем **index.html** и назовём копию **new.html**. В **/www/assets/** скопируем **main.js** и назовём копию **new.js**.
 
-
-### 5. Edit your first hoodie files
-
-To start creating you own app there are two files you’ll want to copy. In **/hoodietut/www/** copy **index.html** and name the copy **new.html**. In **/www/assets/** copy **main.js** and rename the copy to **new.js**.
-
-Now open **new.html** and the last line should be ...
+Теперь откроем **new.html** и в последней строке должно быть ...
 
 <pre><code>&lt;script src="assets/main.js">&lt;/script></code></pre>
 
-Change that line from **main.js** to **new.js** ...
+Поменяем **main.js** на **new.js** ...
 
 <pre><code>&lt;script src="assets/new.js">&lt;/script></code></pre>
 
-Open a new tab in the browser and go to ...
+Откроем новую вкладку в браузере и перейдём на ...
 
 <pre><code>http://127.0.0.1:6001/new.html</code></pre>
 
-This displays the file you just created.
+Это покажет созданный вами файл.
 
-In the first part of the **&lt;body>** you’ll see the line “hoodie playground”. Modify that to read “my first hoodie app”. When you reload the browser you should see your first modification to your hoodie app.
+В первой части **&lt;body>** вы можете увидеть строку “hoodie playground”. Изменим на “my first hoodie app”. После обновления страницы вы можете увидеть изменения.
 
 
-### 6. Button Please
+### 6. Кнопка
 
-The demo todo app lets you type in new todos and saves them when you invoke the Return key. This works fine for a single input, but as we will be adding another form field for a priority later on, a submit button will be more appropriate.
+Демо-приложение позволяет создавать TODO по нажатию на ENTER. Это хорошо работает для единственного поля ввода, но предпочтительным является иметь кнопку для добавления.
 
-First add a button to the **new.html** file. Look for the text input with the id **todoinput**. In the line after it add a button with the id **addBut**:
+Сперва добавим кнопку в файле **new.html**. Найдите текстовое поле ввода с id **todoinput**. Сразу за ним добавим кнопку с id **addBut**:
 
 <pre><code>&lt;button id="addBut">Add&lt;/button></code></pre>
 
-Second, change **new.js** so a new todo is added when the button is clicked instead of a keypress. Replace the six lines of code after **// handle creating a new task** with ...
+Затем, изменим **new.js** так, чтобы новые TODO создавались по клику на эту кнопку. Замените 6 линий следом за **// handle creating a new task** на ...
 
-<pre><code>// handle creating a new task
+<pre><code> // handle creating a new task
 $('#addBut').on('click', function() {
   hoodie.store.add('todo', {title: $("#todoinput").val()});
   $("#todoinput").val('');
 });
 </code></pre>
 
-The first line binds to a click on our newly created button. When the button is clicked the second line adds a new todo using the **hoodie.store.add** method. The third line within our new function clears the input.
+Первая строка добавляет событи клика по нашей кнопке. Когда кнопка нажата, вызывается метод **hoodie.store.add**. Третья строка очищает наше поле ввода.
 
 Save these files and run your modified app at:
 
