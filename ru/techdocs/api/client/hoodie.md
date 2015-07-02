@@ -95,45 +95,44 @@ Hoodie информирует вас о различных событиях. В 
 ### one()
 **version:**      *> 0.2.0*
 
-*Is the one-time variant of [on](#on) and [off](#off). Once the event has been caught, it will be unbound automatically.*
+* Это одноразовый вариант [on](#on) и [off](#off). Событие обработается только один раз.
 
 <pre><code>hoodie.one('event', eventHandler);</code></pre>
 
-| option       | type     | description                        | required |
-| ------------ |:--------:|:----------------------------------:|:--------:|
-| event        | String   | custom event identifier            | yes      |
-| eventHandler | Function | Function handling triggered event. | yes      |
+| параметр     | тип      | описание                           | обязательно |
+| ------------ |:--------:|:----------------------------------:|:-----------:|
+| event        | String   | имя события                        | да          |
+| eventHandler | Function | хэндлер                            | да          |
 
 
 <a id="off"></a>
 ### off()
 **version:**      *> 0.2.0*
 
-*Unbind all eventhandlers from a certain event. The events won't be triggered anymore.*
+* Отключает обработчики. Хэндлер больше не вызовется.*
 
 <pre><code>hoodie.off('event');</code></pre>
 
-| option     | type   | description     | required |
+| option     | тип   | описание     | необходимо |
 | ---------- |:------:|:---------------:|:--------:|
-| event      | String | custom event identifier. | yes |
+| event      | String | имя события | да |
 
 <pre><code>hoodie.on('event', eventHandler);</code></pre>
 
-While **hoodie.store.on** subscribes an handler function to a certain event **hoodie.store.off** does the opposite and will unsubscribe all previously registered handlers for the given event.
+Если **hoodie.store.on** подписывается на событие, то  **hoodie.store.off** делает противоположное.
 
 ##### Пример
 
 <pre><code>var todoStore = hoodie.store('todo');
 todoStore.on('todo:done', function(doneTodo, t) {
-  // this will never be reached
+  // Это никогда не вызовется
 });
 
 todoStore.on('todo:done', function(doneTodo, t) {
-  // this will never be reached neither
+  // Это также
 });
 
-// this unsubscribes both of the previously
-// subscribed event handlers
+// Это отписывает ото всех обработчиков
 todoStore.off('todo:done');
 
 todoStore.findAll().done(function(allTodos) {
@@ -147,7 +146,7 @@ todoStore.findAll().done(function(allTodos) {
 
 **version:**      *> 0.2.0*
 
-*Trigger a certain event. This includes custom and predefined events.*
+*Вызывает указанное событие. Включая кастомные и предопределённые события.*
 
 <pre><code>hoodie.trigger('event', param, param, param ...);</code></pre>
 
@@ -156,7 +155,7 @@ todoStore.findAll().done(function(allTodos) {
 | event      | String | custom event identifier.                                 | yes |
 | param      | Object | Detail information the event will pass to the listeners. | no |
 
-Since you can listen for store events using [on](#on), this gives you the opportunity to send events of your own to the listeners. This includes the standard events as mentionend in for instance [hoodie.store.on](/techdocs/api/client/hoodie.store.html#storeon) as well as your personal custom events. Imagine you want to trigger an event when a todo is done. This could look something similiar to this:
+Раз уж вы можете подписываться на события с помощью [on](#on), этот метод позволяет вызывать ваши обработчики. Это касается как стандартных типов, описанных в [hoodie.store.on](/techdocs/api/client/hoodie.store.html#storeon), так и ваших собственных (кастомных) событий. Допустим, вы хотите вызвать событие, когда задача выполнена:
 
 
 ##### Пример
@@ -180,11 +179,11 @@ todoStore.findAll().done(function(allTodos) {
 </code></pre>
 
 ##### Notes
-> - it is a good idea to stick to an overall sane convention like 'object-type:what-happened' or 'what-happened' for event the descriptor.
-> - starting with the second parameter you are allowed to pass an unlimited amount of detail information.
-> - if you register an event handler with **hoodie.store('todo').on** and trigger the event just with **hoodie.store.trigger**, the previously registered event handler will never been called.
+> - Хорошая идея - придерживаться соглашений в наименовании, вида: 'object-type:what-happened' или 'what-happened'
+> - Начиная со второго параметра вы можете передать любые дополнительные данные для события.
+> - Если вы зарегистрировали хэндлер **hoodie.store('todo').on** и вызываете его через **hoodie.store.trigger**, предыдущий зарегистрированный хэндлер не вызывается.
 
-##### Примерs
+##### Примеры
 <pre><code>var todoStore = hoodie.store('todo');
 
 todoStore.on('trigger-test', function(num) {
@@ -203,7 +202,7 @@ hoodie.store(hoodie).trigger('trigger-test', 'number 3');
 
 **version:**      *> 0.2.0*
 
-*Send a request*
+*Отправляет запрос*
 
 <pre><code>hoodie.request(type, url, options);</code></pre>
 
@@ -226,7 +225,7 @@ hoodie.store(hoodie).trigger('trigger-test', 'number 3');
 
 **version:**      *> 0.2.0*
 
-*Interact with a remote database*
+*Подключается к базе*
 
 <pre><code>hoodie.open('db-name');</code></pre>
 
@@ -248,7 +247,7 @@ chat.findAll('message')
 
 **version:**      *> 0.2.0*
 
-*Sends request to the Hoodie Server to check if it is reachable*
+*Проверяет доступность сервера*
 
 <pre><code>hoodie.checkConnection();</code></pre>
 
@@ -264,7 +263,7 @@ chat.findAll('message')
 
 **version:**      *> 0.2.0*
 
-*Returns true if Hoodie backend can currently be reached, otherwise false*
+*Возвращает true если бэкенд Hoodie доступен*
 
 <pre><code>hoodie.isConnected();</code></pre>
 
@@ -282,7 +281,7 @@ chat.findAll('message')
 
 **version:**      *> 0.2.0*
 
-*Extend the hoodie API with new functionality*
+*Расширяет hoodie API новой функциональностью*
 
 <pre><code>hoodie.extend(plugin);</code></pre>
 
