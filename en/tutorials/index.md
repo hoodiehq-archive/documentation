@@ -5,9 +5,9 @@ locales: en
 
 # Getting started with Hoodie - Part 2
 
-This guide will explain the code in the default Hoodie app, and then we'll modify the code a bit to add some new features. Afterwards, you should have a pretty good idea of how Hoodie works, and a good starting point for exploring the [docs](http://docs.hood.ie/en/techdocs/), the other [tutorials](/en/tutorials/), or just hacking away.
+This guide will explain the code in the default Hoodie app, and then we'll modify the code a bit to add some new features. Afterwards, you should have a pretty good idea of how Hoodie works, and a good starting point for exploring the [docs](/en/techdocs/), the other [tutorials](/en/tutorials/), or just hacking away.
 
-If you experience any problems at any step of this doc, please check our <a href="http://faq.hood.ie" target="_blank">FAQ</a> or [get in touch with us on IRC or Slack](http://hood.ie/chat).
+If you experience any problems at any step of this doc, please check our <a href="http://faq.hood.ie" target="_blank">FAQ</a> or <a href="http://hood.ie/chat" target="_blank">get in touch with us on IRC or Slack</a>.
 
 ### Prerequisites
 
@@ -24,15 +24,15 @@ That should open the default Hoodie app in your browser.
 
 ### 1. Features of the Default Hoodie App
 
-Basically, it's a simple todo-app designed to show you some of the basics of Hoodie. It's built with jQuery and Bootstrap for speed and simplicity.
+It's a simple todo-app designed to show you some of the basics of Hoodie. It's built with jQuery and Bootstrap for speed and simplicity. You can sign up, in and out, you can add todo items, and you can check them off.
 
 #### 1.1 Signing Up / Anonymous Use
 
 In the upper right, there is a drop down for **Sign Up**. Click on it and create an account with your desired username and password. After that you should be logged in automatically, and now your todos will be saved to the database. If you sign in from a different browser, your todos will appear there, too.
 
-If you use the app without signing in, you're an **anonymous user**. Your todos will get saved locally, in your browser, and they'll still be there when you reload the page, but they won't get saved to the server, and you won't be able to see them from anywhere else.
+If you use the app *without* signing up and/or in, you're an **anonymous user**. Your todos will get saved locally, in your browser, and they'll still be there when you reload the page, but they won't get saved to the server, and you won't be able to see them from anywhere else.
 
-You can use a Hoodie app as an anonymous user first, and once you decide to sign up, your data will automatically be moved to your proper account.
+You can use a Hoodie app as an anonymous user first, and once you decide to sign up, your data will automatically be moved to your proper account and synced.
 
 Go ahead, add a couple of todos!
 
@@ -111,7 +111,7 @@ One line. That stores your todo in the local browser store, and Hoodie will take
 
 **Type** is a fundamental convention to deal with the lack of schemas in CouchDB, which is the database system that Hoodie uses.
 
-In CouchDB the same database can contain a wide variety of different records, none of which have to be defined in advance. For example, you might have records on people and records on location. The type attribute is used to distinguish these… well, *types* of records from each other. Here are some (abridged and fictional) objects that Hoodie might write to CouchDB:
+In CouchDB, the same database can contain a wide variety of different records, none of which have to be defined in advance. For example, you might have records on people and records on location. The type attribute is used to distinguish these… well, *types* of records from each other. Here are some (abridged and fictional) objects that Hoodie might write to CouchDB:
 
 ```javascript
 {
@@ -133,7 +133,7 @@ You'll notice that these are, again, just JavaScript objects. Throughout your en
 
 #### 2.3 Updating the View
 
-So far, we've only seen how the app *stores* the new todo after it's been entered, but not how it's actually being *displayed*. Take a look at the code just above the listener we just looked at, near the end of **main.js**:
+So far, we've only seen how the app *stores* the new todo after it's been entered, but not how it's actually being *displayed*. Take a look at the code right above the listener we just looked at, near the end of **main.js**:
 
 ```javascript
 // when a todo changes, update the UI.
@@ -144,7 +144,7 @@ hoodie.store.on('todo:remove', todos.remove);
 
 What's happening here? We're listening to some events emitted by the Hoodie store. Look at the first one: **todo:add**. That gets fired whenever a new object with the type *todo* is added. Simple, hm? The others should be self-explanatory now. When this listener fires, it calls a method that updates the model (an array of objects called **collection**) and then the view. *There is no direct connection between the todo input and the todo list*.
 
-So we've neatly decoupled *adding* a todo from *displaying* a new todo, and this gets us all the fancy syncing action we saw previously, *for free*. **There's no extra code to make syncing work**. When a new todo arrives in the in-browser storage, the **todo:add** event gets fired, and the view updates. With this code, you don't have to care where the todo came from (the current client, or the one in that other tab, or another on a phone), the app will handle it regardless.
+So we've neatly decoupled *adding* a todo from *displaying* a new todo, and this gets us all the fancy syncing action we saw previously, *for free*. **There's no extra code to make syncing work**. When a new todo arrives in the in-browser storage, the **todo:add** event gets fired, and the view updates. With this code, you don't have to care about *where* the todo came from (the current client, or the one in that other tab, or another on a phone), the app will handle it regardless.
 
 We strooooongly suggest you use this decoupled structure when building your own apps. It really unlocks the power of Hoodie!
 
@@ -175,9 +175,9 @@ Save the two files and refresh your browser. Enter a new task. You should see it
 
 Now we're ready to change the interface and the data model.
 
-### 8. Adding Priority
+#### 3.2. Adding Priority
 
-Adding a priority requires a new input element. Insert this right above the new button we juste added **www/index.html**:
+Adding a priority requires a new input element. Insert this right above the new button we just added in **www/index.html**:
 
 <pre><code class="language-markup">&lt;select id="priorityinput" class="form-control">
   &lt;option>Urgent&lt;/option>
@@ -218,7 +218,7 @@ Save everything and try it!
 
 At this point you should start seeing that each *new* task is prefaced by a priority. Because there's no database schema, **it's super simple to add new values to objects in Hoodie** without having to think about the database or the data structure.
 
-However, if you haven't ticked off all the tasks you created before we added the priority menu, those will now render "undefined:" in place of a priority. Not cool. This is the flipside of simply changing the data structure on the fly. In a traditional database, you'd do a data model migration in the database and add a priority of **normal** to all todos that don't already have one. But since we're running a system that distributes copies of each users' database to any number of devices, *we can't do that*. We don't even know how many databases there are, or where.
+However, if you haven't ticked off all the tasks you created before we added the priority selector, those will now render "undefined:" in place of a priority. Not cool. This is the flipside of simply changing the data structure on the fly. In a traditional database, you'd do a data model migration in the database and add a priority of **normal** to all todos that don't already have one. But since we're running a system that distributes copies of each users' database to any number of devices, *we can't do that*. We don't even know how many databases there are, or where.
 
 One solution to this problem is to build a robust view that simply deals with missing fields:
 
@@ -245,6 +245,6 @@ If you'd like to try another tutorial, check out [the time tracker](../tutorials
 
 #### How did it go?
 
-We'd love to hear your feedback on this guide, and whether it helped you. Feel free to [get in touch with us on Slack or IRC](http://hood.ie/chat).
+We'd love to hear your feedback on this guide, and whether it helped you. Feel free to <a href="http://hood.ie/chat" target="_blank">get in touch with us on IRC or Slack</a>.
 
 Thanks for your interest and time!
