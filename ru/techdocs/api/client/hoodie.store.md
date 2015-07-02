@@ -36,6 +36,7 @@ different devices.
 - [store.findOrAdd()](#storefindoradd)
 - [store.findAll()](#storefindall)
 - [store.update()](#storeupdate)
+- [store.updateOrAdd()](#storeupdateoradd)
 - [store.updateAll()](#storeupdateall)
 - [store.remove()](#storeremove)
 - [store.removeAll()](#storeremoveall)
@@ -120,7 +121,7 @@ If not, it gets created with the passed **id** and **properties**. If something 
 the **fail** callback will be called with the according error.
 
 Which cases would be worth using this? Well for example if you want to read a particular settings object,
-ou want to work with in a later step.
+you want to work with in a later step.
 
 ##### Example
 
@@ -211,9 +212,9 @@ hoodie.store('todo')
   .fail(function(error) {})
 </code></pre>
 
-The **update** methods have a certain speciality. Beside that you can pass a plain JavaScript object with attributes updates, you can also pass a function, that manipulates the the object matched by the given **id**.
+The **update** methods have a certain speciality. Beside that you can pass a plain JavaScript object with attributes updates, you can also pass a function, that manipulates the object matched by the given **id**.
 
-Cases when this advantage can be very useful are applying calculations or for conditional updates. This will come mist handy when combined with **hoodie.store.updateAll**.
+Cases when this advantage can be very useful are applying calculations or for conditional updates. This will come in most handy when combined with **hoodie.store.updateAll**.
 
 ##### Example
 
@@ -233,6 +234,35 @@ hoodie.store.update('todo', 'abc4567', function(oneTodo) {
   .done(function(newTodo) {})
   .fail(function(error) {})
 </code></pre>
+
+<a id="storeupdateoradd"></a>
+### store.updateOrAdd()
+**version:**      *> 0.2.0*
+
+Changes the passed attributes of an existing object, if it exists; otherwise, creates a new objects in your local store.
+
+<pre><code>hoodie.store.updateOrAdd(type, id, updateObject);</code></pre>
+
+| option     | type   | description     | required |
+| ---------- |:------:|:---------------:|:--------:|
+| type           | String | type of the store                   | yes |
+| id         | String | id of the object to find                    | yes  |
+| updateObject     | Object | new object values                   | yes  |
+| options.silent | Boolean  | If set to **true**, no events will be triggered from this call | no (default: false) |
+
+Returns a promise. If succesful, it calls the **done** callback with the updated or new object stored with updated or new properties 
+added to it (id, createdBy, createdAt, updatedAt). If something
+goes wrong, the **fail** callback will be called instead and an error gets passed.
+
+##### Example
+
+<pre><code>hoodie.store.updateOrAdd('todo', abc456, {title: 'New, Better Title'} )
+  .done(function(updates) {
+  	console.log('the following todos are done', updates);
+  })
+  .fail(function(error) {
+        console.log('An error happened while updating or adding a todo', error);
+  });</code></pre>
 
 <a id="storeupdateall"></a>
 ### store.updateAll()
@@ -259,7 +289,6 @@ callback gets called instead. </small>
   .done(function(updates) {
   	console.log('the following todos are done', updates);
   });</code></pre>
-
 
 <a id="storeremove"></a>
 ### store.remove()

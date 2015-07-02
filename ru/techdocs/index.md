@@ -1,8 +1,8 @@
 ---
 layout: layout-api
-locales: en
+locales: ru
 ---
 
-# Hoodie API Guide
+# Руководство по Hoodie API
 
-The Hoodie Guide is a special version of the API documentation for beginners, intermediates and advanced programmers who want to have a nice documented API with additional informations and code examples.
+Это специальная версия документации для новичков а также опытных разработчиков, которые хотят подробное описание методов с примерами.

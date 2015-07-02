@@ -140,7 +140,9 @@ locales:
       recipes: "Рецепты"
     menuverse:
       welcome: "Добро пожаловать к Hoodie"
+      concepts: "Hoodie Concepts"      
       requirements: "Требования"
+      works: "How Hoodie works"      
       glossary: "Глоссарий"
       next: "Введение"
     menustart: 
@@ -153,15 +155,16 @@ locales:
       next: "API"
     menuapi: 
       hoodie : "hoodie"
-      account: "аккаунт"
-      store : "магазин"
-      task: "задача"
-      email: "электронная почта"
-      global: "поделиться"
+      account: "account"
+      store : "store"
+      task: "task"
+      email: "email"
+      global: "global"
       next: "Плагины &amp; внедрение"
     menuplugins:
       intro: "Введение"
       build: "Пишем собственный плагин"
+      api: "Plugin API"      
       list: "Реестр npm"
       next: "Внедрение"
     menudeploy:

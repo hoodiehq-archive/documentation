@@ -3,14 +3,14 @@ layout: layout-community
 locales: en
 ---
 
-## About this document
+## Про этот документ
 
- > "Being a committer does not mean you commit code, it means you are committed to the project."  
+ > "Быть комиттером не значит коммитить код, это значит коммитить в проект."  
  > – <a href="https://community.apache.org/contributors/" target="_blank">Apache Software Foundation</a>
 
-In this document you will learn about our onboarding process for new people who want to join us in the work on Hoodie.
+В этом документе вы узнаете как включиться в работу над нашим проектом.
 
-This document is dedicated to community members. It aims to be a guide for important steps to take and a reminder for how we collaborate in this community.
+Этот документ предназначен для членов сообщества. Он создан как руководство по важным шагам и описание как мы взаимодействуем.
 
 According to our [Code of Conduct](http://hood.ie/code-of-conduct.html), we are aiming to provide a safe space for everyone in this community. And we're happy to welcome everyone, including developers and people who want to become one of our non-coding contributors. 
 
