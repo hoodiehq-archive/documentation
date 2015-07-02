@@ -15,7 +15,7 @@ This is the first part of Getting Started with Hoodie, which describes the first
 4. Including the Script
 5. The global window.hoodie Object
 
-If you experience any problems at any step of this doc, please check our <a href="http://faq.hood.ie" target="_blank">FAQ</a> or [get in touch with us on IRC or Slack](http://hood.ie/chat).
+If you experience any problems at any step of this doc, please check our <a href="http://faq.hood.ie" target="_blank">FAQ</a> or <a href="http://hood.ie/chat" target="_blank">get in touch with us on IRC or Slack</a>.
 
 ### 1. Creating a new Hoodie app
 
@@ -110,7 +110,7 @@ As the name suggests, you should read it, as it contains lots of useful informat
 
 ##### package.json (file)
 
-Every Hoodie app is a Node.js application and every Node.js application needs a **package.json** file. It defines the name of the app (**testapp** in this case) and its dependencies. It is used to install and declare the used versions of [**hoodie-server**](https://github.com/hoodiehq/hoodie-server) and all core plugins.
+Every Hoodie app is a Node.js application and every Node.js application needs a **package.json** file. It defines the name of the app (**testapp** in this case) and its dependencies. It is used to install and declare the used versions of <a href="https://github.com/hoodiehq/hoodie-server" target="_blank">hoodie-server</a> and all core plugins.
 
 ##### node_modules (folder)
 
@@ -146,7 +146,7 @@ or github repositories
 hoodie new appname -t githubusername/reponame
 ```
 
-<a href="https://github.com/zoepage/hoodie-boilerplate" target="_blank">Here's a boilerplate template you can start your next Hoodie app with.</a>
+<a href="https://github.com/zoepage/hoodie-app-skeleton" target="_blank">Here's a boilerplate template you can start your next Hoodie app with.</a>
 
 ### 4. Including the Script
 
@@ -172,7 +172,7 @@ For now, **congratulations!** You've created a demo Hoodie app, learned about th
 
 #### Had any Trouble?
 
-Please check the <a href="http://faq.hood.ie" target="_blank">FAQ</a> or [get in touch with us on IRC or Slack](http://hood.ie/chat). We'd also love to hear from you if things went well!
+Please check the <a href="http://faq.hood.ie" target="_blank">FAQ</a> or <a href="http://hood.ie/chat" target="_blank">get in touch with us on IRC or Slack</a>. We'd also love to hear from you if things went well!
 
 Thanks for your interest and time!
 
