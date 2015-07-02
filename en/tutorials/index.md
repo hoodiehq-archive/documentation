@@ -30,7 +30,7 @@ It's a simple todo-app designed to show you some of the basics of Hoodie. It's b
 
 In the upper right, there is a drop down for **Sign Up**. Click on it and create an account with your desired username and password. After that you should be logged in automatically, and now your todos will be saved to the database. If you sign in from a different browser, your todos will appear there, too.
 
-If you use the app *without* signing up and/or in, you're an **anonymous user**. Your todos will get saved locally, in your browser, and they'll still be there when you reload the page, but they won't get saved to the server, and you won't be able to see them from anywhere else.
+If you use the app *without* signing up and/or in, you're an **anonymous user**. Your todos will get saved locally, in your browser, and they'll still be there when you reload the page, but they won't get saved to the server, and you won't be able to see them from anywhere else. Also, they'll vanish forever when you clear your browser store.
 
 You can use a Hoodie app as an anonymous user first, and once you decide to sign up, your data will automatically be moved to your proper account and synced.
 
