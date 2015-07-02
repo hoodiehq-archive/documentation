@@ -29,6 +29,10 @@
     text-shadow: none !important;
 }
 
+.docs .cb li{
+    margin-bottom: 0;
+}
+
 .docs header section .meta-nav li a.active {
 	font-weight: 500;
 }
@@ -61,13 +65,14 @@
 		padding: 0 1.4em 1em;
 		background-color: #fdfdfd;
     	overflow: scroll;
-	}
+    }
 
-		.docs pre code {
-			white-space: pre !important;
-			font-size: 1em;
-			font-family: 'FiraMono', Courier, sans-serif;
-			margin-top: 0 !important;
+        .docs pre code {
+            white-space: pre !important;
+            font-size: 1em;
+            font-family: 'FiraMono', Courier, sans-serif;
+            margin-top: 0 !important;
+            padding-top: 0;
 		}
 
 	.docs h2,
