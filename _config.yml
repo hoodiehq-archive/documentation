@@ -9,6 +9,7 @@ locales:
     label: 
       en: "english"
       de: "german"
+      ru: "russian"
     nav:
       hoodieverse: "Hoodieverse"
       start: "Let's start"
@@ -65,6 +66,7 @@ locales:
     label: 
       en: "englisch"
       de: "deutsch"
+      ru: "russisch"
     nav:
       hoodieverse: "Hoodieverse"
       start: "Los geht's"
@@ -116,3 +118,58 @@ locales:
       onboarding: "Onboarding"
       irc: "IRC office Stunden"
       workshop: "Hoodie Workshop" 
+
+  ru:  
+    path: /ru/
+    lang: "Язык"
+    label: 
+      en: "английский"
+      de: "немецкий"
+      ru: "русский"
+    nav:
+      hoodieverse: "Вселенная Hoodie"
+      start: "Введение"
+      tutorials: "Руководство"
+      api: "API"
+      plugins: "Плагины"
+      deployment: "Внедрение"
+      community: "Сообщество"
+    menu:
+      start: "Введение"
+      next: "Следующая глава" 
+      recipes: "Рецепты"
+    menuverse:
+      welcome: "Добро пожаловать к Hoodie"
+      requirements: "Требования"
+      glossary: "Глоссарий"
+      next: "Введение"
+    menustart: 
+      installation: "Установка"
+      started : "Начинаем работу с Hoodie, часть 1"
+      next: "Руководство"
+    menututorials: 
+      started : "Начинаем работу с Hoodie, часть 2"
+      timetracker: "счетчик времени"
+      next: "API"
+    menuapi: 
+      hoodie : "hoodie"
+      account: "аккаунт"
+      store : "магазин"
+      task: "задача"
+      email: "электронная почта"
+      global: "поделиться"
+      next: "Плагины &amp; внедрение"
+    menuplugins:
+      intro: "Введение"
+      build: "Пишем собственный плагин"
+      list: "Реестр npm"
+      next: "Внедрение"
+    menudeploy:
+      intro: "Введение"
+      unix: "Unix / Linux"
+      next: "Сообщество"
+    menucommunity: 
+      intro: "Мы &mdash; сообщество"
+      onboarding: "Onboarding"
+      irc: "Рабочее время IRC"
+      workshop: "Воркшоп Hoodie" 
