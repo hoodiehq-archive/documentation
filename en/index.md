@@ -7,7 +7,7 @@ locales: en
 
 ## What is Hoodie?
 
-Hoodie is framework/server package for frontend web applications that abstracts away the backend. If you love working in jQuery, Backbone, Dojo, Ember, or any other frontend framework, but *dread* backend work, Hoodie is for you.
+Hoodie is library/server package for frontend web applications that abstracts away the backend. If you love working in jQuery, Backbone, Dojo, Ember, or any other frontend framework, but *dread* backend work, Hoodie is for you.
 
 Hoodie gives your frontend code superpowers, by allowing you to do things that usually, only a backend can do (user accounts, emails, payments, etc.).
 
