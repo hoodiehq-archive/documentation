@@ -1,7 +1,7 @@
 ---
 layout: layout-community
-locales: en
+locales: ru
 ---
 
-# You'd love to help us?
-Just jump to our <a href="http://hood.ie/community/">community section</a>!
+# Хотите помочь?
+Добро пожаловать в <a href="http://hood.ie/community/">наше комьюнити</a>!

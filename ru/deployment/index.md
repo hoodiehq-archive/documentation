@@ -1,16 +1,16 @@
 ---
 layout: layout-deployment
-locales: en
+locales: ru
 ---
 
-# Deployment
+# Запуск
 
-### Deploy on Linux
-Here is a great tutorial on how to <a href="../deployment/linux.html">deploy your app</a> on a Unix or Linux server.
+### Запуск на Linux
+Замечательная статья поможет <a href="../deployment/linux.html">запустить ваше приложение</a> на Unix или Linux сервере.
 
-### Deploy on hosting server
-#### For Designers
+### Запуск на хостинге
+#### Для дизайнеров
 <a href="https://appback.com/">Hoodie at Appback</a>
 
-#### For Developers
+#### Для разработчиков
 <a href="https://wiki.uberspace.de/cool:hoodie">Hoodie at Uberspace</a>

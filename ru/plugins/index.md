@@ -1,28 +1,28 @@
 ---
 layout: layout-plugins
-locales: en
+locales: ru
 ---
 
-# Plugins
+# Плагины
 
-### Core plugins
+### Основные плагины
 
-Hoodie has a very slim core and can be extended with plugins. 
-Three plugins are always installed with the core. 
+У Hoodie очень компактное ядро и его функциональность расширяется плагинами.
+Три плагина по-умолчанию установлены вместе с ядром:
 
 - <a href="https://www.npmjs.org/package/hoodie-plugin-users" target="_blank">hoodie-plugin-users</a>
 - <a href="https://www.npmjs.org/package/hoodie-plugin-email" target="_blank">hoodie-plugin-email</a>
 - <a href="https://www.npmjs.org/package/hoodie-plugin-appconfig" target="_blank">hoodie-plugin-appconfig</a>
 
-### Install plugins
-Every hoodie-plugin, published on npm can be installed by typing
+### Установка плагинов
+Каждый плагин упакованный для npm может быть установлен так:
 
 <pre><code>npm install hoodie-plugin-name</code></pre>
 
-You can see a full list of plugins <a href="http://plugins.hood.ie/" target="_blank">here</a>.
+Полный список плагинов можно увидеть <a href="http://plugins.hood.ie/" target="_blank">здесь</a>.
 
-#### Favorites
-Here are some community favourites. 
+#### Популярные
+Это несколько популярных в комьюнити:
 
 - <a href="https://www.npmjs.org/package/hoodie-plugin-angularjs" target="_blank">Hoodie + Angularjs</a>
 - <a href="https://www.npmjs.org/package/hoodie-plugin-backbone" target="_blank">Hoodie + Backbone</a>
@@ -30,6 +30,6 @@ Here are some community favourites.
 - <a href="https://www.npmjs.org/package/hoodie-plugin-global-share" target="_blank">Share your content</a>
 
 
-### Write plugin
+### Написание плагина
 
-If you want to write your own plugin, check out [this](../plugins/tutorial.html) amazing tutorial.
+Если вы хотите написать свой, прочитайте [this](../plugins/tutorial.html) замечательное руководство.
