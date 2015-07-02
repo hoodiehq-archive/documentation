@@ -140,9 +140,9 @@ locales:
       recipes: "Рецепты"
     menuverse:
       welcome: "Добро пожаловать к Hoodie"
-      concepts: "Hoodie Concepts"      
+      concepts: "Концепт Hoodie"      
       requirements: "Требования"
-      works: "How Hoodie works"      
+      works: "Как работает Hoodie"      
       glossary: "Глоссарий"
       next: "Введение"
     menustart: 
