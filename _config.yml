@@ -160,7 +160,7 @@ locales:
       task: "task"
       email: "email"
       global: "global"
-      next: "Плагины и внедрение"
+      next: "Плагины"
     menuplugins:
       intro: "Введение"
       build: "Пишем собственный плагин"
