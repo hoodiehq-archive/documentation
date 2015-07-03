@@ -139,10 +139,10 @@ locales:
       next: "Следующая глава" 
       recipes: "Рецепты"
     menuverse:
-      welcome: "Добро пожаловать к Hoodie"
+      welcome: "Добро пожаловать"
       concepts: "Концепция Hoodie"      
       requirements: "Требования"
-      works: "Как работает Hoodie"      
+      works: "Как это работает"      
       glossary: "Глоссарий"
       next: "Введение"
     menustart: 
