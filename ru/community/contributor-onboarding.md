@@ -3,14 +3,14 @@ layout: layout-community
 locales: en
 ---
 
-## Про этот документ
+## Об этом документе
 
  > "Быть комиттером не значит коммитить код, это значит коммитить в проект."  
  > – <a href="https://community.apache.org/contributors/" target="_blank">Apache Software Foundation</a>
 
-В этом документе вы узнаете как включиться в работу над нашим проектом.
+Здесь описывается как включиться в работу над проектом.
 
-Этот документ предназначен для членов сообщества. Он создан как руководство по важным шагам и описание как мы взаимодействуем.
+Этот документ предназначен для членов сообщества. Это пошаговое руководство и описание нашего процесса взаимодействия.
 
 According to our [Code of Conduct](http://hood.ie/code-of-conduct.html), we are aiming to provide a safe space for everyone in this community. And we're happy to welcome everyone, including developers and people who want to become one of our non-coding contributors. 
 

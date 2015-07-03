@@ -140,7 +140,7 @@ locales:
       recipes: "Рецепты"
     menuverse:
       welcome: "Добро пожаловать к Hoodie"
-      concepts: "Концепт Hoodie"      
+      concepts: "Концепция Hoodie"      
       requirements: "Требования"
       works: "Как работает Hoodie"      
       glossary: "Глоссарий"
@@ -160,7 +160,7 @@ locales:
       task: "task"
       email: "email"
       global: "global"
-      next: "Плагины &amp; внедрение"
+      next: "Плагины и внедрение"
     menuplugins:
       intro: "Введение"
       build: "Пишем собственный плагин"
@@ -175,4 +175,4 @@ locales:
       intro: "Мы &mdash; сообщество"
       onboarding: "Onboarding"
       irc: "Рабочее время IRC"
-      workshop: "Воркшоп Hoodie" 
+      workshop: "Мастер-класс Hoodie" 

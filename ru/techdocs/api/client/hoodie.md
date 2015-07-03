@@ -73,7 +73,7 @@ hoodie.account.signIn(username, password)
 ### on()
 **version:**      *> 0.2.0*
 
-*Инициализирует наблюдатель (хэндлер) события.*
+*Инициализирует наблюдатель (обработчик) события.*
 
 <pre><code>hoodie.on('event', eventHandler); </code></pre>
 
@@ -82,7 +82,7 @@ hoodie.account.signIn(username, password)
 | event        | String   | custom event identifier            | yes |
 | eventHandler | Function | Function handling triggered event. | yes |
 
-Hoodie информирует вас о различных событиях. В частности, когда объект создаётся, изменяется или удаляется из хранилища. Чтобы обработать эти события используется функция-хэндлер. Вы можете регистрировать также обработчики собственных событий и вызывать их вручную. Подробней об этом: [trigger](#trigger).
+Hoodie информирует вас о различных событиях. В частности, когда объект создаётся, изменяется или удаляется из хранилища. Чтобы обработать эти события используется функция-обработчик. Вы можете регистрировать также обработчики собственных событий и вызывать их вручную. Подробней об этом: [trigger](#trigger).
 
 ##### Пример
 <pre><code>hoodie.store.on('event', function(createdTodo) {
@@ -102,14 +102,14 @@ Hoodie информирует вас о различных событиях. В 
 | параметр     | тип      | описание                           | обязательно |
 | ------------ |:--------:|:----------------------------------:|:-----------:|
 | event        | String   | имя события                        | да          |
-| eventHandler | Function | хэндлер                            | да          |
+| eventHandler | Function | обработчик                         | да          |
 
 
 <a id="off"></a>
 ### off()
 **version:**      *> 0.2.0*
 
-* Отключает обработчики. Хэндлер больше не вызовется.*
+* Отключает обработчики. *
 
 <pre><code>hoodie.off('event');</code></pre>
 
@@ -155,7 +155,7 @@ todoStore.findAll().done(function(allTodos) {
 | event      | String | custom event identifier.                                 | yes |
 | param      | Object | Detail information the event will pass to the listeners. | no |
 
-Раз уж вы можете подписываться на события с помощью [on](#on), этот метод позволяет вызывать ваши обработчики. Это касается как стандартных типов, описанных в [hoodie.store.on](/techdocs/api/client/hoodie.store.html#storeon), так и ваших собственных (кастомных) событий. Допустим, вы хотите вызвать событие, когда задача выполнена:
+Данный метод позволяет вызывать обработчики, подписанные на события с помощью метода [on](#on). Это касается как стандартных типов событий, описанных в [hoodie.store.on](/techdocs/api/client/hoodie.store.html#storeon), так и ваших собственных (кастомных) событий. Допустим, вы хотите вызвать событие, когда задача выполнена:
 
 
 ##### Пример
@@ -181,7 +181,7 @@ todoStore.findAll().done(function(allTodos) {
 ##### Notes
 > - Хорошая идея - придерживаться соглашений в наименовании, вида: 'object-type:what-happened' или 'what-happened'
 > - Начиная со второго параметра вы можете передать любые дополнительные данные для события.
-> - Если вы зарегистрировали хэндлер **hoodie.store('todo').on** и вызываете его через **hoodie.store.trigger**, предыдущий зарегистрированный хэндлер не вызывается.
+> - Если вы зарегистрировали обработчик **hoodie.store('todo').on** и вызываете его через **hoodie.store.trigger**, предыдущий зарегистрированный обработчик не вызывается.
 
 ##### Примеры
 <pre><code>var todoStore = hoodie.store('todo');
@@ -263,7 +263,7 @@ chat.findAll('message')
 
 **version:**      *> 0.2.0*
 
-*Возвращает true если бэкенд Hoodie доступен*
+*Возвращает true, если бэкенд Hoodie доступен*
 
 <pre><code>hoodie.isConnected();</code></pre>
 
@@ -281,7 +281,7 @@ chat.findAll('message')
 
 **version:**      *> 0.2.0*
 
-*Расширяет hoodie API новой функциональностью*
+*Расширяет API hoodie новой функциональностью*
 
 <pre><code>hoodie.extend(plugin);</code></pre>
 

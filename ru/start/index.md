@@ -10,14 +10,14 @@ locales: ru
 Для всех операционных систем, вам потребуется <a href="http://nodejs.org/" target="_blank">Node.js</a>, <a href="http://couchdb.apache.org/" target="_blank">CouchDB</a> и <a href="http://git-scm.com/" target="_blank">Git</a>.
 
 Уже есть всё это?<br />
-Переходите сразу к <a href="../start/getting-started/getting-started-1.html">Как начать</a>!
+Переходите сразу к <a href="../start/getting-started/getting-started-1.html">началу работы</a>!
 
 
 ### Установка на Mac OS X
 ##### Шаг первый: Node.js
 Мы рекомендуем использовать nodejs.org .pkg чтобы установить Node.js, вы можете <a href="http://nodejs.org/download/" target="_blank">скачать Node.js тут</a>. 
 ##### Шаг второй: CouchDB
-Вы можете сказать последнюю версию инсталлятора <a href="http://couchdb.apache.org/#download" target="_blank">CouchDB для Mac</a>.
+Вы можете скачать последнюю версию инсталлятора <a href="http://couchdb.apache.org/#download" target="_blank">CouchDB для Mac</a>.
 ##### Шаг третий: Hoodie-CLI
 Откройте терминал и наберите
 <pre><code>npm install -g hoodie-cli</code></pre>
@@ -36,7 +36,7 @@ locales: ru
 
 ### Установка для Linux – Ubuntu
 ##### Шаг первый: Node.js
-В Ubuntu у вас нет необходимости устанавливать Node.js изисходников, добавьте репозитарий Криса Ли и установите Node.JS:
+В Ubuntu у вас нет необходимости устанавливать Node.js из исходников, добавьте репозиторий Криса Ли и установите Node.JS:
 
 <pre><code>sudo add-apt-repository ppa:chris-lea/node.js
 sudo apt-get update
