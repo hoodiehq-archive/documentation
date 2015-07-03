@@ -8,7 +8,7 @@ locales: en
 
 ## Introduction
 
-This document describes the functionality of the hoodie base object.
+This document describes the functionality of the hoodie base object. It provides a number of helpers dealing with event handling and connectivity, as well as a unique id generator and a means to set the endpoint which Hoodie communicates with.
 
 ### Properties
 
@@ -32,171 +32,234 @@ This document describes the functionality of the hoodie base object.
 ### hoodie.baseUrl
 **version:**    *> 0.2.0*
 
-<pre><code>hoodie.baseUrl</code></pre>
+**Reveals Hoodie's base URL**
 
-The **hoodie.baseUrl** property gets automatically set on initialization.
+```javascript
+hoodie.baseUrl
+```
 
+The **hoodie.baseUrl** property is automatically set on initialization, but you can override it when you initialise Hoodie, and provide your own endpoint. This means you can conveniently use the same data store for multiple apps, if you want to.
 
 ##### Example
 
-<pre><code>hoodie = new Hoodie('http://myhoodieapp.com')
-hoodie.baseUrl // 'http://myhoodieapp.com'
+Default initialisation of Hoodie
 
-hoodie = new Hoodie()
-hoodie.baseUrl // ''
-</code></pre>
+```javascript
+hoodie = new Hoodie();
+hoodie.baseUrl; // ''
+```
 
+Specifying your own endpoint
+
+```javascript
+hoodie = new Hoodie('http://myhoodieapp.com');
+hoodie.baseUrl; // 'http://myhoodieapp.com'
+```
 
 <a id="id"></a>
 ### id()
 **version:**      *> 0.2.0*
 
-*Returns a unique, persistent identifier for the current user.*
+**Returns a unique, persistent identifier for the current user.**
 
-<pre><code>hoodie.id();</code></pre>
+```javascript
+hoodie.id();
+```
 
-The first time **hoodie.id()** gets called, a unique
-identifier gets generated for the current user, and persisted
-in the browser's local store. When signing in to an account,
-**hoodie.id()** will return the id of the new user.
-On signout, hoodie.id() gets reset.
+Each Hoodie user is assigned a random, unique, persistent ID on signup. While the user is logged in, it will always return that same ID. When no user is signed in, it will return a different, non-persistent ID for the current anonymous user. Every time a user signs out, the ID changes.
 
-##### Example
-<pre><code>hoodie.id(); // randomid123
+#### Example
+```javascript
+hoodie.id(); // "i67s6sm"
 hoodie.account.signIn(username, password)
   .done(function() {
-    hoodie.id(); // randomid456
+    hoodie.id(); // "vley9kp"
 });
-</code></pre>
-
+```
 
 <a id="on"></a>
 ### on()
 **version:**      *> 0.2.0*
 
-*Bind an event handler to a certain event so you get informed in case it gets triggered.*
+**Binds a persistent event handler for specified events**
 
-<pre><code>hoodie.on('event', eventHandler); </code></pre>
+```javascript
+hoodie.on('event', eventHandler);
+```
 
-| option     | type   | description     | required |
-| ---------- |:------:|:---------------:|:--------:|
-| event        | String   | custom event identifier            | yes |
-| eventHandler | Function | Function handling triggered event. | yes |
+| option       | type     | description                        | required |
+| ------------ |:--------:|:----------------------------------:|:--------:|
+| event        | String   | Custom event identifier            | yes      |
+| eventHandler | Function | Function handling triggered event  | yes      |
 
-Hoodie informs you about several things happening. For instance every time a store object has been added, saved or removed. In order to catch those messages you can register a function for handling those events. Those functions are called **eventHandlers**. You can register also for events you created and triggered yourself. See [trigger](#trigger) for further information.
+Hoodie informs you about a lot of internal events, such as data being added, removed or changed, or a user signing in or out. These can be listened to with **on()**. You can also register listeners for events you created and triggered yourself. See [trigger](#trigger) more on this.
 
-##### Example
-<pre><code>hoodie.store.on('event', function(createdTodo) {
-  console.log('A todo has been added => ', createdTodo);
+#### A Note on the Event Identifier Format
+
+Hoodie store event identifiers always come in the same format:
+
+```javascript
+object-type:object-id:event-type
+```
+
+**Object-type** and **event-type** are mandatory. Omitting the **object-id** listens to events from all objects of a type. If you do specify an object id, you'll only receive events from that one specific object. If you want to listen for more than one event type at once, use the **change** type, it fires on add, update and remove.
+
+You can find more detailed explanations and examples in the [hoodie.store event docs](/en/techdocs/api/client/hoodie.store.html#storeevents).
+
+**In scoped stores**, which are stores which can only contain objects of one type, **the type parameter is omitted**, because it's implicit.
+
+#### Examples
+
+**Listening for a new todo object:**
+
+```javascript
+hoodie.store.on('todo:add', function(newTodoObject) {
+  console.log('A todo has been added => ', newTodoObject);
 });
-</code></pre>
+```
+
+Note that you're calling **on()** from **hoodie.store**, not from **hoodie** itself.
+
+**Listening for changes in a scoped store:**
+
+```javascript
+var todoStore = hoodie.store('todo');
+todoStore.on('change, function(changedTodoObject) {
+  console.log('A todo has been changed => ', changedTodoObject);
+});
+```
+
+As you can see, this store is scoped to contain only objects with the type **todo**, so there'd be no point in specifying the object type in the event listener.
+
+**Listening for user authentication:**
+
+```javascript
+hoodie.account.on('signin, function(username) {
+  console.log('Hello there, '+ username);
+});
+```
+
+Note that for authentication events, you're calling **on()** from **hoodie.account**, not from **hoodie** itself. [Here's a complete list of all account events](/en/techdocs/api/client/hoodie.account.html#accountevents).
 
 
 <a id="one"></a>
 ### one()
 **version:**      *> 0.2.0*
 
-*Is the one-time variant of [on](#on) and [off](#off). Once the event has been caught, it will be unbound automatically.*
+**Binds a one-time event handler to the specified event. Once the event has been caught, the listener will be unbound automatically.**
 
-<pre><code>hoodie.one('event', eventHandler);</code></pre>
+```javascript
+hoodie.one('event', eventHandler);
+```
 
 | option       | type     | description                        | required |
 | ------------ |:--------:|:----------------------------------:|:--------:|
-| event        | String   | custom event identifier            | yes      |
-| eventHandler | Function | Function handling triggered event. | yes      |
+| event        | String   | Custom event identifier            | yes      |
+| eventHandler | Function | Function handling triggered event  | yes      |
 
+This works exactly like **on()** does, just once.
 
 <a id="off"></a>
 ### off()
 **version:**      *> 0.2.0*
 
-*Unbind all eventhandlers from a certain event. The events won't be triggered anymore.*
+**Unbind all event handlers from a certain event.**
 
-<pre><code>hoodie.off('event');</code></pre>
+```javascript
+hoodie.off('event');
+```
 
-| option     | type   | description     | required |
-| ---------- |:------:|:---------------:|:--------:|
-| event      | String | custom event identifier. | yes |
+| option     | type   | description             | required |
+| ---------- |:------:|:-----------------------:|:--------:|
+| event      | String | custom event identifier | yes      |
 
-<pre><code>hoodie.on('event', eventHandler);</code></pre>
+Opposite of **on()**. You don't have to specify the handler function, only the event identifier.
 
-While **hoodie.store.on** subscribes an handler function to a certain event **hoodie.store.off** does the opposite and will unsubscribe all previously registered handlers for the given event.
+#### Example
 
-##### Example
+Adding a listener for a custom event, but unsubscribing before it is triggered.
 
-<pre><code>var todoStore = hoodie.store('todo');
-todoStore.on('todo:done', function(doneTodo, t) {
+```javascript
+var todoStore = hoodie.store('todo');
+
+todoStore.on('todo:completed', function(completedTodo) {
   // this will never be reached
 });
 
-todoStore.on('todo:done', function(doneTodo, t) {
-  // this will never be reached neither
-});
+// this unsubscribes the previously
+// subscribed event handler
+todoStore.off('todo:completed');
 
-// this unsubscribes both of the previously
-// subscribed event handlers
-todoStore.off('todo:done');
+// Therefore, this does nothing
+todoStore.trigger('todo:completed', completedTodo);
 
-todoStore.findAll().done(function(allTodos) {
-  todoStore.trigger('todo:done', allTodos[0], new Date());
-});
-</code></pre>
-
+```
 
 <a id="trigger"></a>
 ### trigger()
 
 **version:**      *> 0.2.0*
 
-*Trigger a certain event. This includes custom and predefined events.*
+**Triggers a certain event. This includes both custom and predefined events.**
 
-<pre><code>hoodie.trigger('event', param, param, param ...);</code></pre>
+```javascript
+hoodie.trigger('event', param, param, param ...);
+```
 
-| option     | type   | description     | required |
-| ---------- |:------:|:---------------:|:--------:|
-| event      | String | custom event identifier.                                 | yes |
-| param      | Object | Detail information the event will pass to the listeners. | no |
+| option     | type   | description                                             | required |
+| ---------- |:------:|:-------------------------------------------------------:|:--------:|
+| event      | String | Event identifier                                        | yes      |
+| param      | Object | Detail information the event will pass to the listeners | no       |
 
-Since you can listen for store events using [on](#on), this gives you the opportunity to send events of your own to the listeners. This includes the standard events as mentionend in for instance [hoodie.store.on](/techdocs/api/client/hoodie.store.html#storeon) as well as your personal custom events. Imagine you want to trigger an event when a todo is done. This could look something similiar to this:
+**trigger()** lets you trigger events, both ones native to Hoodie (such as *add* or *change*), but also custom ones you define yourself.
 
+**Note:** starting with the second parameter, you can pass an unlimited amount of additional information along with the event. Well, <a href="http://stackoverflow.com/questions/22747068/is-there-a-max-number-of-arguments-javascript-functions-can-accept/22747272#22747272" target="_blank">unlimited-ish</a>.
 
-##### Example
-<pre><code>var todoStore = hoodie.store('todo');
+#### Example
 
-function markAsDone(todo) {
-  // mark todo as done and trigger a custom done event
-  todo.done = true;
-  todoStore.trigger('todo:done', todo, new Date());
+Triggering a custom **:completed** event
+
+```javascript
+var todoStore = hoodie.store('todo');
+
+function markAsCompleted(todo) {
+  // mark a todo as completed and trigger a custom completed event
+  todo.completed = true;
+  todoStore.trigger('todo:completed', todo, new Date());
 }
 
-todoStore.on('todo:done', function(doneTodo, t) {
-  console.log(doneTodo.title, ' was done', t);
+todoStore.on('todo:completed', function(completedTodo, completionDate) {
+  console.log(completedTodo.title, ' was completed on ', completionDate);
 });
 
 todoStore.findAll().done(function(allTodos) {
-  // take the first todo in list
-  // and mark it as done
-  markAsDone(allTodos[0]);
+  // Find all todos, take the first one,
+  // and mark it as completed
+  markAsCompleted(allTodos[0]);
 });
-</code></pre>
 
-##### Notes
-> - it is a good idea to stick to an overall sane convention like 'object-type:what-happened' or 'what-happened' for event the descriptor.
-> - starting with the second parameter you are allowed to pass an unlimited amount of detail information.
-> - if you register an event handler with **hoodie.store('todo').on** and trigger the event just with **hoodie.store.trigger**, the previously registered event handler will never been called.
+```
 
-##### Examples
-<pre><code>var todoStore = hoodie.store('todo');
+**Important**: if you register an event handler with a scoped store, as in **hoodie.store('todo').on()**,  a generic **hoodie.store.trigger()** will not reach that scoped store listener. The example will make it clearer:
+
+#### Using trigger() with Scoped Stores
+
+```javascript
+var todoStore = hoodie.store('todo');
 
 todoStore.on('trigger-test', function(num) {
-  // will only be called by the second trigger
+  // will not be called by the first trigger
   console.log('triggered by', num);
 });
 
+// Will not work
 hoodie.store.trigger('trigger-test', 'number 1');
+// Works
 todoStore.trigger('trigger-test', 'number 2');
-hoodie.store(hoodie).trigger('trigger-test', 'number 3');
-</code></pre>
+// Also works
+hoodie.store('todo').trigger('trigger-test', 'number 3');
+
+```
 
 
 <a id="request"></a>
@@ -206,7 +269,9 @@ hoodie.store(hoodie).trigger('trigger-test', 'number 3');
 
 *Send a request*
 
-<pre><code>hoodie.request(type, url, options);</code></pre>
+```javascript
+hoodie.request(type, url, options);
+```
 
 | option     | type     | description                                | required |
 | ---------- |:--------:|:------------------------------------------:|:--------:|
@@ -216,10 +281,12 @@ hoodie.store(hoodie).trigger('trigger-test', 'number 3');
 
 
 ##### Example
-<pre><code>hoodie.request('http://example.com/something')
+```javascript
+hoodie.request('http://example.com/something')
   .done(renderSomething)
   .fail(handleError);
-</code></pre>
+
+```
 
 
 <a id="open"></a>
@@ -229,7 +296,9 @@ hoodie.store(hoodie).trigger('trigger-test', 'number 3');
 
 *Interact with a remote database*
 
-<pre><code>hoodie.open('db-name');</code></pre>
+```javascript
+hoodie.open('db-name');
+```
 
 | option     | type     | description            | required |
 | ---------- |:--------:|:----------------------:|:--------:|
@@ -237,11 +306,13 @@ hoodie.store(hoodie).trigger('trigger-test', 'number 3');
 
 
 ##### Example
-<pre><code>var chat = hoodie.open('chatroom');
+```javascript
+var chat = hoodie.open('chatroom');
 chat.findAll('message')
   .done(renderMessages)
   .fail(handleError);
-</code></pre>
+
+```
 
 
 <a id="checkConnection"></a>
@@ -251,13 +322,17 @@ chat.findAll('message')
 
 *Sends request to the Hoodie Server to check if it is reachable*
 
-<pre><code>hoodie.checkConnection();</code></pre>
+```javascript
+hoodie.checkConnection();
+```
 
 ##### Example
-<pre><code>hoodie.checkConnection()
+```javascript
+hoodie.checkConnection()
   .done(renderGreenLight)
   .fail(renderRedLight);
-</code></pre>
+
+```
 
 
 <a id="isConnected"></a>
@@ -267,15 +342,19 @@ chat.findAll('message')
 
 *Returns true if Hoodie backend can currently be reached, otherwise false*
 
-<pre><code>hoodie.isConnected();</code></pre>
+```javascript
+hoodie.isConnected();
+```
 
 ##### Example
-<pre><code>if (hoodie.isConnected()) {
+```javascript
+if (hoodie.isConnected()) {
   alert('Looks like you are online!');
 } else {
   alert('You are offline!');
 }
-</code></pre>
+
+```
 
 
 <a id="extend"></a>
@@ -285,7 +364,9 @@ chat.findAll('message')
 
 *Extend the hoodie API with new functionality*
 
-<pre><code>hoodie.extend(plugin);</code></pre>
+```javascript
+hoodie.extend(plugin);
+```
 
 | option     | type     | description     | required |
 | ---------- |:--------:|:---------------:|:--------:|
@@ -294,11 +375,13 @@ chat.findAll('message')
 
 
 ##### Example
-<pre><code>hoodie.extend(function(hoodie, lib, util) {
+```javascript
+hoodie.extend(function(hoodie, lib, util) {
   hoodie.sayHi = function() {
     alert('say hi!');
   };
 });
 
 hoodie.sayHi(); // shows alert
-</code></pre>
+
+```
