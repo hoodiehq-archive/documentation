@@ -133,11 +133,11 @@
 	.api th,
 	.api td {
 		text-align: left !important;
-	}
+		padding: 5px 15px;
+    }
 
-	.api th {
-		font-weight: 500;
-		padding: 5px 8px;
+    .api th {
+        font-weight: 500;
 	}
 
 	.api th:nth-child(1),
@@ -151,6 +151,15 @@
 	.api tr:nth-child(2n+1) td {
 		background-color: #fdfdfd;
 	}
+
+    .api th{
+        background-color: #F0F1F5;
+    }
+
+    .api td:nth-child(n+2){
+        border-left: 1px solid #F0F1F5;
+    }
+
 .docs .footer ul{
 	text-align: right;
 	list-style: none;
