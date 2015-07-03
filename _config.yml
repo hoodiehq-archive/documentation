@@ -173,6 +173,6 @@ locales:
       next: "Сообщество"
     menucommunity: 
       intro: "Мы &mdash; сообщество"
-      onboarding: "Onboarding"
+      onboarding: "Введение"
       irc: "Рабочее время IRC"
       workshop: "Мастер-класс Hoodie" 

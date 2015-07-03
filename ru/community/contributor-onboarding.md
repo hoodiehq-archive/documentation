@@ -1,6 +1,6 @@
 ---
 layout: layout-community
-locales: en
+locales: ru
 ---
 
 ## Об этом документе
