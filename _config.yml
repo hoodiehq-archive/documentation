@@ -144,7 +144,7 @@ locales:
       requirements: "Требования"
       works: "Как это работает"      
       glossary: "Глоссарий"
-      next: "Введение"
+      next: "Начало работы"
     menustart: 
       installation: "Установка"
       started : "Начинаем работу с Hoodie, часть 1"
