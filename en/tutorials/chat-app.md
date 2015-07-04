@@ -318,6 +318,24 @@ hoodie.account.on('signin signup', function(e){
 });
 ```
 
+Once you've added those triggers to **account.js**, add these functions to **main.js**:
+
+```js
+function notifySignIn(e) {
+  var notification = e + " has signed into the chat.";
+  var model = new notifyModel(notification, 'green');
+
+  messageStore.add(model).publish();
+}
+
+function notifySignOut(e) {
+  var notification = e + " has signed out or disconnected.";
+  var model = new notifyModel(notification, 'red');
+
+  messageStore.add(model).publish();
+}
+```
+
 So we have the ability to send chat messages and be notified who comes in & out of the chatroom; now let's finish up by giving user's the ability to set a unique avatar picture. A part of that CSS earlier was adding a hover state for the account bar avatar to tell the user they can click that avatar to change it, so what happens when they click it? 
 
 ```js
