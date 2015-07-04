@@ -115,6 +115,10 @@ Before we get started with the JavaScript, we'll add some unique CSS to our **ww
 .input-container {
   z-index: 21;
 }
+
+.chat-stream-container {
+  height: 20rem;
+}
 ```
 
 Now we can finally open up **www/assets/js/main.js** and start adding some functionality to our little chat app. That file should already have the one line needed to initialize a new Hoodie class:
