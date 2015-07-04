@@ -374,7 +374,7 @@ function saveAvatar(props) {
     var avatarEl = $('[data-avatar="'+avatar[0].id+'"]');
     avatarEl[0].src = avatar[0].src;
   })
-  .catch(function(error) { console.log(error); })
+  .catch(function(error) { console.log(error); });
 }
 ```
 
