@@ -214,7 +214,7 @@ function checkSubmit(e) {
 }
 ```
 
-So we've sent a message to the messageStore, how does it appear in the chat stream? Well, we listening to the global share store for messages being added and push them into the stream:
+So we've sent a message to the messageStore, how does it appear in the chat stream? Well, we're listening to the global share store for messages being added and push them into the stream:
 
 ```js
 // setup event listener for new messages being saved to Hoodie
@@ -318,7 +318,7 @@ hoodie.account.on('signin signup', function(e){
 });
 ```
 
-So we have the ability to send chat messages and be notified who comes in & out of the chatroom; now let's finish up by giving user's the ability to set a unqiue avatar picture. A part of that CSS earlier was adding a hover state for the account bar avatar to tell the user they can click that avatar to change it, so what happens when they click it? 
+So we have the ability to send chat messages and be notified who comes in & out of the chatroom; now let's finish up by giving user's the ability to set a unique avatar picture. A part of that CSS earlier was adding a hover state for the account bar avatar to tell the user they can click that avatar to change it, so what happens when they click it? 
 
 ```js
 $('.user-avatar').on('click', showFileInput);
