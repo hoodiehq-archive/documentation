@@ -41,12 +41,13 @@ Let's make some edits to our **index.html** file to fit our app's structural nee
   <!-- create this user-avatar div to sit next to the username -->
   <div class="user-avatar relative">
 
-    <!-- default the img src to a placekitten url for a little extra fun  and don't forget the extra style classes-->
+    <!-- default the img src to a placekitten url for a little extra fun and don't forget the extra style classes-->
     <img src="http://placekitten.com/g/50/50" data-avatar="currentUser" width="50px" height="50px" class="mr1 rounded relative" alt="your avatar"/>
 
   </div>
 
-  <p class="m0" >Hello <span id="userName"></span>!</p>
+  <!-- add the m0 class to the paragraph -->
+  <p class="m0">Hello <span id="userName"></span>!</p>
   <button id="signOut">Sign out</button>
 </section>
 ```
@@ -179,7 +180,7 @@ function sendMessage(e) {
   // trigger an immediate sync with the server for quicker updates
   hoodie.remote.push();
 
-  // Dont't forget to clear out the charBox
+  // Don't forget to clear out the chatBox
   chatBox.val('');
 }
 ```
@@ -249,10 +250,9 @@ function streamMessage(message) {
   messageTemplate.append(messageContentContainer);
 
   // finally, insert template into the chat stream
-  // then, clear out the chat box
   messageTemplate.appendTo(chatStream);
 
-  // start async proces of fetching the avatar for this user
+  // start async process of fetching the avatar for this user
   fetchAvatar(message.user);
 
   // scroll the new message into view if it overflows the chat stream
@@ -349,7 +349,7 @@ function handleImgUpload(e) {
   // process the image for saving to the avatarStore with the file taken from the file input's change event
   avatarProcess(e.target.files[0]);
 
-  then remove the input from the DOM
+  // then remove the input from the DOM
   e.target.remove();
 }
 
