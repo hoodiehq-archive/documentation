@@ -70,7 +70,8 @@ Now we'll move into the section with the class "content":
   <!-- create a form for the user to submit their messages through -->
   <form data-action="chat-input">
     <div class="mt2 mb1">
-      <textarea class="block full-width my1 field-light not-rounded no-resize" rows="1" placeholder="Type message here..." data-action="send-message"></textarea>
+      <label for="message-input">Send a message!</label>
+      <textarea id="message-input" class="block full-width my1 field-light not-rounded no-resize" rows="1" placeholder="Type message here..." data-action="send-message"></textarea>
     </div>
     <input class="button bg-teal full-width" type="submit" value="Send Message">
   </form>
