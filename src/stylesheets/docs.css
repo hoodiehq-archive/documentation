@@ -208,3 +208,12 @@
 		float: left;
 	}
 */
+
+
+/* FOR LATER MIGRATION TO GLOBAL STYLES*/
+
+/* TODO: migrate this to core hood.ie styles. 400 is also better for the nav links*/
+.docs a{
+  font-weight: 400;
+  background-size: 1px 2px;
+}

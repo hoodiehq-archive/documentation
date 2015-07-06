@@ -400,4 +400,4 @@ We hope this API guide was helpful! If not, please let us help you <a href="http
 
 We also have an <a href="http://faq.hood.ie" target="_blank">FAQ</a> that could prove useful if things go wrong.
 
-If you find this guide in error or out of date, you could also <a href="https://github.com/hoodiehq/documentation/issues" target="_blank">open an issue</a> or <a href="https://github.com/hoodiehq/documentation/pulls" target="_blank">submit a pull request</a> with your corrections to [this file](https://github.com/hoodiehq/documentation/blob/gh-pages/en/techdocs/api/client/hoodie.md).
+If you find this guide in error or out of date, you could also <a href="https://github.com/hoodiehq/documentation/issues" target="_blank">open an issue</a> or <a href="https://github.com/hoodiehq/documentation/pulls" target="_blank">submit a pull request</a> with your corrections to [this file](https://github.com/hoodiehq/documentation/blob/gh-pages/en/techdocs/api/client/hoodie.md)   .
