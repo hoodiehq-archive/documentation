@@ -266,7 +266,7 @@ hoodie.store('todo').trigger('trigger-test', 'number 3');
 
 **version:**      *> 0.2.0*
 
-*Send a request*
+**Sends a request**
 
 ```javascript
 hoodie.request(type, url, options);
@@ -281,7 +281,7 @@ hoodie.request(type, url, options);
 
 ##### Example
 ```javascript
-hoodie.request('http://example.com/something')
+hoodie.request('get', 'http://example.com/something')
   .done(renderSomething)
   .fail(handleError);
 
@@ -293,11 +293,15 @@ hoodie.request('http://example.com/something')
 
 **version:**      *> 0.2.0*
 
-*Interact with a remote database*
+**Interacts with a remote database**
 
 ```javascript
 hoodie.open('db-name');
 ```
+
+Use this to connect to a database other than the current user's database, which is the default behaviour. This could, for example, be a public, read-only database containing global config data for your app, or a public chatroom for logged-in users, or some similar store with shared information.
+
+Hoodie doesn't natively provide a way to make these (it only gives you the user databases), but you could use this in conjunction with [plugins](/en/plugins/) or some other server-side code.
 
 | option     | type     | description            | required |
 | ---------- |:--------:|:----------------------:|:--------:|
@@ -319,11 +323,13 @@ chat.findAll('message')
 
 **version:**      *> 0.2.0*
 
-*Sends request to the Hoodie Server to check if it is reachable*
+**Sends request to the Hoodie Server to check if it is reachable**
 
 ```javascript
 hoodie.checkConnection();
 ```
+
+Returns a promise. On **fail()**, it will include an error object with details.
 
 ##### Example
 ```javascript
@@ -339,7 +345,7 @@ hoodie.checkConnection()
 
 **version:**      *> 0.2.0*
 
-*Returns true if Hoodie backend can currently be reached, otherwise false*
+**Returns true if Hoodie backend can currently be reached, otherwise false**
 
 ```javascript
 hoodie.isConnected();
@@ -361,7 +367,7 @@ if (hoodie.isConnected()) {
 
 **version:**      *> 0.2.0*
 
-*Extend the hoodie API with new functionality*
+**Extend the hoodie API with new functionality**
 
 ```javascript
 hoodie.extend(plugin);
@@ -371,7 +377,7 @@ hoodie.extend(plugin);
 | ---------- |:--------:|:---------------:|:--------:|
 | plugin     | function | extend the frontend API with whatever logic your plugin wants to expose | yes |
 
-
+Used when writing Hoodie plugins, gives you the means to extend the frontend API of Hoodie to expose methods to use your plugin. [Check out this detailed guide to writing your own plugins](/en/plugins/tutorial.html).
 
 ##### Example
 ```javascript
@@ -384,3 +390,14 @@ hoodie.extend(function(hoodie, lib, util) {
 hoodie.sayHi(); // shows alert
 
 ```
+
+
+## Onward!
+
+Now head on over to the exciting stuff: the [account](/en/techdocs/api/client/hoodie.account.html) and [store](/en/techdocs/api/client/hoodie.store.html) docs! Learn how to sign up users and let them store data, any many other cool things.
+
+We hope this API guide was helpful! If not, please let us help you <a href="http://hood.ie/chat" target="_blank">on IRC or Slack</a>.
+
+We also have an <a href="http://faq.hood.ie" target="_blank">FAQ</a> that could prove useful if things go wrong.
+
+If you find this guide in error or out of date, you could also <a href="https://github.com/hoodiehq/documentation/issues" target="_blank">open an issue</a> or <a href="https://github.com/hoodiehq/documentation/pulls" target="_blank">submit a pull request</a> with your corrections.
