@@ -29,6 +29,34 @@
     text-shadow: none !important;
 }
 
+.docs .cb h1 a[href*="#"],
+.docs .cb h2 a[href*="#"],
+.docs .cb h3 a[href*="#"],
+.docs .cb h4 a[href*="#"],
+.docs .cb h5 a[href*="#"],
+.docs .cb h6 a[href*="#"] {
+  text-decoration: none;
+  border-bottom: none;
+  background-image: none;
+}
+
+/* Moves anchor link #s in headlines out to the left */
+.docs .cb h1 a[href*="#"]:hover:before,
+.docs .cb h2 a[href*="#"]:hover:before,
+.docs .cb h3 a[href*="#"]:hover:before,
+.docs .cb h4 a[href*="#"]:hover:before,
+.docs .cb h5 a[href*="#"]:hover:before,
+.docs .cb h6 a[href*="#"]:hover:before {
+  content: "#";
+  margin-left: -0.85em;
+  position: absolute;
+}
+
+/* Gives all section headlines some space at the top when navigated to via anchor */
+.docs .cb a:not([href]) {
+  display: block;
+}
+
 .docs .cb li{
     margin-bottom: 0;
 }
