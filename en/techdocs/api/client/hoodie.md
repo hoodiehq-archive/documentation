@@ -29,7 +29,7 @@ This document describes the functionality of the hoodie base object. It provides
 
 
 <a id="baseUrl"></a>
-### hoodie.baseUrl
+### [hoodie.baseUrl](#baseUrl)
 **version:**    *> 0.2.0*
 
 **Reveals Hoodie's base URL**
@@ -57,7 +57,7 @@ hoodie.baseUrl; // 'http://myhoodieapp.com'
 ```
 
 <a id="id"></a>
-### id()
+### [id()](#id)
 **version:**      *> 0.2.0*
 
 **Returns a unique, persistent identifier for the current user.**
@@ -66,7 +66,7 @@ hoodie.baseUrl; // 'http://myhoodieapp.com'
 hoodie.id();
 ```
 
-Each Hoodie user is assigned a random, unique, persistent ID on signup. While the user is logged in, it will always return that same ID. When no user is signed in, it will return a different, non-persistent ID for the current anonymous user. Every time a user signs out, the ID changes.
+Each Hoodie user is assigned a random, unique, persistent ID on signup. While the user is logged in, **id()** will always return that same ID. When no user is signed in, it will return a different, non-persistent ID for the current anonymous user. Every time a user signs out, the ID for the anonymous user changes.
 
 #### Example
 ```javascript
@@ -78,7 +78,7 @@ hoodie.account.signIn(username, password)
 ```
 
 <a id="on"></a>
-### on()
+### [on()](#on)
 **version:**      *> 0.2.0*
 
 **Binds a persistent event handler for specified events**
@@ -102,7 +102,7 @@ Hoodie store event identifiers always come in the same format:
 object-type:object-id:event-type
 ```
 
-**Object-type** and **event-type** are mandatory. Omitting the **object-id** listens to events from all objects of a type. If you do specify an object id, you'll only receive events from that one specific object. If you want to listen for more than one event type at once, use the **change** type, it fires on add, update and remove.
+**Object-type** and **event-type** are mandatory. Omitting the **object-id** listens to events from all objects of a type. If you do specify an object id, you'll only receive events from that one specific object. If you want to listen for more than one event type at once, use the **change** type, which fires on *add*, *update* and *remove*.
 
 You can find more detailed explanations and examples in the [hoodie.store event docs](/en/techdocs/api/client/hoodie.store.html#storeevents).
 
@@ -143,7 +143,7 @@ Note that for authentication events, you're calling **on()** from **hoodie.accou
 
 
 <a id="one"></a>
-### one()
+### [one()](#one)
 **version:**      *> 0.2.0*
 
 **Binds a one-time event handler to the specified event. Once the event has been caught, the listener will be unbound automatically.**
@@ -160,7 +160,7 @@ hoodie.one('event', eventHandler);
 This works exactly like **on()** does, just once.
 
 <a id="off"></a>
-### off()
+### [off()](#off)
 **version:**      *> 0.2.0*
 
 **Unbind all event handlers from a certain event.**
@@ -196,7 +196,7 @@ todoStore.trigger('todo:completed', completedTodo);
 ```
 
 <a id="trigger"></a>
-### trigger()
+### [trigger()](#trigger)
 
 **version:**      *> 0.2.0*
 
@@ -261,9 +261,8 @@ hoodie.store('todo').trigger('trigger-test', 'number 3');
 
 ```
 
-
 <a id="request"></a>
-### request()
+### [request()](#request)
 
 **version:**      *> 0.2.0*
 
@@ -290,7 +289,7 @@ hoodie.request('http://example.com/something')
 
 
 <a id="open"></a>
-### open()
+### [open()](#open)
 
 **version:**      *> 0.2.0*
 
@@ -316,7 +315,7 @@ chat.findAll('message')
 
 
 <a id="checkConnection"></a>
-### checkConnection()
+### [checkConnection()](#checkConnection)
 
 **version:**      *> 0.2.0*
 
@@ -336,7 +335,7 @@ hoodie.checkConnection()
 
 
 <a id="isConnected"></a>
-### isConnected()
+### [isConnected()](#isConnected)
 
 **version:**      *> 0.2.0*
 
