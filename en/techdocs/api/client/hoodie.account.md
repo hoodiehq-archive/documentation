@@ -49,7 +49,7 @@ The account object in the client-side Hoodie API covers all user and authenticat
 hoodie.account.username
 ```
 
-**hoodie.account.username** gets automatically set / unset when signing in, signing up, changing the username or destroying the account.
+**hoodie.account.username** gets automatically set/unset when signing in, signing up, changing the username or destroying the account.
 
 It is also the current way to check if a user is signed in or not.
 
