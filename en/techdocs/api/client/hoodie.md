@@ -10,11 +10,13 @@ locales: en
 
 This document describes the functionality of the hoodie base object. It provides a number of helpers dealing with event handling and connectivity, as well as a unique id generator and a means to set the endpoint which Hoodie communicates with.
 
+<a id="top"></a>
+
 ### Properties
 
 - [baseUrl](#baseUrl)
 
-## Methods
+### Methods
 
 - [id](#id)
 - [on](#on)
@@ -88,7 +90,7 @@ hoodie.on('event', eventHandler);
 ```
 
 | option       | type     | description                        | required |
-| ------------ |:--------:|:----------------------------------:|:--------:|
+|:------------ |:-------- |:---------------------------------- |:-------- |
 | event        | String   | Custom event identifier            | yes      |
 | eventHandler | Function | Function handling triggered event  | yes      |
 
@@ -153,7 +155,7 @@ hoodie.one('event', eventHandler);
 ```
 
 | option       | type     | description                        | required |
-| ------------ |:--------:|:----------------------------------:|:--------:|
+|:------------ |:-------- |:---------------------------------- |:-------- |
 | event        | String   | Custom event identifier            | yes      |
 | eventHandler | Function | Function handling triggered event  | yes      |
 
@@ -170,7 +172,7 @@ hoodie.off('event');
 ```
 
 | option     | type   | description             | required |
-| ---------- |:------:|:-----------------------:|:--------:|
+|:---------- |:------ |:----------------------- |:-------- |
 | event      | String | custom event identifier | yes      |
 
 Opposite of **on()**. You don't have to specify the handler function, only the event identifier.
@@ -207,7 +209,7 @@ hoodie.trigger('event', param, param, param ...);
 ```
 
 | option     | type   | description                                             | required |
-| ---------- |:------:|:-------------------------------------------------------:|:--------:|
+|:---------- |:------ |:------------------------------------------------------- |:-------- |
 | event      | String | Event identifier                                        | yes      |
 | param      | Object | Detail information the event will pass to the listeners | no       |
 
@@ -273,7 +275,7 @@ hoodie.request(type, url, options);
 ```
 
 | option     | type     | description                                | required |
-| ---------- |:--------:|:------------------------------------------:|:--------:|
+|:---------- |:-------- |:------------------------------------------ |:-------- |
 | type       | string   | http verb, e.g. get, post, put or delete   | yes      |
 | url        | string   | relative path or absolute URL.             | yes      |
 | options    | object   | compare <a href="http://api.jquery.com/jquery.ajax/" target="_blank">http://api.jquery.com/jquery.ajax</a> | no       |
@@ -304,7 +306,7 @@ Use this to connect to a database other than the current user's database, which 
 Hoodie doesn't natively provide a way to make these (it only gives you the user databases), but you could use this in conjunction with [plugins](/en/plugins/) or some other server-side code.
 
 | option     | type     | description            | required |
-| ---------- |:--------:|:----------------------:|:--------:|
+|:---------- |:-------- |:---------------------- |:-------- |
 | name       | string   | name of the database   | yes      |
 
 
@@ -373,9 +375,9 @@ if (hoodie.isConnected()) {
 hoodie.extend(plugin);
 ```
 
-| option     | type     | description     | required |
-| ---------- |:--------:|:---------------:|:--------:|
-| plugin     | function | extend the frontend API with whatever logic your plugin wants to expose | yes |
+| option     | type     | description                                                             | required |
+|:---------- |:-------- |:----------------------------------------------------------------------- |:-------- |
+| plugin     | function | extend the frontend API with whatever logic your plugin wants to expose | yes      |
 
 Used when writing Hoodie plugins, gives you the means to extend the frontend API of Hoodie to expose methods to use your plugin. [Check out this detailed guide to writing your own plugins](/en/plugins/tutorial.html).
 

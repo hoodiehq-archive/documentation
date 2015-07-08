@@ -28,6 +28,7 @@ different devices.
 > - all stored objects have a fixed association to the user who created them. So you won't be able to access other user's objects by default.
 > - in order save objects to the server's store, you need to be logged in with a valid user. Learn more about the hoodie user system at [**hoodie.account**](./hoodie.account.html).
 
+<a id="top"></a>
 
 ## Methods
 
@@ -64,7 +65,7 @@ Creates a new objects in your local store. If **properties.id** is set, it will 
 | properties | Object | object properties to save | yes |
 | options.silent | Boolean  | If set to **true**, no events will be triggered from this call | no (default: false) |
 
-Returns a promise. If succesful, it calls the **done** callback with the new object stored with new properties 
+Returns a promise. If succesful, it calls the **done** callback with the new object stored with new properties
 added to it (id (unless set before), createdBy, createdAt, updatedAt). If something
 goes wrong, the **fail** callback will be called instead and an error gets passed.
 
@@ -126,9 +127,9 @@ you want to work with in a later step.
 ##### Example
 
 <pre><code>// pre-conditions: You already read a user's account obj.
-var configBlueprint = { 
-  language: 'en/en', 
-  appTheme: 'default' 
+var configBlueprint = {
+  language: 'en/en',
+  appTheme: 'default'
 };
 var configId        = 'app';
 
@@ -192,7 +193,7 @@ wrong, the **.fail** callback gets called if an according error. </small>
 
 ##### Example
 
-<pre><code>/* Example for store updates 
+<pre><code>/* Example for store updates
 Using JavaScript plain object as update parameter.
 
 A todo object could look like this:
@@ -250,7 +251,7 @@ Changes the passed attributes of an existing object, if it exists; otherwise, cr
 | updateObject     | Object | new object values                   | yes  |
 | options.silent | Boolean  | If set to **true**, no events will be triggered from this call | no (default: false) |
 
-Returns a promise. If succesful, it calls the **done** callback with the updated or new object stored with updated or new properties 
+Returns a promise. If succesful, it calls the **done** callback with the updated or new object stored with updated or new properties
 added to it (id, createdBy, createdAt, updatedAt). If something
 goes wrong, the **fail** callback will be called instead and an error gets passed.
 
@@ -431,19 +432,19 @@ it with **type:add**, like so
 
 Gets triggered when an existing object has been updated.
 
-<pre><code>hoodie.store.on('update', 
+<pre><code>hoodie.store.on('update',
     function(updatedObject){});</code></pre>
 
 The **update** event gets triggered for any object get gets updated in the user's store. If you want to react to objects of a certain type only, you can prefix it with **type:update**, like:
 
-<pre><code>hoodie.store.on('todo:update', 
+<pre><code>hoodie.store.on('todo:update',
     function(updatedTodoObject) {});</code></pre>
 
 If you are interested into one specifc object only, you can also prefix
 it with **type:id:update**, like so
 
 <pre><code>// config is the type, app is the id
-hoodie.store.on('config:app:update',  
+hoodie.store.on('config:app:update',
   function(updatedAppConfig) {});</code></pre>
 
 
@@ -452,19 +453,19 @@ hoodie.store.on('config:app:update',
 
 Gets triggered when an existing object has been removed.
 
-<pre><code>hoodie.store.on('remove', 
+<pre><code>hoodie.store.on('remove',
   function(removedObject){});</code></pre>
 
 The **remove** event gets triggered for any object get gets removed in the user's store. If you want to react to objects of a certain type only, you can prefix it with **type:remove**, like:
 
-<pre><code>hoodie.store.on('todo:remove', 
+<pre><code>hoodie.store.on('todo:remove',
   function(removedTodoObject) {});</code></pre>
 
 If you are interested into one specifc object only, you can also prefix
 it with **type:id:remove**, like:
 
 <pre><code>// config is the type, app is the id
-hoodie.store.on('config:app:remove', 
+hoodie.store.on('config:app:remove',
   function(removedAppConfig) {});</code></pre>
 
 
@@ -473,19 +474,19 @@ hoodie.store.on('config:app:remove',
 
 Gets triggered when an existing object has been changed.
 
-<pre><code>hoodie.store.on('change', 
+<pre><code>hoodie.store.on('change',
   function(eventName, changedObject){});</code></pre>
 
 The **change** event gets triggered for any object get gets changed in the user's store. The **eventName** gets passed as first parameter to the handler, wich is either **add**, **update** or **remove**. If you want to react to objects of a certain type only, you can prefix it with **type:change**, like:
 
-<pre><code>hoodie.store.on('todo:change', 
+<pre><code>hoodie.store.on('todo:change',
   function(eventName, changedTodoObject) {});</code></pre>
 
 If you are interested into one specifc object only, you can also prefix
 it with **type:id:remove**, like:
 
 <pre><code>// config is the type, app is the id
-hoodie.store.on('config:app:remove', 
+hoodie.store.on('config:app:remove',
   function(eventName, removedAppConfig) {});</code></pre>
 
 

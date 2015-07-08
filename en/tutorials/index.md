@@ -247,4 +247,12 @@ If you'd like to try another tutorial, check out [the time tracker](../tutorials
 
 We'd love to hear your feedback on this guide, and whether it helped you. Feel free to <a href="http://hood.ie/chat" target="_blank">get in touch with us on IRC or Slack</a>.
 
+We also have an <a href="http://faq.hood.ie" target="_blank">FAQ</a> that could prove useful if things go wrong.
+
+If you find this guide in error or out of date, you could also <a href="https://github.com/hoodiehq/documentation/issues" target="_blank">open an issue</a> or <a href="https://github.com/hoodiehq/documentation/pulls" target="_blank">submit a pull request</a> with your corrections to [this file](https://github.com/hoodiehq/documentation/blob/gh-pages/en/tutorials/index.md).
+
 Thanks for your interest and time!
+
+And here's your congratulatory chicken:
+
+![Dooooc doc doc doc](/src/img/doc-doc-chicken.png)

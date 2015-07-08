@@ -17,9 +17,10 @@ The account object in the client-side Hoodie API covers all user and authenticat
 - listen to account events
 - destroy a user account
 
+<a id="top"></a>
+
 ### Properties
 - [username](#accountusername)
-
 
 ### Methods
 - [signUp()](#accountsignup)
@@ -66,9 +67,6 @@ if (hoodie.account.username) {
 }
 ```
 
-## Methods
-
-
 <a id="accountsignup"></a>
 ### [account.signUp()](#accountsignup)
 **version:** 		*> 0.2.0*
@@ -82,7 +80,7 @@ hoodie.account.signUp('user', 'password');
 ##### Arguments
 
 | Nr | argument   | type   | description     | required |
-| --:| ---------- |:------:|:---------------:|:--------:|
+|:--:|:---------- |:------ |:--------------- |:-------- |
 |  1 | username   | String | username        | yes      |
 |  2 | password   | String | valid password  | yes      |
 
@@ -140,7 +138,7 @@ hoodie.account.signIn('user', 'password');
 ##### Arguments
 
 | Nr | option     | type   | description             | required |
-| --:| ---------- |:------:|:-----------------------:|:--------:|
+|:--:|:---------- |:------ |:----------------------- |:-------- |
 |  1 | user       | String | username                | yes      |
 |  2 | password   | String | valid password          | yes      |
 |  3 | options    | Object | {moveData: true/false}  | no       |
@@ -199,7 +197,7 @@ hoodie.account.signOut(options);
 ##### Arguments
 
 | Nr | option     | type   | description             | required |
-| --:| ---------- |:------:|:-----------------------:|:--------:|
+|:--:|:---------- |:------ |:----------------------- |:-------- |
 |  1 | options    | Object | {ignoreLocalChanges: true/false}  | no       |
 
 ##### Resolves with
@@ -238,7 +236,7 @@ hoodie.account.changePassword(currentPassword, newPassword);
 ##### Arguments
 
 | Nr | option           | type   | description                           | required |
-| --:| ---------------- |:------:|:-------------------------------------:|:--------:|
+|:--:|:---------------- |:------ |:------------------------------------- |:-------- |
 |  1 | currentPassword  | String | password of signed in user            | yes      |
 |  2 | newPassword      | String | new password for signed in user       | yes      |
 
@@ -274,7 +272,7 @@ hoodie.account.changeUsername(currentPassword, newUsername);
 ##### Arguments
 
 | Nr | option           | type   | description                           | required |
-| --:| ---------------- |:------:|:-------------------------------------:|:--------:|
+| --:| ---------------- |:------:|:------------------------------------- |:-------- |
 |  1 | currentPassword  | String | password of signed in user            | yes      |
 |  2 | newUsername      | String | new username for signed in user       | yes      |
 
@@ -310,8 +308,8 @@ hoodie.account.resetPassword(username);
 
 ##### Arguments
 
-| Nr | option     | type   | description                                           | required |
-| --:| ---------- |:------:|:------------------------------:|:--------:|
+| Nr | option     | type   | description                    | required |
+|:--:|:---------- |:------ |:------------------------------ |:-------- |
 |  1 | username   | String | username to reset password for | yes      |
 
 ##### Resolves with
@@ -380,7 +378,7 @@ hoodie.account.destroy()
 
 
 <a id="accountevents"></a>
-## [Account events](#accountevents)
+### [Account events](#accountevents)
 
 | name | arguments | description |
 | ---- | --------- | ----------- |
