@@ -104,7 +104,7 @@ Hoodie store event identifiers always come in the same format:
 object-type:object-id:event-type
 ```
 
-**Object-type** and **event-type** are mandatory. Omitting the **object-id** listens to events from all objects of a type. If you do specify an object id, you'll only receive events from that one specific object. If you want to listen for more than one event type at once, use the **change** type, which fires on *add*, *update* and *remove*.
+**Object-type** and **event-type** are mandatory. Omitting the **object-id** listens to events from all objects of a type. If you *do* specify an object id, you'll only receive events from that one specific object. If you want to listen for more than one event type at once, use the **change** type, which fires on *add*, *update* and *remove*.
 
 You can find more detailed explanations and examples in the [hoodie.store event docs](/en/techdocs/api/client/hoodie.store.html#storeevents).
 

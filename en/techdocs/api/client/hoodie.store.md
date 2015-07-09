@@ -71,7 +71,7 @@ hoodie.store.add(type, properties, options);
 | properties | Object | object properties to save | yes      |
 | options.silent | Boolean  | If set to **true**, no events will be triggered from this call | no (default: false) |
 
-If **properties.id** is set, it will be used as the object's id, otherwise it will be automatically generated.
+If **properties.id** is set, it will be used as the object's id, otherwise the id will be generated automatically.
 
 Returns a promise. If succesful, it calls the **done** callback and passes in the new object. Hoodie will have added some additional properties: (*id* (unless you set it before), *createdBy*, *createdAt*, *updatedAt*). If something goes wrong, the **fail** callback will be called instead, and an error object passed in.
 

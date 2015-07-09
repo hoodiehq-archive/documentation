@@ -104,7 +104,7 @@ hoodie.account.signUp('user', 'password');
 | HoodieError           | Username must be set                        |
 | HoodieError           | Must sign out first                         |
 | HoodieConflictError   | Username **&lt;username>** already exists   |
-| HoodieConnectionError | Could not connect to Server                 |
+| HoodieConnectionError | Could not connect to server                 |
 
 
 **signUp** creates a new user account on the Hoodie server. Currently, the account is confirmed automatically after the user-specific database (where all the user's data gets automatically synchronized to) has been created.
@@ -156,7 +156,7 @@ hoodie.account.signIn('user', 'password');
 | HoodieAccountUnconfirmedError  | Account has not been confirmed yet |
 | HoodieAccountNotFoundError     | Account could not be found |
 | HoodieError                    | _A custom error can be set by plugins, e.g. the account could be blocked due to missing payments_ |
-| HoodieConnectionError | Could not connect to Server                 |
+| HoodieConnectionError | Could not connect to server                 |
 
 The **signIn** method tries to sign in the user to an existing account.
 
@@ -210,7 +210,7 @@ _resolves without argument_
 | ------------------------------ | ------------------------------ |
 | HoodieAccountLocalChangesError | There are local changes that could not be synced |
 
-Before signing out a user, Hoodie pushes all local changes to the user's databases. If that fails because the Server cannot be reached or the user's session is invalid, **signOut()** fails and rejects with an **HoodieAccountLocalChangesError** error. To enforce a signout despite eventual data loss, you can pass **{ignoreLocalChanges: true}** as the options argument.
+Before signing out a user, Hoodie pushes all local changes to the user's server-side database. If that fails because the server cannot be reached, or because the user's session is invalid, **signOut()** fails and rejects with an **HoodieAccountLocalChangesError** error. To enforce a signout despite eventual data loss, you can pass **{ignoreLocalChanges: true}** in the options argument.
 
 #### Example
 
@@ -220,8 +220,8 @@ hoodie.account.signOut()
   .fail(showError);
 ```
 
-##### Notes
-> - **HoodieAccountLocalChangesError** does currently not get returned, instead you will receive cryptic errors about the user not being authenticated or a failed request. See [issue #358](https://github.com/hoodiehq/hoodie.js/issues/358).
+#### Notes
+**HoodieAccountLocalChangesError** does currently not get returned, instead you will receive cryptic errors about the user not being authenticated or a failed request. See [issue #358](https://github.com/hoodiehq/hoodie.js/issues/358).
 
 <a id="accountchangepassword"></a>
 ### [account.changePassword()](#accountchangepassword)

@@ -43,7 +43,7 @@ $ cd testapp
 $ hoodie start
 ```
 
-On the very first run, you'll be prompted to enter a password for the Admin Dashboard, just pick something simple for now, like **awesome**. Then, a bunch of URLs and additional info appear:
+On the very first run, you'll be prompted to enter a password for the Admin Dashboard, just pick something simple for now, like **"alpacas"**. Because alpacas are neat. Then, a bunch of URLs and additional info appear.
 
 ### 2. App, Admin and Futon URLs
 
