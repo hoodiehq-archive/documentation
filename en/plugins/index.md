@@ -7,22 +7,25 @@ locales: en
 
 ### Core plugins
 
-Hoodie has a very slim core and can be extended with plugins. 
-Three plugins are always installed with the core. 
+Hoodie has a very slim core and can be extended with plugins.
+Three plugins are always installed with the core:
 
 - <a href="https://www.npmjs.org/package/hoodie-plugin-users" target="_blank">hoodie-plugin-users</a>
 - <a href="https://www.npmjs.org/package/hoodie-plugin-email" target="_blank">hoodie-plugin-email</a>
 - <a href="https://www.npmjs.org/package/hoodie-plugin-appconfig" target="_blank">hoodie-plugin-appconfig</a>
 
-### Install plugins
-Every hoodie-plugin, published on npm can be installed by typing
+### Installing plugins
+Every hoodie-plugin that has been published on npm can be installed by typing
 
-<pre><code>npm install hoodie-plugin-name</code></pre>
+```bash
+$ npm install hoodie-plugin-name
+```
+in your project's folder.
 
 You can see a full list of plugins <a href="http://plugins.hood.ie/" target="_blank">here</a>.
 
 #### Favorites
-Here are some community favourites. 
+Here are some community favourites.
 
 - <a href="https://www.npmjs.org/package/hoodie-plugin-angularjs" target="_blank">Hoodie + Angularjs</a>
 - <a href="https://www.npmjs.org/package/hoodie-plugin-backbone" target="_blank">Hoodie + Backbone</a>
@@ -30,6 +33,6 @@ Here are some community favourites.
 - <a href="https://www.npmjs.org/package/hoodie-plugin-global-share" target="_blank">Share your content</a>
 
 
-### Write plugin
+### Writing your own Hoodie plugins
 
-If you want to write your own plugin, check out [this](../plugins/tutorial.html) amazing tutorial.
+We have a very detailed [guide to writing Hoodie plugins](../plugins/tutorial.html) that should get you started.
