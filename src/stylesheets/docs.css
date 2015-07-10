@@ -109,7 +109,6 @@
 
 .docs .cb ul{
   list-style-type: disc;
-  color: #273183;
 }
 
 .docs .cb li{
@@ -197,10 +196,6 @@
 
 	.community .sub-nav li:nth-child(7) a {
 		text-decoration: underline;
-	}
-
-	.docs ul {
-		list-style-type: circle;
 	}
 
 	.docs .no-underlining {
