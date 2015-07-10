@@ -3,8 +3,7 @@ layout: layout-api
 locales: en
 ---
 # hoodie
-**version:**      *> 0.1.0* <br />
-
+**version:**      *> 0.1.0*
 
 ## Introduction
 

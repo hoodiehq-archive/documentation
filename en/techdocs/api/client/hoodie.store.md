@@ -4,7 +4,7 @@ locales: en
 ---
 # hoodie.store
 **version:**      *> 0.1.0* <br>
-**source:**       *hoodie/src/hoodie/store.js*
+**source:**       *[hoodie.js/src/hoodie/store](https://github.com/hoodiehq/hoodie.js/tree/master/src/hoodie/store)*
 
 If you want to do anything with data in Hoodie, this is where it happens.
 
