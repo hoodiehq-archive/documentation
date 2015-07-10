@@ -76,8 +76,9 @@
     color: #FFF;
     font-style: normal;
     font-size: 0.8em;
-    padding-left: 0.35em;
+    padding-left: 0.325em;
     text-shadow: none;
+    opacity: 1;
   }
 
   .docs .cb h1 a[href*="#"]:before,
@@ -97,8 +98,10 @@
     color: #FFF;
     font-style: normal;
     font-size: 0.8em;
-    padding-left: 0.35em;
+    padding-left: 0.325em;
     text-shadow: none;
+    opacity: 0.5;
+    transition: opacity 0.5s;
   }
 }
 
