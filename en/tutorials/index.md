@@ -107,6 +107,7 @@ hoodie.store.add(type, object);
 
 One line. That stores your todo in the local browser store, and Hoodie will take care of syncing it to wherever it needs to be. Pretty simple, right? **add()** also [returns some promises](/en/techdocs/api/client/hoodie.store.html#storeadd) so you can check if it worked, but let's skip that for now.
 
+<a id="understanding-type"></a>
 #### 2.2 A Short Aside: Understanding Type
 
 **Type** is a fundamental convention to deal with the lack of schemas in CouchDB, which is the database system that Hoodie uses.
@@ -131,6 +132,7 @@ You'll notice that these are, again, just JavaScript objects. Throughout your en
 
 **Type is essential to give your schemaless data some structure**, so when you want to fetch all locations, for example, you can easily do so.
 
+<a id="updating-the-view"></a>
 #### 2.3 Updating the View
 
 So far, we've only seen how the app *stores* the new todo after it's been entered, but not how it's actually being *displayed*. Take a look at the code right above the listener we just looked at, near the end of **main.js**:
@@ -247,4 +249,12 @@ If you'd like to try another tutorial, check out [the time tracker](../tutorials
 
 We'd love to hear your feedback on this guide, and whether it helped you. Feel free to <a href="http://hood.ie/chat" target="_blank">get in touch with us on IRC or Slack</a>.
 
+We also have an <a href="http://faq.hood.ie" target="_blank">FAQ</a> that could prove useful if things go wrong.
+
+If you find this guide in error or out of date, you could also <a href="https://github.com/hoodiehq/documentation/issues" target="_blank">open an issue</a> or submit a pull request with your corrections to <a href="https://github.com/hoodiehq/documentation/blob/gh-pages/en/tutorials/index.md" target="_blank">this file</a>.
+
 Thanks for your interest and time!
+
+And here's your congratulatory chicken:
+
+![Dooooc doc doc doc](/src/img/doc-doc-chicken.png)
