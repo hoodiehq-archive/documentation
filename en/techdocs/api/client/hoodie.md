@@ -8,7 +8,7 @@ locales: en
 
 ## Introduction
 
-This document describes the functionality of the hoodie base object. It provides a number of helpers dealing with event handling and connectivity, as well as a unique id generator and a means to set the endpoint which Hoodie communicates with.
+This document describes the functionality of the hoodie base object. It provides a number of helper methods dealing with event handling and connectivity, as well as a unique id generator and a means to set the endpoint which Hoodie communicates with.
 
 <a id="top"></a>
 
@@ -68,7 +68,9 @@ hoodie.baseUrl; // 'http://myhoodieapp.com'
 hoodie.id();
 ```
 
-Each Hoodie user is assigned a random, unique, persistent ID on signup. While the user is logged in, **id()** will always return that same ID. When no user is signed in, it will return a different, non-persistent ID for the current anonymous user. Every time a user signs out, the ID for the anonymous user changes.
+Each user is assigned a random, unique ID when they first visit your Hoodie app, even before signup. They are, in this state, **anonymous users**. Their ID and their data will only be persisted locally.
+
+When they sign up, their ID becomes permanently bound to their user account. After every single time they sign out again, **hoodie.id()** returns a new, unique value in their client, because they are now de facto a new, anonymous user again.
 
 #### Example
 ```javascript
@@ -83,7 +85,7 @@ hoodie.account.signIn(username, password)
 ### [on()](#on)
 **version:**      *> 0.2.0*
 
-**Binds a persistent event handler for specified events**
+**Adds an event handler for the specified events**
 
 ```javascript
 hoodie.on('event', eventHandler);
@@ -94,7 +96,7 @@ hoodie.on('event', eventHandler);
 | event        | String   | Custom event identifier            | yes      |
 | eventHandler | Function | Function handling triggered event  | yes      |
 
-Hoodie informs you about a lot of internal events, such as data being added, removed or changed, or a user signing in or out. These can be listened to with **on()**. You can also register listeners for events you created and triggered yourself. See [trigger](#trigger) more on this.
+Hoodie informs you about a lot of internal events, such as data being added, removed or changed, or a user signing in or out. These can be listened to with **on()**. You can also register listeners for events you created and triggered yourself. See [trigger](#trigger) for more on this.
 
 #### A Note on the Event Identifier Format
 
@@ -104,11 +106,13 @@ Hoodie store event identifiers always come in the same format:
 object-type:object-id:event-type
 ```
 
-**Object-type** and **event-type** are mandatory. Omitting the **object-id** listens to events from all objects of a type. If you *do* specify an object id, you'll only receive events from that one specific object. If you want to listen for more than one event type at once, use the **change** type, which fires on *add*, *update* and *remove*.
+The **event-type** is mandatory. If you want to listen for more than one event type at once, use the **change** type, which fires on *add*, *update* and *remove*.
+
+**object-type** and **object-id** are optional: Omitting **object-type** listens to all objects in the store, specifying it listens only to objects of that type. Omitting the **object-id** listens to events from all objects of a type. If you *do* specify an object id, you'll only receive events from that one specific object.
 
 You can find more detailed explanations and examples in the [hoodie.store event docs](/en/techdocs/api/client/hoodie.store.html#storeevents).
 
-**In scoped stores**, which are stores which can only contain objects of one type, **the type parameter is omitted**, because it's implicit.
+**In scoped stores**, which are stores which can only contain objects of one type, **the type parameter should be omitted**, because it's implicit.
 
 #### Examples
 
@@ -126,7 +130,7 @@ Note that you're calling **on()** from **hoodie.store**, not from **hoodie** its
 
 ```javascript
 var todoStore = hoodie.store('todo');
-todoStore.on('change, function(changedTodoObject) {
+todoStore.on('change', function(changedTodoObject) {
   console.log('A todo has been changed => ', changedTodoObject);
 });
 ```
@@ -136,7 +140,7 @@ As you can see, this store is scoped to contain only objects with the type **tod
 **Listening for user authentication:**
 
 ```javascript
-hoodie.account.on('signin, function(username) {
+hoodie.account.on('signin', function(username) {
   console.log('Hello there, '+ username);
 });
 ```
@@ -402,4 +406,4 @@ We hope this API guide was helpful! If not, please let us help you <a href="http
 
 We also have an <a href="http://faq.hood.ie" target="_blank">FAQ</a> that could prove useful if things go wrong.
 
-If you find this guide in error or out of date, you could also <a href="https://github.com/hoodiehq/documentation/issues" target="_blank">open an issue</a> or <a href="https://github.com/hoodiehq/documentation/pulls" target="_blank">submit a pull request</a> with your corrections to [this file](https://github.com/hoodiehq/documentation/blob/gh-pages/en/techdocs/api/client/hoodie.md).
+If you find this guide in error or out of date, you could also <a href="https://github.com/hoodiehq/documentation/issues" target="_blank">open an issue</a> or submit a pull request with your corrections to <a href="https://github.com/hoodiehq/documentation/blob/gh-pages/en/techdocs/api/client/hoodie.md" target="_blank">this file</a>.

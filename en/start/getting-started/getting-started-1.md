@@ -174,7 +174,7 @@ For now, **congratulations!** You've created a demo Hoodie app, learned about th
 
 Please check the <a href="http://faq.hood.ie" target="_blank">FAQ</a> or <a href="http://hood.ie/chat" target="_blank">get in touch with us on IRC or Slack</a>. We'd also love to hear from you if things went well!
 
-If you find this guide in error or out of date, you could also <a href="https://github.com/hoodiehq/documentation/issues" target="_blank">open an issue</a> or <a href="https://github.com/hoodiehq/documentation/pulls" target="_blank">submit a pull request</a> with your corrections to [this file](https://github.com/hoodiehq/documentation/blob/gh-pages/en/start/getting-started/getting-started-1.md).
+If you find this guide in error or out of date, you could also <a href="https://github.com/hoodiehq/documentation/issues" target="_blank">open an issue</a> or submit a pull request with your corrections to <a href="https://github.com/hoodiehq/documentation/blob/gh-pages/en/start/getting-started/getting-started-1.md" target="_blank">this file</a>.
 
 Thanks for your interest and time!
 

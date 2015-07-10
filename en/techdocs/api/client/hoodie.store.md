@@ -251,7 +251,6 @@ hoodie.store.update('todo', 'abc456', function(todo) {
       // set dueDate to right now
       todo.dueDate = Date.now();
     }
-    return todo;
   })
   .done(function(newTodo) {})
   .fail(function(error) {})
@@ -449,19 +448,23 @@ This means you can use **hoodie.store** methods directly on objects created with
 Usually you'd do something like this in your todo app:
 
 ```javascript
-hoodie.store.add('todo', { title: 'Getting Coffee' });
-hoodie.store.findAll('todo')
-  .done(function(allTodos) { /* ... */ });
+hoodie.store.add('todo', { title: 'Getting Coffee' })
+.done(function () {
+  hoodie.store.findAll('todo')
+  .done(function(allTodos) { /* … */ })
+})
 ```
 
-Now, the following example uses a scoped store. Note that we've omitted the 'type' parameter in the **add()** and **findAll()** calls, because it's implicit. The store is scoped to the **todo** type. What else would be in there?
+Now, the following example uses a scoped store. Note that we've omitted the *type* parameter in the **add()** and **findAll()** calls, because it's implicit: the store is scoped to the **todo** type, there's only objects of that type in there.
 
 ```javascript
 var todoStore = hoodie.store('todo');
 
-todoStore.add({ title: 'Getting Coffee' });
-todoStore.findAll()
-  .done(function(allTodos) { /*...*/ });
+todoStore.add({ title: 'Getting Coffee' })
+.done(function(){
+  todoStore.findAll()
+  .done(function(allTodos) { /* … */ });
+})
 ```
 
 The benefits of this variant might not be super convincing at first glance, but apart from being more concise and DRYer, it's also less error prone: imagine fumbling the **type** of an **add()** function, and adding a bunch of **todoo** objects by accident. Your app would continue to save the todoos without errors, but they wouldn't show up in your interface, since your **on()** handlers only listen for the correctly-written type. You'd probably assume something was wrong with the display code, and go off bug-hunting in the completely wrong place.
@@ -585,7 +588,7 @@ hoodie.store.on('clear', function(){});
 
 The **clear** event is triggered when a user signed out, or called **hoodie.account.destroy()**. It is also triggered when the user signs in, to clear any existing local objects before loading the objects from the account the user signed into.
 
-Note that no **remove** events is triggered when the store gets cleared, as the objects do not necessarly get removed for the user's account, but only from the local cache.
+Note that no **remove** event is triggered when the store gets cleared, as the objects do not necessarly get removed from the user's account, but only from the local cache.
 
 ## Next Steps
 
@@ -595,4 +598,4 @@ We hope this API guide was helpful! If not, please let us help you <a href="http
 
 We also have an <a href="http://faq.hood.ie" target="_blank">FAQ</a> that could prove useful if things go wrong.
 
-If you find this guide in error or out of date, you could also <a href="https://github.com/hoodiehq/documentation/issues" target="_blank">open an issue</a> or <a href="https://github.com/hoodiehq/documentation/pulls" target="_blank">submit a pull request</a> with your corrections to [this file](https://github.com/hoodiehq/documentation/blob/gh-pages/en/techdocs/api/client/hoodie.store.md).
+If you find this guide in error or out of date, you could also <a href="https://github.com/hoodiehq/documentation/issues" target="_blank">open an issue</a> or submit a pull request with your corrections to <a href="https://github.com/hoodiehq/documentation/blob/gh-pages/en/techdocs/api/client/hoodie.store.md" target="_blank">this file</a>.

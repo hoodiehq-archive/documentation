@@ -6,7 +6,7 @@ locales: en
 **version:** 		*> 0.1.0*<br>
 **source:** 		*[hoodie.js/src/hoodie/account](https://github.com/hoodiehq/hoodie.js/tree/master/src/hoodie/account)*
 
-The account object in the client-side Hoodie API covers all user and authentication-related tasks, and enables you to do previously complex operations, such as signing up a new user, with only a few lines of frontend code. Since [data in Hoodie is generally bound to a user](/en/hoodieverse/glossary.html#private-user-store), it makes sense to familiarise yourself with **account** before you move on to [store](/en/techdocs/api/client/hoodie.store.html).
+The account object in the client-side Hoodie API covers all user and authentication-related operations, and enables you to do previously complex operations, such as signing up a new user, with only a few lines of frontend code. Since [data in Hoodie is generally bound to a user](/en/hoodieverse/glossary.html#private-user-store), it makes sense to familiarise yourself with **account** before you move on to [store](/en/techdocs/api/client/hoodie.store.html).
 
 **After reading this guide, you will know how to:**
 
@@ -162,7 +162,7 @@ The **signIn** method tries to sign in the user to an existing account.
 
 #### NOTES
 
-All Hoodie data that existed in the browser's local store before signin will be cleared on signin. To prevent data loss, you can pass **{moveData: true}** as the options argument, this will move current data (created anonymously or by another account) to the account the user signs in to.
+All Hoodie data that existed in the browser's local store before signin will be cleared on signin. To prevent data loss, you can pass **{moveData: true}** as the options argument, this will move current data (created anonymously) to the account the user signs in to.
 
 **moveData** is useful for the following very rare Offline-First edge case: a user wants to use your app and
 - has the app itself cached locally (with AppCache, for example)
@@ -408,4 +408,4 @@ We hope this API guide was helpful! If not, please let us help you <a href="http
 
 We also have an <a href="http://faq.hood.ie" target="_blank">FAQ</a> that could prove useful if things go wrong.
 
-If you find this guide in error or out of date, you could also <a href="https://github.com/hoodiehq/documentation/issues" target="_blank">open an issue</a> or <a href="https://github.com/hoodiehq/documentation/pulls" target="_blank">submit a pull request</a> with your corrections to [this file](https://github.com/hoodiehq/documentation/blob/gh-pages/en/techdocs/api/client/hoodie.account.md).
+If you find this guide in error or out of date, you could also <a href="https://github.com/hoodiehq/documentation/issues" target="_blank">open an issue</a> or submit a pull request with your corrections to <a href="https://github.com/hoodiehq/documentation/blob/gh-pages/en/techdocs/api/client/hoodie.account.md" target="_blank">this file</a>.
