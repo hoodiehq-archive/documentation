@@ -11,9 +11,9 @@ locales: en
 
 If you've gotten this far in the Docs, you should have Hoodie and its dependencies installed and know that Hoodie is a powerful tool for making simply awesome apps. Combine Hoodie with another strong tool, like [Leaflet](http://leafletjs.com/), and that app can become even greater. So, let's get started.
 
-We'll start off using [Hoodie-Moufle](https://github.com/zoepage/hoodie-moufle), a Hoodie project template, to get the project up and running with Bootstrap, jQuery, Skeleton, and a simple account bar. We'll call the project Hoodie Maps.
+We'll start off using [Hoodie-Skeleton](https://github.com/hoodiehq/hoodie-app-skeleton), a Hoodie project template, to get the project up and running with jQuery, Skeleton, and a simple login. We'll call the project Hoodie Maps.
 
-<pre><code>$ hoodie new HoodieMaps -t "zoepage/hoodie-moufle"
+<pre><code>$ hoodie new HoodieMaps -t "hoodiehq/hoodie-app-skeleton"
 $ cd HoodieMaps
 </code></pre>
 
