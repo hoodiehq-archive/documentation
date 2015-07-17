@@ -26,9 +26,9 @@ locales: ru
 
 ### Устрановка для Windows
 ##### Шаг первый: Node.js
-Скачать Node.js для Windows <a href="http://nodejs.org/download/" target="_blank">тут</a>. 
+Скачайте Node.js для Windows <a href="http://nodejs.org/download/" target="_blank">тут</a>. 
 ##### Шаг второй: CouchDB
-Скачать последнюю версию <a href="http://couchdb.apache.org/#download" target="_blank">CouchDB для Windows</a>.
+Скачайте последнюю версию <a href="http://couchdb.apache.org/#download" target="_blank">CouchDB для Windows</a>.
 ##### Шаг третий: Hoodie-CLI
 Откройте терминал и наберите
 <pre><code>npm install -g hoodie-cli</code></pre>

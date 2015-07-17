@@ -21,7 +21,7 @@ locales: ru
 
 Полный список плагинов можно увидеть <a href="http://plugins.hood.ie/" target="_blank">здесь</a>.
 
-#### Популярные
+#### Популярные плагины
 Несколько плагинов, популярных в сообществе:
 
 - <a href="https://www.npmjs.org/package/hoodie-plugin-angularjs" target="_blank">Hoodie + Angularjs</a>
@@ -32,4 +32,4 @@ locales: ru
 
 ### Написание плагина
 
-Если вы хотите написать свой, прочитайте [это замечательное руководство](../plugins/tutorial.html)
+Если вы хотите написать свой плагин, прочитайте [это замечательное руководство](../plugins/tutorial.html)
