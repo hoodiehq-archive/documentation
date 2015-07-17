@@ -23,6 +23,26 @@ That will host the docs at [http://127.0.0.1:4000/](http://127.0.0.1:4000/).
 
 **Note:** We're in the process of refactoring the stylesheets for docs (and for the rest of the hood.ie websites, too), so please forgive us if those are currently unclear.  
 
+## Syntax Highlighting
+
+…is done with [prism](http://prismjs.com/), and is pretty straightforward. You can defined a code block in both markdown or HTML, like this:
+
+In Markdown, with the triple-backtick-block. Append the language to the opening backticks.
+```
+```javascript
+console.log('badgers');
+``` // Ignore this comment, it's for github's formatter
+```
+
+In HTML, with a `<pre><code>` block. Add the language to the `code` element as a class with the `language-`-prefix.
+```
+<pre><code class="language-javascript">
+console.log('otters');
+</code></pre>
+```
+
+Note that the language identifier for HTML is not `HTML`, but `markup`. We support currently support `markup`, `javascript`, `css` and `bash`. 
+
 ## External Resources of Documentation
 
 ### Guides

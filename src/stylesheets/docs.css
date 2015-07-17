@@ -18,15 +18,100 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-shadow: none !important;
-
 }
+
+.back-to-top{
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  opacity: 0.5;
+  transition: opacity 0.25s;
+}
+
+.back-to-top:hover {
+  opacity: 1;
+}
+
+#top{
+  display: block;
+  height: 50px;
+  background-image: none;
+}
+
 .docs .cb h1,
 .docs .cb h2,
 .docs .cb h3,
 .docs .cb h4,
 .docs .cb h5,
 .docs .cb h6 {
-    text-shadow: none !important;
+  text-shadow: none !important;
+}
+
+.docs .cb h1 a[href*="#"],
+.docs .cb h2 a[href*="#"],
+.docs .cb h3 a[href*="#"],
+.docs .cb h4 a[href*="#"],
+.docs .cb h5 a[href*="#"],
+.docs .cb h6 a[href*="#"] {
+  text-decoration: none;
+  border-bottom: none;
+  background-image: none;
+}
+
+/* Moves anchor link #s in headlines out to the left, if there's room */
+@media screen and (min-width: 700px){
+  .docs .cb h1 a[href*="#"]:hover:before,
+  .docs .cb h2 a[href*="#"]:hover:before,
+  .docs .cb h3 a[href*="#"]:hover:before,
+  .docs .cb h4 a[href*="#"]:hover:before,
+  .docs .cb h5 a[href*="#"]:hover:before,
+  .docs .cb h6 a[href*="#"]:hover:before {
+    content: "#";
+    display: block;
+    width: 0.85em;
+    height: 1.2em;
+    background-color: #273183;
+    position: absolute;
+    margin: 3px 0 0 -2em;
+    border-radius: 50%;
+    color: #FFF;
+    font-style: normal;
+    font-size: 0.8em;
+    padding-left: 0.325em;
+    text-shadow: none;
+    opacity: 1;
+  }
+
+  .docs .cb h1 a[href*="#"]:before,
+  .docs .cb h2 a[href*="#"]:before,
+  .docs .cb h3 a[href*="#"]:before,
+  .docs .cb h4 a[href*="#"]:before,
+  .docs .cb h5 a[href*="#"]:before,
+  .docs .cb h6 a[href*="#"]:before {
+    content: "";
+    display: block;
+    width: 0.85em;
+    height: 1.2em;
+    background-color: #273183;
+    position: absolute;
+    margin: 3px 0 0 -2em;
+    border-radius: 50%;
+    color: #FFF;
+    font-style: normal;
+    font-size: 0.8em;
+    padding-left: 0.325em;
+    text-shadow: none;
+    opacity: 0.5;
+    transition: opacity 0.5s;
+  }
+}
+
+/* Gives all section headlines some space at the top when navigated to via anchor */
+.docs .cb a:not([href]) {
+  /*display: block;*/
+}
+
+.docs .cb ul{
+  list-style-type: disc;
 }
 
 .docs .cb li{
@@ -116,10 +201,6 @@
 		text-decoration: underline;
 	}
 
-	.docs ul {
-		list-style-type: circle;
-	}
-
 	.docs .no-underlining {
 		text-decoration: none;
 		background-color: transparent;
@@ -132,28 +213,39 @@
 
 	.api th,
 	.api td {
-		text-align: left !important;
-	}
+		text-align: left;
+		padding: 5px 15px;
+    }
 
-	.api th {
-		font-weight: 500;
-		padding: 5px 8px;
-	}
+  .api th {
+    font-weight: 500;
+    text-transform: capitalize;
+    background-color: #F0F1F5;
+  }
 
-	.api th:nth-child(1),
-	.api td:nth-child(1){
-		width: 25%;
-	}
+  .api th:nth-child(1),
+  .api td:nth-child(1){
+    width: auto;
+  }
 
-	.api tr:nth-child(2n) td {
-		background-color: #fff;
-	}
-	.api tr:nth-child(2n+1) td {
-		background-color: #fdfdfd;
-	}
+  .api tr:nth-child(2n) td {
+    background-color: #fff;
+  }
+  .api tr:nth-child(2n+1) td {
+    background-color: #fdfdfd;
+  }
+
+  .api td:nth-child(n+2){
+      border-left: 1px solid #F0F1F5;
+  }
+
 .docs .footer ul{
 	text-align: right;
 	list-style: none;
+}
+
+.docs img{
+  border: none;
 }
 
 /*
@@ -166,3 +258,20 @@
 		float: left;
 	}
 */
+
+
+/* FOR LATER MIGRATION TO GLOBAL STYLES*/
+
+/* TODO: migrate this to core hood.ie styles. 400 is also better for the nav links*/
+.docs a{
+  font-weight: 400;
+  background-size: 1px 2px;
+  text-shadow: 2px 0px 0 #FFF, -2px 0 0 #FFF;
+  background-position: 0px 1.125em;
+}
+
+header.invisible{
+  -webkit-transform: translate(0, -102px);
+  -ms-transform: translate(0, -102px);
+  transform: translate(0, -102px);
+}

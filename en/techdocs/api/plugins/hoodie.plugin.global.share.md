@@ -2,12 +2,16 @@
 layout: layout-api
 locales: en
 ---
+# hoodie.global
+**source:**     <a href="https://github.com/hoodiehq/hoodie-plugin-global-share" target="_blank">hoodiehq/hoodie-plugin-global-share</a>
 
-# hoodie-plugin-global-share  <a href="https://travis-ci.org/hoodiehq/hoodie-plugin-global-share" target="_blank" class="no-underlining"><img src="https://travis-ci.org/hoodiehq/hoodie-plugin-global-share.png?branch=master" /></a>
+Lets you make documents globally available to any user or unregistered visitor.
 
 ### Installation:
 
-<pre><code>hoodie install global-share</code></pre>
+```bash
+$ hoodie install global-share
+```
 
 ### Usage:
 
@@ -15,7 +19,8 @@ Assuming you have a running hoodie setup.
 
 Create a few documents you'd like to make publicly available:
 
-<pre><code>var docs = [
+```javascript
+var docs = [
   {
     name: 'sleep'
   },
@@ -29,28 +34,37 @@ Create a few documents you'd like to make publicly available:
 
 hoodie.store.add('tasks', docs)
 	.done(function(newDocs) { ... });
-</code></pre>
+```
 
 Make all **tasks** publicly available:
 
-<pre><code>hoodie.store.findAll('tasks').publish();</code></pre>
+```javascript
+hoodie.store.findAll('tasks').publish();
+```
 
 or publish a **single task**:
 
-<pre><code>hoodie.store.find('tasks', 'taskID12345').publish();</code></pre>
+```javascript
+hoodie.store.find('tasks', 'taskID12345').publish();
+```
 
 Same goes for **unpublishing**:
 
-<pre><code>hoodie.store.findAll('tasks').unpublish();
+```javascript
+hoodie.store.findAll('tasks').unpublish();
 hoodie.store.find('tasks', 'taskID12345').unpublish();
-</code></pre>
+```
 
 You can then read these documents from the **hoodie.global** store, logged in
 as any user (or not logged in at all).
 
-<pre><code>hoodie.global.find('tasks')
-	.done(function(publicTasks) { ... });</code></pre>
+```javascript
+hoodie.global.find('tasks')
+	.done(function(publicTasks) { ... });
+```
 
 ### Testing:
 
-<pre><code>grunt</code></pre>
+```bash
+$ grunt
+```

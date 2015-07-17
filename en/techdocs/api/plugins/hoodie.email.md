@@ -2,7 +2,7 @@
 layout: layout-api
 locales: en
 ---
-# hoodie.email 
+# hoodie.email
 
 The email plugin gives you a method to send email from the client.
 
@@ -10,14 +10,18 @@ The email plugin gives you a method to send email from the client.
 - [send](#emailsend)
 
 <a id="emailsend"></a>
-### email.send()
-**version:**    *> 0.1.0* 
+### [email.send()](#emailsend)
+**version:**    *> 0.1.0*<br>
+**source:**     <a href="https://github.com/hoodiehq/hoodie-plugin-email" target="_blank">hoodiehq/hoodie-plugin-email</a>
 
 
-<pre><code>hoodie.email.send(payload);</code></pre>
+```javascript
+hoodie.email.send(payload);
+```
+
 
 | option              | type   | required |
-| ------------------- |:------:|:--------:|
+| ------------------- |:------ |:-------- |
 | payload.to          | String | yes      |
 | payload.from        | String | yes      |
 | payload.subject     | String | no       |
@@ -25,36 +29,43 @@ The email plugin gives you a method to send email from the client.
 | payload.html        | String | no       |
 | payload.attachments | Array  | no       |
 
-<br />
-The E-Mail plugins exposes the **send** method to **hoodie.email**. Using it you can send E-Mails right from the client.
-It takes only one argument – an E-Mail object. As Hoodie uses <a href="http://www.nodemailer.com/" target="_blank">nodemailer</a> internally you can use all options available there. 
+The E-Mail plugins exposes the **send** method to **hoodie.email**. Use it to send E-Mails right from the client.
 
-You can find a full list <a href="http://www.nodemailer.com/#e-mail-message-fields" target="_blank">in their documentation</a>.
+It takes only one argument – an E-Mail object. As Hoodie uses <a href="http://www.nodemailer.com/" target="_blank">nodemailer</a> internally you can use all options available there. You can find a full list <a href="http://www.nodemailer.com/#e-mail-message-fields" target="_blank">in their documentation</a>.
 
 #### Example
 
-<pre><code>// send emails
+Sending emails with the plugin:
+
+```javascript
 hoodie.email.send({
-  from: "Fred Foo <foo@blurdybloop.com>", // sender address
-  to: "bar@blurdybloop.com, 
-      baz@blurdybloop.com", // list of receivers
+  from: "Hans Hansson <hans@ottersunlimited.com>", // sender address
+  to: "per@ottersunlimited.com,
+      sven@ottersunlimited.com", // list of receivers
   subject: "Greetings", // Subject line
   text: "Hello world!", // plaintext body
   html: "<b>Hello world</b>" // html body
 });
+```
 
-// you can also pass attachments as dataURIs:
+You can also pass attachments as dataURIs:
+
+```javascript
 hoodie.email.send({
-  to: 'test@example.com',
-  from: 'hoodie@example.com',
+  to: 'hans@ottersunlimited.com',
+  from: 'sven@ottersunlimited.com',
   subject: 'Greetings',
   text: 'Hello world!',
   attachments: [
     {
-      dataURI: 
-      'data:text/plain;base64,SGVsbG8sIFdvcmxkIQ%3D%3D', 
+      dataURI:
+      'data:text/plain;base64,SGVsbG8sIFdvcmxkIQ%3D%3D',
       ...
     }
   ]
 });
-</code></pre>
+```
+
+#### Important
+
+This plugin isn't complete and is considered a developer preview. It will be significantly improved soon.

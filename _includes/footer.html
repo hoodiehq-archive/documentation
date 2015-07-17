@@ -194,6 +194,7 @@
             </div>
         </footer>
         <script src="http://hood.ie/dist/prod/hoodie.min.js"></script>
+        <script type="text/javascript" src="/src/js/smoothscroll.min.js"></script>
         <script src="/src/js/egg.js"></script>
         <script src="/src/js/prism.js"></script>
         <script type="text/javascript">
@@ -207,7 +208,12 @@
             t.src = '//secure.gaug.es/track.js';
             var s = document.getElementsByTagName('script')[0];
             s.parentNode.insertBefore(t, s);
+
+            // Adds the 'back-to-top'-link before each section, except the first
+            $('.docs .cb h3 a[href*="#"]').slice(1).parent().before('<a href="#top" class="back-to-top">Back to top</a>');
+
           })();
+
         </script>
     </body>
 </html>

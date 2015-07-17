@@ -41,12 +41,13 @@ Let's make some edits to our **index.html** file to fit our app's structural nee
   <!-- create this user-avatar div to sit next to the username -->
   <div class="user-avatar relative">
 
-    <!-- default the img src to a placekitten url for a little extra fun  and don't forget the extra style classes-->
-    <img src="http://placekitten.com/g/50/50" data-avatar="currentUser" width="50px" height="50px" class="mr1 rounded relative" />
+    <!-- default the img src to a placekitten url for a little extra fun and don't forget the extra style classes-->
+    <img src="http://placekitten.com/g/50/50" data-avatar="currentUser" width="50px" height="50px" class="mr1 rounded relative" alt="your avatar"/>
 
   </div>
 
-  <p class="m0" >Hello <span id="userName"></span>!</p>
+  <!-- add the m0 class to the paragraph -->
+  <p class="m0">Hello <span id="userName"></span>!</p>
   <button id="signOut">Sign out</button>
 </section>
 ```
@@ -70,7 +71,8 @@ Now we'll move into the section with the class "content":
   <!-- create a form for the user to submit their messages through -->
   <form data-action="chat-input">
     <div class="mt2 mb1">
-      <textarea class="block full-width my1 field-light not-rounded no-resize" rows="1" placeholder="Type message here..." data-action="send-message"></textarea>
+      <label for="message-input">Send a message!</label>
+      <textarea id="message-input" class="block full-width my1 field-light not-rounded no-resize" rows="1" placeholder="Type message here..." data-action="send-message"></textarea>
     </div>
     <input class="button bg-teal full-width" type="submit" value="Send Message">
   </form>
@@ -114,6 +116,10 @@ Before we get started with the JavaScript, we'll add some unique CSS to our **ww
 
 .input-container {
   z-index: 21;
+}
+
+.chat-stream-container {
+  height: 20rem;
 }
 ```
 
@@ -174,7 +180,7 @@ function sendMessage(e) {
   // trigger an immediate sync with the server for quicker updates
   hoodie.remote.push();
 
-  // Dont't forget to clear out the charBox
+  // Don't forget to clear out the chatBox
   chatBox.val('');
 }
 ```
@@ -209,7 +215,7 @@ function checkSubmit(e) {
 }
 ```
 
-So we've sent a message to the messageStore, how does it appear in the chat stream? Well, we listening to the global share store for messages being added and push them into the stream:
+So we've sent a message to the messageStore, how does it appear in the chat stream? Well, we're listening to the global share store for messages being added and push them into the stream:
 
 ```js
 // setup event listener for new messages being saved to Hoodie
@@ -230,7 +236,7 @@ function streamMessage(message) {
   
   // create template to store message content
   var messageTemplate = $('<div class="p1 '+bgColor+' flex flex-stretch"></div>');
-  var messageAvatar = $('<aside class="flex flex-stretch rounded overflow-hidden mr2"><img src="http://placekitten.com/g/50/50" width="50px" height="50px" data-avatar="'+message.user+'" /></aside>');
+  var messageAvatar = $('<aside class="flex flex-stretch rounded overflow-hidden mr2"><img src="http://placekitten.com/g/50/50" width="50px" height="50px" data-avatar="'+message.user+'" alt="'+message.user+'\'s avatar"/></aside>');
   var messageContentContainer = $('<div></div>');
   var messageUser = $('<h4 class="inline-block mt0 mr1">'+message.user+'</h4>');
   var messageDate = $('<span class="inline-block h6 regular muted">'+date.toLocaleTimeString()+'</span>');
@@ -244,10 +250,9 @@ function streamMessage(message) {
   messageTemplate.append(messageContentContainer);
 
   // finally, insert template into the chat stream
-  // then, clear out the chat box
   messageTemplate.appendTo(chatStream);
 
-  // start async proces of fetching the avatar for this user
+  // start async process of fetching the avatar for this user
   fetchAvatar(message.user);
 
   // scroll the new message into view if it overflows the chat stream
@@ -313,7 +318,25 @@ hoodie.account.on('signin signup', function(e){
 });
 ```
 
-So we have the ability to send chat messages and be notified who comes in & out of the chatroom; now let's finish up by giving user's the ability to set a unqiue avatar picture. A part of that CSS earlier was adding a hover state for the account bar avatar to tell the user they can click that avatar to change it, so what happens when they click it? 
+Once you've added those triggers to **account.js**, add these functions to **main.js**:
+
+```js
+function notifySignIn(e) {
+  var notification = e + " has signed into the chat.";
+  var model = new notifyModel(notification, 'green');
+
+  messageStore.add(model).publish();
+}
+
+function notifySignOut(e) {
+  var notification = e + " has signed out or disconnected.";
+  var model = new notifyModel(notification, 'red');
+
+  messageStore.add(model).publish();
+}
+```
+
+So we have the ability to send chat messages and be notified who comes in & out of the chatroom; now let's finish up by giving user's the ability to set a unique avatar picture. A part of that CSS earlier was adding a hover state for the account bar avatar to tell the user they can click that avatar to change it, so what happens when they click it? 
 
 ```js
 $('.user-avatar').on('click', showFileInput);
@@ -344,7 +367,7 @@ function handleImgUpload(e) {
   // process the image for saving to the avatarStore with the file taken from the file input's change event
   avatarProcess(e.target.files[0]);
 
-  then remove the input from the DOM
+  // then remove the input from the DOM
   e.target.remove();
 }
 
@@ -374,7 +397,7 @@ function saveAvatar(props) {
     var avatarEl = $('[data-avatar="'+avatar[0].id+'"]');
     avatarEl[0].src = avatar[0].src;
   })
-  .catch(function(error) { console.log(error); })
+  .catch(function(error) { console.log(error); });
 }
 ```
 

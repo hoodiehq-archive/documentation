@@ -10,7 +10,7 @@ Hoodie was designed around a few core beliefs and concepts, and they explain a l
 - [noBackend](#nobackend)
 - [Offline First](#offline-first)
 
-<a name="dreamcode"></a>
+<a id="dreamcode"></a>
 
 ### Dreamcode
 
@@ -24,7 +24,7 @@ Forget all the constraints of today's browsers. Then write down the code of your
 
 Here's some <a href="http://nobackend.org/dreamcode.html" target="_blank">further information and links to Dreamcode examples</a>.
 
-<a name="nobackend"></a>
+<a id="nobackend"></a>
 
 ### noBackend
 
@@ -43,7 +43,7 @@ and you're good to go. Sign up users, store data… it's all right there, immedi
 ##### More information about noBackend
 See <a href="http://nobackend.org/" target="_blank">nobackend.org</a>, <a href="http://nobackend.org/solutions.html" target="_blank">Examples for noBackend solutions</a> and <a href="http://twitter.com/noBackend" target="_blank">@nobackend</a> on Twitter.
 
-<a name="offline-first"></a>
+<a id="offline-first"></a>
 
 ### Offline First
 We make websites and apps for the web. The whole point is to be online, right? We're online when we build these things, and we generally assume our users to be in a state of permanent connectivity. That state, however, is a myth, and that assumption causes all sorts of problems.
@@ -57,4 +57,6 @@ With the stellar rise of mobile computing, we can no longer assume anything abou
 See <a href="http://offlinefirst.org/" target="_blank">offlinefirst.org</a>, <a href="https://github.com/offlinefirst/" target="_blank">on GitHub</a> and <a href="https://github.com/offlinefirst/research" target="_blank">discussions and research</a>
 
 ### So now you know what motivates us
-We hope this motivated you too! So let's continue to <a href="system-requirements-browser-compatibilities-prerequisites-before-getting-started-with-hoodie.html">the system requirements for Hoodie.</a>
+We hope this motivated you too! Now find out about [the underlying technology and how Hoodie actually works](/en/hoodieverse/how-hoodie-works.html).
+
+If you're already familiar with the architecture, it might be time to take a look at <a href="system-requirements-browser-compatibilities-prerequisites-before-getting-started-with-hoodie.html">the system requirements for Hoodie.</a>
