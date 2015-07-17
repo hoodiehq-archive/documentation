@@ -12,28 +12,29 @@ locales: ru
 
 Этот документ предназначен для членов сообщества. Это пошаговое руководство и описание нашего процесса взаимодействия.
 
-According to our [Code of Conduct](http://hood.ie/code-of-conduct.html), we are aiming to provide a safe space for everyone in this community. And we're happy to welcome everyone, including developers and people who want to become one of our non-coding contributors. 
 
-This document is and will always be work in progress. We are constantly trying to improve our onboarding and community culture and always happy to get feedback!
+Согласно нашему [Кодексу поведения](http://hood.ie/code-of-conduct.html) мы стремимся обеспечить безопасное пространство для каждого в этом сообществе. И мы рады приветствовать всех, в том числе разработчиков и людей, которые хотят стать одними из наших авторов не пишущих код.
 
-###  Where and what can people contribute?
+Над этим документом всегда будет проводиться работа по его улучшению. Мы постоянно пытаемся улучшить возможность влиться в коллектив и культуру сообщества и всегда рады получить обратную связь.
 
-Hoodie is a quite big project and we have various parts that need to be created and / or maintained. To find out where we need help, take a look at our [Contribute Site](http://hood.ie/contribute/). If you can't find anything you'd want to do or have further questions, please [contact us](http://hood.ie/contact/).
+###  Где и какой вклад могут внести люди?
+
+Hoodie является довольно большим проектом, и у нас есть различные части, которые должны быть созданы и / или поддерживаемы. Чтобы узнать, где нам нужна помощь, Взгляните на наш [Сайт Участников](http://hood.ie/contribute/). Если вы не можете найти что-нибудь чтобы вы хотели делать или у вас возникли вопросы, пожалуйста [обратитесь к нам](http://hood.ie/contact/).
 
 ---------------
 
-### 1. Say hi!
+### 1. Скажи привет!
 
-- As the first and frontmost contact for the new contributor, you are responsible for making them a part of community. 
-- If this doesn't make sense or is just not possible because of any reason, e.g. your own obligations, lack of time or personal reasons, please talk to the community as early as possible to see who can be their contact person and guide in the next weeks and months. 
-- Please also keep in mind that, ideally, the two people are sharing the same fields of work, interests or skills so both can learn from each other.
-- Once you found someone, give the two an introduction. 
+-Как первый и внешний контакт в качестве нового участника, вы несете ответственность за него, делая его частью сообщества.
+-Если это не имеет смысла, или просто не возможно по какой-либо причине, например собственных обязательств, отсутствие времени или личным причинам, пожалуйста обращайтесь к сообществу настолько рано насколько это возможно, чтобы можно было найти, кто еще может быть их контактным лицом и гид в ближайшие недели и месяцы.
+-Также имейте в виду, что, в идеале, для двух людей, которые делятся своей работой, интересами или навыками так, что оба могут узнать больше друг от друга.
+-Как только вы нашли кого-то представьте второго.
 
-Try to speak to the new contributor. We learned that this clears a lot of obstacles in communication and helps getting things going faster. Also, meeting new people is always fun!
+Попробуйте поговорить с новым участником. Мы узнали, что это преодолевает множество препятствий в общении и помогает делать вещи быстрее. Кроме того, встречи с новыми людьми это всегда весело!
 
-The easiest way to do this is a quick <a href="http://talky.io" target="_blank">Talky</a>, Skype call or Google Hangout with the person interested and at least one exsisiting contributer (this could be you already). If you happen to be in the same town, meeting for lunch, coffee or going on a walk is always the preferrable option.
+Самый простой способ сделать это быстро <a href="http://talky.io" target="_blank">Talky</a>, звонок по Skype или по Google Hangout с заинтересованным лицом и по крайней мере одним дейтвующим  участником (это может быть уже вы ). Если вам случится быть в том же городе, встретьтесь на обеде, кофе или прогулка всегда является предпочтительным вариантом.
 
-### 2. Get Started together
+### 2. Начнем это вместе
 
 1. Introduce them to our [Code of Conduct](http://hood.ie/code-of-conduct/). Please do not just mention it but ask them to read it and ask whether they have questions or concerns. If so, please address them.
 2. Find out what their status quo is:
