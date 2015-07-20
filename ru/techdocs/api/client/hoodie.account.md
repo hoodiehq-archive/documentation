@@ -3,26 +3,24 @@ layout: layout-api
 locales: en
 ---
 # hoodie.account
-**version:** 		*> 0.1.0* <br />
-**source:** 		*hoodie/src/hoodie/account.js*<br />
+**version:** 		*> 0.1.0*<br>
+**source:** 		*[hoodie.js/src/hoodie/account](https://github.com/hoodiehq/hoodie.js/tree/master/src/hoodie/account)*
 
-**<br />after reading this you will know:**
+The account object in the client-side Hoodie API covers all user and authentication-related operations, and enables you to do previously complex operations, such as signing up a new user, with only a few lines of frontend code. Since [data in Hoodie is generally bound to a user](/en/hoodieverse/glossary.html#private-user-store), it makes sense to familiarise yourself with **account** before you move on to [store](/en/techdocs/api/client/hoodie.store.html).
 
-- how to sign up / in / out a user
-- how to check if a user is signed in
-- how to change username or password
-- how to reset a password
-- how to listen to account events
-- how to destroy a user account
+**After reading this guide, you will know how to:**
 
-## Introduction
+- sign a user up, in and out
+- check if a user is signed in
+- change username or password
+- reset a password
+- listen to account events
+- destroy a user account
 
-*The account object gives you the methods to create, update and delete an account. A user's data is always bound to the user's account, and will automatically be synchronized when signend in on different devices.*
-
+<a id="top"></a>
 
 ### Properties
 - [username](#accountusername)
-
 
 ### Methods
 - [signUp()](#accountsignup)
@@ -33,54 +31,56 @@ locales: en
 - [resetPassword()](#accountresetpassword)
 - [destroy()](#accountdestroy)
 
-### Events <small>[>>](#accountevents)</small>
-- signup
-- signin
-- signout
-- reauthenticated
-- changepassword
-- changeusername
-- passwordreset
-- error:passwordreset
-- error:unauthenticated
-
+### Events
+- [signup](#signup)
+- [signin](#signin)
+- [signout](#signout)
+- [reauthenticated](#reauthenticated)
+- [changepassword](#changepassword)
+- [changeusername](#changeusername)
+- [passwordreset](#passwordreset)
+- [error:passwordreset](#error-passwordreset)
+- [error:unauthenticated](#error-unauthenticated)
 
 <a id="accountusername"></a>
-### account.username
+### [account.username](#accountusername)
 **version:**    *> 0.2.0*
 
-<pre><code>hoodie.account.username</code></pre>
+```javascript
+hoodie.account.username
+```
 
-The **hoodie.account.username** gets automatically set / unset when signing in, signing up, changing username
-or destroying the account.
+**hoodie.account.username** gets automatically set/unset when signing in, signing up, changing the username or destroying the account.
 
 It is also the current way to check if a user is signed in or not.
 
 
-##### Example
+#### Example
 
-<pre><code>if (hoodie.account.username) {
+```javascript
+if (hoodie.account.username) {
   // user is signed in
-  console.log(hoodie.account.username);
+  console.log('Hey there, '+hoodie.account.username);
 } else {
   // user is anonymous
   console.log('You are not logged in!');
 }
-</code></pre>
-
-## Methods
-
+```
 
 <a id="accountsignup"></a>
-### account.signUp()
+### [account.signUp()](#accountsignup)
 **version:** 		*> 0.2.0*
 
-<pre><code>hoodie.account.signUp('user', 'password');</code></pre>
+**Lets you sign up a new user**
+
+```javascript
+hoodie.account.signUp('user', 'password');
+```
 
 ##### Arguments
 
 | Nr | argument   | type   | description     | required |
-| --:| ---------- |:------:|:---------------:|:--------:|
+|:--:|:---------- |:------ |:--------------- |:-------- |
 |  1 | username   | String | username        | yes      |
 |  2 | password   | String | valid password  | yes      |
 
@@ -104,15 +104,14 @@ It is also the current way to check if a user is signed in or not.
 | HoodieError           | Username must be set                        |
 | HoodieError           | Must sign out first                         |
 | HoodieConflictError   | Username **&lt;username>** already exists   |
-| HoodieConnectionError | Could not connect to Server                 |
+| HoodieConnectionError | Could not connect to server                 |
 
 
-The **signUp** creates a new user account on the Hoodie server. The account is confirmed automatically,
-after the user-specific database has been created, where all the user's data gets automatically
-synchronized to.
+**signUp** creates a new user account on the Hoodie server. Currently, the account is confirmed automatically after the user-specific database (where all the user's data gets automatically synchronized to) has been created.
 
-##### Example
-<pre><code>$('#signUpForm').submit(function (event) {
+#### Example
+```javascript
+$('#signUpForm').submit(function (event) {
   event.preventDefault();
   var username  = $('#username').val();
   var password  = $('#password').val();
@@ -121,25 +120,25 @@ synchronized to.
     .done(welcomeNewUser)
     .fail(showErrorMessage);
 });
-</code></pre>
+```
 
-##### Notes
-> - The confirmation workflow will be customizable in future
-> - there is no feature built-in to compare the password to a password confirmation.
->   If you need this logic, please validate this beforehand in your app.
-
+**Note:** The confirmation workflow will be customizable in future, so you'll be able to require signup confirmation by email, for example. This will happen in the admin panel of the user-plugin.
 
 
 <a id="accountsignin"></a>
-### account.signIn()
+### [account.signIn()](#accountsignin)
 **version:** 		*> 0.2.0*
 
-<pre><code>hoodie.account.signIn('user', 'password');</code></pre>
+**Signs in an existing user.**
+
+```javascript
+hoodie.account.signIn('user', 'password');
+```
 
 ##### Arguments
 
 | Nr | option     | type   | description             | required |
-| --:| ---------- |:------:|:-----------------------:|:--------:|
+|:--:|:---------- |:------ |:----------------------- |:-------- |
 |  1 | user       | String | username                | yes      |
 |  2 | password   | String | valid password          | yes      |
 |  3 | options    | Object | {moveData: true/false}  | no       |
@@ -157,18 +156,25 @@ synchronized to.
 | HoodieAccountUnconfirmedError  | Account has not been confirmed yet |
 | HoodieAccountNotFoundError     | Account could not be found |
 | HoodieError                    | _A custom error can be set by plugins, e.g. the account could be blocked due to missing payments_ |
-| HoodieConnectionError | Could not connect to Server                 |
+| HoodieConnectionError | Could not connect to server                 |
 
-<br />
+The **signIn** method tries to sign in the user to an existing account.
 
+#### NOTES
 
-The **signIn** tries to sign in the user to an existing account.
+All Hoodie data that existed in the browser's local store before signin will be cleared on signin. To prevent data loss, you can pass **{moveData: true}** as the options argument, this will move current data (created anonymously) to the account the user signs in to.
 
-All local data that exists locally before signin in gets cleared. To prevent data loss, you can pass **{moveData: true}** as the options argument, this will move current data (created anonymously or by another account) to the account the user signs in to.
+**moveData** is useful for the following very rare Offline-First edge case: a user wants to use your app and
+- has the app itself cached locally (with AppCache, for example)
+- is *not* signed in to the app
+- cannot sign in (authenticate with the server) because there's no internet connection
 
-##### Example
+They can then work as an anonymous user and produce new data with the app, and as soon as they're online again, they can sign in with **moveData:true**. This will migrate all their local user data from their anonymous user over to their actual user.
 
-<pre><code>$('#signInForm').submit(function (event) {
+#### Example
+
+```javascript
+$('#signInForm').submit(function (event) {
   event.preventDefault();
   var username = $('#username').val();
   var password = $('#password').val();
@@ -176,25 +182,27 @@ All local data that exists locally before signin in gets cleared. To prevent dat
     .done(welcomeUser)
     .fail(showErrorMessage);
 });
-</code></pre>
+```
 
 <a id="accountsignout"></a>
-### account.signOut()
+### [account.signOut()](#accountsignout)
 **version:** 		*> 0.2.0*
 
+**Signs the current user out of their existing and clears all local data**
 
-<pre><code>hoodie.account.signOut(options);</code></pre>
-
+```javascript
+hoodie.account.signOut(options);
+```
 
 ##### Arguments
 
 | Nr | option     | type   | description             | required |
-| --:| ---------- |:------:|:-----------------------:|:--------:|
+|:--:|:---------- |:------ |:----------------------- |:-------- |
 |  1 | options    | Object | {ignoreLocalChanges: true/false}  | no       |
 
 ##### Resolves with
 
-_resolves without argument_<br /><br />
+_resolves without argument_
 
 ##### Rejects with
 
@@ -202,45 +210,39 @@ _resolves without argument_<br /><br />
 | ------------------------------ | ------------------------------ |
 | HoodieAccountLocalChangesError | There are local changes that could not be synced |
 
-<br />
+Before signing out a user, Hoodie pushes all local changes to the user's server-side database. If that fails because the server cannot be reached, or because the user's session is invalid, **signOut()** fails and rejects with an **HoodieAccountLocalChangesError** error. To enforce a signout despite eventual data loss, you can pass **{ignoreLocalChanges: true}** in the options argument.
 
-The **signOut()** ends the user's session if signed in, and clears all local data.
+#### Example
 
-Before signing out a user, Hoodie pushes all local changes to the user's databases. If that fails
-because the Server cannot be reached or the user's session is invalid, **signOut()** fails and rejects
-with an **HoodieAccountLocalChangesError** error. To enforce a signout despite eventual data loss,
-you can pass **{ignoreLocalChanges: true}** as the options argument.
-
-
-##### Example
-
-<pre><code>hoodie.account.signOut()
+```javascript
+hoodie.account.signOut()
   .done(redirectToHomepage)
-  .fail(showError);</code></pre>
+  .fail(showError);
+```
 
-##### Notes
-> - **HoodieAccountLocalChangesError** does currently not get returned, instead cryptic errors
->   may be returned, about the user not being authenticated or a failed request. See [#358](https://github.com/hoodiehq/hoodie.js/issues/358)
-
+#### Notes
+**HoodieAccountLocalChangesError** does currently not get returned, instead you will receive cryptic errors about the user not being authenticated or a failed request. See [issue #358](https://github.com/hoodiehq/hoodie.js/issues/358).
 
 <a id="accountchangepassword"></a>
-### account.changePassword()
+### [account.changePassword()](#accountchangepassword)
 **version:**    *> 0.2.0*
 
+**Lets a registered user change their password.**
 
-<pre><code>hoodie.account.changePassword(currentPassword, newPassword);</code></pre>
-
+```javascript
+hoodie.account.changePassword(currentPassword, newPassword);
+```
 
 ##### Arguments
 
 | Nr | option           | type   | description                           | required |
-| --:| ---------------- |:------:|:-------------------------------------:|:--------:|
+|:--:|:---------------- |:------ |:------------------------------------- |:-------- |
 |  1 | currentPassword  | String | password of signed in user            | yes      |
 |  2 | newPassword      | String | new password for signed in user       | yes      |
 
 ##### Resolves with
 
-_resolves without argument_ <br /><br />
+_resolves without argument_
 
 ##### Rejects with
 
@@ -249,36 +251,34 @@ _resolves without argument_ <br /><br />
 | HoodieUnauthenticatedError | Not signed in |
 
 
+#### Example
 
-##### Example
-
-<pre><code>hoodie.account.changePassword('secret', 'newSecret')
+```javascript
+hoodie.account.changePassword('secret', 'newSecret')
   .done(showSuccessMessage)
   .fail(showErrorMessage)
-</code></pre>
-
-##### Notes
-> - The current password is ignored with the current implementation.
->   This will be fixed with [#103](https://github.com/hoodiehq/hoodie.js/issues/103)
-
+```
 
 <a id="accountchangeusername"></a>
-### account.changeUsername()
+### [account.changeUsername()](#accountchangeusername)
 **version:**    *> 0.2.0*
 
-<pre><code>hoodie.account.changeUsername(currentPassword, newUsername);</code></pre>
+**Lets a registered user change their username.**
 
+```javascript
+hoodie.account.changeUsername(currentPassword, newUsername);
+```
 
 ##### Arguments
 
 | Nr | option           | type   | description                           | required |
-| --:| ---------------- |:------:|:-------------------------------------:|:--------:|
+| --:| ---------------- |:------:|:------------------------------------- |:-------- |
 |  1 | currentPassword  | String | password of signed in user            | yes      |
 |  2 | newUsername      | String | new username for signed in user       | yes      |
 
 ##### Resolves with
 
-_resolves without argument_ <br /><br />
+_resolves without argument_
 
 ##### Rejects with
 
@@ -289,25 +289,28 @@ _resolves without argument_ <br /><br />
 | HoodieConflictError        | **&lt;newUsername>** is taken |
 
 
-##### Example
+#### Example
 
-<pre><code>hoodie.account.changeUsername('secret', 'newusername')
+```javascript
+hoodie.account.changeUsername('secret', 'newusername')
   .done(showSuccessMessage)
   .fail(showErrorMessage)
-</code></pre>
+```
 
 
 <a id="accountresetpassword"></a>
-### account.resetPassword()
+### [account.resetPassword()](#accountresetpassword)
 **version:**    *> 0.2.0*
 
-<pre><code>hoodie.account.resetPassword(username);</code></pre>
+```javascript
+hoodie.account.resetPassword(username);
+```
 
 ##### Arguments
 
-| Nr | option     | type   | description                                           | required |
-| --:| ---------- |:------:|:-----------------------------------------------------:|:--------:|
-|  1 | username   | String | username of the user which password shall be resetted | yes      |
+| Nr | option     | type   | description                    | required |
+|:--:|:---------- |:------ |:------------------------------ |:-------- |
+|  1 | username   | String | username to reset password for | yes      |
 
 ##### Resolves with
 
@@ -324,12 +327,13 @@ _resolves without argument_ <br /><br />
 | HoodieError                | Failed to send password reset email  |
 | HoodieConnectionError      | Could not connect to Server          |
 
-##### Example
+#### Example
 
-<pre><code>hoodie.account.resetPassword('joe@example.com')
+```javascript
+hoodie.account.resetPassword('joe@example.com')
   .done(showSuccessMessage)
   .fail(showErrorMessage)
-</code></pre>
+```
 
 ##### Notes
 > We currently generate a new password and send it out via email.
@@ -337,11 +341,14 @@ _resolves without argument_ <br /><br />
 
 
 <a id="accountdestroy"></a>
-### account.destroy() 
-**version:**      *> 0.2.0* 
+### [account.destroy()](#accountdestroy)
+**version:**      *> 0.2.0*
 
-<pre><code>hoodie.account.destroy();</code></pre>
+**Destroys the accout of the currently signed in user.**
 
+```javascript
+hoodie.account.destroy();
+```
 
 ##### Arguments
 
@@ -357,36 +364,48 @@ _resolves without argument_
 | -------------------------- | ------------------------------------ |
 | HoodieConnectionError      | Could not connect to Server          |
 
-##### Example
+#### Example
 
-<pre><code>hoodie.account.destroy()
+```javascript
+hoodie.account.destroy()
   .done(showSuccessMessage)
   .fail(showErrorMessage)
-</code></pre>
+```
 
 ##### Notes
-> - When a user account gets destroy, the user's database gets removed and cannot be recovered.
+> - When a user account gets destroyed, the user's database gets removed and cannot be recovered.
 > - We currently do not ask for the user's password, but plan to do so in the future [#55](https://github.com/hoodiehq/hoodie.js/issues/55)
 
 
 <a id="accountevents"></a>
-## Account events
+### [Account events](#accountevents)
 
 | name | arguments | description |
 | ---- | --------- | ----------- |
-| signup | username | triggered after user successfully signed up |
-| signin | username | triggered after user successfully signed in |
-| signout | username | triggered after user successfully signed out |
-| reauthenticated | username | triggered after user successfully signed in with current username. See **error:unauthenticated** event for more information. |
-| changepassword | - | triggered after user successfully changed the password |
-| changeusername | username | triggered after user successfully changed the username |
-| passwordreset | username | triggered after password has been resetted successfully |
-| error:passwordreset | error, username | An error occured when trying to reset the password for **username** |
-| error:unauthenticated | error, username | The current user has no valid session anymore and needs to reauthenticate. As Hoodie works offline, it can get into a state where a user is signed in with data stored in the browser, but without a valid session, so e.g. sync does not work anymore. In that case, the **error:unauthenticated** is triggered and the user should sign in with the current username again. |
+| <a id="signup"></a>[signup](#signup) | username | triggered after user successfully signed up |
+| <a id="signin"></a>[signin](#signin) | username | triggered after user successfully signed in |
+| <a id="signout"></a>[signout](#signout) | username | triggered after user successfully signed out |
+| <a id="reauthenticated"></a>[reauthenticated](#reauthenticated) | username | triggered after user successfully signed in with current username. See **error:unauthenticated** event for more information. |
+| <a id="changepassword"></a>[changepassword](#changepassword) | - | triggered after user successfully changed the password |
+| <a id="changeusername"></a>[changeusername](#changeusername) | username | triggered after user successfully changed the username |
+| <a id="passwordreset"></a>[passwordreset](#passwordreset) | username | triggered after password has been reset successfully |
+| <a id="error-passwordreset"></a>[error:passwordreset](#error-passwordreset) | error, username | An error occured when trying to reset the password for **username** |
+| <a id="error-unauthenticated"></a>[error:unauthenticated](#error-unauthenticated) | error, username | The current user has no valid session anymore and needs to reauthenticate. As Hoodie works offline, it can get into a state where a user is signed in with data stored in the browser, but without a valid session, so e.g. sync does not work anymore. In that case, the **error:unauthenticated** is triggered and the user should sign in with the current username again. |
 
 
-##### Example
+#### Example
 
-<pre><code>hoodie.account.on('signup signin', redirectToDashboard)
+```javascript
+hoodie.account.on('signup signin', redirectToDashboard)
 hoodie.account.on('error:unauthenticated', showSignInForm)
-</code></pre>
+```
+
+## Next Steps
+
+Right, now you're ready for the meaty bits! Check out the guide for the [store API](/en/techdocs/api/client/hoodie.store.html)!
+
+We hope this API guide was helpful! If not, please let us help you <a href="http://hood.ie/chat" target="_blank">on IRC or Slack</a>.
+
+We also have an <a href="http://faq.hood.ie" target="_blank">FAQ</a> that could prove useful if things go wrong.
+
+If you find this guide in error or out of date, you could also <a href="https://github.com/hoodiehq/documentation/issues" target="_blank">open an issue</a> or submit a pull request with your corrections to <a href="https://github.com/hoodiehq/documentation/blob/gh-pages/en/techdocs/api/client/hoodie.account.md" target="_blank">this file</a>.
