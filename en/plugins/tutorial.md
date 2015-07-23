@@ -61,7 +61,7 @@ All you need for writing a Hoodie plugin is a running Hoodie app. Your plugin li
 #### The Hoodie Architecture
 
 <!--
-If you haven't seen it yet, now is a good time to browse through [the explanation of the Hoodie stack](http://hoodiehq.github.io/hood.ie-website-old/intro.html), and how it differs from what you might be used to. 
+If you haven't seen it yet, now is a good time to browse through [the explanation of the Hoodie stack](http://hoodiehq.github.io/hood.ie-website-old/intro.html), and how it differs from what you might be used to.
 -->
 One of Hoodie's most powerful features is that it is offline first, which means all Hoodie-applications (and therefore also your plugin) work anytime, regardless of the user's connection status. This works because we don't let the frontend send tasks to the backend directly in Hoodie-Apps. Instead, the frontend deposits tasks in the database, which is both local and remote, and syncs whenever it can (which means: whenever it detects internet connection; if there's none, it doesn't care). After sync, these tasks are picked up by the backend, which acts accordingly to what it's told to do by the tasks. When completed, the database emits corresponding events, which then the frontend can act upon.
 Thus, we provide you with a Plugin API that handles generating and managing these tasks, writing stuff to user databases and so all other things you may need for building _your_ plugin.
@@ -85,9 +85,9 @@ Currently, the only way to get the backend component of a plugin to do anything 
 </code></pre>
 And in your backend component, listen for that task appearing and act upon it:
 
-<pre><code>hoodie.task.on('directmessage:add', 
+<pre><code>hoodie.task.on('directmessage:add',
     function (dbName, task) {
-        // generate a message object from the change data 
+        // generate a message object from the change data
         // and store it in both users' databases
     });
 </code></pre>
@@ -175,7 +175,7 @@ The code inside this is very straightforward:
 
 <pre><code>Hoodie.extend(function(hoodie) {
   hoodie.directMessages = {
-    send: hoodie.task('directmessage').add,
+    send: hoodie.task('directmessage').start,
     on: hoodie.task('directmessage').on // maybe not needed
   };
 });
@@ -218,14 +218,14 @@ Let's look at the whole thing first:
 
   function handleNewMessage(originDb, message) {
     var recipient = message.to;
-    hoodie.account.find('user', recipient, 
+    hoodie.account.find('user', recipient,
     function(error, user) {
       if (error) {
         return hoodie.task.error(originDb, message, error);
       };
       var targetDb = 'user/' + user.hoodieId;
-      hoodie.database(targetDb).add('directmessage', 
-      message, 
+      hoodie.database(targetDb).add('directmessage',
+      message,
       addMessageCallback);
     });
   };
@@ -247,7 +247,7 @@ Essentially a boilerplate container for the actual backend component code. Again
 
 <pre><code>hoodie.task.on('directmessage:add', handleNewMessage);</code></pre>
 
-Remember when we did **hoodie.task('directmessage').add** in the frontend component? This is the corresponding part of the backend, listening to the event emitted by the **task.('directmessage').add**. We call **handleNewMessage()** when it gets fired:
+Remember when we did **hoodie.task('directmessage').start** in the frontend component? This is the corresponding part of the backend, listening to the event emitted by the **task.('directmessage').add**. We call **handleNewMessage()** when it gets fired:
 
 <pre><code>function handleNewMessage(originDb, message) {</code></pre>
 
@@ -269,8 +269,8 @@ The sender may have made a mistake and the recipient may not exist. In this case
 We still haven't got the recipient's database, which is what we do here. In CouchDB, database names consist of a type prefix (in this case: **user**), a slash, and an id. We recommend using Futon to find out what individual objects and databases are called. Now we get to the main point:
 
 <pre><code>hoodie.database(targetDb).add(
-    'directmessage', 
-    message, 
+    'directmessage',
+    message,
     addMessageCallback
 );</code></pre>
 
@@ -279,8 +279,8 @@ This works a lot like adding an object with the Hoodie frontend API, except we u
 __Note__: You'll probably be thinking: "wait a second, what if another plugin generates **message** objects too?" and that's very prescient of you. We're not dealing with namespacing here for simplicity's sake, but prefixing your object type names with your plugin name seems like an excellent idea. In that case, this line should read
 
 <pre><code>hoodie.database(targetDb).add(
-    'directmessagesmessage', 
-    message, 
+    'directmessagesmessage',
+    message,
     addMessageCallback
 );</code></pre>
 
@@ -309,7 +309,7 @@ This concludes the work we have to do on the backend.
 
 All that's left to do now is display the message in the recipient user's app view as soon as it is saved to their database. In the application's frontend code, we'd just
 
-<pre><code>hoodie.store.on('directmessage:add'), 
+<pre><code>hoodie.store.on('directmessage:add'),
 function(messageObject){
   // Show the new message somewhere
 });
@@ -349,13 +349,13 @@ Here's a preview:
 
 ![Screenshot of a plugin styled by the UIKit](admin_dashboard_uikit_screenshot.png)
 
-Put this in the 
+Put this in the
 <pre><code>&lt;head>
-    &lt;link rel="stylesheet" 
+    &lt;link rel="stylesheet"
     href="/&#95;api/&#95;plugins/&#95;assets/styles/admin-dashboard-uikit.css">
 </code></pre>
 
-And this before the closing 
+And this before the closing
 <pre><code>&lt;script src="/&#95;api/&#95;plugins/&#95;assets/scripts/admin-dashboard-uikit.js">
 &lt;/script>
 &lt;/body>
@@ -412,9 +412,9 @@ Now **hoodie.directMessages.send** can be used the same way by the admin in Admi
 
 ##### Getting and Setting Plugin Configurations
 
-To get / set a plugin's config, you can use 
+To get / set a plugin's config, you can use
 <pre><code>hoodieAdmin.plugin.getConfig('direct-messages');</code></pre>
-and 
+and
 <pre><code>hoodieAdmin.plugin.updateConfig('direct-messages', config);</code></pre>
 
 Here **config** is a simple object with key/value settings.
@@ -457,7 +457,7 @@ It's as simple as **npm publish**.
 
 #### Installing your plugin:
 
-Inside your Hoodie application, simply run 
+Inside your Hoodie application, simply run
 
 <pre><code>npm install hoodie-plugin-direct-messages</code></pre>.
 
