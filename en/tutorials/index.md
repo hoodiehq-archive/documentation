@@ -193,10 +193,10 @@ Now modify the click method in **main.js** to store the priority:
 
 ```javascript
 // handle creating a new task
-$('#addBut').on('click', function() {
+$('#add-todo').on('click', function() {
   hoodie.store.add('todo', {
-  title: $("#todoinput").val(),
-  priority: $("#priorityinput").val()
+    title: $("#todoinput").val(),
+    priority: $("#priorityinput").val()
   });
   $("#todoinput").val('');
 });
