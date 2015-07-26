@@ -157,7 +157,7 @@ todoStore.findAll().done(function(allTodos) {
 | event      | String | custom event identifier.                                 | yes |
 | param      | Object | Detail information the event will pass to the listeners. | no |
 
-Since you can listen for store events using [on](#on), this gives you the opportunity to send events of your own to the listeners. This includes the standard events as mentionend in for instance [hoodie.store.on](/techdocs/api/client/hoodie.store.html#storeon) as well as your personal custom events. Imagine you want to trigger an event when a todo is done. This could look something similiar to this:
+Since you can listen for store events using [on](#on), this gives you the opportunity to send events of your own to the listeners. This includes the standard events as mentionend in for instance [hoodie.store.on](/de/techdocs/api/client/hoodie.store.html#storeon) as well as your personal custom events. Imagine you want to trigger an event when a todo is done. This could look something similiar to this:
 
 
 ##### Example

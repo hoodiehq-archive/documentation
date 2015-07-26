@@ -60,7 +60,7 @@ And, of course: make sure they know they can always contact you with any questio
   - if not clear: help find a good client (e.g. Textual for Mac or another client you can recommend)
 - what to post
 - how to ask
-- office hours, see [http://hood.ie/irc](IRC page) for details
+- office hours, see [IRC page](http://hood.ie/irc) for details
 
 #### GitHub
 - repository strucutre

@@ -58,10 +58,10 @@ And, of course: make sure they know they can always contact you with any questio
 #### The IRC channel
 - how to access
   - if not clear: help find a good client (e.g. Textual for Mac or another client you can recommend)
-  - also mention Slack access, with invites available [http://hood.ie/chat/index.html](here)
+  - also mention Slack access, with invites available [here](http://hood.ie/chat/index.html)
 - what to post
 - how to ask
-- office hours, see [http://hood.ie/irc](IRC page) for details
+- office hours, see [IRC page](http://hood.ie/irc) for details
 
 #### GitHub
 - repository strucutre
