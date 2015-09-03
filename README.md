@@ -75,7 +75,7 @@ If you add new content to the page, make sure to:
 
 ## Note
 
-Please do **NOT** change the content / navigation / menu structure without talking to @zoepage or creating an issue and discussing it there first.
+Please do **NOT** change the content / navigation / menu structure without talking to [@zoepage](https://github.com/zoepage) or creating an issue and discussing it there first.
 
 Thank you! &lt; 3
 
