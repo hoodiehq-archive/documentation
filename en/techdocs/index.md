@@ -13,7 +13,7 @@ This library, commonly called **hoodie.js**, is what you'll be working with on t
 
 - [The Hoodie API](/en/techdocs/api/client/hoodie.html), which has a couple of useful helpers for connectivity and event handling
 - [The account API](/en/techdocs/api/client/hoodie.account.html), which lets you do user authentication, such as signing users up, in and out
-- [The store API](/en/techdocs/api/client/store.html), which provides means to store and retrieve data for each individial user
+- [The store API](/en/techdocs/api/client/hoodie.store.html), which provides means to store and retrieve data for each individial user
 
 ## 2. The APIs of Some Basic Hoodie Plugins
 
