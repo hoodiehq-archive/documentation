@@ -37,6 +37,7 @@ locales:
       started : "Getting started - pt2"
       timetracker: "time tracker"
       next: "API"
+      testingpackages: "Testing package pull requests"
     menuapi: 
       hoodie : "hoodie"
       account: "account"
@@ -95,6 +96,7 @@ locales:
       started : "Starten mit - Nr2"
       timetracker: "Zeitstopper"
       next: "API"
+      testingpackages: "Testing package pull requests"
     menuapi: 
       hoodie : "hoodie"
       account: "account"
