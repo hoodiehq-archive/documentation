@@ -105,7 +105,7 @@ If not, or if something else goes wrong, the **fail** callback will be called wi
 
 ```javascript
 hoodie.store.find('todo', 'hrmvby9')
-	.done(function(todo) { /* success handling */ });
+	.done(function(todo) { /* success handling */ })
 	.fail(function(error) { /* error handling */ });
 ```
 
@@ -141,7 +141,7 @@ var configDefaults = {
 var configId  = 'config';
 
 hoodie.store
-.findOrAdd('config', configId, configDefaults);
+.findOrAdd('config', configId, configDefaults)
 .done(function(userConfig) {
 	console.log('Configuration for this user:', userConfig);
 });

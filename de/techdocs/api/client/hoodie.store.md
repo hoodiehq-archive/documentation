@@ -94,7 +94,7 @@ according error.
 ##### Example
 
 <pre><code>hoodie.store('todo').find('hrmvby9')
-	.done(function(todo) { /* success handling */ });
+	.done(function(todo) { /* success handling */ })
 	.fail(function(error) { /* error handling */ });
 </code></pre>
 
