@@ -275,3 +275,13 @@ header.invisible{
   -ms-transform: translate(0, -102px);
   transform: translate(0, -102px);
 }
+
+/* shows sub-nav on mobile */
+/* TODO: find better place for this */
+.mobile header, .mobile header.detached {
+  height: 125px;
+}
+
+.mobile .sub-nav {
+  display: block;
+}
