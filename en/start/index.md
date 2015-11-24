@@ -10,7 +10,7 @@ For all OS, you'll need <a href="http://nodejs.org/" target="_blank">Node.js</a>
 
 ### Installation on Mac OS X
 ##### 1. Node.js
-Hoodie's server components run on node.js. We recommend using the <a href="http://nodejs.org/download/" target="_blank">nodejs.org .pkg file</a> to install it.
+Hoodie's server components run on node.js. We recommend using the <a href="https://nodejs.org/" target="_blank">nodejs.org .pkg file</a> to install it.
 ##### 2. CouchDB
 CouchDB is used as Hoodie's server-side database. Please use the super-convenient <a href="http://couchdb.apache.org/#download" target="_blank">CouchDB for Mac installer</a>.
 ##### 3. Hoodie-CLI
