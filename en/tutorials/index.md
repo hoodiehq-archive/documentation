@@ -228,13 +228,14 @@ One solution to this problem is to build a robust view that simply deals with mi
 var todo = collection[i];
 todo.priority = todo.priority || 'Normal';
 
-var $li = $('<li>' +
-                 '<input type="checkbox">' +
-                    '<label></label>' +
-                 '</input>' +
-                 '<input type="text"></input>' +
-            '</li>'
+var $li = $('&lt;li&gt;' +
+                 '&lt;input type="checkbox"&gt;' +
+                    '&lt;label&gt;&lt;/label&gt;' +
+                 '&lt;/input&gt;' +
+                 '&lt;input type="text"&gt;&lt;/input&gt;' +
+            '&lt;/li&gt;'
             );
+
 
 var label = todo.priority + ': ' + todo.title;
 
