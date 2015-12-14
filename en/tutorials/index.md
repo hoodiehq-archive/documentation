@@ -225,16 +225,25 @@ However, if you haven't ticked off all the tasks you created before we added the
 One solution to this problem is to build a robust view that simply deals with missing fields:
 
 <pre><code class="language-javascript">
-var priority = collection[i].priority;
-if(!priority){
-  priority = "Normal";
-}
-$el.append(
-  '&lt;li data-id="' + collection[i].id + '">' +
-    '&lt;input type="checkbox"> &lt;label>' + priority + ': ' +collection[i].title + '&lt;/label>' +
-    '&lt;input type="text" value="' + priority + ': ' +collection[i].title + '"/>' +
-  '&lt;/li>'
-);
+var todo = collection[i];
+todo.priority = todo.priority || 'Normal';
+
+var $li = $('&lt;li&gt;' +
+                 '&lt;input type="checkbox"&gt;' +
+                    '&lt;label&gt;&lt;/label&gt;' +
+                 '&lt;/input&gt;' +
+                 '&lt;input type="text"&gt;&lt;/input&gt;' +
+            '&lt;/li&gt;'
+            );
+
+
+var label = todo.priority + ': ' + todo.title;
+
+$li.data('id', todo.id);
+$li.find('label').text(label);
+$li.find('input[type="text"]').val(label);
+
+$el.append($li);
 </code></pre>
 
 If you're still in the prototyping/testing phase and you want to start with a fresh database, you could also just stop the server, delete the **data** folder in the project root, restart the server, and sign up in the app again.
