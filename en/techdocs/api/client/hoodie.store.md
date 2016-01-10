@@ -79,7 +79,7 @@ Returns a promise. If succesful, it calls the **done** callback and passes in th
 
 ```javascript
 hoodie.store.add('todo', { title: 'Getting Coffee' })
-	.done(function(todo) { /* success handling */ });
+	.done(function(todo) { /* success handling */ })
 	.fail(function(error) { /* error handling */ });
 ```
 
