@@ -4,7 +4,7 @@ locales: de
 ---
 # hoodie.account
 **version:** 		*> 0.1.0* <br />
-**source:** 		*hoodie/src/hoodie/account.js*<br />
+**source:** 		*[hoodie.js/src/hoodie/account](https://github.com/hoodiehq/hoodie/tree/hoodie-client-legacy/src/hoodie/account)*
 
 **<br />after reading this you will know:**
 

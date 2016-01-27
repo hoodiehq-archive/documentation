@@ -4,7 +4,7 @@ locales: en
 ---
 # hoodie.account
 **version:** 		*> 0.1.0*<br>
-**source:** 		*[hoodie.js/src/hoodie/account](https://github.com/hoodiehq/hoodie.js/tree/master/src/hoodie/account)*
+**source:** 		*[hoodie.js/src/hoodie/account](https://github.com/hoodiehq/hoodie/tree/hoodie-client-legacy/src/hoodie/account)*
 
 The account object in the client-side Hoodie API covers all user and authentication-related operations, and enables you to do previously complex operations, such as signing up a new user, with only a few lines of frontend code. Since [data in Hoodie is generally bound to a user](/en/hoodieverse/glossary.html#private-user-store), it makes sense to familiarise yourself with **account** before you move on to [store](/en/techdocs/api/client/hoodie.store.html).
 
