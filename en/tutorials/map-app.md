@@ -11,17 +11,17 @@ locales: en
 
 If you've gotten this far in the Docs, you should have Hoodie and its dependencies installed and know that Hoodie is a powerful tool for making simply awesome apps. Combine Hoodie with another strong tool, like [Leaflet](http://leafletjs.com/), and that app can become even greater. So, let's get started.
 
-We'll start off using [Hoodie-Skeleton](https://github.com/hoodiehq/hoodie-app-skeleton), a Hoodie project template, to get the project up and running with jQuery, Skeleton, and a simple login. We'll call the project Hoodie Maps.
+Start off using [Hoodie-Skeleton](https://github.com/hoodiehq/hoodie-app-skeleton), a Hoodie project template, to get the project up and running with jQuery, Skeleton, and a simple login. Call the project Hoodie Maps.
 
 <pre><code>$ hoodie new HoodieMaps -t "hoodiehq/hoodie-app-skeleton"
 $ cd HoodieMaps
 </code></pre>
 
-Once inside our project directory, we can get start up Hoodie and get to building our app.
+Once inside the project directory, you can start up Hoodie and begin building the app.
 
 <pre><code>$ hoodie start</code></pre>
 
-Open up Hoodie Maps in your preferred text editor or IDE, and we'll begin with index.html in the **www/** directory. Replace the text in the **h1** that says "e_card", to the name of our app, Hoodie Maps, and replace the text of the **h2** below it to a description of our app. Then remove all the divs with the **class "one-third"**, to give us a clean canvas on which to create.
+Open up Hoodie Maps in your preferred text editor or IDE, and begin with index.html in the **www/** directory. Replace the text in the **h1** that says "e_card", to the name of our app, Hoodie Maps, and replace the text of the **h2** below it to a description of the app. Then remove all the divs with the **class "one-third"**, to give yourself a clean canvas on which to create.
 
 Next, grab a copy of Leaflet.js, either from their [Downloads page](http://leafletjs.com/download.html) or a package system like npm. Add the script tag connecting to Leaflet after those for jQuery and Bootstrap.
 
@@ -43,7 +43,7 @@ And don't forget to include the library's CSS as well.
 <link rel="stylesheet" href="assets/vendor/leaflet/leaflet.css">
 ```
 
-To wrap up our work on the **index.html**, we'll add some markup under the header area to work with while we make our app functional.
+To wrap up your work on the **index.html**, add some markup under the header area to work with while you make the app functional.
 
 ```html
 <div id="hoodie-map" class="sixteen columns">
@@ -60,7 +60,7 @@ To wrap up our work on the **index.html**, we'll add some markup under the heade
 </div>
 ```
 
-Move on over to **main.js** in **assets/js/** and see the first line taken care of for us.
+Move on over to **main.js** in **assets/js/** and see the first line taken care of for you.
 
 ```js
 // initialize Hoodie
@@ -68,7 +68,7 @@ Move on over to **main.js** in **assets/js/** and see the first line taken care 
 var hoodie  = new Hoodie();
 ```
 
-Next, we'll create a new Leaflet Map in the div with the **id** of "hoodie-map".
+Next, you'll create a new Leaflet Map in the div with the **id** of "hoodie-map".
 
 ```js
 // initialize new Leaflet map
@@ -76,7 +76,7 @@ Next, we'll create a new Leaflet Map in the div with the **id** of "hoodie-map".
 var hoodieMap = L.map('hoodie-map');
 ```
 
-Now we have a Map but no coordinates to give it in order to set the view of its tiles. So we can create a function for getting our current position using the GeoLocation API.
+Now you have a Map but no coordinates to give it, which you need in order to set the view of its tiles. But you can create a function for getting your current position using the GeoLocation API.
 
 ```js
 // Using the GeoLocation API to get your current location.
@@ -144,7 +144,7 @@ function createMap(position) {
 }
 ```
 
-To start this whole process off, we can check the store for any previously stored positions to create the Map with, otherwise just **getCurrentPosition()**.
+To start this whole process off, check the store for any previously stored positions to create the Map with, otherwise just **getCurrentPosition()**.
 
 ```js
 // Check the Store for an existing currentLocation 
@@ -156,7 +156,7 @@ hoodie.store.find('position', 1)
   .fail(getCurrentPosition);
 ```
 
-To add some interactivity to our Hoodie Maps app, we should give our users the ability to click or tap on the map to create Markers for a location and add it to the Store. Once the Marker is added, we'll place it on the Map and update the list of markers below the Map.
+To add some interactivity to the Hoodie Maps app, you should give your users the ability to click or tap on the map to create Markers for a location and add it to the Store. Once the Marker is added, place it on the Map and update the list of markers below the Map.
 
 (You'll need to include the [Glyphicons Icon Font](http://glyphicons.com/) for the "remove" icon to show up next to the Marker list item, or you can just place an "X" in that span instead.)
 
@@ -256,11 +256,11 @@ function removeMarker(marker) {
 ```
 
 
-Now an user of our app can create a bunch of markers but they are storing all these markers as Annie Anonymous, a.k.a without an account. So how do we move all those items over to a user's account when they sign up or sign in? Well the answer is simple, we don't. Hoodie will take any local data, i.e. from any Annie Anonymous, and move it a user account when they [sign up](http://docs.hood.ie/en/techdocs/api/client/hoodie.account.html#accountsignup). When [a user signs in](http://docs.hood.ie/en/techdocs/api/client/hoodie.account.html#accountsignin), we can pass in an options object with a property of "moveData" to true. 
+Now a user of the app can create a bunch of markers but they are storing all these markers as Annie Anonymous, a.k.a without an account. So how can you move all those items over to a user's account when they sign up or sign in? Well the answer is simple: you don't. Hoodie will take any local data, i.e. from any Annie Anonymous, and move it a user account when they [sign up](http://docs.hood.ie/en/techdocs/api/client/hoodie.account.html#accountsignup). When [a user signs in](http://docs.hood.ie/en/techdocs/api/client/hoodie.account.html#accountsignin), we can pass in an options object with a property of "moveData" to true. 
 
-Luckily, we have the **assets/vendor/hoodie.accountbar.bootstrap.js** script to take care of that logic for us.
+Luckily, you have the **assets/vendor/hoodie.accountbar.bootstrap.js** script to take care of that logic automatically.
 
-When an user is authenticated in some way, either through sign in, sign up, or reauthentication (which is "triggered after user successfully signed in with current username."), we should fill the map with any stored markers. We should also check to see if the user is already signed in when the app loads. Checking for **hoodie.account.username** returns false if a user is not signed in.
+When a user is authenticated in some way, either through sign in, sign up, or reauthentication (which is "triggered after user successfully signed in with current username."), fill the map with any stored markers. Also check to see if the user is already signed in when the app loads. Checking for **hoodie.account.username** returns false if a user is not signed in.
 
 ```js
 // If a user is already signed in, 
@@ -276,7 +276,7 @@ if(hoodie.account.username) {
 hoodie.account.on('signin signup reauthenticated', fillMap);
 ```
 
-Once the user is finished using the app and signs out, we should clear the Map of all the user's markers except for the current location marker.
+Once the user is finished using the app and signs out, clear the Map of all the user's markers except for the current location marker.
 
 ```js
 // When the user signs out, clear the map 
