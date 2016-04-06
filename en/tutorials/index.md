@@ -164,12 +164,13 @@ First add a button to the **www/index.html** file. Look for the text input with 
 
 Second, change the **main.js** file so a new todo is added when the button is clicked instead of when return is pressed. Replace the last code block in the file with this:
 
-<pre><code class="language-javascript">// handle creating a new task
+```javascript
+// handle creating a new task
 $('#add-todo').on('click', function() {
   hoodie.store.add('todo', {title: $("#todoinput").val()});
   $("#todoinput").val('');
 });
-</code></pre>
+```
 
 The first line binds to a click on our newly created button. When the button is clicked the second line adds a new todo using the **hoodie.store.add** method. The third line within our new function clears the input.
 
@@ -181,13 +182,14 @@ Now we're ready to change the interface and the data model.
 
 Adding a priority requires a new input element. Insert this right above the new button we just added in **www/index.html**:
 
-<pre><code class="language-markup">&lt;select id="priorityinput" class="form-control">
-  &lt;option>Urgent&lt;/option>
-  &lt;option selected="selected">Normal&lt;/option>
-  &lt;option>Later&lt;/option>
-&lt;/select>
-&lt;button id="add-todo">Add&lt;/button>
-</code></pre>
+```html
+<select id="priorityinput" class="form-control">
+  <option>Urgent</option>
+  <option selected="selected">Normal</option>
+  <option>Later</option>
+</select>
+<button id="add-todo">Add</button>
+```
 
 Now modify the click method in **main.js** to store the priority:
 
@@ -224,16 +226,16 @@ However, if you haven't ticked off all the tasks you created before we added the
 
 One solution to this problem is to build a robust view that simply deals with missing fields:
 
-<pre><code class="language-javascript">
+```javascript
 var todo = collection[i];
 todo.priority = todo.priority || 'Normal';
 
-var $li = $('&lt;li&gt;' +
-                 '&lt;input type="checkbox"&gt;' +
-                    '&lt;label&gt;&lt;/label&gt;' +
-                 '&lt;/input&gt;' +
-                 '&lt;input type="text"&gt;&lt;/input&gt;' +
-            '&lt;/li&gt;'
+var $li = $('<li>' +
+                 '<input type="checkbox">' +
+                    '<label></label>' +
+                 '</input>' +
+                 '<input type="text"></input>' +
+            '</li>'
             );
 
 
@@ -244,7 +246,7 @@ $li.find('label').text(label);
 $li.find('input[type="text"]').val(label);
 
 $el.append($li);
-</code></pre>
+```
 
 If you're still in the prototyping/testing phase and you want to start with a fresh database, you could also just stop the server, delete the **data** folder in the project root, restart the server, and sign up in the app again.
 
