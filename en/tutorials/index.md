@@ -160,7 +160,9 @@ The todo app lets you type in new todos and saves them when you hit the return k
 
 First add a button to the **www/index.html** file. Look for the text input with the id **todoinput**. In the line after it add a button with the id **add-todo**:
 
-<pre><code class="language-markup">&lt;button id="add-todo">Add New Todo&lt;/button></code></pre>
+```html
+<button id="add-todo">Add New Todo</button>
+```
 
 Second, change the **main.js** file so a new todo is added when the button is clicked instead of when return is pressed. Replace the last code block in the file with this:
 
