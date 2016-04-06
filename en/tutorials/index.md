@@ -11,7 +11,7 @@ If you experience any problems at any step of this doc, please check our <a href
 
 ### Prerequisites
 
-You should have [installed Hoodie and its prerequisites](/en/start/) and read the [first part of this guide](/en/start/getting-started/getting-started-1.html). We'll be looking at the Hoodie app you created in that.
+You should have [installed Hoodie and its prerequisites](/en/start/) and read the [first part of this guide](/en/start/getting-started/getting-started-1.md). We'll be looking at the Hoodie app you created in that.
 
 In case you skipped this step, here's the super short summary of how to create a new Hoodie app and run it:
 
@@ -42,7 +42,7 @@ Once you're signed in to a Hoodie app, **Hoodie will constantly try to keep your
 
 #### 1.3 Offline support
 
-[We strongly believe that apps shouldn't break just because they're offline](/en/hoodieverse/hoodie-concepts.html#offline-first). So naturally, this todo app also works offline. Give it a try:
+[We strongly believe that apps shouldn't break just because they're offline](/en/hoodieverse/hoodie-concepts.md#offline-first). So naturally, this todo app also works offline. Give it a try:
 
 In the terminal, turn off the Hoodie server with **ctrl+c** (Mac) or **alt+c** (Windows).
 
@@ -83,7 +83,7 @@ var hoodie  = new Hoodie();
 
 #### 2.1 Adding a New Todo Object
 
-Now scroll to the end of the file, where we **handle adding a new todo** to the Hoodie store. This will save the todo in the currently logged in user's own [little private database](/en/hoodieverse/glossary.html#private-user-store). It'll get synced to the server, and it'll get synced back whenever the user logs in to the app again.
+Now scroll to the end of the file, where we **handle adding a new todo** to the Hoodie store. This will save the todo in the currently logged in user's own [little private database](/en/hoodieverse/glossary.md#private-user-store). It'll get synced to the server, and it'll get synced back whenever the user logs in to the app again.
 
 ```javascript
 $('#todoinput').on('keypress', function(event) {
@@ -105,7 +105,7 @@ And that, fundamentally, is it.
 hoodie.store.add(type, object);
 ```
 
-One line. That stores your todo in the local browser store, and Hoodie will take care of syncing it to wherever it needs to be. Pretty simple, right? **add()** also [returns some promises](/en/techdocs/api/client/hoodie.store.html#storeadd) so you can check if it worked, but let's skip that for now.
+One line. That stores your todo in the local browser store, and Hoodie will take care of syncing it to wherever it needs to be. Pretty simple, right? **add()** also [returns some promises](/en/techdocs/api/client/hoodie.store.md#storeadd) so you can check if it worked, but let's skip that for now.
 
 <a id="understanding-type"></a>
 #### 2.2 A Short Aside: Understanding Type
@@ -252,9 +252,9 @@ If you're still in the prototyping/testing phase and you want to start with a fr
 
 ### 4. Conclusion
 
-We've only briefly touched **hoodie.store.add** and **hoodie.store.on**, but that should already give you a pretty good idea of how Hoodie works, and how your app could be structured. You've also seen that Hoodie's got your back with regard to cross-device syncing and offline support. You now know how users work, and if you spend a bit more time with **main.js**, you'll come across [hoodie.store.findAll](/en/techdocs/api/client/hoodie.store.html#storefindall) and learn how to load data from Hoodie, too.
+We've only briefly touched **hoodie.store.add** and **hoodie.store.on**, but that should already give you a pretty good idea of how Hoodie works, and how your app could be structured. You've also seen that Hoodie's got your back with regard to cross-device syncing and offline support. You now know how users work, and if you spend a bit more time with **main.js**, you'll come across [hoodie.store.findAll](/en/techdocs/api/client/hoodie.store.md#storefindall) and learn how to load data from Hoodie, too.
 
-If you'd like to try another tutorial, check out [the time tracker](../tutorials/timetracker.html).
+If you'd like to try another tutorial, check out [the time tracker](../tutorials/timetracker.md).
 
 #### How did it go?
 
