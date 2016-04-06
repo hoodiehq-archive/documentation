@@ -38,7 +38,7 @@ Go ahead, add a couple of todos!
 
 #### 1.2 Syncing
 
-Once you're signed in to a Hoodie app, **Hoodie will constantly try to keep your user data in sync** between the server and any client that user may be signed in to. To see this happening, open the app's URL in a different Browser, or in incognito mode (so you won't be signed in automatically). Sign in to the second instance of the app with the same credentials, and when you add a todo in either tab, it should appear in the other within a few seconds. Keep that second tab open for now.
+Once you're signed in to a Hoodie app, **Hoodie will constantly try to keep your user data in sync** between the server and any client that user may be signed in to. To see this happening, open the app's URL in a different browser, or in incognito or private mode (so you won't be signed in automatically). Sign in to the second instance of the app with the same credentials, and when you add a todo in either tab, it should appear in the other within a few seconds. Keep that second tab open for now.
 
 #### 1.3 Offline support
 
@@ -75,7 +75,7 @@ www/assets/js/main.js
 
 in your editor of choice.
 
-At the very top, we **initialise Hoodie** and assign it to a var, so we can call its methods:
+At the very top, we **initialise Hoodie** and assign it to a variable, so we can call its methods:
 
 ```javascript
 var hoodie  = new Hoodie();
