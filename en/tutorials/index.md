@@ -160,7 +160,7 @@ The todo app lets you type in new todos and saves them when you hit the return k
 
 First add a button to the **www/index.html** file. Look for the text input with the id **todoinput**. In the line after it add a button with the id **add-todo**:
 
-```html
+```markup
 <button id="add-todo">Add New Todo</button>
 ```
 
@@ -184,7 +184,7 @@ Now we're ready to change the interface and the data model.
 
 Adding a priority requires a new input element. Insert this right above the new button we just added in **www/index.html**:
 
-```html
+```markup
 <select id="priorityinput" class="form-control">
   <option>Urgent</option>
   <option selected="selected">Normal</option>
