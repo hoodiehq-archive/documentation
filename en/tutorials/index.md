@@ -38,7 +38,7 @@ Go ahead, add a couple of todos!
 
 #### 1.2 Syncing
 
-Once you're signed in to a Hoodie app, **Hoodie will constantly try to keep your user data in sync** between the server and any client that user may be signed in to. To see this happening, open the app's URL in a different Browser, or in incognito mode (so you won't be signed in automatically). Sign in to the second instance of the app with the same credentials, and when you add a todo in either tab, it should appear in the other within a few seconds. Keep that second tab open for now.
+Once you're signed in to a Hoodie app, **Hoodie will constantly try to keep your user data in sync** between the server and any client that user may be signed in to. To see this happening, open the app's URL in a different browser, or in incognito or private mode (so you won't be signed in automatically). Sign in to the second instance of the app with the same credentials, and when you add a todo in either tab, it should appear in the other within a few seconds. Keep that second tab open for now.
 
 #### 1.3 Offline support
 
@@ -75,7 +75,7 @@ www/assets/js/main.js
 
 in your editor of choice.
 
-At the very top, we **initialise Hoodie** and assign it to a var, so we can call its methods:
+At the very top, we **initialise Hoodie** and assign it to a variable, so we can call its methods:
 
 ```javascript
 var hoodie  = new Hoodie();
@@ -83,7 +83,7 @@ var hoodie  = new Hoodie();
 
 #### 2.1 Adding a New Todo Object
 
-Now scroll to the end of the file, where we **handle adding a new todo** to the Hoodie store. This will save the todo in the currently logged in user's own [little private database](/en/hoodieverse/glossary.html#private-user-store). It'll get synced to the server, and it'll get synced back whenever the user logs in to the app again.
+Now scroll to the end of the file, where we **handle adding a new todo** to the Hoodie store. This will save the todo in the currently logged in user's own [little private database](/en/hoodieverse/glossary.md#private-user-store). It'll get synced to the server, and it'll get synced back whenever the user logs in to the app again.
 
 ```javascript
 $('#todoinput').on('keypress', function(event) {
@@ -160,16 +160,19 @@ The todo app lets you type in new todos and saves them when you hit the return k
 
 First add a button to the **www/index.html** file. Look for the text input with the id **todoinput**. In the line after it add a button with the id **add-todo**:
 
-<pre><code class="language-markup">&lt;button id="add-todo">Add New Todo&lt;/button></code></pre>
+```markup
+<button id="add-todo">Add New Todo</button>
+```
 
 Second, change the **main.js** file so a new todo is added when the button is clicked instead of when return is pressed. Replace the last code block in the file with this:
 
-<pre><code class="language-javascript">// handle creating a new task
+```javascript
+// handle creating a new task
 $('#add-todo').on('click', function() {
   hoodie.store.add('todo', {title: $("#todoinput").val()});
   $("#todoinput").val('');
 });
-</code></pre>
+```
 
 The first line binds to a click on our newly created button. When the button is clicked the second line adds a new todo using the **hoodie.store.add** method. The third line within our new function clears the input.
 
@@ -181,13 +184,14 @@ Now we're ready to change the interface and the data model.
 
 Adding a priority requires a new input element. Insert this right above the new button we just added in **www/index.html**:
 
-<pre><code class="language-markup">&lt;select id="priorityinput" class="form-control">
-  &lt;option>Urgent&lt;/option>
-  &lt;option selected="selected">Normal&lt;/option>
-  &lt;option>Later&lt;/option>
-&lt;/select>
-&lt;button id="add-todo">Add&lt;/button>
-</code></pre>
+```markup
+<select id="priorityinput" class="form-control">
+  <option>Urgent</option>
+  <option selected="selected">Normal</option>
+  <option>Later</option>
+</select>
+<button id="add-todo">Add</button>
+```
 
 Now modify the click method in **main.js** to store the priority:
 
@@ -224,16 +228,16 @@ However, if you haven't ticked off all the tasks you created before we added the
 
 One solution to this problem is to build a robust view that simply deals with missing fields:
 
-<pre><code class="language-javascript">
+```javascript
 var todo = collection[i];
 todo.priority = todo.priority || 'Normal';
 
-var $li = $('&lt;li&gt;' +
-                 '&lt;input type="checkbox"&gt;' +
-                    '&lt;label&gt;&lt;/label&gt;' +
-                 '&lt;/input&gt;' +
-                 '&lt;input type="text"&gt;&lt;/input&gt;' +
-            '&lt;/li&gt;'
+var $li = $('<li>' +
+                 '<input type="checkbox">' +
+                    '<label></label>' +
+                 '</input>' +
+                 '<input type="text"></input>' +
+            '</li>'
             );
 
 
@@ -244,7 +248,7 @@ $li.find('label').text(label);
 $li.find('input[type="text"]').val(label);
 
 $el.append($li);
-</code></pre>
+```
 
 If you're still in the prototyping/testing phase and you want to start with a fresh database, you could also just stop the server, delete the **data** folder in the project root, restart the server, and sign up in the app again.
 
