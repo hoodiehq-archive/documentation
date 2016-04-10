@@ -420,4 +420,5 @@ if ( hoodie.account.username ) {
 }
 ```
 
-This is definitely one of the more complex features of our app but worth it to make this chat app feel more complete. As an extra challenge, try to add notifications for when the current user is @mentioned by another user in the chat by highlighting their messages with a unique background color. 
+This is definitely one of the more complex features of our app. 
+We feel it is worth it to make this chat app feel more complete. As an extra challenge, try to add notifications for when the current user is @mentioned by another user in the chat by highlighting their messages with a unique background color. 
