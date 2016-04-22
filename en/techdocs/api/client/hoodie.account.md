@@ -310,13 +310,13 @@ hoodie.account.resetPassword(username);
 
 | Nr | option     | type   | description                    | required |
 |:--:|:---------- |:------ |:------------------------------ |:-------- |
-|  1 | username   | String | username to reset password for | yes      |
+|  1 | username   | String | username for which to reset password | yes      |
 
 ##### Resolves with
 
 | argument    | description                                          |
 | ----------- | ---------------------------------------------------- |
-| username    | the username that got the password resetted          |
+| username    | the username whose password was reset          |
 
 ##### Rejects with
 
