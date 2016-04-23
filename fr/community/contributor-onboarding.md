@@ -14,8 +14,6 @@ Ce document est destiné aux membres de la communauté. Il vise à être un guid
 
 Selon notre [Code de conduite](http://hood.ie/code-of-conduct.html), notre objectif est de fournir un espace sûr pour tous dans cette communauté et nous accueillons avec joie tout le monde, y compris les développeurs et personnes qui souhaitent devenir des contributeurs hors code.
 
-XXX
-
 Ce document est et sera toujours en chantier. Nous essayons constamment d'améliorer notre engagement et notre culture communautaire et sommes toujours heureux d'avoir des retours!
 
 ###  Qu'est-ce que les gens contribuent et où?
