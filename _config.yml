@@ -12,6 +12,7 @@ locales:
       en: "english"
       de: "german"
       ru: "russian"
+      fr: "french"
     nav:
       hoodieverse: "Hoodieverse"
       start: "Let's start"
@@ -69,6 +70,7 @@ locales:
       en: "englisch"
       de: "deutsch"
       ru: "russisch"
+      fr: "französisch"
     nav:
       hoodieverse: "Hoodieverse"
       start: "Los geht's"
@@ -128,6 +130,7 @@ locales:
       en: "английский"
       de: "немецкий"
       ru: "русский"
+      fr: "французский"
     nav:
       hoodieverse: "Вселенная Hoodie"
       start: "Введение"
@@ -178,3 +181,61 @@ locales:
       onboarding: "Введение"
       irc: "Рабочее время IRC"
       workshop: "Мастер-класс Hoodie"
+  fr:
+    path: /fr/
+    lang: "Langue"
+    label:
+      en: "anglais"
+      de: "allemand"
+      ru: "russe"
+      fr: "français"
+    nav:
+      hoodieverse: "Hoodieverse"
+      start: "Démarrage"
+      tutorials: "Tutoriels"
+      api: "API"
+      plugins: "Plugins"
+      deployment: "Déploiement"
+      community: "Communauté"
+    menu:
+      start: "Démarrage"
+      next: "Chapitre suivant"
+      recipes: "Recette"
+    menuverse:
+      welcome: "Bienvenue chez Hoodie"
+      concepts: "Concepts de Hoodie"
+      requirements: "Prérequis"
+      works: "Comment Hoodie fonctionne"
+      glossary: "Glossaire"
+      next: "Démarrage"
+    menustart:
+      installation: "Installation"
+      started : "Démarrer avec Hoodie - partie 1"
+      next: "Tutoriels"
+    menututorials:
+      started : "Démarrer avec Hoodie - partie 2"
+      timetracker: "Gestion de temps"
+      next: "API"
+    menuapi:
+      hoodie : "hoodie"
+      account: "account"
+      store : "store"
+      task: "task"
+      email: "email"
+      global: "global share"
+      next: "Plugins et déploiement"
+    menuplugins:
+      intro: "Intro"
+      build: "Développer votre plugin"
+      api: "L'API des plugins"
+      list: "Liste sur npm"
+      next: "Déploiement"
+    menudeploy:
+      intro: "Intro"
+      unix: "Unix / Linux"
+      next: "Communauté"
+    menucommunity:
+      intro: "Nous sommes une communauté"
+      onboarding: "En voiture"
+      irc: "Heures ouvrées IRC"
+      workshop: "Atelier Hoodie"
