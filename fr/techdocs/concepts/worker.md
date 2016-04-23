@@ -181,7 +181,6 @@ Modifions notre méthode `_changesCallback()` pour ne réagir qu'aux objets `log
 
 // TODO: Les futures versions de ceci devrait avoir un module *Hoodie* comment celui de l'API cliente.
 
-XXX
 Quand vous redémarrez le worker et que vous ajouter un nouvel objet à la base CouchDB, vous devriez ne voir aucune sortie:
 
     $ curl -X POST http://127.0.0.1:5984/mydatabase/ -d '{"message":"hello world"}' -H "Content-Type: application/json"
