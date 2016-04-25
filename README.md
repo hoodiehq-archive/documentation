@@ -66,7 +66,7 @@ Note that the language identifier for HTML is not `HTML`, but `markup`. We suppo
 If you want to translate the content in your language, please copy the `en` folder in root and change the `locales` in your language (e.g. french = fr). Make sure to name your folder the same.
 
 ### Menu + nav
-The Menu and the navigation are generated dynamically. All you have to do is to set the locales in your page and make sure you have translated all the strings. All the strigs are translated in the `_config.yml`.
+The Menu and the navigation are generated dynamically. All you have to do is to set the locales in your page and make sure you have translated all the strings. All the strings are translated in the `_config.yml`.
 
 ### Templates
 Always change the 'locales' from en to your language e.g. fr. This is also needed for the right path.
