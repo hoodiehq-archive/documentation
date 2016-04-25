@@ -1,6 +1,6 @@
-markdown: redcarpet
-redcarpet:
-  extensions: ["tables"]
+markdown: kramdown
+kramdown:
+    auto_ids: false
 
 locales:
   en:
