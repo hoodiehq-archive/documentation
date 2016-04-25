@@ -214,7 +214,7 @@ locales:
       next: "Tutoriels"
     menututorials:
       started : "Démarrer avec Hoodie - partie 2"
-      timetracker: "Gestion de temps"
+      timetracker: "Gestion du temps"
       next: "API"
     menuapi:
       hoodie : "hoodie"

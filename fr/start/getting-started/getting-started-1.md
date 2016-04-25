@@ -25,7 +25,7 @@ Hoodie fournit un outil en ligne de commande appelé Hoodie-CLI qui vous aide po
 $ hoodie -h
 ```
 
-Si vous n'avez jamais travaillé avec le terminal avant, parcourez rapidement <a href="http://blog.teamtreehouse.com/introduction-to-the-mac-os-x-command-line" target="_blank">ces astuces</a>! **Astuce 1**: ne tapez pas le signe dollar, c'est juste une convention qui signifie que la ligne de code devrait être lancée dans un terminal.
+Si vous n'avez jamais travaillé avec le terminal avant, parcourez rapidement <a href="http://blog.teamtreehouse.com/introduction-to-the-mac-os-x-command-line" target="_blank">ces astuces</a>&#x202F;! **Astuce 1**: ne tapez pas le signe dollar, c'est juste une convention qui signifie que la ligne de code devrait être lancée dans un terminal.
 
 La toute première étape est **d'utiliser Hoodie-CLI pour créer une nouvelle application**. Dans votre terminal, placez vous dans le répertoire où vous voulez que votre application se retrouve et entrez: 
 
@@ -156,9 +156,9 @@ L'application démo aura toujours cette ligne dans son **index.html**, mais à l
 &lt;script src="/_api/_files/hoodie.js"&gt;&lt;/script&gt;
 </code></pre>
 
-Vous noterez que ce fichier n'est pas dans **node_modules** ou un dossier **vendor** ou **lib**, il est *servi directement par le serveur Hoodie lui-même*. C'est cool parce qu'il contient aussi automatiquement tous les plugins installés pour le code du frontend. C'est toujours moins de tracas pour vous!
+Vous noterez que ce fichier n'est pas dans **node_modules** ou un dossier **vendor** ou **lib**, il est *servi directement par le serveur Hoodie lui-même*. C'est cool parce qu'il contient aussi automatiquement tous les plugins installés pour le code du frontend. C'est toujours moins de tracas pour vous&#x202F;!
 
-Et c'est à peu près tout! Vous êtes prêt à démarrer.
+Et c'est à peu près tout&#x202F;! Vous êtes prêt à démarrer.
 
 ### 5. L'objet global window.hoodie
 
@@ -166,14 +166,14 @@ Hoodie est conçu pour construire des frontends comme vous aimez construire des 
 
 Allez-y, ouvrez l'application dans votre navigateur, ouvrez la console dans les outils de développement de votre navigateur et tapez **hoodie.**. Ceci vous montrera toutes les méthodes accessibles globalement, comme **hoodie.account** ou **hoodie.store**, qui sont les plus importants. Nous en traiterons dans la prochaine partie de ce guide.
 
-#### Bien joué!
+#### Bien joué&#x202F;!
 
-Jusqu'ici, **félicitations!**, vous avez créé une application Hoodie de démo, vous avez appris la structure de base d'un projet Hoodie, vous connaissez toutes les connexions et URL de l'application et comment inclure la bibliothèque Hoodie dans votre projet. Vous êtes prêt pour la [deuxième partie](/fr/tutorials/)!
+Jusqu'ici, **félicitations&#x202F;!**, vous avez créé une application Hoodie de démo, vous avez appris la structure de base d'un projet Hoodie, vous connaissez toutes les connexions et URL de l'application et comment inclure la bibliothèque Hoodie dans votre projet. Vous êtes prêt pour la [deuxième partie](/fr/tutorials/)&#x202F;!
 
-#### Des soucis?
+#### Des soucis&#x202F;?
 
-Allez voir la <a href="http://faq.hood.ie" target="_blank">FAQ</a> ou <a href="http://hood.ie/chat" target="_blank">contactez-nous via IRC ou Slack</a>. Nous aimerions aussi avoir de vos nouvelles si tout s'est bien passé!
+Allez voir la <a href="http://faq.hood.ie" target="_blank">FAQ</a> ou <a href="http://hood.ie/chat" target="_blank">contactez-nous via IRC ou Slack</a>. Nous aimerions aussi avoir de vos nouvelles si tout s'est bien passé&#x202F;!
 
 Si vous trouvez une erreur dans ce guide ou dépassé, vous pouvez aussi <a href="https://github.com/hoodiehq/documentation/issues" target="_blank">ouvrir un ticket</a> ou soumettre une pull request avec vos corrections sur <a href="https://github.com/hoodiehq/documentation/blob/gh-pages/fr/start/getting-started/getting-started-1.md" target="_blank">ce fichier</a>.
 
-Merci de votre intérêt et de votre temps!
+Merci de votre intérêt et de votre temps&#x202F;!

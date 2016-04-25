@@ -7,7 +7,7 @@ locales: fr
 
 ##### 1. Introduction
 - Intro
-- Que peut faire un plugin Hoodie?
+- Que peut faire un plugin Hoodie&#x202F;?
 
 ##### 2. Pré-requis
 - Pré-requis
@@ -16,7 +16,7 @@ locales: fr
 
 ##### 3. Construire un plugin
 - Construisons un plugin de messagerie instantanée
-- Comment ça va fonctionner?
+- Comment ça va fonctionner&#x202F;?
 - Par où commencer <br/><br />
 - Structurer un plugin<br /><br />
 - Le composant frontend du plugin de messagerie instantanée
@@ -39,7 +39,7 @@ locales: fr
 
 L'API de Hoodie offre un petit ensemble de fonctionnalités pour gérer le stockage des données, la synchronisation et l'authentification. Toutes les autres fonctionnalités dont vous pourriez avoir besoin peuvent être ajoutées en construisant des plugins. Notre but est de rendre Hoodie extensible autant que possible, tout en conservant un petit coeur, de manière à ce que vous puissiez ajouter les modules que dont _vous_ avez besoin, et juste ceux-là.
 
-#### Que peut faire un plugin Hoodie?
+#### Que peut faire un plugin Hoodie&#x202F;?
 
 Pour faire court, tout ce que Hoodie peut faire. Un plugin peut travailler au sein du backend Node.js de Hoodie et manipuler la base de donnée ou parler à d'autres services, il peut étendre l'API de la bibliothèque frontend, et il peut apparaître dans la panneau d'administration dont toute application Hoodie dispose, et l'étendre avec de nouvelles statistiques, configuration ou tout ce que vous pourrez imaginer.
 
@@ -62,7 +62,7 @@ Tout ce dont vous avez besoin pour écrire un plugin Hoodie est une application 
 L'une des fonctions les plus puissantes de Hoodie est le Offline First, ce qui veut dire que toutes les applications Hoodie (et par conséquent, votre plugin aussi) fonctionne constamment, indépendamment de l'état de la connexion de l'utilisateur. Ceci fonctionne parce que nous ne laissons pas le frontend envoyer une tâche au backend directement depuis l'application. A la place, le frontend déposer des tâches dans la base de donnée, qui est à la fois locale et distante, et synchronise le tout à chaque fois que c'est possible (ce qui veut dire: à chaque fois qu'il détecte une connexion internet; s'il n'y en a pas, il ne s'en préoccupe pas). Après la synchronisation, ces tâches sont récupérées par le backend, qui agit en fonction de ce que lui ordonne les tâches. Une fois fait, la base de donnée émet les événements correspondants auxquels le frontend peut réagir.
 Aussi, nous vous fournissons une API de plugin qui gère la génération et la gestion de ces tâches, l'écriture dans les bases utilisateurs et tout ce dont vous pourriez avoir besoin pour construire _votre_ plugin.
 
-#### Quels composants constituent un plugin?
+#### Quels composants constituent un plugin&#x202F;?
 
 Les plugins Hoodie sont constitués de trois parties distinctes, et vous aurez besoin d'au moins une (selon ce que vous voulez que votre plugin fasse):
 
@@ -91,7 +91,7 @@ Mais n'allons pas trop vite. Faisons ça correctement et commençons par le comm
 
 ### Construisons un plugin de messagerie instantanée
 
-#### Comment ça va fonctionner?
+#### Comment ça va fonctionner&#x202F;?
 
 Voici ce que nous voulons que notre application Hoodie puisse faire avec le plugin, que nous allons appeler **directmessages**:
 
@@ -272,7 +272,7 @@ Nous n'avions pas encore la base de donnée de l'utilisateur, c'est ce que nous 
 
 Ceci fonctionne beaucoup  comme l'ajout d'un objet avec l'API frontend de Hoodie, sauf que nous utilisons ici des callbacks plutôt que des promises. Nous avons ajouté les données du message comme un objet **message** dans la base du destinataire, et si nous écoutons l'événement correspondant **new** sur le frontend, nous pouvons le faire apparaître en quasi temps réel.
 
-__Note__: vous pensez probablement: "Attendez une seconde, et que se passe-t-il si un autre plugin génère aussi des objets **message**?" Et c'est bien vu de votre part. Nous ne gérons pas de namespace ici pour simplifier, mais préfixer les noms des types d'objets avec celui de votre plugin semble être une excellente idée. Dans ce cas, la ligne devrait être
+__Note__: vous pensez probablement: "Attendez une seconde, et que se passe-t-il si un autre plugin génère aussi des objets **message**&#x202F;?" Et c'est bien vu de votre part. Nous ne gérons pas de namespace ici pour simplifier, mais préfixer les noms des types d'objets avec celui de votre plugin semble être une excellente idée. Dans ce cas, la ligne devrait être
 
 <pre><code>hoodie.database(targetDb).add(
     'directmessagesmessage',
@@ -333,7 +333,7 @@ Il y a plus, cependant: nous pouvons construire un panneau d'administration pour
 Pour cette exemple, partons d'un panneau d'administration qui:
 
 * peut envoyer des messages directs aux utilisateurs
-* a un paramètre de configuration pour la taille maximum pour la longueur du message (parce que si ça fonctionne pour Twitter, pourquoi ça ne marcherait pas pour nous?)
+* a un paramètre de configuration pour la taille maximum pour la longueur du message (parce que si ça fonctionne pour Twitter, pourquoi ça ne marcherait pas pour nous&#x202F;?)
  
 Pour cela, nous devons fournir un répertoire **/admin-dashboard** dans le répertoire racine de notre plugin, et il devra contenir un fichier **index.html** avec ce que vous souhaitez que votre panneau de d'administration montre.
 
@@ -447,7 +447,7 @@ Le fichier package.json est requis par node.js. Pour notre plugin, il ressemble 
 }</code></pre>
 
 #### Écrire les tests
-Arrive bientôt!
+Arrive bientôt&#x202F;!
 
 #### Déployer votre plugin sur NPM
 

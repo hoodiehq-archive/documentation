@@ -405,7 +405,7 @@ hoodie.account.on('error:unauthenticated', showSignInForm)
 
 ## Étapes suivantes
 
-Ok, maintenant vous êtes prêts pour la partie plus consistante. Allez voir le guide pour [l'API de stockage](/fr/techdocs/api/client/hoodie.store.html)!
+Ok, maintenant vous êtes prêts pour la partie plus consistante. Allez voir le guide pour [l'API de stockage](/fr/techdocs/api/client/hoodie.store.html)&#x202F;!
 
 
 Nous espérons que ce guide API vous a aidé. Sinon, laissez-nous vous aider <a href="http://hood.ie/chat" target="_blank">sur IRC ou Slack</a>.

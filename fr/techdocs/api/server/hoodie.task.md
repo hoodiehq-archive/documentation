@@ -7,7 +7,7 @@ locales: fr
 
 Cette classe défini l'API que hoodie.store (dépôt local) et hoodie.open (dépôt distant) implémente pour assurer une API cohérente. Elle implémente aussi les validations de base.
 
-L'API retour (NdT:???) peut être appelé comme une fonction retournant un dépôt ciblé par le type passé, par exemple:
+L'API retour (NdT:&#x202F;???) peut être appelé comme une fonction retournant un dépôt ciblé par le type passé, par exemple:
 
 <pre><code>var taskStore = hoodie.store('task');
 taskStore.findAll().done( showAllTasks );
@@ -64,7 +64,7 @@ Crée une nouvelle entrée dans le dépôt local.
 
 ##### hoodie.store.findOrAdd(type, id, properties)
 
-C'est une combinaison pratique de hoodie.store.find et hoodie.store.add. Utilisez-la quand vous voulez travailler avec un objet du dépôt en particulier pour lequel vous n'êtes pas sûr de l'existance. Dans quels cas cela vaut la peine de l'utiliser? Par exemple quand vous lisez un objet de paramètres avec lequel vous voulez travailler ensuite.
+C'est une combinaison pratique de hoodie.store.find et hoodie.store.add. Utilisez-la quand vous voulez travailler avec un objet du dépôt en particulier pour lequel vous n'êtes pas sûr de l'existance. Dans quels cas cela vaut la peine de l'utiliser&#x202F;? Par exemple quand vous lisez un objet de paramètres avec lequel vous voulez travailler ensuite.
 
 <pre><code>// pre-conditions: vous avez déjà récupéré un objet utilisateur
 var configBlueprint = { 

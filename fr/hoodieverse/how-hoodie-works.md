@@ -54,7 +54,7 @@ Partons du principe que nous avons construit une application qui contient un plu
 6. Dans le client de B, Hoodie émet un autre *événement de changement* quand le message arrive, que l'interface utilisateur en frontend peut écouter
 7. L'interface se met à jour et montre à B le nouveau message. B peut désormais emporter son appareil dans un avion, un sous-marin ou un bunker, et sera toujours capable d'y voir le message, connecté ou pas
 
-### Donc… la synchronisation inter-appareil est intégrée… et le mode déconnecté aussi?
+### Donc… la synchronisation inter-appareil est intégrée… et le mode déconnecté aussi&#x202F;?
 
 Exact. Tout ce que vous construisez avec Hoodie gère automatiquement la synchronisation des données entre les différents appareils de l'ulilisateur, et il stocke aussi les données sur ces appareils afin que vous puissiez facilement les rendre disponibles déconnecté. Et ce ne sont pas des fonctionnalités supplémentaires que vous devez invoquer, c'est juste comme ça que Hoodie fonctionne.
 
@@ -100,9 +100,9 @@ hoodie.store.on('add:todo', function(doc, options) {
 ```
 Mais fondamentalement, c'est tout. Voilà comment vous pouvez faire réagir votre interface aux modifications de données dans Hoodie. Simple, robuste et puissant.
 
-## Maintenant allez et construisez des trucs!
+## Maintenant allez et construisez des trucs&#x202F;!
 
-Est-ce que vous êtes chaud? Alors dirigez vous vers le [guide d'installation](/fr/start/)!
+Est-ce que vous êtes chaud&#x202F;? Alors dirigez vous vers le [guide d'installation](/fr/start/)&#x202F;!
 
 
 

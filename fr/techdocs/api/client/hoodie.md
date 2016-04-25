@@ -399,7 +399,7 @@ hoodie.sayHi(); // Montre l'alerte
 
 ## Plus avant
 
-Dirigez-vous maintenant vers le côté excitant: les documents pour les [comptes utilisateurs](/fr/techdocs/api/client/hoodie.account.html) et le [stockage](/fr/techdocs/api/client/hoodie.store.html)! Apprenez comment enregistrer vos utilisateurs et les laisser stocker des données, parmi d'autres choses sympathiques.
+Dirigez-vous maintenant vers le côté excitant: les documents pour les [comptes utilisateurs](/fr/techdocs/api/client/hoodie.account.html) et le [stockage](/fr/techdocs/api/client/hoodie.store.html)&#x202F;! Apprenez comment enregistrer vos utilisateurs et les laisser stocker des données, parmi d'autres choses sympathiques.
 
 Nous espérons que ce guide API vous a aidé. Sinon, laissez-nous vous aider <a href="http://hood.ie/chat" target="_blank">sur IRC ou Slack</a>.
 Nous avons aussi une <a href="http://faq.hood.ie" target="_blank">FAQ</a> qui pourrait se révéler utile si les choses se passent mal.

@@ -214,7 +214,7 @@ function checkSubmit(e) {
 }
 ```
 
-Nous avons donc envoyé le message dans messageStore, mais comment apparaît-il dans le flux de chat? Nous allons écouter sur le dépôt global les messages qui sont ajoutés, et nous les poussons dans le flux:
+Nous avons donc envoyé le message dans messageStore, mais comment apparaît-il dans le flux de chat&#x202F;? Nous allons écouter sur le dépôt global les messages qui sont ajoutés, et nous les poussons dans le flux:
 
 ```js
 // Met le gestionnaire d'événement en place pour les nouveaux messages sauvés dans Hoodie
@@ -299,7 +299,7 @@ function notifyModel(notification, status) {
 }
 ```
 
-Comment savons-nous qu'un utilisateur s'est (dé)connecté à l'application? Voyons **www/assets/js/account.js**:
+Comment savons-nous qu'un utilisateur s'est (dé)connecté à l'application&#x202F;? Voyons **www/assets/js/account.js**:
 
 ```js
 hoodie.account.on('error:unauthenticated signout', function(e){
@@ -334,7 +334,7 @@ function notifySignOut(e) {
   messageStore.add(model).publish();
 }
 ```
-Nous avons désormais la possibilité d'envoyer des messages et d'être notifié de qui entre et sort du chat; terminons en donnant à l'utilisateur la possibilité d'ajouter une image d'avatar unique. Un morceau de CSS ajoutait un état "hover" sur l'avatar de la barre de compte pour dire à l'utilisateur qu'il pouvait cliquer sur l'avatar pour le changer, que se passe-t-il quand il clique dessus?
+Nous avons désormais la possibilité d'envoyer des messages et d'être notifié de qui entre et sort du chat; terminons en donnant à l'utilisateur la possibilité d'ajouter une image d'avatar unique. Un morceau de CSS ajoutait un état "hover" sur l'avatar de la barre de compte pour dire à l'utilisateur qu'il pouvait cliquer sur l'avatar pour le changer, que se passe-t-il quand il clique dessus&#x202F;?
 
 ```js
 $('.user-avatar').on('click', showFileInput);
@@ -358,7 +358,7 @@ function showFileInput(e) {
 }
 ```
 
-Ca semble simple, non? Voici ensuite ce qui se passe quand quelqu'un sélectionne une image depuis le sélecteur de fichier:
+Ca semble simple, non&#x202F;? Voici ensuite ce qui se passe quand quelqu'un sélectionne une image depuis le sélecteur de fichier:
 
 ```js 
 function handleImgUpload(e) {

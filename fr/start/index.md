@@ -6,7 +6,7 @@ locales: fr
 # Installer Hoodie sur votre système
 
 ### Pré-requis
-Pour tous les OS, vous aurez besoin d'avoir installé <a href="http://nodejs.org/" target="_blank">Node.js</a>, <a href="http://couchdb.apache.org/" target="_blank">CouchDB</a> et <a href="http://git-scm.com/" target="_blank">Git</a>. Si vous les avez déjà tous, vous pouvez sautez directement <a href="../start/getting-started/getting-started-1.html">ici</a>!
+Pour tous les OS, vous aurez besoin d'avoir installé <a href="http://nodejs.org/" target="_blank">Node.js</a>, <a href="http://couchdb.apache.org/" target="_blank">CouchDB</a> et <a href="http://git-scm.com/" target="_blank">Git</a>. Si vous les avez déjà tous, vous pouvez sautez directement <a href="../start/getting-started/getting-started-1.html">ici</a>&#x202F;!
 
 ### Installation sous Mac OS X
 ##### 1. Node.js
@@ -67,9 +67,9 @@ sudo yum install couchdb nodejs npm
 npm install -g hoodie-cli
 ```
 
-### Installation terminée!
-Parfait! Maintenant vous pouvez découvrir comment créer de nouvelles applications Hoodie, comment le tableau de bord d'administration fonctionne, comment les projets Hoodie sont structurés et bien plus dans <a href="../start/getting-started/getting-started-1.html">Démarrer avec Hoodie - partie 1</a>.
+### Installation terminée&#x202F;!
+Parfait&#x202F;! Maintenant vous pouvez découvrir comment créer de nouvelles applications Hoodie, comment le tableau de bord d'administration fonctionne, comment les projets Hoodie sont structurés et bien plus dans <a href="../start/getting-started/getting-started-1.html">Démarrer avec Hoodie - partie 1</a>.
 
-### Des soucis?
-Désolé si ça ne s'est pas bien passé pour vous. Consultez notre <a href="http://faq.hood.ie" target="_blank">FAQ</a> ou venez nous parler sur <a href="http://hood.ie/chat" target="_blank">IRC ou Slack</a>, et nous verrons si nous pouvons vous aider!
+### Des soucis&#x202F;?
+Désolé si ça ne s'est pas bien passé pour vous. Consultez notre <a href="http://faq.hood.ie" target="_blank">FAQ</a> ou venez nous parler sur <a href="http://hood.ie/chat" target="_blank">IRC ou Slack</a>, et nous verrons si nous pouvons vous aider&#x202F;!
 

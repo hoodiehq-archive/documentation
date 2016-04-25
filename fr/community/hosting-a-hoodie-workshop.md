@@ -10,11 +10,11 @@ locales: fr
 ## Pré-requis
 
 - Combien de temps l'atelier doit durer (Au moins 3/4 heures devraient y être consacrées, selon le niveau d'expérience des participants)
-- Combien de participants?
+- Combien de participants&#x202F;?
 - Quo peut assurer le coaching (Idéalement 1 coach pour 3/4 participants)
-- Quel OS?
-- Est-ce qu'ils doivent amener leurs propres machines ou est-ce des ordinateurs seront disponibles? (Dans ce dernier cas, avec droits d'administration pour les participants?)
-- Quel niveau d'expérience?
+- Quel OS&#x202F;?
+- Est-ce qu'ils doivent amener leurs propres machines ou est-ce des ordinateurs seront disponibles&#x202F;? (Dans ce dernier cas, avec droits d'administration pour les participants&#x202F;?)
+- Quel niveau d'expérience&#x202F;?
   - HTML / CSS
   - JavaScript
   - Terminal

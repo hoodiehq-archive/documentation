@@ -8,7 +8,7 @@ locales: fr
 Ce document explique comment écrire un worker Hoodie.
 
 
-## Qu'est-ce qu'un worker Hoodie?
+## Qu'est-ce qu'un worker Hoodie&#x202F;?
 
 Un worker Hoodie est un module côté serveur qui implémente une fonction que le code côté client ne peut pas réaliser. Un bon exemple consiste en l'envoi d'email. Pour envoyer un mail, on doit envoyer des données via SMTP, qui est une connexion TCP. Le code client côté n'a pas habituellement les mécanismes pour le faire.
 
@@ -55,13 +55,13 @@ Copier ce code template, nous l'expliquerons en détail dans une minute:
 
 [Lien repo](https://github.com/hoodiehq/worker-log/blob/how-to-1/index.js)
 
-C'est tout! Nous allons maintenant démarrer notre worker:
+C'est tout&#x202F;! Nous allons maintenant démarrer notre worker:
 
     $ node index.js
     Logger Started
     $
 
-Super!
+Super&#x202F;!
 
 Bon, ce n'est pas terriblement impressionnant, mais nous avons la fondation en place.
 
@@ -114,7 +114,7 @@ Maintenant nous pouvons de nouveau lancer notre worker:
     $ node index.js
     Logger started.
 
-Et nous voyons qu'il ne revient pas à la ligne de commande, mais "reste là". C'est ce que nous voulions!
+Et nous voyons qu'il ne revient pas à la ligne de commande, mais "reste là". C'est ce que nous voulions&#x202F;!
 
 TODO: erreurs, URL CouchDB erronée, base qui n'existe pas, etc.
 
@@ -228,7 +228,7 @@ Ou, avec un tag:
 
     1234567890123 [info, email]: Email X Sent.
 
-Allons-y!
+Allons-y&#x202F;!
 
     WorkerLog.prototype._changesCallback = function(error, message)
     {
@@ -407,7 +407,7 @@ Si nous lançons `mocha` à nouveau, notre test passe.
 
       ✔ 1 test complete (45ms)
 
-Génial! Mais nous n'avons pas terminé. `_changeCallback()` fait encore deux jobs. Déplaçons le formatage du message dans sa propre méthode:
+Génial&#x202F;! Mais nous n'avons pas terminé. `_changeCallback()` fait encore deux jobs. Déplaçons le formatage du message dans sa propre méthode:
 
     WorkerLog.prototype._formatLogMessage = function(obj)
     {
@@ -470,13 +470,13 @@ Lançons `mocha` à nouveau:
 
       ✔ 3 tests complete (53ms)
 
-Hourra, nous sommes testés maintenant!
+Hourra, nous sommes testés maintenant&#x202F;!
 
 Pour récapituler, nous avons appris à séparer notre code dans des méthodes individuelles que nous pouvons tester. Les méthodes définissent ce qui rend le worker spécial, et nous évitons de tester le processus d'écoute lui-même qui est déjà contenu dans un module.
 
-Notez que pour le moment, nous devons lancer une instance CouchDB pour que nos tests fonctionnent. Nous allons bientôt régler ça!
+Notez que pour le moment, nous devons lancer une instance CouchDB pour que nos tests fonctionnent. Nous allons bientôt régler ça&#x202F;!
 
-## NPM-itude (NdT: -isation? -isationage?)
+## NPM-itude (NdT: -isation&#x202F;? -isationage&#x202F;?)
 
 Nous utilisons Node.js pour écrire notre worker. Node.js fourni un outil pratique pour le développeur appelé *npm*. Nous avons utilisé npm plus tôt pour installer le package `CouchDBChanges`. Npm peut faire tout sortes de choses bonnes pour nous. Nous devrions l'utiliser.
 
@@ -529,7 +529,7 @@ Nous allons ensuite sur le [site web de Travis CI](http://travis-ci.org) et suiv
 
 [Lien repo](https://github.com/hoodiehq/worker-log/blob/how-to-13/index.js)
 
-Notez que pour le moment, nous avons besoin d'une instance CouchDB pour que les tests réussis, aussi pousser ceci vers Travis CI échouera. Nous allons régler ceci rapidement!
+Notez que pour le moment, nous avons besoin d'une instance CouchDB pour que les tests réussis, aussi pousser ceci vers Travis CI échouera. Nous allons régler ceci rapidement&#x202F;!
 
 ## Configuring Workers
 
@@ -611,7 +611,7 @@ Le motif de module Node.js que nous utilisons ici (nous ne vous l'avons pas dit,
 
 Et `lib/worker-log.js` contiendra le reste de notre code.
 
-Ceci nous permet de finalement lancer nos tests sans avoir à lancer le worker au complet. Ceci veut dire que nous pouvons désormais lancer nos tests sans avoir besoin d'une instance CouchDB fonctionnelle. Et notre configuration Travis CI fonctionne aussi maintenant!
+Ceci nous permet de finalement lancer nos tests sans avoir à lancer le worker au complet. Ceci veut dire que nous pouvons désormais lancer nos tests sans avoir besoin d'une instance CouchDB fonctionnelle. Et notre configuration Travis CI fonctionne aussi maintenant&#x202F;!
 
 Reportez-vous au [lien repo](https://github.com/hoodiehq/worker-log/tree/how-to-15) pour voir comment nous devons ajuster quelques require pour nos tests.
 

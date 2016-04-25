@@ -10,7 +10,7 @@ Avant de commencer à travailler avec Hoodie, voici ce dont vous aurez besoin de
 ### Pré-requis système pour le serveur Hoodie
 - Mac OSX
 - Windows 7 et plus<br />
-<small>(Windows 7 sur une machine 64bit? <a href="http://faq.hood.ie/#/question/38210291" target="_blank"> Vous devriez lire cette petite astuce. </a> )</small>
+<small>(Windows 7 sur une machine 64bit&#x202F;? <a href="http://faq.hood.ie/#/question/38210291" target="_blank"> Vous devriez lire cette petite astuce. </a> )</small>
 - Linux (Ubuntu, Fedora 19+)
 
 ### Compatibilité navigateur <small>(toutes les dernières versions stables)</small>

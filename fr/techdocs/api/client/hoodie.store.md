@@ -583,7 +583,7 @@ Notez qu'aucun événement **remove** n'est déclenché quand le dépôt est net
 
 ## Plus avant
 
-Excellent, vous êtes arrivé à la fin de la documentation du coeur. La prochaine étape logique serait de [découvrir les plugins Hoodie](/fr/plugins/). Amusez-vous bien!
+Excellent, vous êtes arrivé à la fin de la documentation du coeur. La prochaine étape logique serait de [découvrir les plugins Hoodie](/fr/plugins/). Amusez-vous bien&#x202F;!
 
 Nous espérons que ce guide API vous a aidé. Sinon, laissez-nous vous aider <a href="http://hood.ie/chat" target="_blank">sur IRC ou Slack</a>.
 

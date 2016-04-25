@@ -14,7 +14,7 @@ Hoodie a été conçu autour de quelques convictions et concepts fondamentaux, e
 
 ### Dreamcode
 
-Lors du design de l'API de Hoodie, nous avons réalisé que nous voulions faire plus que simplement exposer du code serveur au frontend. **Nous voulions réduire la complexité, pas la déplacer**. Et pour rendre quelque-chose simple et intuitif, vous ne pouvez pas commencer par la couche technique, vous devez commencer par les humains qui vont l'utiliser. A quoi ressemblerait l'API de leur rêve? Dreamcode est essentiellement le design d'API centré sur les utilisateurs.
+Lors du design de l'API de Hoodie, nous avons réalisé que nous voulions faire plus que simplement exposer du code serveur au frontend. **Nous voulions réduire la complexité, pas la déplacer**. Et pour rendre quelque-chose simple et intuitif, vous ne pouvez pas commencer par la couche technique, vous devez commencer par les humains qui vont l'utiliser. A quoi ressemblerait l'API de leur rêve&#x202F;? Dreamcode est essentiellement le design d'API centré sur les utilisateurs.
 
 Pour faire simple: **l'API de Hoodie est optimisée pour être formidable**. Pour être intuitive et accessible. Et elle est optimisée pour faciliter autant que possible la vie des développeurs frontend. C'est aussi une API en premier lieu: c'est une promesse - tout le reste peut changer et est remplaçable. L'API est tout ce qui compte.
 
@@ -46,7 +46,7 @@ Consultez <a href="http://nobackend.org/" target="_blank">nobackend.org</a>, <a 
 <a id="offline-first"></a>
 
 ### Offline First
-Nous faisons des sites web et des applications pour le web. L'objectif est d'être en ligne, d'accord? Nous sommes en ligne quand nous construisons ces choses, et nous partons généralement du principe que les utilisateurs sont dans un état de connexion permanente. Cet état, cependant, est un mythe, et cette hypothèse pose tout un tas de problèmes.
+Nous faisons des sites web et des applications pour le web. L'objectif est d'être en ligne, d'accord&#x202F;? Nous sommes en ligne quand nous construisons ces choses, et nous partons généralement du principe que les utilisateurs sont dans un état de connexion permanente. Cet état, cependant, est un mythe, et cette hypothèse pose tout un tas de problèmes.
 
 Avez l'augmentation astronomique de l'usage du mobile, nous ne pouvons assumer quoique ce soit sur les connexions de nos utilisateurs. Tout comme nous avons appris à accepter que les écrans sont désormais de toutes les formes et de toutes les tailles, **nous devrons admettre que les connexions peuvent être présentes ou absentes, rapides ou lentes, régulières ou intermittentes, gratuites ou chères**. Nous avons réagis au défi de taille d'écran inconnues avec le <a href="http://alistapart.com/article/responsive-web-design" target="_blank">Responsive Webdesign</a> et le Mobile First, et nous devront réagir au défi des connexions fluctuantes avec le <a href="http://alistapart.com/article/offline-first" target="_blank">Offline First</a>.
 
@@ -57,6 +57,6 @@ Avez l'augmentation astronomique de l'usage du mobile, nous ne pouvons assumer q
 Consultez <a href="http://offlinefirst.org/" target="_blank">offlinefirst.org</a>, <a href="https://github.com/offlinefirst/" target="_blank">on GitHub</a> et <a href="https://github.com/offlinefirst/research" target="_blank">les discussions et la recherche</a>.
 
 ### Désormais vous savez ce qui nous motive
-Nous espérons que ceci vous a aussi motivé! Vous pouvez désormais découvrir [la technologie sous-jacente et comment Hoodie fonctionne réellement](/fr/hoodieverse/how-hoodie-works.html).
+Nous espérons que ceci vous a aussi motivé&#x202F;! Vous pouvez désormais découvrir [la technologie sous-jacente et comment Hoodie fonctionne réellement](/fr/hoodieverse/how-hoodie-works.html).
 
 Si vous êtes déjà familier avec l'architecture, il est peut-être temps de jeter un oeil aux <a href="system-requirements-browser-compatibilities-prerequisites-before-getting-started-with-hoodie.html">pré-requis systèmes de Hoodie</a>.

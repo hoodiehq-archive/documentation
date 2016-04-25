@@ -5,7 +5,7 @@ locales: fr
 
 # Bienvenue à Hoodie
 
-## Qu'est-ce que Hoodie?
+## Qu'est-ce que Hoodie&#x202F;?
 
 Hoodie est un kit bibliothèque/serveur pour le frontend des applications web qui abstrait le backend. Si vous aimez travailler avec jQuery, Backbone, Dojo, Ember, ou tout autre framework frontend, mais êtes *terrifié* par le travail sur le backend, Hoodie est pour vous.
 
@@ -39,4 +39,4 @@ Vous pouvez [lire quelques-uns des concepts derrière Hoodie](/fr/hoodieverse/ho
 
 Si vous êtes plus intéressés par les détails techniques de Hoodie, allez voir [Comment Hoodie fonctionne](/fr/hoodieverse/how-hoodie-works.html). Apprenez comment Hoodie gère le stockage des données, les synchronise et d'où vient le support du mode "offline".
 
-Pressé de coder? Sautez directement au [guide d'installation](/fr/start/)!
+Pressé de coder&#x202F;? Sautez directement au [guide d'installation](/fr/start/)&#x202F;!

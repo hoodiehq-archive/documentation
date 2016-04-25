@@ -241,7 +241,7 @@ function removeMarker(marker) {
 }
 ```
 
-Maintenant l'utilisateur de votre application peut créer un tas de marqueurs mais ils sont stockés en tant qu'anonyme, i.e. sans compte. Comment faites-vous pour déplacer ces entrées dans le compte de l'utilisateurs lors qu'il se connecte ou s'enregistre? La réponse est simple: vous n'avez pas à le faire. Hoodie récupérera toute donnée locale anonyme, et la déplacera dans le compte de l'utilisateur quand il [s'enregistrera](http://docs.hood.ie/en/techdocs/api/client/hoodie.account.html#accountsignup). Quand [un utilisateur se connecte](http://docs.hood.ie/en/techdocs/api/client/hoodie.account.html#accountsignin), vous pouvez passer un objet options avec la propriété "moveData" à "true". 
+Maintenant l'utilisateur de votre application peut créer un tas de marqueurs mais ils sont stockés en tant qu'anonyme, i.e. sans compte. Comment faites-vous pour déplacer ces entrées dans le compte de l'utilisateurs lors qu'il se connecte ou s'enregistre&#x202F;? La réponse est simple: vous n'avez pas à le faire. Hoodie récupérera toute donnée locale anonyme, et la déplacera dans le compte de l'utilisateur quand il [s'enregistrera](http://docs.hood.ie/en/techdocs/api/client/hoodie.account.html#accountsignup). Quand [un utilisateur se connecte](http://docs.hood.ie/en/techdocs/api/client/hoodie.account.html#accountsignin), vous pouvez passer un objet options avec la propriété "moveData" à "true". 
 
 Heureusement, vous avez le script **assets/vendor/hoodie.accountbar.bootstrap.js** qui s'occupe de cette logique pour vous.
 

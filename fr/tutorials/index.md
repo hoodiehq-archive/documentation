@@ -34,7 +34,7 @@ Si vous utilisez l'application *sans* vous êtes enregistré et/ou connecté, vo
 
 Vous pouvez utiliser une application Hoodie en tant qu'utilisateur anonyme pour commencer, et une fois que vous vous serez enregistré, vos données seront automatiquement déplacées dans votre compte nouvellement créé et synchronisées.
 
-Allez-y, ajoutez quelques tâches!
+Allez-y, ajoutez quelques tâches&#x202F;!
 
 #### 1.2 Synchronisation
 
@@ -48,7 +48,7 @@ Dans le terminal, arrêter le serveur Hoodie avec **ctrl+c** (Mac/Linux) ou **al
 
 Dans l'un de vos deux onglets, ajoutez quelques tâches. Vous noterez deux choses:
  
-1. Vous pouvez ajoutez des nouvelles tâches malgré le serveur arrêté. Pas de messages d'erreur! Ca fonctionne juste. Youpi!
+1. Vous pouvez ajoutez des nouvelles tâches malgré le serveur arrêté. Pas de messages d'erreur&#x202F;! Ca fonctionne juste. Youpi&#x202F;!
 2. Si vous regardez l'autre onglet, les nouvelles tâches n'apparaissent pas. Elles ne peuvent pas, puisque toute la synchronisation se fait via le serveur, que vous venez d'arrêter. Pas top. Mais juste pour le coup, ajoutez ici aussi quelques tâches.
 
 Et maintenant, redémarrons le serveur (l'option **-n** évite qu'un nouveau navigateur ne soit ouvert):
@@ -57,14 +57,14 @@ Et maintenant, redémarrons le serveur (l'option **-n** évite qu'un nouveau nav
 $ hoodie start -n
 ```
 **Maintenant observez les deux onglets**: ils devraient se synchroniser avec le serveur, et les deux devraient afficher toutes les tâches que vous avez ajouté pendant que vous étiez déconnecté.
-Plutôt sympa, non?
+Plutôt sympa, non&#x202F;?
 
 **Les application Hoodie sont super robustes même sur de mauvais réseaux**, et vous gagnez deux bonus sur l'expérience utilisateur:
  
 1. Pas de message d'erreur frustrant quand vous passez en déconnecté durant l'utilisation
 2. Vos utilisateurs peuvent toujours accéder à leurs propres données, même déconnectés.
 
-Le code pour faire fonctionner tout ça doit être super complexe, non? Vous serez surpris…
+Le code pour faire fonctionner tout ça doit être super complexe, non&#x202F;? Vous serez surpris…
 
 ### 2. Le Code
 
@@ -107,7 +107,7 @@ Et c'est à peu près tout.
 hoodie.store.add(type, object);
 ```
 
-Une ligne. Ceci stocke la tâche dans le dépôt local du navigateur, et Hoodie se charge de la synchroniser partout où elle doit se retrouver. Plutôt simple, non? **add()** retourne aussi [des promises](/fr/techdocs/api/client/hoodie.store.html#storeadd) afin que vous puissiez vérifier que ça a fonctionné, mais laissons ça de côté pour l'instant.
+Une ligne. Ceci stocke la tâche dans le dépôt local du navigateur, et Hoodie se charge de la synchroniser partout où elle doit se retrouver. Plutôt simple, non&#x202F;? **add()** retourne aussi [des promises](/fr/techdocs/api/client/hoodie.store.html#storeadd) afin que vous puissiez vérifier que ça a fonctionné, mais laissons ça de côté pour l'instant.
 
 <a id="understanding-type"></a>
 #### 2.2 Un petit aparté: comprendre le type
@@ -147,11 +147,11 @@ hoodie.store.on('todo:update', todos.update);
 hoodie.store.on('todo:remove', todos.remove);
 ```
 
-Qu'est-ce qui se passe ici? Nous écoutons des événements émis par le dépôt Hoodie. Regardez le premier: **todo:add**. Il se déclenche à chaque fois qu'un nouvelle objet de type *todo* est ajouté. Les autres devraient être évidents maintenant. Quand un gestionnaire d'événement se déclenche, il appelle la méthode qui met le modèle à jour (un tableau d'objet appelé **collection**) puis la vue. *Il n'y pas a pas de connexion directe entre l'entrée de la tâche et la liste des tâches*.
+Qu'est-ce qui se passe ici&#x202F;? Nous écoutons des événements émis par le dépôt Hoodie. Regardez le premier: **todo:add**. Il se déclenche à chaque fois qu'un nouvelle objet de type *todo* est ajouté. Les autres devraient être évidents maintenant. Quand un gestionnaire d'événement se déclenche, il appelle la méthode qui met le modèle à jour (un tableau d'objet appelé **collection**) puis la vue. *Il n'y pas a pas de connexion directe entre l'entrée de la tâche et la liste des tâches*.
 
 Nous avons donc proprement découplé *ajouter* une tâche et *afficher* une nouvelle tâche, et ceci nous offre la fonction de synchronisation avancée que nous avons vu précédemment, *gratuitement*. **Il n'y a pas de code supplémentaire pour faire fonctionner la synchronisation**. Quand une nouvelle tâche arrive dans le dépôt du navigateur, l'événement **todo:add** se déclenche, et la vue se met à jour. Avec ce code, vous n'avez pas besoin de vous inquiéter *d'où* la tâche provient (du client actuel, ou de celui dans un autre onglet, ou de celui sur un téléphone), l'application les gère de la même manière.
 
-Nous vous suggérons fortement d'utiliser cette structure découplée dans vos propres applications. C'est ce qui fait la puissance de Hoodie!
+Nous vous suggérons fortement d'utiliser cette structure découplée dans vos propres applications. C'est ce qui fait la puissance de Hoodie&#x202F;!
 
 ### 3. Modification de l'application
 
@@ -224,7 +224,7 @@ en
 + collection[i].priority + ': ' + collection[i].title +
 ```
 
-Sauvegardez le tout et essayez!
+Sauvegardez le tout et essayez&#x202F;!
 
 A ce stade vous devriez commencer à voir que chaque *nouvelle* tâche est préfacée de sa priorité. Parce que la base n'a pas de schéma, **il est super simple d'ajouter de nouveaux attributs aux objets dans Hoodie** sans avoir à penser à la base de donnée ou à la structure des données.
 
@@ -262,7 +262,7 @@ Nous n'avons abordé que brièvement **hoodie.store.add** et **hoodie.store.on**
 
 Si vous voulez essayer un autre tutoriel, allez voir [la gestion de temps](../tutorials/timetracker.html).
 
-#### Comment ça s'est passé?
+#### Comment ça s'est passé&#x202F;?
 
 Nous aimerions avoir votre ressenti sur ce guide, et s'il vous a aidé. N'hésitez pas à <a href="http://hood.ie/chat" target="_blank">nous contacter via IRC ou Slack</a>.
 
@@ -270,7 +270,7 @@ Vous avez aussi une <a href="http://faq.hood.ie" target="_blank">FAQ</a> qui pou
 
 Si ce guide comporte des erreurs ou est dépassé, vous pouvez aussi <a href="https://github.com/hoodiehq/documentation/issues" target="_blank">ouvrir un ticket</a> ou soumettre une "pull request" avec vos corrections sur <a href="https://github.com/hoodiehq/documentation/blob/gh-pages/fr/tutorials/index.md" target="_blank">ce fichier</a>.
 
-Merci de votre intérêt et de votre temps!
+Merci de votre intérêt et de votre temps&#x202F;!
 
 Et voici votre poulet de félicitations:
 
