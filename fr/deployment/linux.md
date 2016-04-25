@@ -9,7 +9,7 @@ Notez que ceci est un brouillon incomplet. Il devrait vous mettre en selle pour 
 
 Ce guide est dédié à Linux pour le moment. D'autres Unices devraient être couverts avec quelques légères modifications.
 
-### Installer les dépendances:
+### Installer les dépendances&#x202F;:
 
  - Installez CouchDB 1.2.0 ou ultérieure, 1.4.0 ou ultérieure est recommandé pour des questions de performance.
  - Installez NodeJS 0.10.0 or ultérieure.
@@ -20,7 +20,7 @@ Ce guide est dédié à Linux pour le moment. D'autres Unices devraient être co
 
 ### Configuration
 
-#### CouchDB:
+#### CouchDB&#x202F;:
 
 Hoodie est en mode de développement par défaut et de ce fait il démarre sa propre instance CouchDB. Pour des déploiements en production, nous vous recommandons de faire tourner une instance indépendante de CouchDB pour différentes raisons, comme la simplicité d'exploitation ou la sécurité.
 
@@ -32,7 +32,7 @@ Dans ce guide, nous partirons du principe que votre CouchDB est atteignable à l
 
 Créez un utilisateur CouchDB d'administration appelé **admin** avec un mot de passe fort de votre choix depuis [http://127.0.0.1:5984/_utils/]() en cliquant sur le lien **Fix this** en bas à droit. Retenez ce mot de passe.
 
-Vous devrez ensuite changer la configuration par défaut sur certains points. Le plus simple est d'aller sur [http://127.0.0.1:5984/_utils/config.html]() et de changer les champs suivants (double-cliquez sur une valeur pour entrer en mode d'édition):
+Vous devrez ensuite changer la configuration par défaut sur certains points. Le plus simple est d'aller sur [http://127.0.0.1:5984/_utils/config.html]() et de changer les champs suivants (double-cliquez sur une valeur pour entrer en mode d'édition)&#x202F;:
 
 <pre><code>couchdb -> delayed_commits: false
 couchdb -> max_dbs_open: 1024
@@ -49,7 +49,7 @@ hoodie    hard    nofile    1024
 
 #### Hoodie
 
-Créez un nouvel utilisateur système:
+Créez un nouvel utilisateur système&#x202F;:
 
 <pre><code>useradd --system \
        -m \
@@ -63,13 +63,13 @@ Ceci créera un nouvelle utilisateur avec pour répertoire "home" **/home/hoodie
 
 **cd** dans ce répertoire.
 
-En tant qu'utilisateur Hoodie, installez votre application, soit avec la fonction de "template" de Hoodie:
+En tant qu'utilisateur Hoodie, installez votre application, soit avec la fonction de "template" de Hoodie&#x202F;:
 
 <pre><code>[sudo -u hoodie] hoodie new appname githubname/reponame 
   # think https://github.com/githubname/reponame
 </code></pre>
 
-…soit via un checkout git et une configuration manuelle:
+…soit via un checkout git et une configuration manuelle&#x202F;:
 
 <pre><code>[sudo -u hoodie] git clone appname repourl
   # make sure package.json has a valid `name` property.
@@ -87,13 +87,13 @@ chmod +x hoodie-daemon.sh
 
 Il est fait pour être lancé en tant que **root**. C'est aussi une version de départ de ce qui deviendra le script **init.d**, mais nous n'en sommes pas encore là :)
 
-Pour lancez Hoodie maintenant, en tant que **root**:
+Pour lancez Hoodie maintenant, en tant que **root**&#x202F;:
 
 <pre><code>HOODIE_ADMIN_PASS=yourcouchdbadminpasswordfromearlier 
   ./hoodie-daemon.sh start
 </code></pre>
 
-Voilà! Vous pouvez vérifier que la configuration est valide en vérifier les fichiers trace:
+Voilà! Vous pouvez vérifier que la configuration est valide en vérifier les fichiers traces&#x202F;:
 
 <pre><code>tail -f /home/hoodie/log/*</code></pre>
 
@@ -103,15 +103,15 @@ Votre application Hoodie devrait être accessible depuis [http://127.0.0.1:6001/
 
 #### WWW
 
-Vous voulez probablement que votre application Hoodie écoute sur le port 80 et soit même disponible sous un nom de domaine classique. Le mapping d'un domaine est bien entendu hors sujet pour cette configuration, mais l'écoute sur le port 80 peut être implémentée facilement. Sous Unix, les utilisateurs qui ne sont pas administrateurs ne peuvent pas lancer de programmes en écoute des ports inférieurs à 1024. Au lieu de lancer Hoodie en tant que **root** (ce qui nous considérons être un risque de sécurité, merci de **ne pas lancer Hoodie en tant que root**), nous avons une meilleure idée: utiliser un logiciel qui soit éprouvé et qui nous donne une fonction bonus que vous allez apprécier.
+Vous voulez probablement que votre application Hoodie écoute sur le port 80 et soit même disponible sous un nom de domaine classique. Le mapping d'un domaine est bien entendu hors sujet pour cette configuration, mais l'écoute sur le port 80 peut être implémentée facilement. Sous Unix, les utilisateurs qui ne sont pas administrateurs ne peuvent pas lancer de programmes en écoute des ports inférieurs à 1024. Au lieu de lancer Hoodie en tant que **root** (ce qui nous considérons être un risque de sécurité, merci de **ne pas lancer Hoodie en tant que root**), nous avons une meilleure idée&#x202F;: utiliser un logiciel qui soit éprouvé et qui nous donne une fonction bonus que vous allez apprécier.
 
 Nous allons utiliser nginx comme serveur proxy HTTP. D'autres logiciels proxy devrait être aussi utilisables (Apache 2 et HAProxy sont deux qui viennent à l'esprit). Nous partons sur nginx parce que notre hébergement le support :)
 
 Ajouter un nouveau fichier **/etc/nginx/vhosts.d/appname.conf** avec le contenu de [ce gist](https://gist.github.com/janl/2a8e6ebc80a25817dca0). Vous devrez ajuster le nom de domaine et les chemins d'accès aux fichiers traces et au certificat et à la clef SSL.
 
-**NOTE**: du fait d'un [problème](https://www.ruby-forum.com/topic/4412004) avec la terminaison de session SSL, nous vous recommandons d'utiliser HAProxy pour s'occuper de cet aspect. Nous ajouterons un exemple de configuration plus tard.
+**NOTE**&#x202F;: du fait d'un [problème](https://www.ruby-forum.com/topic/4412004) avec la terminaison de session SSL, nous vous recommandons d'utiliser HAProxy pour s'occuper de cet aspect. Nous ajouterons un exemple de configuration plus tard.
 
-Une fois que tout ceci est en place, vous pouvez recharger la configuration de nginx:
+Une fois que tout ceci est en place, vous pouvez recharger la configuration de nginx&#x202F;:
 
 <pre><code>[sudo] nginx reload</code></pre>
 
@@ -121,11 +121,11 @@ Maintenant votre application est disponible sur l'IP publique de votre machine e
 
 Désormais, toutes les requêtes à notre application sont servies via HTTPS. nginx offre la terminaison HTTPS et la délègue vers Hoodie en HTTP. Nous avons aussi dit à nginx de servir le **/** de votre application depuis le répertoire **/www** et de déléguer seulement **/_api** vers Hoodie plutôt que de laisser Hoodie servir le contenu statique en plus du "backend" dynamique.
 
-Ceci a l'avantage que, dans le cas d'un problème avec Hoodie, vos clients seront toujours capables d'accéder aux éléments statique et seront toujours capable d'utiliser votre application. Il s'agit d'un énorme bénéfice des architecture "offline-first": vos utilisateurs peuvent continuer à utiliser l'application même quand le "backend" est arrêter. Alors que ce design est fait pour permettre aux utilisateurs de fonctionner en déconnecté, il permet aussi de déconnecter le "backend" :)
+Ceci a l'avantage que, dans le cas d'un problème avec Hoodie, vos clients seront toujours capables d'accéder aux éléments statique et seront toujours capable d'utiliser votre application. Il s'agit d'un énorme bénéfice des architecture "offline-first"&#x202F;: vos utilisateurs peuvent continuer à utiliser l'application même quand le "backend" est arrêter. Alors que ce design est fait pour permettre aux utilisateurs de fonctionner en déconnecté, il permet aussi de déconnecter le "backend" :)
 
 #### logrotate
 
-Nous avons configuré un certain nombre de fichiers traces, aussi vous voudrez vous assurer que vous ne manquerez pas d'espace. Configurons la rotation des traces dans **/etc/logrotate.d/hoodie**:
+Nous avons configuré un certain nombre de fichiers traces, aussi vous voudrez vous assurer que vous ne manquerez pas d'espace. Configurons la rotation des traces dans **/etc/logrotate.d/hoodie**&#x202F;:
 
 <pre><code>/var/log/hoodie.std* {
        weekly
@@ -142,7 +142,7 @@ Nous avons configuré un certain nombre de fichiers traces, aussi vous voudrez v
 
 Enfin, nous voulons nous assurer que Hoodie reste accessible et en bonne santé même quand le processus principal NodeJS s'arrête pour quelque raison que ce soit. Nous utiliserons Monit pour surveiller et redémarrer Hoodie au besoin.
 
-Créer le fichier **/etc/monit.d/hoodie** ainsi:
+Créer le fichier **/etc/monit.d/hoodie** ainsi&#x202F;:
 <pre><code>check process hoodie with pidfile 
   /home/hoodie/log/hoodie.pid
 start program = "/home/hoodie/hoodie-daemon.sh start"
@@ -152,7 +152,7 @@ if failed URL https://yourapp.com/_api then restart
 
 Une fois encore, insérez le nom de domaine de votre application où c'est pertinent. Le processus redémarrera si l'url **/_api** (l'API principale de Hoodie) est indisponible.
 
-Tant que nous y sommes, configuration la même chose pour nginx:
+Tant que nous y sommes, configuration la même chose pour nginx&#x202F;:
 
 **/etc/monit.d/nginx**
 <pre><code>check process nginx with pidfile /var/run/nginx.pid

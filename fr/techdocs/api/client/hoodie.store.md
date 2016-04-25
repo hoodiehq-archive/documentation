@@ -8,7 +8,7 @@ locales: fr
 
 Si vous voulez faire quoique ce soit avec des données dans Hoodie, c'est ici que ça se passe.
 
-**Après avoir lu ce guide, vous saurez comment:**
+**Après avoir lu ce guide, vous saurez comment&#x202F;:**
 
 - ajouter des objets
 - trouver des objets
@@ -22,7 +22,7 @@ Une des fonctions clefs de toute application web est de pouvoir stocker et récu
 
 #### Choses à savoir avant de continuer
 
-Si vous n'avez pas déjà lu comment Hoodie fonctionne sous le capot (NdT: calembour perdu à la traduction...) et synchronise toutes vos données, alors [c'est peut-être le bon moment](/fr/hoodieverse/how-hoodie-works.html). C'est juste un guide avec une vue générale pour que vous compreniez l'architecture de base et les capacités de Hoodie.
+Si vous n'avez pas déjà lu comment Hoodie fonctionne sous le capot (NdT&#x202F;: calembour perdu à la traduction...) et synchronise toutes vos données, alors [c'est peut-être le bon moment](/fr/hoodieverse/how-hoodie-works.html). C'est juste un guide avec une vue générale pour que vous compreniez l'architecture de base et les capacités de Hoodie.
 
 Il est aussi important de comprendre le [concept de type dans Hoodie](/fr/tutorials/#understanding-type), puisqu'il concerne toutes les opérations autour des données.
 
@@ -166,7 +166,7 @@ hoodie.store.findAll(type);
 
 ##### Exemple
 
-Si vous avez une application de suivi de tâche et que vous voulez récupérer tous les objets tâches, voici ce que vous utiliseriez:
+Si vous avez une application de suivi de tâche et que vous voulez récupérer tous les objets tâches, voici ce que vous utiliseriez&#x202F;:
 
 ```javascript
 hoodie.store.findAll('todo')
@@ -175,7 +175,7 @@ hoodie.store.findAll('todo')
   })
 ```
 
-**findAll** accepte aussi une fonction comme argument. Si cette fonction retourne vrai pour un objet du dépôt, il sera retourné. **Ceci vous permet d'écrire des requêtes complexe pour le dépôt**. Dans cet exemple simple, supposons que toutes les tâches à faire ont une clef **status**, et nous voulons trouver les tâches non terminées:
+**findAll** accepte aussi une fonction comme argument. Si cette fonction retourne vrai pour un objet du dépôt, il sera retourné. **Ceci vous permet d'écrire des requêtes complexe pour le dépôt**. Dans cet exemple simple, supposons que toutes les tâches à faire ont une clef **status**, et nous voulons trouver les tâches non terminées&#x202F;:
 
 ```javascript
 hoodie.store.findAll(function(object){
@@ -212,7 +212,7 @@ Retourne une promise. Quand un objet est trouvé, il est mis à jour et passé a
 
 #### Exemple
 
-Mise à jour d'un objet en passant un objet avec les propriétés changées (et nouvelles):
+Mise à jour d'un objet en passant un objet avec les propriétés changées (et nouvelles)&#x202F;:
 
 ```javascript
 
@@ -238,7 +238,7 @@ Les méthodes **update** acceptent une fonction à la place d'un objet avec les 
 
 #### Exemple
 
-Une mise à jour avec une fonction de mise à jour à la place de propriétés:
+Une mise à jour avec une fonction de mise à jour à la place de propriétés&#x202F;:
 
 ```javascript
 hoodie.store.update('todo', 'abc456', function(todo) {
@@ -390,11 +390,11 @@ Pas de retour défini.
 
 Vous permet d'attacher un processus d'écoute à un dépôt, afin que votre interface puisse réagir aux données qui changent. C'est très important pour construire des frontend correctement découplés, [comme expliqué ici](/fr/tutorials/#updating-the-view), ce qui offrira les bénéfices complets du mode déconnecté et de la synchronisation inter-appareils de Hoodie.
 
-**Important:** si vous ne l'avez pas déjà fait, allez lire le [guide général sur les événements Hoodie et leur syntaxe de nommage](/fr/techdocs/api/client/hoodie.html#on) pour bien comprendre comment les événements sont gérés. Cette page décrit les méthodes [one()](/fr/techdocs/api/client/hoodie.html#one) et [off()](/fr/techdocs/api/client/hoodie.html#off) pour attacher un gestionnaire une fois ou détacher tous les gestionnaires.
+**Important&#x202F;:** si vous ne l'avez pas déjà fait, allez lire le [guide général sur les événements Hoodie et leur syntaxe de nommage](/fr/techdocs/api/client/hoodie.html#on) pour bien comprendre comment les événements sont gérés. Cette page décrit les méthodes [one()](/fr/techdocs/api/client/hoodie.html#one) et [off()](/fr/techdocs/api/client/hoodie.html#off) pour attacher un gestionnaire une fois ou détacher tous les gestionnaires.
 
 #### Exemple
 
-Montrer une notification différente selon qu'une nouvelle note ou une nouvelle tâche sont ajoutées:
+Montrer une notification différente selon qu'une nouvelle note ou une nouvelle tâche sont ajoutées&#x202F;:
 
 ```javascript
 hoodie.store.on('add', function(newObject) {
@@ -407,7 +407,7 @@ hoodie.store.on('add', function(newObject) {
 });
 ```
 
-Vous pouvez aussi gérer ce cas avec des gestionnaires plus précis, un pour chaque **type**:
+Vous pouvez aussi gérer ce cas avec des gestionnaires plus précis, un pour chaque **type**&#x202F;:
 
 ```javascript
 hoodie.store.on('todo:add', showNewTodoAddedNotification);
@@ -436,7 +436,7 @@ Ceci veut dire que vous pouvez utiliser les méthodes **hoodie.store** directeme
 
 #### Exemple
 
-Typiquement vous feriez quelque-chose comme ça pour votre application de gestion de tâche:
+Typiquement vous feriez quelque-chose comme ça pour votre application de gestion de tâches&#x202F;:
 
 ```javascript
 hoodie.store.add('todo', { title: 'Getting Coffee' })
@@ -446,7 +446,7 @@ hoodie.store.add('todo', { title: 'Getting Coffee' })
 })
 ```
 
-L'exemple suivant utilise un dépôt ciblé: notez que nous avons omis le paramètre *type* dans les appels à **add()** et **findAll()**, car ils sont implicites: le dépôt est ciblé sur le type **todo**, il ne s'y trouve que des objets de ce type.
+L'exemple suivant utilise un dépôt ciblé&#x202F;: notez que nous avons omis le paramètre *type* dans les appels à **add()** et **findAll()**, car ils sont implicites&#x202F;: le dépôt est ciblé sur le type **todo**, il ne s'y trouve que des objets de ce type.
 
 ```javascript
 var todoStore = hoodie.store('todo');
@@ -458,19 +458,19 @@ todoStore.add({ title: 'Getting Coffee' })
 })
 ```
 
-Les bénéfices de cette variante ne sont pas super évidents à première vue, mais en dehors d'être plus concis et de ne pas vous répéter, ils sont aussi moins sujets aux erreurs: imaginez vous tromper de **type** avec une fonction **add()**, et ajouter un tas de **todoo** par accident. Votre application continuerait à sauver des **todoo** sans erreur, mais ils n'apparaitraient pas dans l'interface, puisque votre gestionnaire **on()** n'écoutent que le type correctement écrit. Vous supposeriez probablement que quelque-chose ne va pas avec le code d'affichage et iriez chasser le bug au mauvais endroit.
+Les bénéfices de cette variante ne sont pas super évidents à première vue, mais en dehors d'être plus concis et de ne pas vous répéter, ils sont aussi moins sujets aux erreurs&#x202F;: imaginez vous tromper de **type** avec une fonction **add()**, et ajouter un tas de **todoo** par accident. Votre application continuerait à sauver des **todoo** sans erreur, mais ils n'apparaitraient pas dans l'interface, puisque votre gestionnaire **on()** n'écoutent que le type correctement écrit. Vous supposeriez probablement que quelque-chose ne va pas avec le code d'affichage et iriez chasser le bug au mauvais endroit.
 
-Comme mentionné, vous pouvez aussi avoir un dépôt ciblé sur un seul objet, comme ceci:
+Comme mentionné, vous pouvez aussi avoir un dépôt ciblé sur un seul objet, comme ceci&#x202F;:
 
 ```javascript
 var userConfig = hoodie.store( 'userConfig', 'config' );
 ```
 
-**Important:** dans un appel comme celui-ci, seul un sous-ensemble minimum de fonctions sera disponible sur le contexte ainsi créé. Vous ne serez pas capable d'appeller toute méthode dont l'objet est de travailler sur plus d'un objet stocké (i.e. **findAll()**). Parce que ça n'aurait pas de sens.
+**Important&#x202F;:** dans un appel comme celui-ci, seul un sous-ensemble minimum de fonctions sera disponible sur le contexte ainsi créé. Vous ne serez pas capable d'appeller toute méthode dont l'objet est de travailler sur plus d'un objet stocké (i.e. **findAll()**). Parce que ça n'aurait pas de sens.
 
 ## Evénements de stockage
 
-**Important:** si vous ne l'avez déjà fait, allez lire le [guide général sur les événements Hoodie et leur syntaxe de nommage](/fr/techdocs/api/client/hoodie.html#on) pour mieux comprendre comment les événements sont gérés.
+**Important&#x202F;:** si vous ne l'avez déjà fait, allez lire le [guide général sur les événements Hoodie et leur syntaxe de nommage](/fr/techdocs/api/client/hoodie.html#on) pour mieux comprendre comment les événements sont gérés.
 
 <a id="add"></a>
 ### [add](#add)
@@ -482,7 +482,7 @@ var userConfig = hoodie.store( 'userConfig', 'config' );
 hoodie.store.on('add', function(newObject) {});
 ```
 
-L'événement **add** est déclenché pour tout objet qui est ajouté au dépôt utilisateur. Si vous voulez réagir à de nouveaux objets d'un certain **type** seulement, vous pouvez préfixé l'identifiant de l'événement avec **type:add**, comme ceci:
+L'événement **add** est déclenché pour tout objet qui est ajouté au dépôt utilisateur. Si vous voulez réagir à de nouveaux objets d'un certain **type** seulement, vous pouvez préfixé l'identifiant de l'événement avec **type:add**, comme ceci&#x202F;:
 
 ```javascript
 hoodie.store.on('todo:add', function(newTodoObject) {});
@@ -498,14 +498,14 @@ hoodie.store.on('update',
     function(updatedObject){});
 ```
 
-L'événement **update** est déclenché pour tout objet qui est mis à jour dans le dépôt utilisateur. Si vous voulez réagir à un certain **type** seulement, vous pouvez préfixer l'identifiant d'événement avec **type:update**:
+L'événement **update** est déclenché pour tout objet qui est mis à jour dans le dépôt utilisateur. Si vous voulez réagir à un certain **type** seulement, vous pouvez préfixer l'identifiant d'événement avec **type:update**&#x202F;:
 
 ```javascript
 hoodie.store.on('todo:update',
     function(updatedTodoObject) {});
 ```
 
-Si vous êtes intéressé par les mises à jour d'un objet spécifique, vous pouvez spécifier un identifiant d'événement avec un id d'objet, comme ceci:
+Si vous êtes intéressé par les mises à jour d'un objet spécifique, vous pouvez spécifier un identifiant d'événement avec un id d'objet, comme ceci&#x202F;:
 
 ```javascript
 // config is the type, userconfig is the id
@@ -526,14 +526,14 @@ hoodie.store.on('remove',
   function(removedObject){});
 ```
 
-L'événement **remove** est déclenché pour tout objet qui est retiré du dépôt utilisateur. Si vous voulez réagir à des objets d'un certain type seulement, vous pouvez préfixer l'identifiant de l'événement avec **type:remove**, comme ceci:
+L'événement **remove** est déclenché pour tout objet qui est retiré du dépôt utilisateur. Si vous voulez réagir à des objets d'un certain type seulement, vous pouvez préfixer l'identifiant de l'événement avec **type:remove**, comme ceci&#x202F;:
 
 ```javascript
 hoodie.store.on('todo:remove',
   function(removedTodoObject) {});
 ```
 
-Si vous êtes intéressé par la suppression d'un objet spécifique, vous pouvez passer l'id de l'objet à l'identifiant d'événement:
+Si vous êtes intéressé par la suppression d'un objet spécifique, vous pouvez passer l'id de l'objet à l'identifiant d'événement&#x202F;:
 
 ```javascript
 // config is the type, userconfig is the id
@@ -552,14 +552,14 @@ hoodie.store.on('change',
   function(eventName, changedObject){});
 ```
 
-L'événement **change** est déclenché pour tout objet qui est **changé** dans le dépôt utilisateur. L'**eventName**, passé comme premier paramètre au gestionnaire, est **add**, **update** ou **remove**. Si vous voulez réagir à des objets d'un certain type seulement, vous pouvez préfixer l'identifiant de l'événement avec **type:change**:
+L'événement **change** est déclenché pour tout objet qui est **changé** dans le dépôt utilisateur. L'**eventName**, passé comme premier paramètre au gestionnaire, est **add**, **update** ou **remove**. Si vous voulez réagir à des objets d'un certain type seulement, vous pouvez préfixer l'identifiant de l'événement avec **type:change**&#x202F;:
 
 ```javascript
 hoodie.store.on('todo:change',
   function(eventName, changedTodoObject) {});
 ```
 
-Si vous êtes intéressé par un objet spécifique, vous pouvez aussi préfixer l'identifiant de l'événement avec **type:id:change**:
+Si vous êtes intéressé par un objet spécifique, vous pouvez aussi préfixer l'identifiant de l'événement avec **type:id:change**&#x202F;:
 
 ```javascript
 // config is the type, userconfig is the id

@@ -7,7 +7,7 @@ locales: fr
 
 Cette classe défini l'API que hoodie.store (dépôt local) et hoodie.open (dépôt distant) implémente pour assurer une API cohérente. Elle implémente aussi les validations de base.
 
-L'API retour (NdT:&#x202F;???) peut être appelé comme une fonction retournant un dépôt ciblé par le type passé, par exemple:
+L'API retour (NdT&#x202F;:&#x202F;???) peut être appelé comme une fonction retournant un dépôt ciblé par le type passé, par exemple&#x202F;:
 
 <pre><code>var taskStore = hoodie.store('task');
 taskStore.findAll().done( showAllTasks );
@@ -86,13 +86,13 @@ hoodie.store
 
 hoodie.store.findOrCreate prends ici trois arguments. Tous sont requis.
 
- * **type**: le genre de document que vous voulez chercher.
- * **id**: l'id unique du document que vous recherchez dans le dépôt.
- * **properties**: le modèle du document à créer, au cas où aucun ne serait trouvé.
+ * **type**&#x202F;: le genre de document que vous voulez chercher.
+ * **id**&#x202F;: l'id unique du document que vous recherchez dans le dépôt.
+ * **properties**&#x202F;: le modèle du document à créer, au cas où aucun ne serait trouvé.
 
 La chose importante à noter ici est que le paramètre **properties** n'a aucune influence sur la recherche elle-même. Contrairement aux recherches que vous auriez pu utiliser sur d'autres frameworks, ceci n'utilisera **pas** le paramètre **properties** comme condition pour retenir une entrée particulière du dépôt.Les seules conditions de recherche sont le **type** de document et son **id**.
 
-Juste pour démontrer la facilité d'utilisation de hoodie.store.findOrAdd, l'exemple ci-dessous illustre les manières alternatives et plus complexes de recherche et d'ajout:
+Juste pour démontrer la facilité d'utilisation de hoodie.store.findOrAdd, l'exemple ci-dessous illustre les manières alternatives et plus complexes de recherche et d'ajout&#x202F;:
 
 <pre><code>// pre-conditions: vous avez déjà récupéré un objet utilisateur
 var defaultConfig = {

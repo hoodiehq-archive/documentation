@@ -8,7 +8,7 @@ locales: fr
 ### Plugins coeurs
 
 Hoodie possède un coeur très restreint et peut être étendu avec des plugins.
-Trois plugins sont toujours installés avec le coeur:
+Trois plugins sont toujours installés avec le coeur&#x202F;:
 
 - <a href="https://www.npmjs.org/package/hoodie-plugin-users" target="_blank">hoodie-plugin-users</a>
 - <a href="https://www.npmjs.org/package/hoodie-plugin-email" target="_blank">hoodie-plugin-email</a>
@@ -25,7 +25,7 @@ dans le dossier du projet.
 Vous pouvez voir la liste complète des plugins <a href="http://plugins.hood.ie/" target="_blank">ici</a>.
 
 #### Les favoris
-Voici certains des plugins préférés de la communauté:
+Voici certains des plugins préférés de la communauté&#x202F;:
 
 - <a href="https://www.npmjs.org/package/hoodie-plugin-angularjs" target="_blank">Hoodie + Angularjs</a>
 - <a href="https://www.npmjs.org/package/hoodie-plugin-backbone" target="_blank">Hoodie + Backbone</a>

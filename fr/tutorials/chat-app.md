@@ -32,7 +32,7 @@ $ hoodie install global-share
 
 Toutes méthode supplémentaire ajoutée par le plugin à **hoodie.js** est automatiquement jointe sans avoir à lier un nouveau script dans **index.html**. Vous pouvez trouver plus d'information sur comment fonctionnent les plugins Hoodie [ici](/fr/plugins/tutorial.html).
 
-Faisons quelques modifications à notre fichier **index.html** pour répondre à nos besoins de structure, en commençant par une barre pour le compte utilisateur: 
+Faisons quelques modifications à notre fichier **index.html** pour répondre à nos besoins de structure, en commençant par une barre pour le compte utilisateur&#x202F;: 
 
 ```html
 <!-- ajoute de l'espace supplémentaire et des styles de layout à la zone du compte -->
@@ -52,7 +52,7 @@ Faisons quelques modifications à notre fichier **index.html** pour répondre à
 </section>
 ```
 
-Maintenant passons à la section de class "content":  
+Maintenant passons à la section de class "content"&#x202F;:  
 
 ```html
 <header>
@@ -80,7 +80,7 @@ Maintenant passons à la section de class "content":
 </section>
 ```
 
-Avant de commencer le JavaScript, nous allons ajouter du CSS à notre fichier **www/assets/main.css**:
+Avant de commencer le JavaScript, nous allons ajouter du CSS à notre fichier **www/assets/main.css**&#x202F;:
 
 ```css
 .no-resize { resize: none; }
@@ -122,14 +122,14 @@ Avant de commencer le JavaScript, nous allons ajouter du CSS à notre fichier **
   height: 20rem;
 }
 ```
-Maintenant nous pouvons enfin ouvrir **www/assets/js/main.js** et commencer à ajouter des fonctionnalités à notre petite application de chat. Ce fichier devrait déjà contenir une ligne nécessaire à l'initialisation de la classe Hoodie:
+Maintenant nous pouvons enfin ouvrir **www/assets/js/main.js** et commencer à ajouter des fonctionnalités à notre petite application de chat. Ce fichier devrait déjà contenir une ligne nécessaire à l'initialisation de la classe Hoodie&#x202F;:
 
 ```js 
 // initialize Hoodie
 var hoodie = new Hoodie();
 ```
 
-De là, nous pouvez créer les dépôts dédiés pour sauver et retrouver plus facilement les messages et avatars:
+De là, nous pouvez créer les dépôts dédiés pour sauver et retrouver plus facilement les messages et avatars&#x202F;:
 
 ```js
 // create a scoped 'message' store for easier re-use
@@ -139,7 +139,7 @@ var messageStore = hoodie.store('message');
 var avatarStore = hoodie.store('avatar');
 ```
 
-Une autre partie de la mise en place de notre application sera de sélectionner tous les éléments de DOM avec lesquels nous allons interagir pour faire fonctionner l'application en utilisant l'attribut custom **data-action** que nous leur avons donné plus tôt:
+Une autre partie de la mise en place de notre application sera de sélectionner tous les éléments de DOM avec lesquels nous allons interagir pour faire fonctionner l'application en utilisant l'attribut custom **data-action** que nous leur avons donné plus tôt&#x202F;:
 
 ```js
 // sélectionne le formulaire de chat
@@ -152,7 +152,7 @@ var chatBox = $('[data-action="send-message"]');
 var chatStream = $('[data-action="chat-stream"]');
 ```
 
-Pour ce qui est de l'interaction avec le DOM, nous commençons par écouter les événements **submit** de **chatForm** et envoyons un message à notre dépôt de message quand cela arrive:
+Pour ce qui est de l'interaction avec le DOM, nous commençons par écouter les événements **submit** de **chatForm** et envoyons un message à notre dépôt de message quand cela arrive&#x202F;:
 
 ```js
 // Configure un gestionnaires d'événement sur le formulaire de chat
@@ -184,7 +184,7 @@ function sendMessage(e) {
 }
 ```
 
-Vous avez peut-être remarqué le **new messageModel(messageContent)**, nous définissons ce **messageModel** juste après avoir définie la fonction **sendMessage**, afin d'abstraire la logique de création de l'objet message que nous sauvegardons dans **messageStore**:
+Vous avez peut-être remarqué le **new messageModel(messageContent)**, nous définissons ce **messageModel** juste après avoir définie la fonction **sendMessage**, afin d'abstraire la logique de création de l'objet message que nous sauvegardons dans **messageStore**&#x202F;:
 
 ```js 
 // create a message model for re-use later
@@ -200,7 +200,7 @@ function messageModel(message) {
 }
 ```
 
-Nous devrions pouvoir aussi envoyer un message sans cliquer sur le bouton "submit" du formulaire, aussi ajoutons la fonctionnalité d'envoi de message si l'utilisateur appuie sur les touches **CMD/Ctrl** et **Entrée** quand chatBox est active:
+Nous devrions pouvoir aussi envoyer un message sans cliquer sur le bouton "submit" du formulaire, aussi ajoutons la fonctionnalité d'envoi de message si l'utilisateur appuie sur les touches **CMD/Ctrl** et **Entrée** quand chatBox est active&#x202F;:
 
 ```js
 // Met le gestionnaire de keydown en place pour l'envoi de message via CMD/Ctrl + Enter
@@ -214,7 +214,7 @@ function checkSubmit(e) {
 }
 ```
 
-Nous avons donc envoyé le message dans messageStore, mais comment apparaît-il dans le flux de chat&#x202F;? Nous allons écouter sur le dépôt global les messages qui sont ajoutés, et nous les poussons dans le flux:
+Nous avons donc envoyé le message dans messageStore, mais comment apparaît-il dans le flux de chat&#x202F;? Nous allons écouter sur le dépôt global les messages qui sont ajoutés, et nous les poussons dans le flux&#x202F;:
 
 ```js
 // Met le gestionnaire d'événement en place pour les nouveaux messages sauvés dans Hoodie
@@ -265,7 +265,7 @@ function scrollIntoViewIfNeeded(element) {
 }
 ```
 
-Pour comprendre cette vérification de notification en haut de la fonction **streamMessage**, nous pouvons jeter un oeil à la fonction **streamNotification**. En l'espèce, nous voulons notifier les utilisateurs connectés quand un autre utilisateur rejoint ou quitte le chat:
+Pour comprendre cette vérification de notification en haut de la fonction **streamMessage**, nous pouvons jeter un oeil à la fonction **streamNotification**. En l'espèce, nous voulons notifier les utilisateurs connectés quand un autre utilisateur rejoint ou quitte le chat&#x202F;:
 
 ```js
 function streamNotification(notification) {
@@ -299,7 +299,7 @@ function notifyModel(notification, status) {
 }
 ```
 
-Comment savons-nous qu'un utilisateur s'est (dé)connecté à l'application&#x202F;? Voyons **www/assets/js/account.js**:
+Comment savons-nous qu'un utilisateur s'est (dé)connecté à l'application&#x202F;? Voyons **www/assets/js/account.js**&#x202F;:
 
 ```js
 hoodie.account.on('error:unauthenticated signout', function(e){
@@ -317,7 +317,7 @@ hoodie.account.on('signin signup', function(e){
 });
 ```
 
-Une fois que vous avez ajouté les déclencheurs à **account.js**, ajoutez ces fonctions à **main.js**:
+Une fois que vous avez ajouté les déclencheurs à **account.js**, ajoutez ces fonctions à **main.js**&#x202F;:
 
 ```js
 function notifySignIn(e) {
@@ -358,7 +358,7 @@ function showFileInput(e) {
 }
 ```
 
-Ca semble simple, non&#x202F;? Voici ensuite ce qui se passe quand quelqu'un sélectionne une image depuis le sélecteur de fichier:
+Ca semble simple, non&#x202F;? Voici ensuite ce qui se passe quand quelqu'un sélectionne une image depuis le sélecteur de fichier&#x202F;:
 
 ```js 
 function handleImgUpload(e) {
@@ -399,7 +399,7 @@ function saveAvatar(props) {
 }
 ```
 
-Enfin nous pouvons définir la fonction qui récupère l'avatar de l'utilisateur quand un nouveau message est ajouté ou si un utilisateur se connecte à l'application:
+Enfin nous pouvons définir la fonction qui récupère l'avatar de l'utilisateur quand un nouveau message est ajouté ou si un utilisateur se connecte à l'application&#x202F;:
 
 ```js
 function fetchAvatar(user) {

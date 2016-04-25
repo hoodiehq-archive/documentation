@@ -99,7 +99,7 @@ Hoodie vous informe d'un grand nombre d'événements internes, comme quand des d
 
 #### Une note sur le format de l'identifiant d'événement
 
-Les identifiants d'événements de stockage de Hoodie ont toujours le même format:
+Les identifiants d'événements de stockage de Hoodie ont toujours le même format&#x202F;:
 
 ```javascript
 object-type:object-id:event-type
@@ -107,7 +107,7 @@ object-type:object-id:event-type
 
 Le **event-type** est obligatoire. Si vous voulez écouter plus d'un type d'événement à la fois, utilisez le type **change**, qui est déclenché sur *add*, *update* et *remove*.
 
-**object-type** et **object-id** sont optionnels: omettre **object-type** écoutera pour tous les objets de la base, le préciser écoutera seulement les objets de ce type. Omettre **object-id** écoutera les événements de tous les objets d'un type. Si vous précisez *effectivement* un identifiant d'objet, vous ne recevrez que les événements pour cet objet spécifique.
+**object-type** et **object-id** sont optionnels&#x202F;: omettre **object-type** écoutera pour tous les objets de la base, le préciser écoutera seulement les objets de ce type. Omettre **object-id** écoutera les événements de tous les objets d'un type. Si vous précisez *effectivement* un identifiant d'objet, vous ne recevrez que les événements pour cet objet spécifique.
 
 Vous pouvez trouver des explications plus détaillées et des exemples dans la [documentation des événements hoodie.store](/fr/techdocs/api/client/hoodie.store.html#storeevents).
 
@@ -115,7 +115,7 @@ Vous pouvez trouver des explications plus détaillées et des exemples dans la [
 
 #### Exemple
 
-**Écouter l'apparition d'un nouvel objet todo:**
+**Écouter l'apparition d'un nouvel objet todo&#x202F;:**
 
 ```javascript
 hoodie.store.on('todo:add', function(newTodoObject) {
@@ -125,7 +125,7 @@ hoodie.store.on('todo:add', function(newTodoObject) {
 
 Notez que vous appelez **on()** depuis **hoodie.store**, pas depuis **hoodie** lui-même.
 
-**Écouter les modifications dans une base avec scope:**
+**Écouter les modifications dans une base ciblée&#x202F;:**
 
 ```javascript
 var todoStore = hoodie.store('todo');
@@ -136,7 +136,7 @@ todoStore.on('change', function(changedTodoObject) {
 
 Comme vous pouvez le constater, la base est ciblée pour ne contenir que des objets de type **todo**, aussi est-il inutile de spécifier le type d'objet dans le processus d'écoute.
 
-**Écouter l'authentification d'un utilisateur:**
+**Écouter l'authentification d'un utilisateur&#x202F;:**
 
 ```javascript
 hoodie.account.on('signin', function(username) {
@@ -218,7 +218,7 @@ hoodie.trigger('event', param, param, param ...);
 
 **trigger()** vous permet de déclencher des événements, à la fois ceux natifs à Hoodie (comme *add* ou *change*) que les customs que vous auriez défini vous-même.
 
-**Note:** dès le second paramètre, vous pouvez passer un nombre illimité d'information additionnelle avec l'événement. Bon, <a href="http://stackoverflow.com/questions/22747068/is-there-a-max-number-of-arguments-javascript-functions-can-accept/22747272#22747272" target="_blank">presque illimité</a>.
+**Note&#x202F;:** dès le second paramètre, vous pouvez passer un nombre illimité d'information additionnelle avec l'événement. Bon, <a href="http://stackoverflow.com/questions/22747068/is-there-a-max-number-of-arguments-javascript-functions-can-accept/22747272#22747272" target="_blank">presque illimité</a>.
 
 #### Exemple
 
@@ -244,7 +244,7 @@ todoStore.findAll().done(function(allTodos) {
 });
 
 ```
-**Important**: si vous liés un gestionnaire d'événement à un dépôt de données ciblé, comme dans **hoodie.store('todo').on()**, un appel général **hoodie.store.trigger()** n'atteindra pas le gestionnaire. Un exemple devrait rendre ça plus clair:
+**Important**&#x202F;: si vous liés un gestionnaire d'événement à un dépôt de données ciblé, comme dans **hoodie.store('todo').on()**, un appel général **hoodie.store.trigger()** n'atteindra pas le gestionnaire. Un exemple devrait rendre ça plus clair&#x202F;:
 
 #### Using trigger() with Scoped Stores
 
@@ -399,7 +399,7 @@ hoodie.sayHi(); // Montre l'alerte
 
 ## Plus avant
 
-Dirigez-vous maintenant vers le côté excitant: les documents pour les [comptes utilisateurs](/fr/techdocs/api/client/hoodie.account.html) et le [stockage](/fr/techdocs/api/client/hoodie.store.html)&#x202F;! Apprenez comment enregistrer vos utilisateurs et les laisser stocker des données, parmi d'autres choses sympathiques.
+Dirigez-vous maintenant vers le côté excitant&#x202F;: les documents pour les [comptes utilisateurs](/fr/techdocs/api/client/hoodie.account.html) et le [stockage](/fr/techdocs/api/client/hoodie.store.html)&#x202F;! Apprenez comment enregistrer vos utilisateurs et les laisser stocker des données, parmi d'autres choses sympathiques.
 
 Nous espérons que ce guide API vous a aidé. Sinon, laissez-nous vous aider <a href="http://hood.ie/chat" target="_blank">sur IRC ou Slack</a>.
 Nous avons aussi une <a href="http://faq.hood.ie" target="_blank">FAQ</a> qui pourrait se révéler utile si les choses se passent mal.

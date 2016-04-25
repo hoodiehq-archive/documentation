@@ -7,17 +7,17 @@ locales: fr
 
 Vous permet de rendre des documents accessibles de manière globale à tout utilisateur ou visiteur non enregistré.
 
-### Installation:
+### Installation&#x202F;:
 
 ```bash
 $ hoodie install global-share
 ```
 
-### Utilisation:
+### Utilisation&#x202F;:
 
 Partons du principe que vous avez une configuration Hoodie en place.
 
-Créez quelque documents que vous voudriez rendre accessible publiquement:
+Créez quelque documents que vous voudriez rendre accessible publiquement&#x202F;:
 
 ```javascript
 var docs = [
@@ -36,18 +36,18 @@ hoodie.store.add('tasks', docs)
 	.done(function(newDocs) { ... });
 ```
 
-Rentre toutes les **tâches** accessibles publiquement:
+Rentre toutes les **tâches** accessibles publiquement&#x202F;:
 
 ```javascript
 hoodie.store.findAll('tasks').publish();
 ```
 
-ou publier **une seule tâche**:
+ou publier **une seule tâche**&#x202F;:
 
 ```javascript
 hoodie.store.find('tasks', 'taskID12345').publish();
 ```
-C'est la même chose pour **dépublier**:
+C'est la même chose pour **dépublier**&#x202F;:
 
 ```javascript
 hoodie.store.findAll('tasks').unpublish();
@@ -62,7 +62,7 @@ hoodie.global.find('tasks')
 	.done(function(publicTasks) { ... });
 ```
 
-### Tests:
+### Tests&#x202F;:
 
 ```bash
 $ grunt

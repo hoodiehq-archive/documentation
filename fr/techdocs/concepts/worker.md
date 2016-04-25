@@ -28,13 +28,13 @@ Cette documentation part du principe que vous voulez développer votre worker Ho
 
 Si vous souhaitez vous assurer de ne faire aucune erreur en copiant le code, ou, quand nous ne montrerons plus tard que les additions aux codes, vous pouvez partir du [repository git](https://github.com/hoodiehq/worker-log/) avec les différentes étapes sur différentes branches, nous feront aussi le lien avec les différentes parties dans la suite.
 
-La seule dépendance est Node.js version 0.8.0 ou supérieure. Voici quelques façons de l'installer:
+La seule dépendance est Node.js version 0.8.0 ou supérieure. Voici quelques façons de l'installer&#x202F;:
 
-Mac OS X:
+Mac OS X&#x202F;:
 
     $ brew install node
 
-[TODO: linux, windows]
+[TODO&#x202F;: linux, windows]
 
 Créons un répertoire pour le nouveau projet. Nous utilisons le préfixe `worker-` pour rendre la lecture plus facile dans git.
 
@@ -43,7 +43,7 @@ Créons un répertoire pour le nouveau projet. Nous utilisons le préfixe `worke
 
 Nous commençons par créer un fichier `index.js`. Il s'agira du principal point d'entrée pour le code du worker. Quand nous commençons, nous mettons tout le code nécessaire ici, et ça deviendra moins gérable, nous déplacerons les choses dans d'autres fichiers et modules.
 
-Copier ce code template, nous l'expliquerons en détail dans une minute:
+Copier ce code template, nous l'expliquerons en détail dans une minute&#x202F;:
 
     module.exports = WorkerLog;
     function WorkerLog()
@@ -55,7 +55,7 @@ Copier ce code template, nous l'expliquerons en détail dans une minute:
 
 [Lien repo](https://github.com/hoodiehq/worker-log/blob/how-to-1/index.js)
 
-C'est tout&#x202F;! Nous allons maintenant démarrer notre worker:
+C'est tout&#x202F;! Nous allons maintenant démarrer notre worker&#x202F;:
 
     $ node index.js
     Logger Started
@@ -69,23 +69,23 @@ Bon, ce n'est pas terriblement impressionnant, mais nous avons la fondation en p
 
 Vous noterez que le worker quitte vers le shell après qu'il ait affiché notre message `console.log()`. Un vrai worker est prévu pour rester en tâche de fond et réagir aux messages qui lui sont envoyés.
 
-Ceci fonctionne dans Hoodie via des documents CouchDB et une fonction de CouchDB appelée *changes feed* (NdT: flux des changements). Un document CouchDB est juste un objet JSON, mais persistant. Les documents sont stockés en base de donnée. Chaque base de donnée possède un *changes feed* auquel vous pouvez souscrire. Il vous envoie en quasi temps-réel des notification sur ce qui se passe dans la base.
+Ceci fonctionne dans Hoodie via des documents CouchDB et une fonction de CouchDB appelée *changes feed* (NdT&#x202F;: flux des changements). Un document CouchDB est juste un objet JSON, mais persistant. Les documents sont stockés en base de donnée. Chaque base de donnée possède un *changes feed* auquel vous pouvez souscrire. Il vous envoie en quasi temps-réel des notification sur ce qui se passe dans la base.
 
 Un objet et un document sont en fait la même chose. Nous l'appelons objet dans le contexte de JavaScript et nous l'appelons document dans le contexte de CouchDB.
 
 Ce que nous allons faire, c'est souscrire au *changes feed* de la base de donnée et écouter l'ajout de documents de type `log`. Nous lirons alors ces documents et compilerons un message de trace depuis sont contenu pour finalement l'écrire dans un fichier trace. Jusqu'ici c'est simple.
 
-Fort heureusement, les mécanismes d'écoute du *changes feed* d'une base de donnée sont abstraits dans un module Node.js pratique `CouchDB Changes`. Pour l'installer, lancer:
+Fort heureusement, les mécanismes d'écoute du *changes feed* d'une base de donnée sont abstraits dans un module Node.js pratique `CouchDB Changes`. Pour l'installer, lancer&#x202F;:
 
     $ npm install CouchDBChanges
 
-Ajoutez ceci au début de votre fichier `index.js`:
+Ajoutez ceci au début de votre fichier `index.js`&#x202F;:
 
     var CouchDBChanges = require("CouchDBChanges");
 
 Pour commencer l'écoute, nous devons d'abord créer une fonction *callback* qui est appelée pour chaque nouveau changement qui nous est envoyé. Placez cette nouvelle fonction avant l'actuelle dernière ligne (qui devrait être `var log = new WorkerLog();`).
 
-Notre fonction *callback* ne fera, pour l'instant, que tracer l'objet changement sur la ligne de commande:
+Notre fonction *callback* ne fera, pour l'instant, que tracer l'objet changement sur la ligne de commande&#x202F;:
 
     WorkerLog.prototype._changesCallback = function(error, message)
     {
@@ -109,24 +109,24 @@ S'il s'agit de votre première lecture après l'introduction[lisez-moi démarrag
 
 Avant de pouvoir tester notre nouveau processus d'écoute, nous devons configurer une instance CouchDB. Assurez-vous que son emplacement correspond à ce que nous avons mis dans le code ci-dessus. Nous partons du principe qu'elle tourne sur votre machine locale sur le port par défaut, et que nous utilisons une base de donnée `mydatabase` pour tester les choses. Voir[*Options de configuration de CouchDB*](TBD) pour les alternatives dans l'usage de CouchDB. Voir [*Servir plusieurs bases*](plus bas) pour les détails quant à la manière de ne pas hard-coder le nom d'une base unique dans votre worker.
 
-Maintenant nous pouvons de nouveau lancer notre worker:
+Maintenant nous pouvons de nouveau lancer notre worker&#x202F;:
 
     $ node index.js
     Logger started.
 
 Et nous voyons qu'il ne revient pas à la ligne de commande, mais "reste là". C'est ce que nous voulions&#x202F;!
 
-TODO: erreurs, URL CouchDB erronée, base qui n'existe pas, etc.
+TODO&#x202F;: erreurs, URL CouchDB erronée, base qui n'existe pas, etc.
 
-Si nous créons maintenant un nouveau document dans la base `mydatabase` de CouchDB, nous devrions voir notre document tracé sur la ligne de commande. Ouvrez une nouvelle fenêtre de terminal et tapez ceci:
+Si nous créons maintenant un nouveau document dans la base `mydatabase` de CouchDB, nous devrions voir notre document tracé sur la ligne de commande. Ouvrez une nouvelle fenêtre de terminal et tapez ceci&#x202F;:
 
     $ curl -X POST http://127.0.0.1:5984/mydatabase/ -d '{"message":"hello world"}' -H "Content-Type: application/json"
 
-Vous devriez voir quelque-chose comme ça:
+Vous devriez voir quelque-chose comme ça&#x202F;:
 
     {"ok":true,"id":"e72c9af9291eae530b28a3f15d00094d","rev":"1-baa23d8189d19e166f6e0393e23b1085"}
 
-Si vous revenez au terminal où le worker tourne, vous devriez voir:
+Si vous revenez au terminal où le worker tourne, vous devriez voir&#x202F;:
 
     { seq: 1,
       id: 'e72c9af9291eae530b28a3f15d00094d',
@@ -136,11 +136,11 @@ Si vous revenez au terminal où le worker tourne, vous devriez voir:
          _rev: '1-baa23d8189d19e166f6e0393e23b1085',
          message: 'hello world' } }
 
-Pour arrêter le worker, utilisez `ctrl-c`:
+Pour arrêter le worker, utilisez `ctrl-c`&#x202F;:
 
     ^C$
 
-Il y a trois choses que nous devons régler ensuite:
+Il y a trois choses que nous devons régler ensuite&#x202F;:
 
  1. Ne tracer que les objets de type `log`.
  2. Formater les objets en une seule ligne par entrée.
@@ -152,21 +152,21 @@ Traitons-les dans l'ordre.
 
 Hoodie défini que les objets ont des types[^cf_types]. C'est purement conventionnel, mais ça permet tout un tas de trucs magiques. Tous les objets dans Hoodie on un attribut `_id` qui identifie de manière unique l'objet de manière globale. Nous utiliser un UUID pour ça. Le type est spécifié par un préfixe de cet attribut `_id`.
 
-[^cf_types]: Voir [*Conventions des types d'objets Hoodie*](TBD) pour une liste complète des types et une discussion plus complète.
+[^cf_types]&#x202F;: Voir [*Conventions des types d'objets Hoodie*](TBD) pour une liste complète des types et une discussion plus complète.
 
-Voici un exemple en JSON:
+Voici un exemple en JSON&#x202F;:
 
     {
         "_id": "image/fb461a0bfc5a4aeefc4d7fb461a0b1c1"
     }
 
-Le type ici est `image`. Nous allons maintenant voir les objets de type `log`:
+Le type ici est `image`. Nous allons maintenant voir les objets de type `log`&#x202F;:
 
     {
         "_id": "log/4ffd901d052de901bcaa28902dda3b4a"
     }
 
-Modifions notre méthode `_changesCallback()` pour ne réagir qu'aux objets `log`:
+Modifions notre méthode `_changesCallback()` pour ne réagir qu'aux objets `log`&#x202F;:
 
     WorkerLog.prototype._changesCallback = function(error, message)
     {
@@ -179,9 +179,9 @@ Modifions notre méthode `_changesCallback()` pour ne réagir qu'aux objets `log
 
 [Lien repo](https://github.com/hoodiehq/worker-log/blob/how-to-3/index.js)
 
-// TODO: Les futures versions de ceci devrait avoir un module *Hoodie* comment celui de l'API cliente.
+// TODO&#x202F;: Les futures versions de ceci devrait avoir un module *Hoodie* comment celui de l'API cliente.
 
-Quand vous redémarrez le worker et que vous ajouter un nouvel objet à la base CouchDB, vous devriez ne voir aucune sortie:
+Quand vous redémarrez le worker et que vous ajouter un nouvel objet à la base CouchDB, vous devriez ne voir aucune sortie&#x202F;:
 
     $ curl -X POST http://127.0.0.1:5984/mydatabase/ -d '{"message":"hello world"}' -H "Content-Type: application/json"
     {"ok":true,"id":"e72c9af9291eae530b28a3f15d0023dc","rev":"1-baa23d8189d19e166f6e0393e23b1085"}
@@ -189,12 +189,12 @@ Quand vous redémarrez le worker et que vous ajouter un nouvel objet à la base 
     $ node index.js
     Logger started.
 
-Quand vous ajoutez un document avec le bon type:
+Quand vous ajoutez un document avec le bon type&#x202F;:
 
     $ curl -X POST http://127.0.0.1:5984/mydatabase/ -d '{"_id":"log/foobar","message":"hello world"}' -H "Content-Type: application/json"
     {"ok":true,"id":"log/foobar","rev":"1-baa23d8189d19e166f6e0393e23b1085"}
 
-Vous devriez voir:
+Vous devriez voir&#x202F;:
 
     { seq: 3,
       id: 'log/foobar',
@@ -216,15 +216,15 @@ Ensuite, nous allons formater un peu notre message. Avant de plonger dans le cod
         "tag": "(optional, user-defined tag)"
     }
 
-Nous allons prendre les objets ayant cette structure et les transformer en une chaîne qui ressemblera à ceci:
+Nous allons prendre les objets ayant cette structure et les transformer en une chaîne qui ressemblera à ceci&#x202F;:
 
     timestamp [level[, tag]: message
 
-Par exemple:
+Par exemple&#x202F;:
 
     1234567890123 [debug]: Hello World
 
-Ou, avec un tag:
+Ou, avec un tag&#x202F;:
 
     1234567890123 [info, email]: Email X Sent.
 
@@ -252,39 +252,39 @@ Allons-y&#x202F;!
 
 Nous regardons toujours les documents `log`. Nous regardons ensuite si l'objet a un membre `tag`, et formatons la chaîne en fonction. Enfin, nous affichons le message.
 
-Notez que nous utilisons le module `util` ici. Il est fourni par Node.js, aussi vous n'avez rien à installer, mais pour l'utiliser vous devez le déclarer dans votre module. Nous ajoutons ceci en haut du fichier `index.js`:
+Notez que nous utilisons le module `util` ici. Il est fourni par Node.js, aussi vous n'avez rien à installer, mais pour l'utiliser vous devez le déclarer dans votre module. Nous ajoutons ceci en haut du fichier `index.js`&#x202F;:
 
     var util = require("util");
 
 Si vous relancez le worker, vous devriez voir un certain nombre de message undefined et NaN. C'est parce que le document de test de tout à l'heure n'a pas les champs requis. Si vous allez dans la [console d'administration](http://127.0.0.1:5984/_utils/) de COuchDB, vous pouvez éditer le document et ajouter les champs `message`, `timestamp` et `level`, et si vous voulez `tag`, mais ça n'est pas obligatoire.
 
-Quand vous aurez sauvé le document, vous devriez voir quelque-chose comme ceci:
+Quand vous aurez sauvé le document, vous devriez voir quelque-chose comme ceci&#x202F;:
 
     1342020415 [debug]: hello world
 
-Ou, si vous avez un `tag`:
+Ou, si vous avez un `tag`&#x202F;:
 
     1342020415 [debug, foo]: hello world
 
 Ca trace, nous nous en approchons.
 
-Enfin, nous voulons tracer vers un fichier, et pas seulement vers la ligne de commande. Pour ce faire, nous allons utiliser la méthode Node.js `fs.appendFileSync()`. Pour accéder à cette méthode, nous devons requérir le module `fs` au début d'`index.js`:
+Enfin, nous voulons tracer vers un fichier, et pas seulement vers la ligne de commande. Pour ce faire, nous allons utiliser la méthode Node.js `fs.appendFileSync()`. Pour accéder à cette méthode, nous devons requérir le module `fs` au début d'`index.js`&#x202F;:
 
     var fs = require("fs");
 
 
-Enfin, nous changer l'appel à `console.log` en:
+Enfin, nous changer l'appel à `console.log` en&#x202F;:
 
     fs.appendFileSync("/tmp/hoodie-worker-log.log", log_message + "\n");
 
 [Lien repo](https://github.com/hoodiehq/worker-log/blob/how-to-5/index.js)
 
-Quand nous démarrons le worker, nous ne voyons plus que le message de bienvenue:
+Quand nous démarrons le worker, nous ne voyons plus que le message de bienvenue&#x202F;:
 
     $ node index.js
     Logger started.
 
-Et c'est ce qui était attendu. Si nous ouvrons un nouveau terminal nous pouvons voir les messages arriver en temps réel avec:
+Et c'est ce qui était attendu. Si nous ouvrons un nouveau terminal nous pouvons voir les messages arriver en temps réel avec&#x202F;:
 
     $ tail -f /tmp/hoodie-worker-log.log
     1342020415 [debug, foo]: hello world
@@ -298,7 +298,7 @@ Ceci conclut la section principale de ce tutoriel. Les sections suivantes rempli
 
 Les méthodes de soutien sont des méthodes dont nous avons besoin durant l'exécution de notre worker, mais qui ne doivent pas être exposés en dehors du module.
 
-La méthode `_changesCallback` ci-dessus est l'une de ces méthode. Si vous avez juste besoin d'une seule d'une méthode de soutien, le code est satisfaisant en l'état, mais si vous voulez appeler d'autres fonctions de soutien à l'intérieur de votre première fonction, nous devons réaliser un petit changement:
+La méthode `_changesCallback` ci-dessus est l'une de ces méthode. Si vous avez juste besoin d'une seule d'une méthode de soutien, le code est satisfaisant en l'état, mais si vous voulez appeler d'autres fonctions de soutien à l'intérieur de votre première fonction, nous devons réaliser un petit changement&#x202F;:
 
     -    changes.follow("mydatabase", this._changesCallback, {}, {
     +    changes.follow("mydatabase", this._changesCallback.bind(this), {}, {
@@ -312,16 +312,16 @@ Ceci a pour effet que la variable `this` dans toutes les méthodes de soutien fa
 
 Vous voulez vous assurer que la fonctionnalité de votre worker continue à fonctionner (blague définitivement voulue) pendant que vous développez. Chez Hoodie, nous utilisons [Mocha](http://visionmedia.github.com/mocha/). Vous êtes libre d'utiliser ce qui vous plait, mais cette exemple utilise Mocha et les [assertions](http://nodejs.org/api/assert.html) intégrées à Node.js.
 
-D'abord, installer mocha:
+D'abord, installer mocha&#x202F;:
 
     $ npm install -g mocha
 
-Ensuite, créer un répertoire `test` et un fichier test:
+Ensuite, créer un répertoire `test` et un fichier test&#x202F;:
 
     $ mkdir test
     $ $EDITOR test/test.js
 
-Collez ce code:
+Collez ce code&#x202F;:
 
     var assert = require("assert")
     describe("Worker", function(){
@@ -334,7 +334,7 @@ Collez ce code:
 
 [Lien repo](https://github.com/hoodiehq/worker-log/blob/how-to-7/index.js)
 
-Enfin, lancez `mocha`:
+Enfin, lancez `mocha`&#x202F;:
 
     $ mocha
 
@@ -344,7 +344,7 @@ Enfin, lancez `mocha`:
 
 Super, ça fonctionne, mais nous n'avons rien à tester, en fait.
 
-Re-visitons le code de notre worker et voyons ce que nous pouvons tester. La méthode `_changesCallback()` fait un certain nombre de choses:
+Re-visitons le code de notre worker et voyons ce que nous pouvons tester. La méthode `_changesCallback()` fait un certain nombre de choses&#x202F;:
 
  * elle filtre les messages qui ne sont pas de type `log`.
  * elle crée un message formaté à partir d'un objet trace.
@@ -352,7 +352,7 @@ Re-visitons le code de notre worker et voyons ce que nous pouvons tester. La mé
 
 C'est généralement une bonne idée de garder les méthodes courtes et ne faire qu'une seule chose. Notre méthode ici faire un certain nombre de chose. Ca semble être une bonne idée de la scinder.
 
-Commençons par le filtrage des objets qui ne sont pas de type `log`:
+Commençons par le filtrage des objets qui ne sont pas de type `log`&#x202F;:
 
     WorkerLog.prototype._isLogObject = function(obj)
     {
@@ -365,7 +365,7 @@ Commençons par le filtrage des objets qui ne sont pas de type `log`:
 
 Nous sortons le code de `_changesCallback()` et le mettons dans sa propre méthode `isLogObject()`. Le préfixe `is` nous dit que la méthode retournera vrai ou faux. Notez que nous avons basculer l'opérateur de comparaison du `if` en `==`.
 
-Pour utiliser cette fonction, nous ajoutons ceci à `_changesCallback()`:
+Pour utiliser cette fonction, nous ajoutons ceci à `_changesCallback()`&#x202F;:
 
     if(!this._isLogObject(obj)) {
         return;
@@ -375,7 +375,7 @@ Pour utiliser cette fonction, nous ajoutons ceci à `_changesCallback()`:
 
 Si nous démarrons de nouveau le worker, tout devrait fonctionner comme avant.
 
-Maintenant, nous avons une méthode qui fait un seul travail et nous pouvons tester si elle le fait bien:
+Maintenant, nous avons une méthode qui fait un seul travail et nous pouvons tester si elle le fait bien&#x202F;:
 
     var assert = require("assert")
     describe("WorkerLog", function(){
@@ -407,7 +407,7 @@ Si nous lançons `mocha` à nouveau, notre test passe.
 
       ✔ 1 test complete (45ms)
 
-Génial&#x202F;! Mais nous n'avons pas terminé. `_changeCallback()` fait encore deux jobs. Déplaçons le formatage du message dans sa propre méthode:
+Génial&#x202F;! Mais nous n'avons pas terminé. `_changeCallback()` fait encore deux jobs. Déplaçons le formatage du message dans sa propre méthode&#x202F;:
 
     WorkerLog.prototype._formatLogMessage = function(obj)
     {
@@ -422,14 +422,14 @@ Génial&#x202F;! Mais nous n'avons pas terminé. `_changeCallback()` fait encore
         return log_message;
     }
 
-Et appelons-le depuis `_changesCallback()`:
+Et appelons-le depuis `_changesCallback()`&#x202F;:
 
     var log_message = this._formatLogMessage(obj);
     fs.appendFileSync("/tmp/hoodie-worker-log.log", log_message);
 
 [Lien repo](https://github.com/hoodiehq/worker-log/blob/how-to-10/index.js)
 
-Maintenant nous pouvons écrire un test pour la méthode de formatage:
+Maintenant nous pouvons écrire un test pour la méthode de formatage&#x202F;:
 
     describe("#_formatLogMessage()", function() {
         it("should format messages correctly", function() {
@@ -461,7 +461,7 @@ Maintenant nous pouvons écrire un test pour la méthode de formatage:
 
 [Lien repo](https://github.com/hoodiehq/worker-log/blob/how-to-11/index.js)
 
-Lançons `mocha` à nouveau:
+Lançons `mocha` à nouveau&#x202F;:
 
     $ mocha
 
@@ -476,11 +476,11 @@ Pour récapituler, nous avons appris à séparer notre code dans des méthodes i
 
 Notez que pour le moment, nous devons lancer une instance CouchDB pour que nos tests fonctionnent. Nous allons bientôt régler ça&#x202F;!
 
-## NPM-itude (NdT: -isation&#x202F;? -isationage&#x202F;?)
+## NPM-itude (NdT&#x202F;: -isation&#x202F;? -isationage&#x202F;?)
 
 Nous utilisons Node.js pour écrire notre worker. Node.js fourni un outil pratique pour le développeur appelé *npm*. Nous avons utilisé npm plus tôt pour installer le package `CouchDBChanges`. Npm peut faire tout sortes de choses bonnes pour nous. Nous devrions l'utiliser.
 
-Pour commencer, créons un nouveau fichier `package.json` au niveau le plus haut du répertoire de notre worker:
+Pour commencer, créons un nouveau fichier `package.json` au niveau le plus haut du répertoire de notre worker&#x202F;:
 
     {
         "name": "hoodie-worker-log",
@@ -503,7 +503,7 @@ Pour commencer, créons un nouveau fichier `package.json` au niveau le plus haut
 
 Lisez `npm help json` pour les détails sur ce que tout ceci veut dire. Brièvement, un nom nous permettra d'enregistrer le worker auprès d'npm, afin que d'autres personnes puissent l'utiliser. Nous lui donnons une version basse que nous augmenterons au fur et à mesure. La description explique ce que le worker fait. Dans `scripts` nous pouvons dire à npm quoi lancer quand il est appelé avec `npm start` ou `npm test` ce qui sera utile plus tard. Et enfin, nous enregistrons nos dépendances, pour nous assurer de toujours avoir la bonne version du package CouchDBChanges.
 
-Pour démarrer maintenant notre worker, nous pouvons lancer `npm start`:
+Pour démarrer maintenant notre worker, nous pouvons lancer `npm start`&#x202F;:
 
     $ npm start
 
@@ -517,9 +517,9 @@ Ca semble bon.
 
 ## Intégration continue avec Travis CI
 
-Nous avons déjà nos tests unitaires de près. C'est bien, mais nous pouvons faire mieux: une intégration continue qui lance nos tests unitaires à chaque commit dans notre repository. Ce qui suit par du principe que vous utilisez GitHub.
+Nous avons déjà nos tests unitaires de près. C'est bien, mais nous pouvons faire mieux&#x202F;: une intégration continue qui lance nos tests unitaires à chaque commit dans notre repository. Ce qui suit par du principe que vous utilisez GitHub.
 
-Pour activer l'intégration Travis, nous devons créer un fichier `.travis.yml`:
+Pour activer l'intégration Travis, nous devons créer un fichier `.travis.yml`&#x202F;:
 
     language: node_js
     node_js:
@@ -533,7 +533,7 @@ Notez que pour le moment, nous avons besoin d'une instance CouchDB pour que les 
 
 ## Configuring Workers
 
-Jusqu'ici, nous avons harcodé quelques valeurs, l'adresse du serveur CouchDB, le nom de la base de donnée et le nom du fichier trace. Dans le monde réel, ces choses devraient être configurables. Faisons-le maintenant. Pour commencer, nous devons rendre ces valeurs harcodées variables:
+Jusqu'ici, nous avons harcodé quelques valeurs, l'adresse du serveur CouchDB, le nom de la base de donnée et le nom du fichier trace. Dans le monde réel, ces choses devraient être configurables. Faisons-le maintenant. Pour commencer, nous devons rendre ces valeurs harcodées variables&#x202F;:
 
     var config = {
         server: "http://127.0.0.1:5984",
@@ -541,11 +541,11 @@ Jusqu'ici, nous avons harcodé quelques valeurs, l'adresse du serveur CouchDB, l
         logfile: "/tmp/hoodie-worker-log.log"
     };
 
-Nous passons alors la variable `config` à notre instantiation de `WorkerLog`:
+Nous passons alors la variable `config` à notre instantiation de `WorkerLog`&#x202F;:
 
     var log = new WorkerLog(config);
 
-Et nous remplaçons toutes les occurrences dans notre code, comme montré dans ce diff:
+Et nous remplaçons toutes les occurrences dans notre code, comme montré dans ce diff&#x202F;:
 
     -function WorkerLog()
     +function WorkerLog(config)
@@ -572,7 +572,7 @@ Et nous remplaçons toutes les occurrences dans notre code, comme montré dans c
 
 Maintenant que notre code est variable, nous avons besoin d'un moyen d'y passer les nouvelles options de configuration.
 
-C'est facile, nous avons juste besoin d'étendre ce que nous avons déjà:
+C'est facile, nous avons juste besoin d'étendre ce que nous avons déjà&#x202F;:
 
     var config = {
         server: process.env.HOODIE_SERVER || "http://127.0.0.1:5984",
@@ -584,20 +584,20 @@ C'est facile, nous avons juste besoin d'étendre ce que nous avons déjà:
 
 Ce code essaye de lire des variables d'environnement, et s'il le les trouve pas, il assigne des valeurs par défaut.
 
-Pour, disons, changer les valeurs serveur et base de donnée, nous pouvons faire:
+Pour, disons, changer les valeurs serveur et base de donnée, nous pouvons faire&#x202F;:
 
     $ HOODIE_SERVER="http://example.com" HOODIE_DATABASE="somedatabase" npm start
 
 Notez que les autres shells peuvent avoir d'autres syntaxes pour configurer les variables d'environnement.
 
-// TODO: rechargement et autres, c.f. Heroku
+// TODO&#x202F;: rechargement et autres, c.f. Heroku
 
 
 ## Organiser le code
 
-Prenons un peu de hauteur, et introduisons un peu de structure pour nous rendre les choses plus faciles plus tard: nous organisons le code dans différents fichiers.
+Prenons un peu de hauteur, et introduisons un peu de structure pour nous rendre les choses plus faciles plus tard&#x202F;: nous organisons le code dans différents fichiers.
 
-Le motif de module Node.js que nous utilisons ici (nous ne vous l'avons pas dit, mais c'est ce que nous faisons secrètement) maintient le fichier `index.js` aussi réduit que possible, le notre va donc ressembler à ça:
+Le motif de module Node.js que nous utilisons ici (nous ne vous l'avons pas dit, mais c'est ce que nous faisons secrètement) maintient le fichier `index.js` aussi réduit que possible, le notre va donc ressembler à ça&#x202F;:
 
     var WorkerLog = require("./lib/worker-log");
 
@@ -622,7 +622,7 @@ Pour le moment, notre worker n'écoutera les modifications que d'une seule base 
 
 Avec plusieurs centaines ou milliers d'utilisateurs, ça voudrait dire avoir de nombreux process Node.js qui ne font presque rien. Avec un tout petit peu de travail, nous pouvons rendre notre worker capable de gérer toutes les bases dans un seul processus Node.js qui travaille. L'astuce est d'instancier plusieurs objets workers, un par base de donnée.
 
-Voici à quoi ressemble le fichier `index.js`:
+Voici à quoi ressemble le fichier `index.js`&#x202F;:
 
     var WorkerLog = require("./lib/worker-log");
     var request = require("request");
@@ -656,7 +656,7 @@ Voici à quoi ressemble le fichier `index.js`:
 
 D'abord, nous requérons le module `request` dont nous aurons besoin plus tard. Ensuite, nous retirer la valeur de configuration `database` de notre objet `config`. Enfin nous initialisons un tableau vide qui contient les instances des workers. Nous envoyons alors une requête au serveur COuchDB et demandons la liste de toutes les bases de données. Pour chaque base, nous ajoutons son nom à l'objet `config` et nous démarrons un nouveau worker avec cette configuration. Nous passons les bases avec un *souligné*, car elles sont spéciales pour CouchDB.
 
-Quand nous démarrons maintenant notre worker, nous devrions voir:
+Quand nous démarrons maintenant notre worker, nous devrions voir&#x202F;:
 
     $ npm start
 

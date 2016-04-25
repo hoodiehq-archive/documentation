@@ -35,7 +35,7 @@ npm install -g hoodie-cli
 ### Installation sous Linux – Ubuntu
 Il s'agit d'un guide spécifique à Ubuntu, avec la permission de Stuart Langridge.
 ##### 1. Node.js
-Sous Ubuntu, vous n'avez pas à compiler Node.js depuis son code source, vous pouvez l'installer via un package. Ajouter le PPA Node.js de Chris Lea et installez-le à partir de là:
+Sous Ubuntu, vous n'avez pas à compiler Node.js depuis son code source, vous pouvez l'installer via un package. Ajouter le PPA Node.js de Chris Lea et installez-le à partir de là&#x202F;:
 
 ```bash
 sudo add-apt-repository ppa:chris-lea/node.js

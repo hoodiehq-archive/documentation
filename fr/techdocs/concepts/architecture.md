@@ -5,14 +5,14 @@ locales: fr
 
 # Architecture
 
-La manière dont Hoodie est conçu essaye de régler un certain nombre de choses:
+La manière dont Hoodie est conçu essaye de régler un certain nombre de choses&#x202F;:
 
 1. Il devrait être facile d'installer Hoodie pour le développement d'application.
 2. Il devrait être facile d'installer Hoodie pour son propre développement.
 3. La configuration de développement devrait ressembler autant que possible à la configuration de production.
 
 
-## Démarrage rapide (NdT: sous MacOSX)
+## Démarrage rapide (NdT&#x202F;: sous MacOSX)
 
   $ brew install hoodie
   $ hoodie service-start

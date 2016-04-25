@@ -34,15 +34,15 @@ Notre implémentation de référence pour le backend Hoodie est Node.js et Couch
 
 ## Le coeur de Hoodie
 
-Hoodie est conçu comme un oignon: un coeur solide et des couches de modules qui étendent l'ensemble des fonctionnalités de base. Au centre de Hoodie se trouve un système efficace de synchronisation d'objets. Tout le reste est construit là-dessus. [TODO, trouver une meilleure analogie]
+Hoodie est conçu comme un oignon&#x202F;: un coeur solide et des couches de modules qui étendent l'ensemble des fonctionnalités de base. Au centre de Hoodie se trouve un système efficace de synchronisation d'objets. Tout le reste est construit là-dessus. [TODO, trouver une meilleure analogie]
 
-Hoodie vous fourni un accès unifié aux divers systèmes de dépôt dans les navigateurs. Si vous voulez utiliser cela (et nous vous suggérons de le faire), vous obtiendrez la synchronisation de vos données avec le serveur sans effort supplémentaire. Les implications clefs sont ici:
+Hoodie vous fourni un accès unifié aux divers systèmes de dépôt dans les navigateurs. Si vous voulez utiliser cela (et nous vous suggérons de le faire), vous obtiendrez la synchronisation de vos données avec le serveur sans effort supplémentaire. Les implications clefs sont ici&#x202F;:
 
  - les données sont immédiatement disponible pour le client. Inutile d'attendre les requêtes serveurs.
  - une expérience utilisateur améliorée via la mitigation de la latence serveur
  - les applications Hoodie fonctionnent en mode déconnecté par défaut.
 
-Voir la documentation du [coeur stockage de Hoodie](core-storage.md) pour plus de détails. (NdT: documentation absente à ce jour)
+Voir la documentation du [coeur stockage de Hoodie](core-storage.md) pour plus de détails. (NdT&#x202F;: documentation absente à ce jour)
 
 
 ## Les modules

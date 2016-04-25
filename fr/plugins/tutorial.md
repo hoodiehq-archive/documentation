@@ -52,19 +52,19 @@ Vous pourriez …
 - authentifier de manière sécurisée vos utilisateurs sur des services comme Twitter ou GitHub et échanger des données
 - étendre Hoodie afin que les utilisateurs enregistrés puissent échanger des messages directement entre eux
 
-### Pré-requis: un peu de préparation avant de démarrer
+### Pré-requis&#x202F;: un peu de préparation avant de démarrer
 
 Tout ce dont vous avez besoin pour écrire un plugin Hoodie est une application Hoodie qui tourne. Votre plugin vit directement dans le répertoire **node_modules** de l'application et doit être référencé dans son **package.json**, comme n'importe quel autre module npm. Vous n'avez pas besoin de l'enregistrer ou de le maintenir en tant que module npm une fois qu'il est terminé.
 (Comme nous souhaitons être capable d'utiliser l'infrastructure de npm pour aider les gens à trouver et installer les plugins Hoodie sur le long terme, nous voulons tout de même vous encourager à l'utiliser aussi, ce qui aiderait beaucoup la communauté. Nous vous expliquerons comment faire à la fin de ce document.)
 
 #### L'architecture de Hoodie
 
-L'une des fonctions les plus puissantes de Hoodie est le Offline First, ce qui veut dire que toutes les applications Hoodie (et par conséquent, votre plugin aussi) fonctionne constamment, indépendamment de l'état de la connexion de l'utilisateur. Ceci fonctionne parce que nous ne laissons pas le frontend envoyer une tâche au backend directement depuis l'application. A la place, le frontend déposer des tâches dans la base de donnée, qui est à la fois locale et distante, et synchronise le tout à chaque fois que c'est possible (ce qui veut dire: à chaque fois qu'il détecte une connexion internet; s'il n'y en a pas, il ne s'en préoccupe pas). Après la synchronisation, ces tâches sont récupérées par le backend, qui agit en fonction de ce que lui ordonne les tâches. Une fois fait, la base de donnée émet les événements correspondants auxquels le frontend peut réagir.
+L'une des fonctions les plus puissantes de Hoodie est le Offline First, ce qui veut dire que toutes les applications Hoodie (et par conséquent, votre plugin aussi) fonctionne constamment, indépendamment de l'état de la connexion de l'utilisateur. Ceci fonctionne parce que nous ne laissons pas le frontend envoyer une tâche au backend directement depuis l'application. A la place, le frontend déposer des tâches dans la base de donnée, qui est à la fois locale et distante, et synchronise le tout à chaque fois que c'est possible (ce qui veut dire&#x202F;: à chaque fois qu'il détecte une connexion internet; s'il n'y en a pas, il ne s'en préoccupe pas). Après la synchronisation, ces tâches sont récupérées par le backend, qui agit en fonction de ce que lui ordonne les tâches. Une fois fait, la base de donnée émet les événements correspondants auxquels le frontend peut réagir.
 Aussi, nous vous fournissons une API de plugin qui gère la génération et la gestion de ces tâches, l'écriture dans les bases utilisateurs et tout ce dont vous pourriez avoir besoin pour construire _votre_ plugin.
 
 #### Quels composants constituent un plugin&#x202F;?
 
-Les plugins Hoodie sont constitués de trois parties distinctes, et vous aurez besoin d'au moins une (selon ce que vous voulez que votre plugin fasse):
+Les plugins Hoodie sont constitués de trois parties distinctes, et vous aurez besoin d'au moins une (selon ce que vous voulez que votre plugin fasse)&#x202F;:
 
 - __Un composant frontend__ qui étend l'API Hoodie sur votre frontend, écrit en JavaScript.
 - __Un composant backend__ qui exporte les fonctions serveur / base de données vers votre plugin, écrit en Node.js.
@@ -72,14 +72,14 @@ Les plugins Hoodie sont constitués de trois parties distinctes, et vous aurez b
 
 #### L'API plugin et les tâches
 
-Actuellement, la seule manière d'obtenir quoique ce soit du composant backend est une tâche. Une tâche est un objet un peu spécial qui peut être sauvegardé dans la base à partir du frontend de Hoodie. Le composant backend de votre plugin va écouter les événements émis lorsqu'une tâche apparaît, et fera alors ce que vous souhaitez qu'il fasse. Vous pourriez créer une tâche pour envoyer un message privé dans le frontend, par exemple:
+Actuellement, la seule manière d'obtenir quoique ce soit du composant backend est une tâche. Une tâche est un objet un peu spécial qui peut être sauvegardé dans la base à partir du frontend de Hoodie. Le composant backend de votre plugin va écouter les événements émis lorsqu'une tâche apparaît, et fera alors ce que vous souhaitez qu'il fasse. Vous pourriez créer une tâche pour envoyer un message privé dans le frontend, par exemple&#x202F;:
 
 <pre><code>hoodie.task.start('directmessage', {
     'to': 'Ricardo',
     'body': 'Hello there! How are things? :)'
 });
 </code></pre>
-Et dans votre composant backend, écouter l'apparition d'une tâche et agir en conséquence:
+Et dans votre composant backend, écouter l'apparition d'une tâche et agir en conséquence&#x202F;:
 
 <pre><code>hoodie.task.on('directmessage:add',
     function (dbName, task) {
@@ -93,17 +93,17 @@ Mais n'allons pas trop vite. Faisons ça correctement et commençons par le comm
 
 #### Comment ça va fonctionner&#x202F;?
 
-Voici ce que nous voulons que notre application Hoodie puisse faire avec le plugin, que nous allons appeler **directmessages**:
+Voici ce que nous voulons que notre application Hoodie puisse faire avec le plugin, que nous allons appeler **directmessages**&#x202F;:
 
 * Les utilisateurs connectés peuvent envoyer un message direct à un autre utilisateur connecté
 * Les utilisateurs destinataires verront le nouveau message en quasi temps-réel
 
-Côté frontend, nous avons besoin:
+Côté frontend, nous avons besoin&#x202F;:
 
 * d'une méthode **directMessages.send()** dans l'API Hoodie pour ajouter une tâche qui envoie le message
 * d'une méthode optionnelle **directMessages.on()** qui écoute les événements déclencher, par exemple quand un nouveau message apparaît sur le compte du destinataire
 
-Côté backend, nous devons:
+Côté backend, nous devons&#x202F;:
 
 1. vérifier que le destinataire existe
 2. sauver le nouveau message dans la base de donnée du destinataire
@@ -112,11 +112,11 @@ Côté backend, nous devons:
 
 #### Par où commencer
 
-Tout plugin que vous écrivez se trouve dans le répertoire **node_modules** de votre application, avec un nom de répertoire qui suive la syntaxe suivante:
+Tout plugin que vous écrivez se trouve dans le répertoire **node_modules** de votre application, avec un nom de répertoire qui suive la syntaxe suivante&#x202F;:
 
 <pre><code>[votre_application]/node_modules/hoodie-plugin-[nom-du-plugin]</code></pre>
 
-Ainsi, par exemple:
+Ainsi, par exemple&#x202F;:
 
 <pre><code>supermessenger/node_modules/hoodie-plugin-direct-messages</code></pre>
 
@@ -124,9 +124,9 @@ Tout ce qui est lié à votre plugin se trouve là.
 
 #### Structurer un plugin
 
-Comme dit précédemment, votre plugin comporte 3 composants: __frontend__, __backend__ et __admin-dashboard__ (NdT: tableau de bord d'administration). Comme il s'agit idéalement d'un module *npm* complètement qualifié, nous attendons aussi un fichier **package.json** avec les informations sur le plugin.
+Comme dit précédemment, votre plugin comporte 3 composants&#x202F;: __frontend__, __backend__ et __admin-dashboard__ (NdT&#x202F;: tableau de bord d'administration). Comme il s'agit idéalement d'un module *npm* complètement qualifié, nous attendons aussi un fichier **package.json** avec les informations sur le plugin.
 
-Partant du principe que vous avez les trois composants, le répertoire de votre plugin devrait ressembler à ça:
+Partant du principe que vous avez les trois composants, le répertoire de votre plugin devrait ressembler à ça&#x202F;:
 
 <pre><code>hoodie-plugin-direct-messages
     hoodie.direct-messages.js
@@ -142,7 +142,7 @@ Partant du principe que vous avez les trois composants, le répertoire de votre 
 * **/admin-dashboard** contient le tableau de bord d'administration
 * **package.json** contient les métadonnées et les dépendances du plugin
 
-Passons chacun des quatre en revue:
+Passons chacun des quatre en revue&#x202F;:
 
 #### Le composant frontend du plugin de messagerie instantanée
 
@@ -159,7 +159,7 @@ depuis le navigateur dans n'importe quelle application Hoodie, vous pouvez utili
 
 Vous noterez que nous avons utilisé directMessages au lieu du nom réel de notre plugin "direct-message", juste parce que nous le pouvons. Comment et où vous étendez l'objet hoodie sur le frontend est à votre entière discrétion. Votre plugin pourrait étendre Hoodie à plusieurs endroits ou remplacer une fonction existante.
 
-Tout le code frontend de votre plugin doit se trouver à l'intérieur d'un fichier nommé selon la convention suivante:
+Tout le code frontend de votre plugin doit se trouver à l'intérieur d'un fichier nommé selon la convention suivante&#x202F;:
 
 <pre><code>hoodie.[nom_du_plugin].js</code></pre>
 
@@ -167,7 +167,7 @@ Dans notre cas, ce serait
 
 <pre><code>hoodie.direct-messages.js</code></pre>
 
-Le code à l'intérieur est très explicite:
+Le code à l'intérieur est très explicite&#x202F;:
 
 <pre><code>Hoodie.extend(function(hoodie) {
   hoodie.directMessages = {
@@ -177,7 +177,7 @@ Le code à l'intérieur est très explicite:
 });
 </code></pre>
 
-Désormais **hoodie.directMessages.send()** et **hoodie.directMessages.on()** existent. Voici un exemple d'utilisateur de **send()**:
+Désormais **hoodie.directMessages.send()** et **hoodie.directMessages.on()** existent. Voici un exemple d'utilisateur de **send()**&#x202F;:
 
 <pre><code>hoodie.directMessages.send(messageData)
 .done(function(messageTask){
@@ -187,17 +187,17 @@ Désormais **hoodie.directMessages.send()** et **hoodie.directMessages.on()** ex
     console.log("Message couldn't be sent: ",error);
 })
 </code></pre>
-__Note:__ le processus d'écoute **hoodie.task.on()** accepte trois sélecteurs d'objets différents après le type d'événement, tout comme **hoodie.store.on()** le fait pour la bibliothèque frontend hoodie.js:
+__Note&#x202F;:__ le processus d'écoute **hoodie.task.on()** accepte trois sélecteurs d'objets différents après le type d'événement, tout comme **hoodie.store.on()** le fait pour la bibliothèque frontend hoodie.js&#x202F;:
 
-* aucun, ce qui veut dire n'importe quel type d'objet: **'success'**
-* un type spécifique d'objet: **'directmessage:success'**
-* un objet spécifique unique: **'directmessage:a1b2c3:success'**
+* aucun, ce qui veut dire n'importe quel type d'objet&#x202F;: **'success'**
+* un type spécifique d'objet&#x202F;: **'directmessage:success'**
+* un objet spécifique unique&#x202F;: **'directmessage:a1b2c3:success'**
 
-__Important:__ Les noms des tâches et événements doivent _exclusivement_ contenir des _lettres minuscules_, et rien d'autre.
+__Important&#x202F;:__ Les noms des tâches et événements doivent _exclusivement_ contenir des _lettres minuscules_, et rien d'autre.
 
 On a réglé le cas du composant frontend. Notez bien que votre plugin peut se contenter de ce seul composant, si vous ne voulez qu'encapsuler du code frontend complexe dans des fonctions pratiques, par exemple.
 
-Mais nous avons encore du chemin à faire, alors avançons jusqu'à la deuxième partie:
+Mais nous avons encore du chemin à faire, alors avançons jusqu'à la deuxième partie&#x202F;:
 
 #### Le composant backend du plugin de messagerie instantanée
 
@@ -205,9 +205,9 @@ Pour référence pendant que vous lisez, voici [l'état actuel de l'API plugin](
 
 Par défaut, le composant backend réside dans le fichier **index.js** du répertoire racine de votre plugin. Il peut être laissé là par simplicité, mais Hoodie chargera de préférence ce que vous référencerez dans **main** du **package.json** de votre plugin.
 
-__Avant de commencer__: ce composant sera écrit en Node.js, et Node en général tend à favoriser les callbacks plutôt que les promises. Nous respectons ce choix et souhaitons que chacun se sente à l'aise dans son domaine, ce qui explique pourquoi le code backend possède un style plutôt différent du code frontend.  
+__Avant de commencer__&#x202F;: ce composant sera écrit en Node.js, et Node en général tend à favoriser les callbacks plutôt que les promises. Nous respectons ce choix et souhaitons que chacun se sente à l'aise dans son domaine, ce qui explique pourquoi le code backend possède un style plutôt différent du code frontend.  
 
-Voyons d'abord la chose dans son ensemble:
+Voyons d'abord la chose dans son ensemble&#x202F;:
 
 <pre><code>module.exports = function(hoodie, done) {
   hoodie.task.on('directmessage:add', handleNewMessage);
@@ -243,11 +243,11 @@ Un simple conteneur habituel pour le code du composant backend. Encore une fois,
 
 <pre><code>hoodie.task.on('directmessage:add', handleNewMessage);</code></pre>
 
-Vous vous souvenez quand nous avons appelé **hoodie.task('directmessage').start** dans le composant frontend. C'est ici la partie correspondante dans le backend, écoutant l'événement émis par **task.('directmessage').add**. Nous appelons **handleNewMessage()** quand l'événement survient:
+Vous vous souvenez quand nous avons appelé **hoodie.task('directmessage').start** dans le composant frontend. C'est ici la partie correspondante dans le backend, écoutant l'événement émis par **task.('directmessage').add**. Nous appelons **handleNewMessage()** quand l'événement survient&#x202F;:
 
 <pre><code>function handleNewMessage(originDb, message) {</code></pre>
 
-Maintenant nous arrivons aux bases de données. Souvenez-vous: chaque utilisateur dans Hoodie possède sa propre base de donnée isolée, et **task.on()** passe le nom de la base de données d'où provient l'événément.
+Maintenant nous arrivons aux bases de données. Souvenez-vous&#x202F;: chaque utilisateur dans Hoodie possède sa propre base de donnée isolée, et **task.on()** passe le nom de la base de données d'où provient l'événément.
 
 <pre><code>var recipient = message.to;
 hoodie.account.find('user', recipient, function(error, user) {</code></pre>
@@ -262,7 +262,7 @@ L'expéditeur peut avoir fait une erreur et le destinataire peut ne pas exister.
 
 <pre><code>var targetDb = 'user/' + user.hoodieId;</code></pre>
 
-Nous n'avions pas encore la base de donnée de l'utilisateur, c'est ce que nous faisons ici. Dans CouchDB, les noms de bases de données consistent en un préfixe de type (dans ce cas, **user**), un slash, et un identifiant. Nous recommandons d'utiliser Futon pour trouver comment sont appelés les objets individuels et les bases de données. Maintenant nous en arrivons au point principal:
+Nous n'avions pas encore la base de donnée de l'utilisateur, c'est ce que nous faisons ici. Dans CouchDB, les noms de bases de données consistent en un préfixe de type (dans ce cas, **user**), un slash, et un identifiant. Nous recommandons d'utiliser Futon pour trouver comment sont appelés les objets individuels et les bases de données. Maintenant nous en arrivons au point principal&#x202F;:
 
 <pre><code>hoodie.database(targetDb).add(
     'directmessage',
@@ -272,7 +272,7 @@ Nous n'avions pas encore la base de donnée de l'utilisateur, c'est ce que nous 
 
 Ceci fonctionne beaucoup  comme l'ajout d'un objet avec l'API frontend de Hoodie, sauf que nous utilisons ici des callbacks plutôt que des promises. Nous avons ajouté les données du message comme un objet **message** dans la base du destinataire, et si nous écoutons l'événement correspondant **new** sur le frontend, nous pouvons le faire apparaître en quasi temps réel.
 
-__Note__: vous pensez probablement: "Attendez une seconde, et que se passe-t-il si un autre plugin génère aussi des objets **message**&#x202F;?" Et c'est bien vu de votre part. Nous ne gérons pas de namespace ici pour simplifier, mais préfixer les noms des types d'objets avec celui de votre plugin semble être une excellente idée. Dans ce cas, la ligne devrait être
+__Note__&#x202F;: vous pensez probablement&#x202F;: "Attendez une seconde, et que se passe-t-il si un autre plugin génère aussi des objets **message**&#x202F;?" Et c'est bien vu de votre part. Nous ne gérons pas de namespace ici pour simplifier, mais préfixer les noms des types d'objets avec celui de votre plugin semble être une excellente idée. Dans ce cas, la ligne devrait être
 
 <pre><code>hoodie.database(targetDb).add(
     'directmessagesmessage',
@@ -282,7 +282,7 @@ __Note__: vous pensez probablement: "Attendez une seconde, et que se passe-t-il 
 
 mais pour plus de clarté, on en restera là pour cet exemple.
 
-Quoiqu'il en soit, nous y sommes presque, nous avons juste à faire un peu de ménage:
+Quoiqu'il en soit, nous y sommes presque, nous avons juste à faire un peu de ménage&#x202F;:
 
 <pre><code>function addMessageCallback(error, object) {
     if(error){
@@ -312,25 +312,25 @@ function(messageObject){
 </code></pre>
 Un truc Hoodie vraiment classique. Vous pouvez aussi appeler **hoodie.store.findAll('directmessage').done(displayAllMessages)** ou tout autre méthode **hoodie.store** pour travailler avec les nouveaux objets messages.
 
-En tant qu'auteur de plugin, vous devriez intégrer ces méthodes avec les vôtres, afin que les auteurs d'application puissent rester dans le scope de l'API de votre plugin même quand ils écoutent des événement de stockage ou de l'API coeur de Hoodie. Par exemple, dans le composant frontend du plugin, avoir:
+En tant qu'auteur de plugin, vous devriez intégrer ces méthodes avec les vôtres, afin que les auteurs d'application puissent rester dans le scope de l'API de votre plugin même quand ils écoutent des événement de stockage ou de l'API coeur de Hoodie. Par exemple, dans le composant frontend du plugin, avoir&#x202F;:
 
 <pre><code>hoodie.directMessages.findAll = function(){
   return hoodie.store.findAll('directmessage');
 };
 </code></pre>
 
-Ceci pourrait alors être appelé par l'auteur de l'application ainsi:
+Ceci pourrait alors être appelé par l'auteur de l'application ainsi&#x202F;:
 
 <pre><code>hoodie.directMessages.findAll()
     .done(displayAllMessages, showError);</code></pre>
 
 Maintenant vous savez comment créer et terminer des tâches, rendre votre plugin orienté promise, émettre et écouter des événements de tâches, construire votre API frontend, écrire des objets dans les bases utilisateurs et quelques autres choses. Nous dirions que vous êtes bien partis. Toutes les autres fonctionnalités de l'API plugin attendent que vous les découvriez dans la section documentation.
 
-Il y a plus, cependant: nous pouvons construire un panneau d'administration pour le plugin **direct-messages**.
+Il y a plus, cependant&#x202F;: nous pouvons construire un panneau d'administration pour le plugin **direct-messages**.
 
 #### Étendre le tableau de bord d'administration avec celui de votre plugin
 
-Pour cette exemple, partons d'un panneau d'administration qui:
+Pour cette exemple, partons d'un panneau d'administration qui&#x202F;:
 
 * peut envoyer des messages directs aux utilisateurs
 * a un paramètre de configuration pour la taille maximum pour la longueur du message (parce que si ça fonctionne pour Twitter, pourquoi ça ne marcherait pas pour nous&#x202F;?)
@@ -341,10 +341,10 @@ Pour cela, nous devons fournir un répertoire **/admin-dashboard** dans le répe
 
 Hoodie fournira un kit UI avec des CSS/JS utiles que vous pouvez charger si vous le souhaitez. Idéalement, vous n'aurez pas à écrire une seule ligne de CSS pour rendre votre panneau de plugin joli, mais vous n'en êtes pas encore **tout à fait** là.
 
-**Note:** Tout ceci est très récent et requiert que **node_modules/hoodie-server/hoodie-admin-dashboard-uikit** soit à sa version 2.0.0 ou supérieure. Toute nouvelle application Hoodie créée avec **$hoodie new appName** devrait include cette nouvelle version par défaut, sinon, vous pourriez devoir faire **$hoodie cache clean**. 
+**Note&#x202F;:** Tout ceci est très récent et requiert que **node_modules/hoodie-server/hoodie-admin-dashboard-uikit** soit à sa version 2.0.0 ou supérieure. Toute nouvelle application Hoodie créée avec **$hoodie new appName** devrait include cette nouvelle version par défaut, sinon, vous pourriez devoir faire **$hoodie cache clean**. 
 
 
-Voici un avant-goût:
+Voici un avant-goût&#x202F;:
 
 ![Capture d'un plugin stylé avec le kit UI](admin_dashboard_uikit_screenshot.png)
 
@@ -364,7 +364,7 @@ Le fichier **admin-dashboard-uikit.js** inclus un certain nombre de choses, parm
 
 Dans un futur proche, ceci fera partie du template de plugin par défaut, aussi aurez-vous un scaffolding sympa à partir duquel travailler.
 
-Commençons par un morceau simple:
+Commençons par un morceau simple&#x202F;:
 
 ##### Styler le panneau d'administration de votre plugin
 
@@ -374,7 +374,7 @@ Comme noté, votre panneau d'administration peut avoir les styles du tableau de 
 
 La tableau de bord d'administration possède une version spéciale de Hoodie, appelée HoodieAdmin. Elle offre plusieurs API par défaut, comme **hoodieAdmin.signIn(password)**, **hoodie.users.findAll**, et <a href="https://github.com/hoodiehq/hoodie.admin.js" target="_blank">plus</a>.
 
-Elle peut être étendue comme la bibliothèque Hoodie standard:
+Elle peut être étendue comme la bibliothèque Hoodie standard&#x202F;:
 
 <pre><code>HoodieAdmin.extend(function(hoodieAdmin) {
   function send( messageData ) {
@@ -418,13 +418,13 @@ et
 
 Ici **config** est un simple objet avec des clefs/valeurs.
 
-Par exemple, disons que vous voulez limiter la taille de message à 140 caractères. Vous construisez un formulaire correspondant dans **admin-dashboard/index.html** avec une entrée de type nombre (disons 140) et l'associez à l'événement submit:
+Par exemple, disons que vous voulez limiter la taille de message à 140 caractères. Vous construisez un formulaire correspondant dans **admin-dashboard/index.html** avec une entrée de type nombre (disons 140) et l'associez à l'événement submit&#x202F;:
 
 <pre><code>hoodieAdmin.plugin.updateConfig('direct-messages',
   { maxLength: valueFromInputField }
 );</code></pre>
 
-Dans le backend, vous vérifiez le paramètre et rejetez les messages qui sont plus longs:
+Dans le backend, vous vérifiez le paramètre et rejetez les messages qui sont plus longs&#x202F;:
 
 <pre><code>if (message.body.length > hoodie.config('maxLength')) {
   var error = {
@@ -437,7 +437,7 @@ Dans le backend, vous vérifiez le paramètre et rejetez les messages qui sont p
 
 #### Le fichier package.json
 
-Le fichier package.json est requis par node.js. Pour notre plugin, il ressemble à ça:
+Le fichier package.json est requis par node.js. Pour notre plugin, il ressemble à ça&#x202F;:
 
 <pre><code>{
   "name": "hoodie-plugin-direct-messages",

@@ -9,7 +9,7 @@ Le guide Hoodie est une version spéciale de la documentation de l'API pour les 
 
 ## 1. L'API Hoodie client
 
-Cette bibliothèque, usuellement appelée **hoodie.js**, sera celle avec laquelle vous travaillerez côté client. Elle consiste en:
+Cette bibliothèque, usuellement appelée **hoodie.js**, sera celle avec laquelle vous travaillerez côté client. Elle consiste en&#x202F;:
 
 - [L'API Hoodie](/fr/techdocs/api/client/hoodie.html), qui contient un certain nombre d'aides pour la connexion et la prise en compte d'événements
 - [L'API des comptes utilisateurs](/fr/techdocs/api/client/hoodie.account.html), qui vous laisse réaliser l'authentification utilisateurs, à savoir l'enregistrement, la connexion et la déconnexion

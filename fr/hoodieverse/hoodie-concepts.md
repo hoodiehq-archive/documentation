@@ -2,9 +2,9 @@
 layout: layout-hoodieverse
 locales: fr
 ---
-# Concepts fondamentaux de Hoodie: Dreamcode, noBackend et Offline First
+# Concepts fondamentaux de Hoodie&#x202F;: Dreamcode, noBackend et Offline First
 
-Hoodie a été conçu autour de quelques convictions et concepts fondamentaux, et ils entrainent beaucoup des choix faits dans le code et les fonctionnalités. Ce sont:
+Hoodie a été conçu autour de quelques convictions et concepts fondamentaux, et ils entrainent beaucoup des choix faits dans le code et les fonctionnalités. Ce sont&#x202F;:
 
 - [Dreamcode](#dreamcode)
 - [noBackend](#nobackend)
@@ -16,9 +16,9 @@ Hoodie a été conçu autour de quelques convictions et concepts fondamentaux, e
 
 Lors du design de l'API de Hoodie, nous avons réalisé que nous voulions faire plus que simplement exposer du code serveur au frontend. **Nous voulions réduire la complexité, pas la déplacer**. Et pour rendre quelque-chose simple et intuitif, vous ne pouvez pas commencer par la couche technique, vous devez commencer par les humains qui vont l'utiliser. A quoi ressemblerait l'API de leur rêve&#x202F;? Dreamcode est essentiellement le design d'API centré sur les utilisateurs.
 
-Pour faire simple: **l'API de Hoodie est optimisée pour être formidable**. Pour être intuitive et accessible. Et elle est optimisée pour faciliter autant que possible la vie des développeurs frontend. C'est aussi une API en premier lieu: c'est une promesse - tout le reste peut changer et est remplaçable. L'API est tout ce qui compte.
+Pour faire simple&#x202F;: **l'API de Hoodie est optimisée pour être formidable**. Pour être intuitive et accessible. Et elle est optimisée pour faciliter autant que possible la vie des développeurs frontend. C'est aussi une API en premier lieu&#x202F;: c'est une promesse - tout le reste peut changer et est remplaçable. L'API est tout ce qui compte.
 
-Oubliez les contraintes des navigateurs d'aujourd'hui. Écrivez le code de vos rêves pour toutes les tâches qui sont requises pour construire votre application. L'implémentation derrière l'API n'importe pas, elle peut être simple ou compliquée, mais de manière cruciale: les utilisateurs ne devrait pas avoir à s'en préoccuper. C'est ça le dreamcode.
+Oubliez les contraintes des navigateurs d'aujourd'hui. Écrivez le code de vos rêves pour toutes les tâches qui sont requises pour construire votre application. L'implémentation derrière l'API n'importe pas, elle peut être simple ou compliquée, mais de manière cruciale&#x202F;: les utilisateurs ne devrait pas avoir à s'en préoccuper. C'est ça le dreamcode.
 
 **Tout est compliqué jusqu'à ce que quelqu'un le rende facile**. Nous rendons le développement web facile.
 
@@ -50,7 +50,7 @@ Nous faisons des sites web et des applications pour le web. L'objectif est d'êt
 
 Avez l'augmentation astronomique de l'usage du mobile, nous ne pouvons assumer quoique ce soit sur les connexions de nos utilisateurs. Tout comme nous avons appris à accepter que les écrans sont désormais de toutes les formes et de toutes les tailles, **nous devrons admettre que les connexions peuvent être présentes ou absentes, rapides ou lentes, régulières ou intermittentes, gratuites ou chères**. Nous avons réagis au défi de taille d'écran inconnues avec le <a href="http://alistapart.com/article/responsive-web-design" target="_blank">Responsive Webdesign</a> et le Mobile First, et nous devront réagir au défi des connexions fluctuantes avec le <a href="http://alistapart.com/article/offline-first" target="_blank">Offline First</a>.
 
-**Offline First veut dire: construisez vos applications sans l'hypothèse d'une connexion permanente.** Mettez les données et l'application en cache localement. Construisez des interfaces qui s'accomodent d'un état déconnecté de manière élégante. Concevez les interactions utilisateurs qui n'échoueront pas si le train entre dans un tunnel. N'allez pas effrayer vos utilisateurs avec des messages d'erreurs réseau ou les frustrer avec des données inaccessibles. **Les applications Offline First sont plus rapides, plus robustes, plus agréable à utiliser, et au final: plus utiles.**
+**Offline First veut dire&#x202F;: construisez vos applications sans l'hypothèse d'une connexion permanente.** Mettez les données et l'application en cache localement. Construisez des interfaces qui s'accomodent d'un état déconnecté de manière élégante. Concevez les interactions utilisateurs qui n'échoueront pas si le train entre dans un tunnel. N'allez pas effrayer vos utilisateurs avec des messages d'erreurs réseau ou les frustrer avec des données inaccessibles. **Les applications Offline First sont plus rapides, plus robustes, plus agréable à utiliser, et au final&#x202F;: plus utiles.**
 
 
 ##### Plus d'information sur Offline First

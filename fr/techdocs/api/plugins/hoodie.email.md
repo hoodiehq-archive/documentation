@@ -35,7 +35,7 @@ Elle prend un seul argument - un objet email. Comme Hoodie utilise <a href="http
 
 #### Exemple
 
-Envoyer des emails avec le plugin:
+Envoyer des emails avec le plugin&#x202F;:
 
 ```javascript
 hoodie.email.send({
@@ -48,7 +48,7 @@ hoodie.email.send({
 });
 ```
 
-Vous pouvez aussi passer des pièces jointes sous forme de dataURIs:
+Vous pouvez aussi passer des pièces jointes sous forme de dataURIs&#x202F;:
 
 ```javascript
 hoodie.email.send({

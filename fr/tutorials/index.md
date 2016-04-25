@@ -13,7 +13,7 @@ Si vous éprouvez des difficultés à quelque étape que ce soit de cette doc, m
 
 Vous devriez avoir [installé Hoodie et ses pré-requis](/fr/start/) et avoir lu [la première partie de ce guide](/fr/start/getting-started/getting-started-1.md). Nous partirons de l'application Hoodie que vous y avez créé.
 
-Au cas où vous auriez sauté cette étape, voici le résumé ultra-court sur comment créer une nouvelle application Hoodie et la lancer:
+Au cas où vous auriez sauté cette étape, voici le résumé ultra-court sur comment créer une nouvelle application Hoodie et la lancer&#x202F;:
 
 ```bash
 $ hoodie new hoodietut
@@ -42,24 +42,24 @@ Une fois que vous êtes enregistré dans une application Hoodie, **Hoodie va ten
 
 #### 1.3 Support du "déconnecté"
 
-[Nous croyons fermement que les applications ne devrait pas casser parce que vous êtes déconnecté](/fr/hoodieverse/hoodie-concepts.html#offline-first). Naturellement, cette application fonctionne déconnectée. Essayez:
+[Nous croyons fermement que les applications ne devrait pas casser parce que vous êtes déconnecté](/fr/hoodieverse/hoodie-concepts.html#offline-first). Naturellement, cette application fonctionne déconnectée. Essayez&#x202F;:
 
 Dans le terminal, arrêter le serveur Hoodie avec **ctrl+c** (Mac/Linux) ou **alt+c** (Windows).
 
-Dans l'un de vos deux onglets, ajoutez quelques tâches. Vous noterez deux choses:
+Dans l'un de vos deux onglets, ajoutez quelques tâches. Vous noterez deux choses&#x202F;:
  
 1. Vous pouvez ajoutez des nouvelles tâches malgré le serveur arrêté. Pas de messages d'erreur&#x202F;! Ca fonctionne juste. Youpi&#x202F;!
 2. Si vous regardez l'autre onglet, les nouvelles tâches n'apparaissent pas. Elles ne peuvent pas, puisque toute la synchronisation se fait via le serveur, que vous venez d'arrêter. Pas top. Mais juste pour le coup, ajoutez ici aussi quelques tâches.
 
-Et maintenant, redémarrons le serveur (l'option **-n** évite qu'un nouveau navigateur ne soit ouvert):
+Et maintenant, redémarrons le serveur (l'option **-n** évite qu'un nouveau navigateur ne soit ouvert)&#x202F;:
 
 ```bash
 $ hoodie start -n
 ```
-**Maintenant observez les deux onglets**: ils devraient se synchroniser avec le serveur, et les deux devraient afficher toutes les tâches que vous avez ajouté pendant que vous étiez déconnecté.
+**Maintenant observez les deux onglets**&#x202F;: ils devraient se synchroniser avec le serveur, et les deux devraient afficher toutes les tâches que vous avez ajouté pendant que vous étiez déconnecté.
 Plutôt sympa, non&#x202F;?
 
-**Les application Hoodie sont super robustes même sur de mauvais réseaux**, et vous gagnez deux bonus sur l'expérience utilisateur:
+**Les application Hoodie sont super robustes même sur de mauvais réseaux**, et vous gagnez deux bonus sur l'expérience utilisateur&#x202F;:
  
 1. Pas de message d'erreur frustrant quand vous passez en déconnecté durant l'utilisation
 2. Vos utilisateurs peuvent toujours accéder à leurs propres données, même déconnectés.
@@ -76,7 +76,7 @@ www/assets/js/main.js
 
 dans l'éditeur de votre choix.
 
-Tout en haut, nous **initialisons Hoodie** et l'assignons à une variable, afin de pouvoir appeler ses méthodes:
+Tout en haut, nous **initialisons Hoodie** et l'assignons à une variable, afin de pouvoir appeler ses méthodes&#x202F;:
 
 ```javascript
 var hoodie  = new Hoodie();
@@ -95,7 +95,7 @@ $('#todoinput').on('keypress', function(event) {
 });
 ```
 
-C'est à l'intérieur du "if" que se trouve l'action: nous appelons la méthode **store.add()** de Hoodie et lui passons deux valeurs:
+C'est à l'intérieur du "if" que se trouve l'action&#x202F;: nous appelons la méthode **store.add()** de Hoodie et lui passons deux valeurs&#x202F;:
 
 
 1. **Le type**  de l'objet que nous ajoutons au dépôt. Le type est une chaîne arbitraire, dans ce cas **todo**.
@@ -110,11 +110,11 @@ hoodie.store.add(type, object);
 Une ligne. Ceci stocke la tâche dans le dépôt local du navigateur, et Hoodie se charge de la synchroniser partout où elle doit se retrouver. Plutôt simple, non&#x202F;? **add()** retourne aussi [des promises](/fr/techdocs/api/client/hoodie.store.html#storeadd) afin que vous puissiez vérifier que ça a fonctionné, mais laissons ça de côté pour l'instant.
 
 <a id="understanding-type"></a>
-#### 2.2 Un petit aparté: comprendre le type
+#### 2.2 Un petit aparté&#x202F;: comprendre le type
 
 Le **type** est une convention fondamentale pour gérer l'absence de schémas dans CouchDB, qui est le système de base de donnée que Hoodie utilise.
 
-Dans CouchDB, la même base de donnée contient une grande variété d'enregistrement différent, donc aucun n'est défini à l'avance. Par exemple, vous pouvez avoir des enregistrements de personnes et de lieux. L'attribut de type est utilisé pour les distinguer ces… et bien, ces *types* d'enregistrement entre eux. Voici quelques-uns des objets (abrégés et fictifs) que Hoodie pourrait écrire dans CouchDB:
+Dans CouchDB, la même base de donnée contient une grande variété d'enregistrement différent, donc aucun n'est défini à l'avance. Par exemple, vous pouvez avoir des enregistrements de personnes et de lieux. L'attribut de type est utilisé pour les distinguer ces… et bien, ces *types* d'enregistrement entre eux. Voici quelques-uns des objets (abrégés et fictifs) que Hoodie pourrait écrire dans CouchDB&#x202F;:
 
 ```javascript
 {
@@ -130,7 +130,7 @@ Dans CouchDB, la même base de donnée contient une grande variété d'enregistr
 }
 ```
 
-Vous noterez qu'il s'agit juste, encore une fois, d'objets JavaScript. Dans toute votre application Hoodie, toutes les données sont toujours de simples objets JavaScript. Mais revenons au type:
+Vous noterez qu'il s'agit juste, encore une fois, d'objets JavaScript. Dans toute votre application Hoodie, toutes les données sont toujours de simples objets JavaScript. Mais revenons au type&#x202F;:
 
 
 Le **type est essentiel pour donner une structure à vos données sans schéma**, afin que quand vous récupérez des lieux, par exemple, vous puissiez le faire facilement.
@@ -138,7 +138,7 @@ Le **type est essentiel pour donner une structure à vos données sans schéma**
 <a id="updating-the-view"></a>
 #### 2.3 Mettre la Vue à jour
 
-Jusqu'ici, nous n'avons vu que comment l'application *stock* la nouvelle tâche après qu'elle ait été saisie, mais pas comment elle était effectivement *affichée*. Jetez un oeil au code juste au dessus du gestionnaire d'événement que nous venons de regarder, vers la fin de **main.js**:
+Jusqu'ici, nous n'avons vu que comment l'application *stock* la nouvelle tâche après qu'elle ait été saisie, mais pas comment elle était effectivement *affichée*. Jetez un oeil au code juste au dessus du gestionnaire d'événement que nous venons de regarder, vers la fin de **main.js**&#x202F;:
 
 ```javascript
 // when a todo changes, update the UI.
@@ -147,7 +147,7 @@ hoodie.store.on('todo:update', todos.update);
 hoodie.store.on('todo:remove', todos.remove);
 ```
 
-Qu'est-ce qui se passe ici&#x202F;? Nous écoutons des événements émis par le dépôt Hoodie. Regardez le premier: **todo:add**. Il se déclenche à chaque fois qu'un nouvelle objet de type *todo* est ajouté. Les autres devraient être évidents maintenant. Quand un gestionnaire d'événement se déclenche, il appelle la méthode qui met le modèle à jour (un tableau d'objet appelé **collection**) puis la vue. *Il n'y pas a pas de connexion directe entre l'entrée de la tâche et la liste des tâches*.
+Qu'est-ce qui se passe ici&#x202F;? Nous écoutons des événements émis par le dépôt Hoodie. Regardez le premier&#x202F;: **todo:add**. Il se déclenche à chaque fois qu'un nouvelle objet de type *todo* est ajouté. Les autres devraient être évidents maintenant. Quand un gestionnaire d'événement se déclenche, il appelle la méthode qui met le modèle à jour (un tableau d'objet appelé **collection**) puis la vue. *Il n'y pas a pas de connexion directe entre l'entrée de la tâche et la liste des tâches*.
 
 Nous avons donc proprement découplé *ajouter* une tâche et *afficher* une nouvelle tâche, et ceci nous offre la fonction de synchronisation avancée que nous avons vu précédemment, *gratuitement*. **Il n'y a pas de code supplémentaire pour faire fonctionner la synchronisation**. Quand une nouvelle tâche arrive dans le dépôt du navigateur, l'événement **todo:add** se déclenche, et la vue se met à jour. Avec ce code, vous n'avez pas besoin de vous inquiéter *d'où* la tâche provient (du client actuel, ou de celui dans un autre onglet, ou de celui sur un téléphone), l'application les gère de la même manière.
 
@@ -155,19 +155,19 @@ Nous vous suggérons fortement d'utiliser cette structure découplée dans vos p
 
 ### 3. Modification de l'application
 
-Dans les quelques prochaines étapes notre application va être modifiée pour donner aux tâches une priorité parmi **urgent**, **normal** ou **later** (NdT: "plus tard").
+Dans les quelques prochaines étapes notre application va être modifiée pour donner aux tâches une priorité parmi **urgent**, **normal** ou **later** (NdT&#x202F;: "plus tard").
 
 #### 3.1 Ajouter un bouton d'ajout
 
 L'application vous laisse entrer de nouvelles tâches et les sauvegarder en tapant la touche entrée. Ca fonctionne bien pour une seule entrée, mais comme nous allons ajouter un nouveau champ pour la priorité de la tâche, un bouton "Submit" va être plus approprié.
 
-Premièrement, ajoutez le bouton au fichier **www/index.html**. Cherchez le champ texte avec l'id **todoinput**. Sur la ligne qui suit ajoutez le bouton avec un id **add-todo**:
+Premièrement, ajoutez le bouton au fichier **www/index.html**. Cherchez le champ texte avec l'id **todoinput**. Sur la ligne qui suit ajoutez le bouton avec un id **add-todo**&#x202F;:
 
 ```markup
 <button id="add-todo">Add New Todo</button>
 ```
 
-Deuxièmement, changer le fichier **main.js** pour que notre nouvelle tâche soit ajoutée quand le bouton est cliqué plutôt que quand la touche "entrée" est pressée. Remplacer le dernier block de code de fichier avec ceci:
+Deuxièmement, changer le fichier **main.js** pour que notre nouvelle tâche soit ajoutée quand le bouton est cliqué plutôt que quand la touche "entrée" est pressée. Remplacer le dernier block de code de fichier avec ceci&#x202F;:
 
 ```javascript
 // gère la création d'une nouvelle tâche
@@ -185,7 +185,7 @@ Maintenant nous sommes prêts à changer l'interface et le modèle de données.
 
 #### 3.2. Ajouter la priorité
 
-Ajouter la priorité demande un nouvel élément "input". Insérez-le juste au dessus du nouveau bouton que nous avons ajouté à **www/index.html**:
+Ajouter la priorité demande un nouvel élément "input". Insérez-le juste au dessus du nouveau bouton que nous avons ajouté à **www/index.html**&#x202F;:
 
 
 ```markup
@@ -197,7 +197,7 @@ Ajouter la priorité demande un nouvel élément "input". Insérez-le juste au d
 &lt;button id="add-todo">Add&lt;/button>
 ```
 
-Maintenant modifiez la méthode click dans **main.js** pour stocker la priorité:
+Maintenant modifiez la méthode click dans **main.js** pour stocker la priorité&#x202F;:
 
 ```javascript
 // gère la création d'une nouvelle tâche
@@ -210,7 +210,7 @@ $('#add-todo').on('click', function() {
 });
 ```
 
-Dans le même fichier, modifiez la fonction **paint()** pour afficher la priorité:
+Dans le même fichier, modifiez la fonction **paint()** pour afficher la priorité&#x202F;:
 
 Changez
 
@@ -230,7 +230,7 @@ A ce stade vous devriez commencer à voir que chaque *nouvelle* tâche est préf
 
 Cependant, si vous n'avez pas marqué toutes les tâches que vous aviez créées avant d'ajouter la priorité, elles seront désormais rendues avec "undefined:" à la place de la priorité. Pas cool. C'est le revers de la médaille pour pouvoir changer la structure de donnée à la volée. Dans une base traditionnelle, vous devriez réaliser une migration du modèle de donnée et ajouter la priorité **normal** pour toutes les tâches qui n'en ont pas déjà une. Mais comme nous utilisons un système qui distribue des copies de chaque base utilisateur sur un certain nombre d'appareils, *nous ne pouvons pas faire ça*. Nous ne savons même pas combien de base de données il y a, ou même où elles se trouvent.   
 
-La solution à ce problème est de construire une vue robuste qui gère simplement les champs manquants:
+La solution à ce problème est de construire une vue robuste qui gère simplement les champs manquants&#x202F;:
 
 ```javascript
 var todo = collection[i];
@@ -272,6 +272,6 @@ Si ce guide comporte des erreurs ou est dépassé, vous pouvez aussi <a href="ht
 
 Merci de votre intérêt et de votre temps&#x202F;!
 
-Et voici votre poulet de félicitations:
+Et voici votre poulet de félicitations&#x202F;:
 
 ![Cooooot cot cot cot](/src/img/doc-doc-chicken.png)

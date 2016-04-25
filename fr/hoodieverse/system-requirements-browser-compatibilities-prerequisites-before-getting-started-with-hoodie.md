@@ -23,5 +23,5 @@ Avant de commencer à travailler avec Hoodie, voici ce dont vous aurez besoin de
 * Android 4.3+
 * iOS Safari (7.1+)
 
-**Important**: Cette liste est en fait basée sur les [pré-requis de PouchDB's](http://pouchdb.com/learn.html), puisque Hoodie sera bientôt migré pour l'utiliser à la place de localstorage.
+**Important**&#x202F;: Cette liste est en fait basée sur les [pré-requis de PouchDB's](http://pouchdb.com/learn.html), puisque Hoodie sera bientôt migré pour l'utiliser à la place de localstorage.
 

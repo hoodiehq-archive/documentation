@@ -9,7 +9,7 @@ Ce document décrit comment les paiements Hoodie fonctionnent.
 
 NOTEZ QU'IL S'AGIT D'UN DOCUMENT DE FONCTIONS ATTENDUES
 
-(NdT: commentaire sans intérêt retiré concernant des mâchoires qui tombent par terre...)
+(NdT&#x202F;: commentaire sans intérêt retiré concernant des mâchoires qui tombent par terre...)
 
 ## Passerelle
 
@@ -41,7 +41,7 @@ Après avoir activé Hoodie Payment sur votre backend, vous serez capable de cr�
 
 #### Nouveaux comptes avec plan
 
-Quand de nouveaux utilisateurs s'enregistrent et que vous voulez qu'ils choisissent un plan, vous pouvez récupérer les informations des plans via l'API `hoodie.payments`:
+Quand de nouveaux utilisateurs s'enregistrent et que vous voulez qu'ils choisissent un plan, vous pouvez récupérer les informations des plans via l'API `hoodie.payments`&#x202F;:
 
     var hoodie = new Hoodie(url);
     hoodie.payments.plans.list(function(plan) {
@@ -56,23 +56,23 @@ Quand de nouveaux utilisateurs s'enregistrent et que vous voulez qu'ils choisiss
         */
     });
 
-Pour enregistrer un utilisateur avec ce plan, vous pouvez utiliser:
+Pour enregistrer un utilisateur avec ce plan, vous pouvez utiliser&#x202F;:
 
     var hoodie = new Hoodie(url);
     hoodie.account.sign_up("joe@example.com", "secret", {plan: "plan_1234"});
 
-Vous pouvez aussi passer un objet `plan`:
+Vous pouvez aussi passer un objet `plan`&#x202F;:
 
     var gold_master = hoodie.payments.plans.get("plan_1234");
     hoodie.account.sign_up("joe@example.com", "secret", {plan: gold_master});
 
 #### Upgrade et downgrade de compte
 
-Si vous autorisez vos utilisateurs à s'enregistrer sans plan et que vous voulez pouvoir améliorer vers un compte payant plus tard, ou si vous utilisateurs doivent pouvoir changer de plan sur leur compte, vous pouvez utiliser `hoodie.account.update`:
+Si vous autorisez vos utilisateurs à s'enregistrer sans plan et que vous voulez pouvoir améliorer vers un compte payant plus tard, ou si vous utilisateurs doivent pouvoir changer de plan sur leur compte, vous pouvez utiliser `hoodie.account.update`&#x202F;:
 
     hoodie.account.update({plan: "plan_1234"});
 
-// TODO: discuter de la ré-authentification
+// TODO&#x202F;: discuter de la ré-authentification
 
 ### Coupons and Rabais
 
@@ -80,7 +80,7 @@ TODO
 
 ### Achats unitaires
 
-Si vous voulez réaliser une facturation unitaire, la méthode `payments.charge` est pour vous:
+Si vous voulez réaliser une facturation unitaire, la méthode `payments.charge` est pour vous&#x202F;:
 
     var hoodie = new Hoodie(url);
     var charge = {

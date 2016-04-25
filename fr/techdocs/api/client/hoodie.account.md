@@ -8,7 +8,7 @@ locales: fr
 
 L'objet account de l'API cliente Hoodie couvre toutes les opérations liées à l'authentification des utilisateurs, et vous permet de réaliser des opérations auparavant complexes, comme l'enregistrement d'un nouvel utilisateur, en quelques lignes de code frontend. Puisque {les données sont généralement associées à un utilisateur](/fr/hoodieverse/glossary.html#private-user-store), vous devriez vous familiariser avec **account** avant de passer au [stockage](/fr/techdocs/api/client/hoodie.store.html). 
 
-**Après avoir lu ce guide, vous saurez comment:**
+**Après avoir lu ce guide, vous saurez comment&#x202F;:**
 
 - enregistrer, connecter et déconnecter un utilisateur
 - vérifier si un utilisateur est identifié
@@ -122,7 +122,7 @@ $('#signUpForm').submit(function (event) {
 });
 ```
 
-**Note:** Le workflow de confirmation sera configurable dans le futur, afin que vous puissiez demander une confirmation d'enregistrement par mail, par exemple. Ceci se fera dans le panneau d'administration du plugin user.
+**Note&#x202F;:** Le workflow de confirmation sera configurable dans le futur, afin que vous puissiez demander une confirmation d'enregistrement par mail, par exemple. Ceci se fera dans le panneau d'administration du plugin user.
 
 
 <a id="accountsignin"></a>
@@ -164,7 +164,7 @@ La méthode **signIn** essaye de connecter l'utilisateur sur un compte existant.
 
 Toutes les données Hoodie se trouvent dans le dépôt local du navigateur avant l'authentification. Pour éviter une perte de données, vous pouvez passer l'option **{moveData: true}**, ce qui déplacera les données courantes (créées anonymement) vers le compte auquel l'utilisateur s'est connecté.
 
-**moveData** est utile pour un rare cas d'usage déconnecté : un utilisateur veut se connecter à votre application et
+**moveData** est utile pour un rare cas d'usage déconnecté&#x202F;: un utilisateur veut se connecter à votre application et
 
 - il a l'application elle-même en cache local (avec AppCache, par exemple)
 - il n'est *pas* identifié dans l'application

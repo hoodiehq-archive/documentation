@@ -19,24 +19,24 @@ Si vous rencontrez des problèmes à quelque étape que ce soit dans cette doc, 
 
 ### 1. Créer une nouvelle application
 
-Hoodie fournit un outil en ligne de commande appelé Hoodie-CLI qui vous aide pour un grand nombre de tâches liées à Hoodie, comme configurer et lancer une application. Si vous avez le moindre doute concernant CLI, vous pouvez lui demander de l'aide:
+Hoodie fournit un outil en ligne de commande appelé Hoodie-CLI qui vous aide pour un grand nombre de tâches liées à Hoodie, comme configurer et lancer une application. Si vous avez le moindre doute concernant CLI, vous pouvez lui demander de l'aide&#x202F;:
 
 ```bash
 $ hoodie -h
 ```
 
-Si vous n'avez jamais travaillé avec le terminal avant, parcourez rapidement <a href="http://blog.teamtreehouse.com/introduction-to-the-mac-os-x-command-line" target="_blank">ces astuces</a>&#x202F;! **Astuce 1**: ne tapez pas le signe dollar, c'est juste une convention qui signifie que la ligne de code devrait être lancée dans un terminal.
+Si vous n'avez jamais travaillé avec le terminal avant, parcourez rapidement <a href="http://blog.teamtreehouse.com/introduction-to-the-mac-os-x-command-line" target="_blank">ces astuces</a>&#x202F;! **Astuce 1**&#x202F;: ne tapez pas le signe dollar, c'est juste une convention qui signifie que la ligne de code devrait être lancée dans un terminal.
 
-La toute première étape est **d'utiliser Hoodie-CLI pour créer une nouvelle application**. Dans votre terminal, placez vous dans le répertoire où vous voulez que votre application se retrouve et entrez: 
+La toute première étape est **d'utiliser Hoodie-CLI pour créer une nouvelle application**. Dans votre terminal, placez vous dans le répertoire où vous voulez que votre application se retrouve et entrez&#x202F;: 
 
 ```bash
 $ hoodie new testapp
 ```
 
-Voilà ce qui en résultera:
+Voilà ce qui en résultera&#x202F;:
 ![screenshot 1 - hoodie-cli](./dist/hoodie_new_testapp.gif)
 
-Hoodie a téléchargé toutes les bibliothèques dont il a besoin pour faire le scaffolding (NdT: littéralement "échafaudage", un mécanisme qui va créer les répertoires et fichiers minimums pour le projet à votre place) de votre application, configurer le code serveur et installer les plugins par défaut. Vous trouverez désormais un répertoire **testapp**, dans lequel vous trouverez une simple application de démo. Ouvrez le répertoire et démarrer le serveur Hoodie:
+Hoodie a téléchargé toutes les bibliothèques dont il a besoin pour faire le scaffolding (NdT&#x202F;: littéralement "échafaudage", un mécanisme qui va créer les répertoires et fichiers minimums pour le projet à votre place) de votre application, configurer le code serveur et installer les plugins par défaut. Vous trouverez désormais un répertoire **testapp**, dans lequel vous trouverez une simple application de démo. Ouvrez le répertoire et démarrer le serveur Hoodie&#x202F;:
 
 ```bash
 $ cd testapp
@@ -49,7 +49,7 @@ Au premier lancement, il vous sera demandé d'entrer un mot de passe pour la tab
 
 Parfait, votre application a démarré et vous a dit un certain nombre de choses sur elle-même, par exemple à quelle URL vous pouvez accéder à l'application ou quels plugins sont actifs. La première chose que vous noterez cependant est que Hoodie ouvre un navigateur avec l'application démo déjà ouverte.
 
-**Note**: si vous ne voulez pas que Hoodie ouvre un nouvel onglet dans votre navigateur, démarrez le serveur Hoodie avec
+**Note**&#x202F;: si vous ne voulez pas que Hoodie ouvre un nouvel onglet dans votre navigateur, démarrez le serveur Hoodie avec
 
 ```bash
 $ hoodie start -n
@@ -61,9 +61,9 @@ Quoiqu'il en soit, vous verrez trois URLs dans l'affichage de la CLI. Nous allon
 
 ![screenshot 2 - hoodie-cli](./dist/hoodie_start.gif)
 
-**Note:** Les ports peuvent varier, du fait de la méthode que Hoodie utilise pour choisir les nouveaux ports disponibles pour de multiples applications. S'il s'agit de votre première application, les ports devraient démarrer à partir de 6001.
+**Note&#x202F;:** Les ports peuvent varier, du fait de la méthode que Hoodie utilise pour choisir les nouveaux ports disponibles pour de multiples applications. S'il s'agit de votre première application, les ports devraient démarrer à partir de 6001.
 
-##### L'URL CouchDB:
+##### L'URL CouchDB&#x202F;:
 
 ```bash
 CouchDB started: http://127.0.0.1:6098
@@ -97,7 +97,7 @@ Listez les fichiers et dossiers de votre répertoire courant en tapant
 ```bash
 $ ls
 ```
-Et vous devriez voir quelque-chose comme ça:
+Et vous devriez voir quelque-chose comme ça&#x202F;:
 
 ```bash
 README.md   data        node_modules    package.json    www
@@ -105,7 +105,7 @@ README.md   data        node_modules    package.json    www
 
 ##### README.md (fichier)
 
-Commençons par le plus facile: le fichier readme.
+Commençons par le plus facile&#x202F;: le fichier readme.
 Comme son nom le suggère, vous devriez le lire, car il contient de nombreuses informations utiles. 
 
 ##### package.json (fichier)
@@ -116,12 +116,12 @@ Toutes les applications Hoodie sont des applications Node.js et toutes les appli
 
 C'est ici que npm, le système de gestion de paquets de Node, conserve tous ses fichiers. Hoodie l'utilise pour gérer ses plugins et dépendances, et vous pouvez l'utiliser pour gérer les modules frontend et backend de votre application. Le contenu de ce dossier est déterminé par le fichier **package.json** décrit ci-dessus. Pour en savoir plus sur npm, allez voir <a href="http://howtonode.org/introduction-to-npm" target="_blank">cette introduction</a>.
 
-Le contenu de ce dossier est essentiel pour que l'application Hoodie fonctionne, aussi il y a deux choses à se rappeler:
+Le contenu de ce dossier est essentiel pour que l'application Hoodie fonctionne, aussi il y a deux choses à se rappeler&#x202F;:
 
 1. Ne modifiez pas le contenu de ce dossier manuellement (seulement en utilisant npm).
 2. N'ajoutez pas ce dossier à votre contrôle de source.
 
-Toutes vos modifications aux fichiers de ce dossier seront écrasées à chaque fois que vous installerez ou mettrez à jour les dépendances et il n'y a pas d'intérêt à mettre ce dossier énorme dans le contrôle de source, puisque tout le monde peut le reconstituer avec la simple commande:
+Toutes vos modifications aux fichiers de ce dossier seront écrasées à chaque fois que vous installerez ou mettrez à jour les dépendances et il n'y a pas d'intérêt à mettre ce dossier énorme dans le contrôle de source, puisque tout le monde peut le reconstituer avec la simple commande&#x202F;:
 
 ```bash
 $ npm install
@@ -150,7 +150,7 @@ hoodie new appname -t githubusername/reponame
 
 ### 4. Inclure le script
 
-L'application démo aura toujours cette ligne dans son **index.html**, mais à la base, tout ce dont vous avez besoin pour rendre votre application prête à utiliser Hoodie est d'inclure la seule bibliothèque **js**:
+L'application démo aura toujours cette ligne dans son **index.html**, mais à la base, tout ce dont vous avez besoin pour rendre votre application prête à utiliser Hoodie est d'inclure la seule bibliothèque **js**&#x202F;:
 
 <pre><code class="language-markup">
 &lt;script src="/_api/_files/hoodie.js"&gt;&lt;/script&gt;
