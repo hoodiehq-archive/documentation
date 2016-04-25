@@ -3,10 +3,10 @@ redcarpet:
   extensions: ["tables"]
 
 locales:
-  en:  
+  en:
     path: /en/
     lang: "Language"
-    label: 
+    label:
       en: "english"
       de: "german"
       ru: "russian"
@@ -20,7 +20,7 @@ locales:
       community: "Community"
     menu:
       start: "Let's start"
-      next: "Next Chapter" 
+      next: "Next Chapter"
       recipes: "Recipes"
     menuverse:
       welcome: "Welcome to Hoodie"
@@ -29,15 +29,15 @@ locales:
       works: "How Hoodie works"
       glossary: "Glossary"
       next: "Let's start"
-    menustart: 
+    menustart:
       installation: "Installation"
       started : "Getting started - pt1"
       next: "Tutorials"
-    menututorials: 
+    menututorials:
       started : "Getting started - pt2"
       timetracker: "time tracker"
       next: "API"
-    menuapi: 
+    menuapi:
       hoodie : "hoodie"
       account: "account"
       store : "store"
@@ -55,15 +55,15 @@ locales:
       intro: "Intro"
       unix: "Unix / Linux"
       next: "Community"
-    menucommunity: 
+    menucommunity:
       intro: "We are community"
       onboarding: "Onboarding"
       irc: "IRC office hours"
-      workshop: "Hoodie workshop" 
+      workshop: "Hoodie workshop"
   de:
     path: /de/
     lang: "Sprache"
-    label: 
+    label:
       en: "englisch"
       de: "deutsch"
       ru: "russisch"
@@ -77,7 +77,7 @@ locales:
       community: "Community"
     menu:
       start: "Los geht's"
-      next: "Nächstes Kapitel" 
+      next: "Nächstes Kapitel"
       recipes: "Rezepte"
     menuverse:
       welcome: "Willkommen bei Hoodie"
@@ -86,16 +86,16 @@ locales:
       works: "Wie Hoodie funktioniert"
       glossary: "Glossar"
       next: "Los geht's"
-    menustart: 
+    menustart:
       installation: "Installation"
       started : "Starten mit - Nr1"
       tutorials: "Tutorials"
       next: "Tutorials"
-    menututorials: 
+    menututorials:
       started : "Starten mit - Nr2"
       timetracker: "Zeitstopper"
       next: "API"
-    menuapi: 
+    menuapi:
       hoodie : "hoodie"
       account: "account"
       store : "store"
@@ -113,16 +113,16 @@ locales:
       intro: "Intro"
       unix: "Unix / Linux"
       next: "Community"
-    menucommunity: 
+    menucommunity:
       intro: "Wir sind eine Community"
       onboarding: "Onboarding"
       irc: "IRC office Stunden"
-      workshop: "Hoodie Workshop" 
+      workshop: "Hoodie Workshop"
 
-  ru:  
+  ru:
     path: /ru/
     lang: "Язык"
-    label: 
+    label:
       en: "английский"
       de: "немецкий"
       ru: "русский"
@@ -136,24 +136,24 @@ locales:
       community: "Сообщество"
     menu:
       start: "Введение"
-      next: "Следующая глава" 
+      next: "Следующая глава"
       recipes: "Рецепты"
     menuverse:
       welcome: "Добро пожаловать"
-      concepts: "Концепция Hoodie"      
+      concepts: "Концепция Hoodie"
       requirements: "Требования"
-      works: "Как это работает"      
+      works: "Как это работает"
       glossary: "Глоссарий"
       next: "Введение"
-    menustart: 
+    menustart:
       installation: "Установка"
       started : "Начинаем работу с Hoodie, часть 1"
       next: "Руководство"
-    menututorials: 
+    menututorials:
       started : "Начинаем работу с Hoodie, часть 2"
       timetracker: "счетчик времени"
       next: "API"
-    menuapi: 
+    menuapi:
       hoodie : "hoodie"
       account: "account"
       store : "store"
@@ -164,15 +164,15 @@ locales:
     menuplugins:
       intro: "Введение"
       build: "Пишем собственный плагин"
-      api: "Plugin API"      
+      api: "Plugin API"
       list: "Реестр npm"
       next: "Внедрение"
     menudeploy:
       intro: "Введение"
       unix: "Unix / Linux"
       next: "Сообщество"
-    menucommunity: 
+    menucommunity:
       intro: "Мы &mdash; сообщество"
       onboarding: "Введение"
       irc: "Рабочее время IRC"
-      workshop: "Мастер-класс Hoodie" 
+      workshop: "Мастер-класс Hoodie"

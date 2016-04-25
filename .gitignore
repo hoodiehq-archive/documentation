@@ -1,5 +1,7 @@
-build
 .DS_Store
-node_modules
+.ruby-version
+.rvmrc
 _site
+build
 CNAME
+node_modules
