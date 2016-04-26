@@ -10,7 +10,7 @@ These documents explain the Hoodieverse and are available in:
 
 **Work in progress** (If you want to help, go for it!):  
 - [German](/de/)  
-- [French](https://github.com/hoodiehq/documentation/pull/123)  
+- [French](/fr/)  
 - [Russian](https://github.com/hoodiehq/documentation/pull/120)
 
 You can **help us to translate** the content. Interested?
