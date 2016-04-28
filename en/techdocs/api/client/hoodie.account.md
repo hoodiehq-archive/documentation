@@ -103,7 +103,7 @@ hoodie.account.signUp('user', 'password');
 | --------------------- | ------------------------------------------- |
 | HoodieError           | Username must be set                        |
 | HoodieError           | Must sign out first                         |
-| HoodieConflictError   | Username **&lt;username>** already exists   |
+| HoodieConflictError   | Username **<username>** already exists   |
 | HoodieConnectionError | Could not connect to server                 |
 
 
