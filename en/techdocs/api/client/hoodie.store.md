@@ -26,7 +26,7 @@ If you haven't read up on how Hoodie works under the hood (sorry) and does all y
 
 It is also important to understand the [concept of type in Hoodie](/en/tutorials/#understanding-type), since it informs nearly all operations with data.
 
-Storing and accessing objects with hoodie always means accessing your personal, local objects.
+Storing and accessing objects with Hoodie always means accessing your personal, local objects.
 
 All stored objects have a fixed association to the user who created them. So you won't be able to access other users' objects by default.
 
