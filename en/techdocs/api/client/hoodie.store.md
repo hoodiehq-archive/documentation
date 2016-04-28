@@ -18,7 +18,7 @@ If you want to do anything with data in Hoodie, this is where it happens.
 
 ## Introduction
 
-One of the core features of any web app is being able to store and retrieve data, and **hoodie.store** is your toolkit for any of these data-related operations. Hoodie is a bit special in that every user has their own private data store, which is private by default and syncs automatically between the users' clients and the server. Initally, your app will have no way to make data global or share it between users, but this functionality will be provided via [plugins](/en/plugins/). What it will do, however, is make sure each user's data is always synced between devices, and make sure all user data is available in the client for offline use.
+One of the core features of any web app is being able to store and retrieve data, and **hoodie.store** is your toolkit for any of these data-related operations. Hoodie is a bit special in that every user has their own private data store, which is private by default and syncs automatically between the users' clients and the server. Initially, your app will have no way to make data global or share it between users, but this functionality will be provided via [plugins](/en/plugins/). What it will do, however, is make sure each user's data is always synced between devices, and make sure all user data is available in the client for offline use.
 
 #### Things you should know before continuing
 
