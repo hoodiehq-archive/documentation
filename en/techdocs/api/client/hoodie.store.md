@@ -467,7 +467,7 @@ todoStore.add({ title: 'Getting Coffee' })
 })
 ```
 
-The benefits of this variant might not be super convincing at first glance, but apart from being more concise and DRYer, it's also less error prone: imagine fumbling the **type** of an **add()** function, and adding a bunch of **todo** objects by accident. Your app would continue to save the todoos without errors, but they wouldn't show up in your interface, since your **on()** handlers only listen for the correctly-written type. You'd probably assume something was wrong with the display code, and go off bug-hunting in the completely wrong place.
+The benefits of this variant might not be super convincing at first glance, but apart from being more concise and DRYer, it's also less error prone: imagine fumbling the **type** of an **add()** function, and adding a bunch of **todo** objects by accident. Your app would continue to save the todos without errors, but they wouldn't show up in your interface, since your **on()** handlers only listen for the correctly-written type. You'd probably assume something was wrong with the display code, and go off bug-hunting in the completely wrong place.
 
 As mentioned, you can also have store scoped to a single object, like so:
 
