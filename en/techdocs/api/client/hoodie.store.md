@@ -275,7 +275,7 @@ hoodie.store.updateOrAdd(type, id, updateObject, options);
 
 As with **store.findOrAdd()**, this is useful if you don't know whether your target object actually exists yet and you don't want to waste time checking first.
 
-Returns a promise. If succesful, it calls the **done** callback with the updated or new object stored with updated or new properties added to it (*id*, *createdBy*, *createdAt*, *updatedAt*). If something
+Returns a promise. If successful, it calls the **done** callback with the updated or new object stored with updated or new properties added to it (*id*, *createdBy*, *createdAt*, *updatedAt*). If something
 goes wrong, the **fail** callback will be called instead and an error gets passed.
 
 You could, technically, pass a function in place of the updateObject, and it will work as it does for **store.update()** and **store.updateAll()**, *but only if the object with the specified id exists*. If it doesn't, you'll generate an empty and useless object, because your update function has nothing to work with, and will therefore return nothing.
