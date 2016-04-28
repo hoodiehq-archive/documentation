@@ -30,7 +30,7 @@ Storing and accessing objects with Hoodie always means accessing your personal, 
 
 All stored objects have a fixed association to the user who created them. So you won't be able to access other users' objects by default.
 
-In order to automatically sync objects to the server's store, you need to be logged in with a valid user. Learn more about the hoodie user system at [**hoodie.account**](./hoodie.account.html).
+In order to automatically sync objects to the server's store, you need to be logged in with a valid user. Learn more about the Hoodie user system at [**hoodie.account**](./hoodie.account.html).
 
 <a id="top"></a>
 
