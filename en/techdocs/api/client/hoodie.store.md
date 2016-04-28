@@ -588,7 +588,7 @@ hoodie.store.on('clear', function(){});
 
 The **clear** event is triggered when a user signed out, or called **hoodie.account.destroy()**. It is also triggered when the user signs in, to clear any existing local objects before loading the objects from the account the user signed into.
 
-Note that no **remove** event is triggered when the store gets cleared, as the objects do not necessarly get removed from the user's account, but only from the local cache.
+Note that no **remove** event is triggered when the store gets cleared, as the objects do not necessarily get removed from the user's account, but only from the local cache.
 
 ## Next Steps
 
