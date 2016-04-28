@@ -322,7 +322,7 @@ hoodie.account.resetPassword(username);
 
 | error                      | message                              |
 | -------------------------- | ------------------------------------ |
-| HoodieError                | User **&lt;username>** could not be found |
+| HoodieError                | User **<username>** could not be found |
 | HoodieError                | No email address found               |
 | HoodieError                | Failed to send password reset email  |
 | HoodieConnectionError      | Could not connect to Server          |
