@@ -286,7 +286,7 @@ _resolves without argument_
 | -------------------------- | ------------------------------ |
 | HoodieUnauthenticatedError | Not signed in |
 | HoodieConflictError        | Usernames identical |
-| HoodieConflictError        | **&lt;newUsername>** is taken |
+| HoodieConflictError        | **<newUsername>** is taken |
 
 
 #### Example
