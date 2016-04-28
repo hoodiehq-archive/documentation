@@ -542,7 +542,7 @@ hoodie.store.on('todo:remove',
   function(removedTodoObject) {});
 ```
 
-If you are interested in listening for one specifc object's removal only, you can pass the object id into the event identifier:
+If you are interested in listening for one specific object's removal only, you can pass the object id into the event identifier:
 
 ```javascript
 // config is the type, userconfig is the id
