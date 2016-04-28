@@ -344,7 +344,7 @@ hoodie.account.resetPassword('joe@example.com')
 ### [account.destroy()](#accountdestroy)
 **version:**      *> 0.2.0*
 
-**Destroys the accout of the currently signed in user.**
+**Destroys the account of the currently signed in user.**
 
 ```javascript
 hoodie.account.destroy();
