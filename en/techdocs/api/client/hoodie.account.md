@@ -389,7 +389,7 @@ hoodie.account.destroy()
 | <a id="changepassword"></a>[changepassword](#changepassword) | - | triggered after user successfully changed the password |
 | <a id="changeusername"></a>[changeusername](#changeusername) | username | triggered after user successfully changed the username |
 | <a id="passwordreset"></a>[passwordreset](#passwordreset) | username | triggered after password has been reset successfully |
-| <a id="error-passwordreset"></a>[error:passwordreset](#error-passwordreset) | error, username | An error occured when trying to reset the password for **username** |
+| <a id="error-passwordreset"></a>[error:passwordreset](#error-passwordreset) | error, username | An error occurred when trying to reset the password for **username** |
 | <a id="error-unauthenticated"></a>[error:unauthenticated](#error-unauthenticated) | error, username | The current user has no valid session anymore and needs to reauthenticate. As Hoodie works offline, it can get into a state where a user is signed in with data stored in the browser, but without a valid session, so e.g. sync does not work anymore. In that case, the **error:unauthenticated** is triggered and the user should sign in with the current username again. |
 
 
