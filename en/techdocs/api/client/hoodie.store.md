@@ -514,7 +514,7 @@ hoodie.store.on('todo:update',
     function(updatedTodoObject) {});
 ```
 
-If you are interested in updates to one specifc object, you can specify an event identifier with an object id, like so:
+If you are interested in updates to one specific object, you can specify an event identifier with an object id, like so:
 
 ```javascript
 // config is the type, userconfig is the id
