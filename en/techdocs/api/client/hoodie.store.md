@@ -568,7 +568,7 @@ hoodie.store.on('todo:change',
   function(eventName, changedTodoObject) {});
 ```
 
-If you are interested in one specifc object only, you can also prefix the event identifier with **type:id:remove**:
+If you are interested in one specific object only, you can also prefix the event identifier with **type:id:remove**:
 
 ```javascript
 // config is the type, userconfig is the id
