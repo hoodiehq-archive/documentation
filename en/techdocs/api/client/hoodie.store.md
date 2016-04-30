@@ -18,7 +18,7 @@ If you want to do anything with data in Hoodie, this is where it happens.
 
 ## Introduction
 
-One of the core features of any web app is being able to store and retreive data, and **hoodie.store** is your toolkit for any of these data-related operations. Hoodie is a bit special in that every user has their own private data store, which is private by default and syncs automatically between the users' clients and the server. Initally, your app will have no way to make data global or share it between users, but this functionality will be provided via [plugins](/en/plugins/). What it will do, however, is make sure each user's data is always synced between devices, and make sure all user data is available in the client for offline use.
+One of the core features of any web app is being able to store and retrieve data, and **hoodie.store** is your toolkit for any of these data-related operations. Hoodie is a bit special in that every user has their own private data store, which is private by default and syncs automatically between the users' clients and the server. Initially, your app will have no way to make data global or share it between users, but this functionality will be provided via [plugins](/en/plugins/). What it will do, however, is make sure each user's data is always synced between devices, and make sure all user data is available in the client for offline use.
 
 #### Things you should know before continuing
 
@@ -26,11 +26,11 @@ If you haven't read up on how Hoodie works under the hood (sorry) and does all y
 
 It is also important to understand the [concept of type in Hoodie](/en/tutorials/#understanding-type), since it informs nearly all operations with data.
 
-Storing and accessing objects with hoodie always means accessing your personal, local objects.
+Storing and accessing objects with Hoodie always means accessing your personal, local objects.
 
 All stored objects have a fixed association to the user who created them. So you won't be able to access other users' objects by default.
 
-In order to automatically sync objects to the server's store, you need to be logged in with a valid user. Learn more about the hoodie user system at [**hoodie.account**](./hoodie.account.html).
+In order to automatically sync objects to the server's store, you need to be logged in with a valid user. Learn more about the Hoodie user system at [**hoodie.account**](./hoodie.account.html).
 
 <a id="top"></a>
 
@@ -73,7 +73,7 @@ hoodie.store.add(type, properties, options);
 
 If **properties.id** is set, it will be used as the object's id, otherwise the id will be generated automatically.
 
-Returns a promise. If succesful, it calls the **done** callback and passes in the new object. Hoodie will have added some additional properties: (*id* (unless you set it before), *createdBy*, *createdAt*, *updatedAt*). If something goes wrong, the **fail** callback will be called instead, and an error object passed in.
+Returns a promise. If successful, it calls the **done** callback and passes in the new object. Hoodie will have added some additional properties: (*id* (unless you set it before), *createdBy*, *createdAt*, *updatedAt*). If something goes wrong, the **fail** callback will be called instead, and an error object passed in.
 
 #### Example
 
@@ -275,7 +275,7 @@ hoodie.store.updateOrAdd(type, id, updateObject, options);
 
 As with **store.findOrAdd()**, this is useful if you don't know whether your target object actually exists yet and you don't want to waste time checking first.
 
-Returns a promise. If succesful, it calls the **done** callback with the updated or new object stored with updated or new properties added to it (*id*, *createdBy*, *createdAt*, *updatedAt*). If something
+Returns a promise. If successful, it calls the **done** callback with the updated or new object stored with updated or new properties added to it (*id*, *createdBy*, *createdAt*, *updatedAt*). If something
 goes wrong, the **fail** callback will be called instead and an error gets passed.
 
 You could, technically, pass a function in place of the updateObject, and it will work as it does for **store.update()** and **store.updateAll()**, *but only if the object with the specified id exists*. If it doesn't, you'll generate an empty and useless object, because your update function has nothing to work with, and will therefore return nothing.
@@ -467,7 +467,7 @@ todoStore.add({ title: 'Getting Coffee' })
 })
 ```
 
-The benefits of this variant might not be super convincing at first glance, but apart from being more concise and DRYer, it's also less error prone: imagine fumbling the **type** of an **add()** function, and adding a bunch of **todoo** objects by accident. Your app would continue to save the todoos without errors, but they wouldn't show up in your interface, since your **on()** handlers only listen for the correctly-written type. You'd probably assume something was wrong with the display code, and go off bug-hunting in the completely wrong place.
+The benefits of this variant might not be super convincing at first glance, but apart from being more concise and DRYer, it's also less error prone: imagine fumbling the **type** of an **add()** function, and adding a bunch of **todo** objects by accident. Your app would continue to save the todos without errors, but they wouldn't show up in your interface, since your **on()** handlers only listen for the correctly-written type. You'd probably assume something was wrong with the display code, and go off bug-hunting in the completely wrong place.
 
 As mentioned, you can also have store scoped to a single object, like so:
 
@@ -514,7 +514,7 @@ hoodie.store.on('todo:update',
     function(updatedTodoObject) {});
 ```
 
-If you are interested in updates to one specifc object, you can specify an event identifier with an object id, like so:
+If you are interested in updates to one specific object, you can specify an event identifier with an object id, like so:
 
 ```javascript
 // config is the type, userconfig is the id
@@ -542,7 +542,7 @@ hoodie.store.on('todo:remove',
   function(removedTodoObject) {});
 ```
 
-If you are interested in listening for one specifc object's removal only, you can pass the object id into the event identifier:
+If you are interested in listening for one specific object's removal only, you can pass the object id into the event identifier:
 
 ```javascript
 // config is the type, userconfig is the id
@@ -568,7 +568,7 @@ hoodie.store.on('todo:change',
   function(eventName, changedTodoObject) {});
 ```
 
-If you are interested in one specifc object only, you can also prefix the event identifier with **type:id:remove**:
+If you are interested in one specific object only, you can also prefix the event identifier with **type:id:remove**:
 
 ```javascript
 // config is the type, userconfig is the id
@@ -588,7 +588,7 @@ hoodie.store.on('clear', function(){});
 
 The **clear** event is triggered when a user signed out, or called **hoodie.account.destroy()**. It is also triggered when the user signs in, to clear any existing local objects before loading the objects from the account the user signed into.
 
-Note that no **remove** event is triggered when the store gets cleared, as the objects do not necessarly get removed from the user's account, but only from the local cache.
+Note that no **remove** event is triggered when the store gets cleared, as the objects do not necessarily get removed from the user's account, but only from the local cache.
 
 ## Next Steps
 
