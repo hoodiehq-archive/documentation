@@ -9,8 +9,7 @@ Before you start working with Hoodie, here's what you need to know regarding you
 
 ### System Requirements for Hoodie Server
 - Mac OSX
-- Windows 7 and up<br />
-<small>(Windows 7 on a 64bit machine? <a href="http://faq.hood.ie/#/question/38210291" target="_blank"> You might need this little trick. </a> )</small>
+- Windows 7 and up
 - Linux (Ubuntu, Fedora 19+)
 
 ### Browser Compatibilities <small>(all latest stable)</small>
@@ -23,5 +22,4 @@ Before you start working with Hoodie, here's what you need to know regarding you
 * Android 4.3+
 * iOS Safari (7.1+)
 
-**Important**: This list is currently based on [PouchDB's requirements](http://pouchdb.com/learn.html), since Hoodie will be migrating to using that for its in-browser storage soon.
-
+**Important**: This list is currently based on [PouchDB's requirements](http://pouchdb.com/learn.html), since Hoodie is using PouchDB for itsits in-browser storage.
