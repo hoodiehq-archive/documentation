@@ -5,7 +5,7 @@ locales: camp
 
 # Getting Started with Hoodie - Part 1
 
-This is the first part of Getting Started with Hoodie, which describes the first steps after you've successfully [installed Hoodie and its prerequisites](/en/start/). In this guide you'll learn how to create a demo Hoodie app, learn about the basic structure of a Hoodie project and its folders, the endpoints and app URLs and how to include and use the Hoodie library in your project.
+This is the first part of Getting Started with Hoodie, which describes the first steps after you've successfully [installed Hoodie and its prerequisites](/camp/start/). In this guide you'll learn how to create a demo Hoodie app, learn about the basic structure of a Hoodie project and its folders, the endpoints and app URLs and how to include and use the Hoodie library in your project.
 
 ### Topics Covered in this guide
 
@@ -19,100 +19,114 @@ If you experience any problems at any step of this doc, please check our <a href
 
 ### 1. Creating a new Hoodie app
 
-Hoodie comes with a command line tool called Hoodie-CLI, which helps you with a lot of Hoodie-related tasks, like setting up and running an app. If you're unsure about anything concerning CLI, you can ask it for help:
+First you need to create a new folder, let’s call it `testapp`
 
 ```bash
-$ hoodie -h
+$ mkdir testapp
 ```
 
-If you've never worked with the terminal before, have a quick read through these <a href="http://blog.teamtreehouse.com/introduction-to-the-mac-os-x-command-line" target="_blank">tips and tricks</a>! **Tip 1**: don't type the dollar sign, it's just a convention to signify that this line of code should be run in a terminal.
-
-The very first step is **using Hoodie-CLI to instantiate a new application**. In your terminal, go to the directory you want your application to be in and enter:
+Now we need to create a `package.json` file. For that we can use [npm](https://www.npmjs.com/) which comes with Node by default. It will ask you a few questions, you can simply press enter to leave the default values.
 
 ```bash
-$ hoodie new testapp
+$ npm init
 ```
 
-Here's what will happen:
-![screenshot 1 - hoodie-cli](./dist/hoodie_new_testapp.gif)
+If you are interested, here are docs on the [npm init](https://docs.npmjs.com/cli/init) command.
 
-This is Hoodie downloading all of the libraries it needs to scaffold out your app, setting up the server code, and installing the default plugins. There will now be a folder called **testapp**, in which you'll find a simple demo application. Let's open the directory and start up the Hoodie server!
+Now we can install `hoodie` using npm
 
 ```bash
-$ cd testapp
-$ hoodie start
+$ npm install --save
 ```
 
-On the very first run, you'll be prompted to enter a password for the Admin Dashboard, just pick something simple for now, like **"alpacas"**. Because alpacas are neat. Then, a bunch of URLs and additional info appear.
+If you are curious what happens in the background, here are docs for the [npm install](https://docs.npmjs.com/cli/install) command.
 
-### 2. App, Admin and Futon URLs
+Now you need to edit the `package.json` file. We need to set the `"start"` script to `"hoodie"`. The result should look something like this
 
-Great, your app started up and is now telling you a bunch of things about itself, for example at which URL you can access the app and which plugins it is running. The first thing you'll notice though is that Hoodie opens a browser with the demo app already running in it.
+```json
+{
+  "name": "funky",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "hoodie",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
+```
 
-**Note**: if you don't want Hoodie to open a new browser tab, start the Hoodie server with
+Now you can start the app
 
 ```bash
-$ hoodie start -n
+$ npm start
 ```
 
-The **-n** stands for "no new browser tab please, I've already got one."
+Great, your app started up and is now telling you at which URL you can access your app. By default that is [http://127.0.0.1:8080](http://127.0.0.1:8080)
 
-Anyway, you'll see three URLs in the CLI output. We'll go through all three.
+Congratulations, you just created your first Hoodie App :)
 
-![screenshot 2 - hoodie-cli](./dist/hoodie_start.gif)
 
-**Note:** The ports may vary, due to the way Hoodie picks new and free ports with multiple apps. So if this is your first Hoodie app, your ports will start at 6001.
 
-##### The CouchDB endpoint:
+### 2. Structure of a Hoodie Project
+
+#### public folder
+
+When you open your app in the browser you will see Hoodie’s default page telling
+you that your app has no `public/` folder. So let’s create it
 
 ```bash
-CouchDB started: http://127.0.0.1:6098
+mkdir public
+touch public/index.html
 ```
 
-It's what the Hoodie library talks to when it fetches and stores data. You can append **/_utils** to this URL to reach the CouchDB database admin tool (similar to phpMyAdmin for MySQL), which is called Futon (and will soon be called Fauxton). You can sign in to Futon (or Fauxton) with the admin password you set earlier. For now, you don't really have to bother with it, but in the future, it'll be nice for inspecting the database.
+Now edit the `public/index.html` file and past in the following content.
 
-##### The application's URL
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>My Hoodie App</title>
+  </head>
+  <body>
+    <h1>My Hoodie App</h1>
 
-```bash
-WWW:    http://127.0.0.1:6096
+    <script src="/hoodie/client.js"></script>
+  </body>
+</html>
 ```
 
-This is the URL that Hoodie just opened in a browser for you, it's where your app is running.
+You need to stop the server now (`ctrl` + `c`) and start it again.
+If you reload your app in your browser, you will now see your HTML file.
 
+The only line interesting for us is the `<script src="/hoodie/client.js"></script>` tag.
 
-##### The Admin Dashboard's URL
+Where is the `/hoodie/client.js` you wonder? Well, it’s magic ✨
+Okay, because it’s you, you can actually find the file at `./.hoodie/client.js` (see the `.` in `.hoodie`?).
+But ignore this folder, it’s used internally by Hoodie, all you need to know is that it’s there and that
+if you use `git` make sure to add it to your `.gitignore` file :)
 
-```bash
-Admin:  http://127.0.0.1:6097
+The `/hoodie/client.js` is loading the dynamic Hoodie Client for your Hoodie Server.
+Open your browser’s console (command + alt + j on Mac, ctrl + alt + j on Windows) and type in `hoodie`.
+This is how Hoodie apps talk to their servers. For example, type in
+
+```js
+hoodie.account.signUp({username: 'Robin', password: 'secret'})
 ```
 
-We'll cover the dashboard in a later guide, but it's where you can see how many users you have, reset their passwords, check out plugin admin panels etc. Again, the admin password you previously set will get you in.
+Congratulations, you just created a user account :) You can now sign in to it using
 
-Now, before we look at the demo app, let's stop the server with **ctrl-c** (on Mac OS X) or **alt+c** (on Win) and take a quick look at the application folder.
+Okay we got ahead of ourselves, the short version is: all assets like html, JavaScript or CSS files in the public folder will be served by the Hoodie Server at the `/` root path.
 
-### 3.Structure of a Hoodie Project
+#### package.json (file)
 
-List the files and folders in your current directory by typing
+Every Hoodie app is a Node.js application and every Node.js application needs a **package.json** file. It defines the name of the app (**testapp** in this case) and its dependencies. It is used to install and declare the used versions of the <a href="https://github.com/hoodiehq/hoodie" target="_blank">Hoodie Server</a> and Hoodie plugins that your app uses.
 
-```bash
-$ ls
-```
-and you should see something like this:
-
-```bash
-README.md   data        node_modules    package.json    www
-```
-
-##### README.md (file)
-
-Let's get the easiest part out of the way first – the readme file.
-As the name suggests, you should read it, as it contains lots of useful information.
-
-##### package.json (file)
-
-Every Hoodie app is a Node.js application and every Node.js application needs a **package.json** file. It defines the name of the app (**testapp** in this case) and its dependencies. It is used to install and declare the used versions of <a href="https://github.com/hoodiehq/hoodie-server" target="_blank">hoodie-server</a> and all core plugins.
-
-##### node_modules (folder)
+#### node_modules (folder)
 
 This is where npm, the package management system for Node, keeps all its files. Hoodie uses it to manage its plugins and dependencies, and you might use it too to manage front- and backend modules in your app. The content of this folder is determined by the previously mentioned **package.json** file in the app folder. To learn more about npm, check out <a href="http://howtonode.org/introduction-to-npm" target="_blank">this introduction</a>.
 
@@ -127,33 +141,18 @@ All your changes to the files in this folder will be overwritten whenever you ha
 $ npm install
 ```
 
-##### data (folder)
+#### .hoodie (folder)
 
-Yup, that's your database. It's not hidden away in **usr/local/** somewhere, it's right there in your app folder. This setup makes it really easy to move the app and its data to another system without much hassle. Also, if you want to clear all of your test data during development, you can just delete or rename this folder, Hoodie will recreate it and you can start with a clean slate. In fact, this folder wasn't generated by **hoodie new**, but by running the app once. **You'll want to leave this out of source control, too.**
+This is Hoodie’s secret folder. Your own Hoodie Client is stored here after it gets dynamically created, as well as database files or your app’s configuration.
 
-##### www (folder)
-
-This is where your app lives. It includes the usual **index.html** and all of the app's assets. If you're into task runners such as Grunt or Gulp, this is where you'd put your compiled code (it's practically your **dist** folder). Hoodie doesn't care about what else you add to the app folder, so feel free to throw in your source folder, tests, more documentation, whatever you like.
-
-Now of course, you won't want to start coding with the Hoodie demo application every single time, which is why **hoodie new** supports templates. Templates can either come in the form of npm packages
-
-```bash
-hoodie new appname -t npm package
-```
-or github repositories
-
-```bash
-hoodie new appname -t githubusername/reponame
-```
-
-<a href="https://github.com/zoepage/hoodie-app-skeleton" target="_blank">Here's a boilerplate template you can start your next Hoodie app with.</a>
+We could have put it somewhere in **usr/local/**, but it's right there in your app folder. This setup makes it really easy to move the app and its data to another system without much hassle. Also, if you want to clear all of your test data during development, you can just delete or rename this folder, Hoodie will recreate it and you can start with a clean slate. **You'll want to leave this out of source control, too.**
 
 ### 4. Including the Script
 
 The demo app will already have this line in its **index.html**, but essentially, all you need to do to make your app Hoodie-ready is include a single **js** library:
 
 <pre><code class="language-markup">
-&lt;script src="/_api/_files/hoodie.js"&gt;&lt;/script&gt;
+&lt;script src="/hoodie/client.js"&gt;&lt;/script&gt;
 </code></pre>
 
 You'll notice that this file isn't in **node_modules** or some **vendor** or **lib** folder, instead, it is *served directly by the Hoodie server itself*. This is cool because it automatically contains all of the installed plugins' frontend code, too. Less hassle for you!
@@ -168,14 +167,12 @@ Go ahead, open the app in your browser, open the console in your browser's dev t
 
 #### Good Job!
 
-For now, **congratulations!** You've created a demo Hoodie app, learned about the basic structure of a Hoodie project, you know all about the endpoints and app URLs and how to include and use the Hoodie library in your project. I'd say you're all set for [part two](/en/tutorials/)!
+For now, **congratulations!** You've created a demo Hoodie app, learned about the basic structure of a Hoodie project, you know all about the endpoints and app URLs and how to include and use the Hoodie library in your project. I'd say you're all set for [part two](/camp/tutorials/)!
 
 #### Had any Trouble?
 
 Please check the <a href="http://faq.hood.ie" target="_blank">FAQ</a> or <a href="http://hood.ie/chat" target="_blank">get in touch with us on IRC or Slack</a>. We'd also love to hear from you if things went well!
 
-If you find this guide in error or out of date, you could also <a href="https://github.com/hoodiehq/documentation/issues" target="_blank">open an issue</a> or submit a pull request with your corrections to <a href="https://github.com/hoodiehq/documentation/blob/gh-pages/en/start/getting-started/getting-started-1.md" target="_blank">this file</a>.
+If you find this guide in error or out of date, you could also <a href="https://github.com/hoodiehq/documentation/issues" target="_blank">open an issue</a> or submit a pull request with your corrections to <a href="https://github.com/hoodiehq/documentation/blob/gh-pages/camp/start/getting-started/getting-started-1.md" target="_blank">this file</a>.
 
 Thanks for your interest and time!
-
-
