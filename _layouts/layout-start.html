@@ -4,7 +4,7 @@
     <body class="blue docs start">
        {% include /header-get-help.html %}
         <div class="content">
-        	
+
         	<div class="cb">
                 <aside>
                     {% include /menu-start.html %}
@@ -14,4 +14,8 @@
         		</article>
            	</div>
         </div>
+        {% if page.locales == 'camp' %}
+        {% include /footer-camp.html %}
+        {% else  %}
         {% include /footer.html %}
+        {% endif  %}

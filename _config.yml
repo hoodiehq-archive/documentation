@@ -5,6 +5,65 @@ kramdown:
       disable : true
 
 locales:
+  # temporary workaround for new camp docs
+  camp:
+    path: /camp/
+    lang: "Language"
+    label:
+      en: "english"
+      de: "german"
+      ru: "russian"
+      fr: "french"
+    nav:
+      hoodieverse: "Hoodieverse"
+      start: "Let's start"
+      tutorials: "Tutorials"
+      api: "API"
+      plugins: "Plugins"
+      deployment: "Deployment"
+      community: "Community"
+    menu:
+      start: "Let's start"
+      next: "Next Chapter"
+      recipes: "Recipes"
+    menuverse:
+      welcome: "Welcome to Hoodie"
+      concepts: "Hoodie Concepts"
+      requirements: "Requirements"
+      works: "How Hoodie works"
+      glossary: "Glossary"
+      next: "Let's start"
+    menustart:
+      installation: "Installation"
+      started : "Getting started - pt1"
+      next: "Tutorials"
+    menututorials:
+      started : "Getting started - pt2"
+      timetracker: "time tracker"
+      next: "API"
+    menuapi:
+      hoodie : "hoodie"
+      account: "account"
+      store : "store"
+      task: "task"
+      email: "email"
+      global: "global share"
+      next: "Plugins &amp; deployment"
+    menuplugins:
+      intro: "Intro"
+      build: "Build your Plugin"
+      api: "Plugin API"
+      list: "List on npm"
+      next: "Deployment"
+    menudeploy:
+      intro: "Intro"
+      unix: "Unix / Linux"
+      next: "Community"
+    menucommunity:
+      intro: "We are community"
+      onboarding: "Onboarding"
+      irc: "IRC office hours"
+      workshop: "Hoodie workshop"
   en:
     path: /en/
     lang: "Language"
