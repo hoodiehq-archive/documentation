@@ -9,10 +9,13 @@ locales: en
 For all OS, you'll need <a href="http://nodejs.org/" target="_blank">Node.js</a>, <a href="http://couchdb.apache.org/" target="_blank">CouchDB</a> and <a href="http://git-scm.com/" target="_blank">Git</a> installed. If you've already got all of them, you can <a href="../start/getting-started/getting-started-1.html">skip right ahead</a>!
 
 ### Installation on Mac OS X
+
 ##### 1. Node.js
 Hoodie's server components run on node.js. We recommend using the <a href="https://nodejs.org/" target="_blank">nodejs.org .pkg file</a> to install it.
+
 ##### 2. CouchDB
 CouchDB is used as Hoodie's server-side database. Please use the super-convenient <a href="http://couchdb.apache.org/#download" target="_blank">CouchDB for Mac installer</a>.
+
 ##### 3. Hoodie-CLI
 This is the Hoodie Command Line Interface, used to scaffold new Hoodie apps and run your local Hoodie server. To install it, use npm, which is part of the node.js installation in step 1. Open your terminal and type
 
@@ -21,10 +24,13 @@ npm install -g hoodie-cli
 ```
 
 ### Installation on Windows
+
 ##### 1. Node.js
 Hoodie's server components run on node.js. We recommend using the <a href="http://nodejs.org/download/" target="_blank">Node.js for Windows installer</a> you can use.
+
 ##### 2. CouchDB
 CouchDB is used as Hoodie's server-side database. There's a <a href="http://couchdb.apache.org/#download" target="_blank">CouchDB for Windows installer</a>.
+
 ##### 3. Hoodie-CLI
 This is the Hoodie Command Line Interface, used to scaffold new Hoodie apps and run your local Hoodie server. To install it, use npm, which is part of the node.js installation in step 1. Open your command prompt and type
 
