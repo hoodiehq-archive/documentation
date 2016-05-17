@@ -24,12 +24,15 @@ From that point on, things get really powerful really quickly:
 
 ```javascript
 // In your front-end code:
-hoodie.account.signUp(username, password);
+hoodie.account.signUp({
+  username: username,
+  password: password
+});
 ```
 
 That's how simple signing up a new user is, for example. But anyway:
 
-**Hoodie is a frontend abstraction of a generic backend web service**. As such, it is agnostic to your choice of frontend application framework. For example, you can use jQuery for your web app and Hoodie for your connection to the backend, instead of raw jQuery.xhr. You could also [use Backbone with Hoodie as a data store](https://github.com/hoodiehq/backbone-hoodie), or any other frontend framework, really. There are also efforts to add Hoodie support to [Angular](https://www.npmjs.com/package/hoodie-plugin-angularjs) and [Ember](https://github.com/gr2m/ember-hoodie-adapter).
+**Hoodie is a frontend abstraction of a generic backend web service**. As such, it is agnostic to your choice of frontend application framework. For example, you can use jQuery for your web app and Hoodie for your connection to the backend, instead of raw jQuery.ajax. You could also use Backbone with Hoodie as a data store, or any other frontend framework, really.
 
 ## Open Source
 
