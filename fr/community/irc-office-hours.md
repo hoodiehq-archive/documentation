@@ -33,7 +33,7 @@ Envoyez un court message "Bonjour à tous, je suis présent" sur IRC. Voici quel
 
 Oh, oui, vous pouvez évidemment ajouter un GIF (pas forcément [celui-là](http://www.tehcute.com/pics/201204/bunny-falls-asleep-at-desk.jpg)) à tout moment... (il s'avère que la communauté Hoodie adore les GIFs).
 
-####2b) envoyez un Tweet
+#### 2b) envoyez un Tweet
 
 Envoyer un court Tweet depuis le compte @hoodiehq, ou, si vous préférez, depuis votre compte personnel Twitter. Si vous n'avez pas accès à @hoodiehq, tweetez juste depuis votre compte pour qu'il puisse être retweeté depuis @hoodiehq) (ouais, nous sommes aussi rapides que ça). Votre tweet pourrait être quelque-chose comme …
 
@@ -43,7 +43,7 @@ Envoyer un court Tweet depuis le compte @hoodiehq, ou, si vous préférez, depui
 
 Et oui, la "règle" GIF s'applique ici aussi.
 
-###3. Allez-y&#x202F;!
+### 3. Allez-y&#x202F;!
 
 - Souvenez-vous du [Code de Conduite](http://hood.ie/code-of-conduct.html) et respectez-le *scrupuleusement*.
 - Soyez amical et patient.
@@ -55,11 +55,11 @@ Et oui, la "règle" GIF s'applique ici aussi.
 
 Essayer d'éviter de demander à d'autres membres de la communauté de rejoindre les conversations, à moins qu'il s'agisse d'un cas réellement urgent ou qu'ils aient évoqué la possibilité auparavant. Vous pouvez gérer ça, et nous essaierons tout pour régler votre problème au plus vite.
 
-###4. Souvenez-vous de notre FAQ
+### 4. Souvenez-vous de notre FAQ
 
 Si vous recevez une question intéressante de la part de quelqu'un qui pourrait intéresser un plus grand nombre de personnes, merci de [la poster sur notre FAQ](https://github.com/hoodiehq/faq/issues/new), idéalement en incluant la solution, ou copiez-collez là quelque-part pour l'ajouter plus tard. Ceci permet d'aider pour les questions récurrentes et c'est une bonne façon de rendre du contenu accessible à tous tout en réalisant du support utilisateur de manière soutenable.
 
-###5. Dites au revoir sur IRC
+### 5. Dites au revoir sur IRC
 
 Quand les Office Hours sont terminées, dites au revoir sur IRC et laisser un message où les gens pourront nous joindre (c'est aussi indiqué dans le message de bienvenue du canal IRC, mais c'est toujours bon de montrer que nous y pensons). Ca pourrait être par exemple&#x202F;:
 

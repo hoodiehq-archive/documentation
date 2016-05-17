@@ -7,7 +7,7 @@ locales: de
 
 *This is a living document and work in progress. If you want to add your feedback or experiences, please [contact us](http://hood.ie/contact).*
 
-##Prerequisites
+## Prerequisites
 
 - How long is the workshop supposed to take? (At least 3-4 hours should be given, depending on the experience levels of the attendees)
 - How many participants?
