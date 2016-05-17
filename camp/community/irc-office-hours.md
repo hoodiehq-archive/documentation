@@ -2,27 +2,27 @@
 layout: layout-community
 locales: camp
 ---
-#Intro 
+# Intro
 
 Dedicated to the Hoodie community members and contributors who sign up for being responsible for the Hoodie IRC Office Hours. These Office Hours are also documented on [the Hoodie Website](http://hood.ie/irc).
 
-##Hi you, great person,
+## Hi you, great person,
 
 we're happy you're doing the Hoodie IRC Office Hours today!
 
 In order to make this as easy for you as possible, we'd ask you to follow this short guide:
 
-###1. Mind the time
+### 1. Mind the time
 
 Hoodie IRC Office Hours take place daily on weekdays from 2-6pm UTC+2. When in doubt about timezones, check <a href="http://everytimezone.com/" target="_blank">this page</a>.
 
-Please keep in mind that not everyone in the channel is on the same time zone, so it usually helps to add the time zone when talking about times and dates. :) 
+Please keep in mind that not everyone in the channel is on the same time zone, so it usually helps to add the time zone when talking about times and dates. :)
 
-###2. Getting started – IRC and Twitter
+### 2. Getting started – IRC and Twitter
 
 When it's time to start the Office Hours (please start on time), we'd ask you to:
 
-####2a) say hi in IRC
+#### 2a) say hi in IRC
 
 Send a short "hi everyone, I'm here now" message in IRC. Here are some sample messages you may want to use or re-write:
 
@@ -33,7 +33,7 @@ Send a short "hi everyone, I'm here now" message in IRC. Here are some sample me
 
 Oh, yeah, and you may of course add a GIF (not necessarily [this one](http://www.tehcute.com/pics/201204/bunny-falls-asleep-at-desk.jpg)) anytime... (turns out the Hoodie Community loves GIFs).
 
-####2b) send a Tweet
+#### 2b) send a Tweet
 
 Send a short Tweet from the @hoodiehq account or, if you want, your personal Twitter account. If you don't have access to @hoodiehq, just post a Tweet from your account so it can be retweeted from @hoodiehq (yep, we're quick with that). Your Tweet could maybe be something like …
 
@@ -43,23 +43,23 @@ Send a short Tweet from the @hoodiehq account or, if you want, your personal Twi
 
 And, yes, the GIF "rule" applies here as well.
 
-###3. Do it!
+### 3. Do it!
 
 - Remember our [Code of Conduct](http://hood.ie/code-of-conduct.html) and *strictly* enforce it.
 - Be friendly and patient.
 - If you need more than 1-2 minute to answer a question, please let the other party know that you are still there and on it
-- If you can't answer a question yourself, please 
+- If you can't answer a question yourself, please
   - check our [FAQ](http://faq.hood.ie)
   - ask the person who sent it to file an issue in our ["discussions" repo](https://github.com/hoodiehq/discussion/issues/new) or in the [FAQ](https://github.com/hoodiehq/faq/issues/new)
 - If you have to leave the channel or pause for any reasons, please take care that someone else can take over the responsibility.
 
 Please try to avoid asking other community members to jump into conversations, unless it's a really urgent case or they have stated otherwise beforehand. You can handle this, and we'll then try everything to resolve the issue posted as soon as we can.
 
-###4. Remember our FAQ
+### 4. Remember our FAQ
 
 If you have an interesting question from someone which might be interesting to a broader amount of people, please [post it to our FAQ](https://github.com/hoodiehq/faq/issues/new), ideally including the solution, or just copy-paste it and safe it somewhere so you can add it later. This helps a lot with recurring questions and is a good way to make content accessible to everyone and do support in a sustainable way.
 
-###5. Say bye on IRC
+### 5. Say bye on IRC
 
 When Office Hours are over, say goodbye on IRC and leave a message where people can get in touch with us (this is also stated in the IRC channel welcome message, but it's still good to show we're also thinking about this). It could e.g. look like this:
 

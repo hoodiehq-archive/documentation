@@ -3,11 +3,11 @@ layout: layout-community
 locales: camp
 ---
 
-# Hosting a Hoodie Workshop 
+# Hosting a Hoodie Workshop
 
 *This is a living document and work in progress. If you want to add your feedback or experiences, please [contact us](http://hood.ie/contact).*
 
-##Prerequisites
+## Prerequisites
 
 - How long is the workshop supposed to take? (At least 3-4 hours should be given, depending on the experience levels of the attendees)
 - How many participants?
@@ -28,16 +28,16 @@ locales: camp
 - Stable WiFi for everyone. Check if special login for participants is required
 - Arrange food and enough drinks & snacks. If you can't do that, make sure to ask the participants to bring some snacks and look up some places you all can eat together.
 - Prepare (if necessary) short Hoodie intro talk (see [sample talks](http://hood.ie/contribute#talks) or the [Hoodie Events page](http://hood.ie/events))
-- Prepare all important commands on slides or handout. 
+- Prepare all important commands on slides or handout.
 - If you have more than one person per laptop, please print out the tutorial you are teaching.
 - Print the [Hoodie Cheat Sheet](http://hood.ie/dist/presentations/hoodie-cheat-sheet-print.pdf) for each participant
 - Prepare all important links as shortlinks
 - Prepare typical problems + solutions (also: check FAQ on “Known Errors”) for your coaches
 - Prepare a bunch of app ideas (beyond to do list apps) that people can then work on when they know enough about Hoodie, but don’t have a concrete app idea themselves
 - Prepare Feedback Form (e.g. like [this one](https://docs.google.com/a/thehoodiefirm.com/forms/d/1toCQfdK4tF2WIXzico5MoMpI_UXpLQ5zvcxFOUhip5M/viewform))
-- Check [Hoodie’s FAQ](http://faq.hood.ie) for known bugs and errors – especially 
-  - [‘npm ERR! Please try running this command again as root/Administrator’](http://faq.hood.ie/#/question/38210259) 
-  - [common Windows installation problems](http://faq.hood.ie/#/question/48204371) 
+- Check [Hoodie’s FAQ](http://faq.hood.ie) for known bugs and errors – especially
+  - [‘npm ERR! Please try running this command again as root/Administrator’](http://faq.hood.ie/#/question/38210259)
+  - [common Windows installation problems](http://faq.hood.ie/#/question/48204371)
   - [Error ’could not start Hoodie`](http://faq.hood.ie/#/question/38210193)
 
 ## Prerequisites for attendees (to announce)
@@ -59,17 +59,17 @@ locales: camp
 - if Hoodie is already installed, have them ensure they have the latest version by running
 <pre><code>hoodie new myApp</code></pre>
 - If Hoodie is not the latest version, the Hoodie-CLI will tell you that and prompt the next steps
-- Start with first Tutorial: run 
+- Start with first Tutorial: run
 <pre><code>hoodie new tutorial /
-  -t gr2m/hoodie-store-and-account-tutorial</code></pre> 
+  -t gr2m/hoodie-store-and-account-tutorial</code></pre>
 - Admin-Interface – http://127.0.0.1:6002
 - …
 - …
 - [Plugin Tutorial](../plugins/tutorial.html) (for super advanced participants)
 - Boilerplate: <pre><code>hoodie new awesomeApp /
--t zoepage/hoodie-boilerplate</code></pre> 
+-t zoepage/hoodie-boilerplate</code></pre>
 - …
-- … 
+- …
 - Build your own App
 - Present your App to the Group
 - Feedback Round
@@ -77,6 +77,6 @@ locales: camp
   - hand out link to Feedback Form
   - Do not forget to give some feedback. Be nice and ecouraging.
 - Say thank you to all the people involved and be proud of yourself.
-- If you'd like to, socialize with the group in the next restaurant / coffeeshop / pub. 
+- If you'd like to, socialize with the group in the next restaurant / coffeeshop / pub.
 - Go home, get some sleep
 - Check Feedback & add to Workshop materials

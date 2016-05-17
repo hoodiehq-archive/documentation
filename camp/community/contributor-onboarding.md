@@ -18,7 +18,7 @@ This document is and will always be work in progress. We are constantly trying t
 
 ###  Where and what can people contribute?
 
-Hoodie is a quite big project and we have various parts that need to be created and / or maintained. To find out where we need help, take a look at our [Contribute Site](http://hood.ie/contribute/). If you can't find anything you'd want to do or have further questions, please [contact us](http://hood.ie/contact/).
+Hoodie is a quite big project and we have various parts that need to be created and / or maintained. To find out where we need help, take a look at our [Contribute Site](http://hood.ie/contribute/). If you can't find anything you'd want to do or have further questions, come say hi in [our chat](http://hood.ie/chat/index.html) or [contact us](http://hood.ie/contact/).
 
 ---------------
 
