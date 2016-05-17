@@ -5,6 +5,6 @@ locales: camp
 
 # Code a simple time tracker
 
-This is one of a soon to come **series of recipes** and will cover, how to start to code your first application from scratch and use the **hoodie.store**.
+This tutorial requires plugins, which we had to disable plugins for the Camp Release, but [we are working on bringing them back](https://github.com/gr2m/milestones/issues/89).
 
-For more information take a look at the <a href ="https://github.com/zoepage/hoodie-timetracking" target="_blank">hoodie time tracker</a>!
+But check out our new Demo app which happens to a [tracker application](https://github.com/hoodiehq/hoodie-app-tracker) :) It’s a great place to dive into a super simple Hoodie Application.
