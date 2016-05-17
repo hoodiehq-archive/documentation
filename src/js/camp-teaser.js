@@ -13,7 +13,7 @@
   }
 
   function addCampTeaser () {
-    var campPath = location.pathname.replace(/^\/[^\/]+/, '/camp')
+    var campPath = location.pathname === '/' ? '/camp' : location.pathname.replace(/^\/[^\/]+/, '/camp')
     var teaser = '<div id="camp-teaser" style="' +
                  '  position: absolute;' +
                  '  top:  -120px;' +
