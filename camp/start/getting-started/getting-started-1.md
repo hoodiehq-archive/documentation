@@ -124,7 +124,7 @@ Okay we got ahead of ourselves, the short version is: all assets like html, Java
 
 #### package.json (file)
 
-Every Hoodie app is a Node.js application and every Node.js application needs a **package.json** file. It defines the name of the app (**testapp** in this case) and its dependencies. It is used to install and declare the used versions of the <a href="https://github.com/hoodiehq/hoodie" target="_blank">Hoodie Server</a> and Hoodie plugins that your app uses.
+Every Hoodie app is a Node.js application, and every Node.js application needs a **package.json** file. It defines the name of the app (**testapp** in this case) and its dependencies. It is used to install and declare the used versions of the <a href="https://github.com/hoodiehq/hoodie" target="_blank">Hoodie Server</a> and Hoodie plugins that your app uses.
 
 #### node_modules (folder)
 
@@ -145,7 +145,7 @@ $ npm install
 
 This is Hoodie’s secret folder. Your own Hoodie Client is stored here after it gets dynamically created, as well as database files or your app’s configuration.
 
-We could have put it somewhere in **usr/local/**, but it's right there in your app folder. This setup makes it really easy to move the app and its data to another system without much hassle. Also, if you want to clear all of your test data during development, you can just delete or rename this folder, Hoodie will recreate it and you can start with a clean slate. **You'll want to leave this out of source control, too.**
+We could have put it somewhere in **usr/local/**, but it's right there in your app folder. This setup makes it really easy to move the app and its data to another system without much hassle. Also, if you want to clear all of your test data during development, you can just delete or rename this folder. Hoodie will recreate it and you can start with a clean slate. **You'll want to leave this out of source control, too.**
 
 ### 4. Including the Script
 

@@ -5,7 +5,7 @@ locales: camp
 
 # Hoodie API Guide
 
-The Hoodie Guide is a special version of the API documentation for beginners, intermediates and advanced programmers who want to have a nicely documented API with additional information and code examples. For now, it covers the core client API.
+The Hoodie Guide is a special version of the API documentation for beginners, intermediates, and advanced programmers who want to have a nicely documented API with additional information and code examples. For now, it covers the core client API.
 
 ## 1. The Hoodie Client API
 

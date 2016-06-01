@@ -22,4 +22,4 @@ Before you start working with Hoodie, here's what you need to know regarding you
 * Android 4.3+
 * iOS Safari (7.1+)
 
-**Important**: This list is currently based on [PouchDB's requirements](http://pouchdb.com/learn.html), since Hoodie is using PouchDB for itsits in-browser storage.
+**Important**: This list is currently based on [PouchDB's requirements](http://pouchdb.com/learn.html), since Hoodie is using PouchDB for its in-browser storage.

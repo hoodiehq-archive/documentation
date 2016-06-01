@@ -295,7 +295,7 @@ This concludes the main section of this tutorial. The following sections fill in
 
 ## Helper Methods
 
-Helper methods are methods that we need during the operation of our worker, but that are not exposed to the outside of the module.
+Helper methods are methods that we need during the operation of our worker but are not exposed to the outside of the module.
 
 The `_changesCallback` method above is one such helper method. If you just need a single helper method, the code is fine as is, but if you want to call other helper functions from within your first helper function, we must make a subtle change:
 
@@ -341,13 +341,13 @@ Then, run `mocha`:
 
     ✔ 1 test complete (2ms)
 
-Yay, the setup works, but we don’t have anything to test, really.
+Yay, the setup works, but we don’t have anything to really test.
 
 Let’s revisit our worker code and see what we can test. The `_changesCallback()` method does a few things:
 
- * filter out messages that are not of type `log`.
- * create a formatted log message from a log object.
- * write the message to the log file.
+ * filters out messages that are not of type `log`
+ * creates a formatted log message from a log object
+ * writes the message to the log file
 
 It’s generally a good idea to keep methods short and let them do one thing. Our method here does a number of things. It sounds like a good idea to split that up.
 
@@ -395,7 +395,7 @@ Now we have a method that does one job and we can test whether it does a good jo
 
 [Repo Link](https://github.com/hoodiehq/worker-log/blob/how-to-9/index.js)
 
-We create two objects, one that is of type `log` and one that isn’t and then we run both through the `_isLogObject()` method and assert it’s success and failure respectively.
+We create two objects, one that is of type `log` and one that isn’t, and then we run both through the `_isLogObject()` method and assert it’s success and failure respectively.
 
 If we run `mocha` again, our test passes.
 
@@ -471,7 +471,7 @@ Let’s run `mocha` again:
 
 Hooray, we’re tested now!
 
-To recap, we learned how to separate out code into discrete methods that we can test. The methods define what makes a worker special, and we avoid testing things like the changes follower itself which is already encapsulated in a module.
+To recap, we learned how to separate out code into discrete methods that we can test. The methods define what makes a worker special, and we avoid testing things like the changes follower itself, which is already encapsulated in a module.
 
 Note that for now, you need a running CouchDB instance for the tests to succeed. We’ll fix that soon!
 
@@ -501,7 +501,9 @@ To get started, we need to create a new file `package.json` in the top level of 
 [Repo Link](https://github.com/hoodiehq/worker-log/blob/how-to-12/index.js)
 
 
-Read `npm help json` for details on what all this means in detail. Just briefly, a name will allow us to register the worker with npm, so other people can make use of it. We give it an early version number that we can increase as we go along. The description explains what our worker does. In `scripts` we can tell npm what to run when called as `npm start` or `npm test` which becomes really useful later. And finally, we register our dependencies, to make sure we always get the correct version of the CouchDBChanges package.
+Read `npm help json` for details on what all this means in detail. Just briefly, a name will allow us to register the worker with npm, so other people can make use of it. We give it an early version number that we can increase as we go along.
+
+The description explains what our worker does. In `scripts` we can tell npm what to run when called as `npm start` or `npm test` which becomes really useful later. And finally, we register our dependencies, to make sure we always get the correct version of the CouchDBChanges package.
 
 To start our worker now, we can run `npm start`:
 
@@ -533,7 +535,7 @@ Note that for now, you need a running CouchDB instance for the tests to succeed,
 
 ## Configuring Workers
 
-So far we hardcoded a few values, the CouchDB server address, the database name and the log file. In the real world, these things should be configurable. Let’s do that now. As a first step, we make the the hardcoded values variables:
+So far we've hardcoded a few values, the CouchDB server address, the database name and the log file. In the real world, these things should be configurable. Let’s do that now. As a first step, we make the the hardcoded values variables:
 
     var config = {
         server: "http://127.0.0.1:5984",
@@ -572,7 +574,7 @@ And then we replace all occurrences in our code, as shown in this diff:
 
 Now that our code is variable, we need a way to pass in new configuration options.
 
-This is easy, we just extend what we already have:
+This is easy; we just extend what we already have:
 
     var config = {
         server: process.env.HOODIE_SERVER || "http://127.0.0.1:5984",
@@ -584,7 +586,7 @@ This is easy, we just extend what we already have:
 
 This code tries to read environment variables, and if it doesn’t find them, assigns our default values.
 
-To, say, override the server and database values, you can do:
+If you want to override the server and database values, you can do:
 
     $ HOODIE_SERVER="http://example.com" HOODIE_DATABASE="somedatabase" npm start
 
@@ -597,7 +599,7 @@ Note that other shells might have other syntaxes to set up environment variables
 
 Now we take a step back from coding, and introduce some structure that will make things easier for us down the line: we reorganise our code into multiple files.
 
-The Node.js module pattern we are using here (we didn’t tell you, but it’s what we are secretly doing), keeps the `index.js` file as lean as possible, our’s is going to look like this:
+The Node.js module pattern we are using here (we didn’t tell you, but it’s what we are secretly doing) keeps the `index.js` file as lean as possible, our’s is going to look like this:
 
     var WorkerLog = require("./lib/worker-log");
 
