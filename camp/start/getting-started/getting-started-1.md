@@ -36,7 +36,7 @@ If you are interested, here are docs on the [npm init](https://docs.npmjs.com/cl
 Now we can install `hoodie` using npm
 
 ```bash
-$ npm install --save
+$ npm install hoodie --save
 ```
 
 If you are curious what happens in the background, here are docs for the [npm install](https://docs.npmjs.com/cli/install) command.
