@@ -19,13 +19,13 @@ If you experience any problems at any step of this doc, please check our <a href
 
 ### 1. Creating a new Hoodie app
 
-First you need to create a new folder, let’s call it `testapp`
+First you need to create a new folder, let’s call it **testapp**
 
 ```bash
 $ mkdir testapp
 ```
 
-Now we need to create a `package.json` file. For that we can use [npm](https://www.npmjs.com/) which comes with Node by default. It will ask you a few questions, you can simply press enter to leave the default values.
+Now we need to create a **package.json** file. For that we can use [npm](https://www.npmjs.com/) which comes with Node by default. It will ask you a few questions, you can simply press enter to leave the default values.
 
 ```bash
 $ npm init
@@ -33,7 +33,7 @@ $ npm init
 
 If you are interested, here are docs on the [npm init](https://docs.npmjs.com/cli/init) command.
 
-Now we can install `hoodie` using npm
+Now we can install **hoodie** using npm
 
 ```bash
 $ npm install hoodie --save
@@ -41,7 +41,7 @@ $ npm install hoodie --save
 
 If you are curious what happens in the background, here are docs for the [npm install](https://docs.npmjs.com/cli/install) command.
 
-Now you need to edit the `package.json` file. We need to set the `"start"` script to `"hoodie"`. The result should look something like this
+Now you need to edit the **package.json** file. We need to set the **"start"** script to **"hoodie"**. The result should look something like this
 
 ```json
 {
@@ -76,14 +76,14 @@ Congratulations, you just created your first Hoodie App :)
 #### public folder
 
 When you open your app in the browser you will see Hoodie’s default page telling
-you that your app has no `public/` folder. So let’s create it
+you that your app has no **public/** folder. So let’s create it
 
 ```bash
 mkdir public
 touch public/index.html
 ```
 
-Now edit the `public/index.html` file and past in the following content.
+Now edit the **public/index.html** file and past in the following content.
 
 ```html
 <!DOCTYPE html>
@@ -100,18 +100,18 @@ Now edit the `public/index.html` file and past in the following content.
 </html>
 ```
 
-You need to stop the server now (`ctrl` + `c`) and start it again.
+You need to stop the server now (**ctrl** + **c**) and start it again.
 If you reload your app in your browser, you will now see your HTML file.
 
-The only line interesting for us is the `<script src="/hoodie/client.js"></script>` tag.
+The only line interesting for us is the **<script src="/hoodie/client.js"></script>** tag.
 
-Where is the `/hoodie/client.js` you wonder? Well, it’s magic ✨
-Okay, because it’s you, you can actually find the file at `./.hoodie/client.js` (see the `.` in `.hoodie`?).
+Where is the **/hoodie/client.js** you wonder? Well, it’s magic ✨
+Okay, because it’s you, you can actually find the file at **./.hoodie/client.js** (see the **.** in **.hoodie**?).
 But ignore this folder, it’s used internally by Hoodie, all you need to know is that it’s there and that
-if you use `git` make sure to add it to your `.gitignore` file :)
+if you use **git** make sure to add it to your **.gitignore** file :)
 
-The `/hoodie/client.js` is loading the dynamic Hoodie Client for your Hoodie Server.
-Open your browser’s console (command + alt + j on Mac, ctrl + alt + j on Windows) and type in `hoodie`.
+The **/hoodie/client.js** is loading the dynamic Hoodie Client for your Hoodie Server.
+Open your browser’s console (command + alt + j on Mac, ctrl + alt + j on Windows) and type in **hoodie**.
 This is how Hoodie apps talk to their servers. For example, type in
 
 ```js
@@ -120,7 +120,7 @@ hoodie.account.signUp({username: 'Robin', password: 'secret'})
 
 Congratulations, you just created a user account :) You can now sign in to it using
 
-Okay we got ahead of ourselves, the short version is: all assets like html, JavaScript or CSS files in the public folder will be served by the Hoodie Server at the `/` root path.
+Okay we got ahead of ourselves, the short version is: all assets like html, JavaScript or CSS files in the public folder will be served by the Hoodie Server at the **/** root path.
 
 #### package.json (file)
 
