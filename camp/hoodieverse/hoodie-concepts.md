@@ -59,6 +59,6 @@ With the stellar rise of mobile computing, we can no longer assume anything abou
 See <a href="http://offlinefirst.org/" target="_blank">offlinefirst.org</a>, <a href="https://github.com/offlinefirst/" target="_blank">on GitHub</a> and <a href="https://github.com/offlinefirst/research" target="_blank">discussions and research</a>
 
 ### So now you know what motivates us
-We hope this motivated you too! Now find out about [the underlying technology and how Hoodie actually works](/en/hoodieverse/how-hoodie-works.html).
+We hope this motivated you too! Now find out about [the underlying technology and how Hoodie actually works](/camp/hoodieverse/how-hoodie-works.html).
 
 If you're already familiar with the architecture, it might be time to take a look at <a href="system-requirements-browser-compatibilities-prerequisites-before-getting-started-with-hoodie.html">the system requirements for Hoodie.</a>

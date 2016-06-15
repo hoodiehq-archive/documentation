@@ -31,7 +31,7 @@ The clever bit is indicated by the dotted line in the middle; the connection bet
 
 ## Plugins
 
-<a href="/en/plugins/tutorial.html">Hoodie is extendable</a> in all respects: you can extend the frontend library, the backend, and Hoodie's admin panel. Currently, these fundamentals come pre-installed:
+<a href="/camp/plugins/tutorial.html">Hoodie is extendable</a> in all respects: you can extend the frontend library, the backend, and Hoodie's admin panel. Currently, these fundamentals come pre-installed:
 
 * user signup and administration
 * data storage
@@ -59,7 +59,7 @@ Yep. Anything you build with Hoodie automatically handles syncing data between a
 
 ### Working with change events
 
-Just to make clear how ridiculously easy we made all of this, let's look at how you'd implement updating your interface when your user [adds](/en/techdocs/api/client/hoodie.store.html#storeadd) a todo item to a fictional todo list application:
+Just to make clear how ridiculously easy we made all of this, let's look at how you'd implement updating your interface when your user [adds](/camp/techdocs/api/client/hoodie.store.html#storeadd) a todo item to a fictional todo list application:
 
 ```javascript
 // Storing the new todo item
@@ -101,7 +101,4 @@ But fundamentally, that's it. That's how you have your interface react to data c
 
 ## Now go forth and make things!
 
-Did this get you fired up? Then head to the [installation guide](/en/start/)!
-
-
-
+Did this get you fired up? Then head to the [installation guide](/camp/start/)!
