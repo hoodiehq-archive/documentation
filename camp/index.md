@@ -40,8 +40,8 @@ Hoodie is an Open Source project, so we don't own it, can't sell it, and it won'
 
 ## How to proceed
 
-You [could read up on some of the ideological concepts behind Hoodie](/en/hoodieverse/hoodie-concepts.html), such as noBackend and Offline First. These explain why Hoodie exists and why it looks and works the way it does.
+You [could read up on some of the ideological concepts behind Hoodie](/camp/hoodieverse/hoodie-concepts.html), such as noBackend and Offline First. These explain why Hoodie exists and why it looks and works the way it does.
 
-If you're more interested in the technical details of Hoodie, check out [How Hoodie Works](/en/hoodieverse/how-hoodie-works.html). Learn how Hoodie handles data storage, does syncing, and where the offline support comes from.
+If you're more interested in the technical details of Hoodie, check out [How Hoodie Works](/camp/hoodieverse/how-hoodie-works.html). Learn how Hoodie handles data storage, does syncing, and where the offline support comes from.
 
-Eager to build stuff? Skip ahead to the [installation guide](/en/start/)!
+Eager to build stuff? Skip ahead to the [installation guide](/camp/start/)!
