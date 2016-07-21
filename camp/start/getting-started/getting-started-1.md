@@ -120,6 +120,10 @@ hoodie.account.signUp({username: 'Robin', password: 'secret'})
 
 Congratulations, you just created a user account :) You can now sign in to it using
 
+```js
+hoodie.account.signIn({username: 'Robin', password: 'secret'})
+```
+
 Okay we got ahead of ourselves, the short version is: all assets like html, JavaScript or CSS files in the public folder will be served by the Hoodie Server at the **/** root path.
 
 #### package.json (file)
