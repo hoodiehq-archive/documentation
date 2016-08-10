@@ -25,6 +25,12 @@ First you need to create a new folder, let’s call it **testapp**
 $ mkdir testapp
 ```
 
+Change into the `testapp` directory.
+
+```bash
+$ cd testapp
+```
+
 Now we need to create a **package.json** file. For that we can use [npm](https://www.npmjs.com/) which comes with Node by default. It will ask you a few questions, you can simply press enter to leave the default values.
 
 ```bash
