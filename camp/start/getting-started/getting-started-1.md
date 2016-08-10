@@ -89,7 +89,7 @@ mkdir public
 touch public/index.html
 ```
 
-Now edit the **public/index.html** file and past in the following content.
+Now edit the **public/index.html** file and pass in the following content.
 
 ```html
 <!DOCTYPE html>
