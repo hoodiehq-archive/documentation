@@ -10,10 +10,9 @@ This is the first part of Getting Started with Hoodie, which describes the first
 ### Topics Covered in this guide
 
 1. Creating a new app
-2. App, Admin and Futon URLs
-3. Structure of a Hoodie Project
-4. Including the Script
-5. The global window.hoodie Object
+2. Structure of a Hoodie Project
+3. Including the Script
+4. The global window.hoodie Object
 
 If you experience any problems at any step of this doc, please check our <a href="http://faq.hood.ie" target="_blank">FAQ</a> or <a href="http://hood.ie/chat" target="_blank">get in touch with us on IRC or Slack</a>.
 
@@ -157,7 +156,7 @@ This is Hoodie’s secret folder. Your own Hoodie Client is stored here after it
 
 We could have put it somewhere in **usr/local/**, but it's right there in your app folder. This setup makes it really easy to move the app and its data to another system without much hassle. Also, if you want to clear all of your test data during development, you can just delete or rename this folder. Hoodie will recreate it and you can start with a clean slate. **You'll want to leave this out of source control, too.**
 
-### 4. Including the Script
+### 3. Including the Script
 
 The demo app will already have this line in its **index.html**, but essentially, all you need to do to make your app Hoodie-ready is include a single **js** library:
 
@@ -169,7 +168,7 @@ You'll notice that this file isn't in **node_modules** or some **vendor** or **l
 
 And that's actually it! You're ready to go.
 
-### 5. The global window.hoodie Object
+### 4. The global window.hoodie Object
 
 Hoodie is designed to let you build frontends the way you like to build frontends. The only way you talk to Hoodie in the frontend of your app is through the Hoodie API, which lives in a global window object and is, unsurprisingly, called **window.hoodie**, or simply **hoodie**.
 
