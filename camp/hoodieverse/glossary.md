@@ -5,9 +5,13 @@ locales: camp
 
 # Glossary of Terms
 
-## CouchDB/PouchDB
+## CouchDB
 
-[CouchDB](http://couchdb.apache.org/) is a non-relational, document-based database that replicates, which means it's really good at syncing data between multiple instances of itself. All data is stored as JSON, all indices (queries) are written in JavaScript, and it uses regular HTTP as its API. It gets along wonderfully with [PouchDB](http://pouchdb.com/), the in-browser version of CouchDB, which Hoodie is currently migrating to for storing data locally, in browser.
+[CouchDB](http://couchdb.apache.org/) is a non-relational, document-based database that replicates, which means it's really good at syncing data between multiple instances of itself. All data is stored as JSON, all indices (queries) are written in JavaScript, and it uses regular HTTP as its API.
+
+## PouchDB
+
+[PouchDB](http://pouchdb.com/) is an in-browser datastore inspired by CouchDB. It enables applications to store data locally while offline, then synchronize it with CouchDB.
 
 ## Users
 
