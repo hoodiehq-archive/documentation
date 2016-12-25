@@ -9,7 +9,7 @@ locales: camp
 
 ## What is Hoodie?
 
-Hoodie is library/server package for frontend web applications that abstracts away the backend. If you love working in jQuery, Backbone, Dojo, Ember, or any other frontend framework, but *dread* backend work, Hoodie is for you.
+Hoodie is library/server package for frontend web applications that abstracts away the backend. If you love building apps with HTML, CSS and JavaScript or a frontend framework, but *dread* backend work, Hoodie is for you.
 
 Hoodie gives your frontend code superpowers by allowing you to do things that usually only a backend can do (user accounts, emails, payments, etc.).
 
@@ -24,10 +24,12 @@ From that point on, things get really powerful really quickly:
 
 ```javascript
 // In your front-end code:
-hoodie.account.signUp({
-  username: username,
-  password: password
-});
+hoodie.ready.then(function () {
+  hoodie.account.signUp({
+    username: username,
+    password: password
+  });
+})
 ```
 
 That's how simple signing up a new user is, for example. But anyway:
