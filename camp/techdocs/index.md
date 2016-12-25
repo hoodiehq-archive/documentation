@@ -9,7 +9,7 @@ The Hoodie Guide is a special version of the API documentation for beginners, in
 
 ## 1. The Hoodie Client API
 
-This library, commonly called **hoodie.js**, is what you'll be working with on the client side. It consists of:
+This library, commonly called **Hoodie Client**, is what you'll be working with on the client side. It consists of:
 
 - [The Hoodie API](/camp/techdocs/api/client/hoodie.html), which has a couple of useful helpers
 - [The account API](/camp/techdocs/api/client/hoodie.account.html), which lets you do user authentication, such as signing users up, in and out
