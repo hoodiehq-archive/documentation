@@ -477,7 +477,8 @@ var userConfig = hoodie.store( 'userConfig', 'config' );
 
 **Important:** For a call like this, only a minimal subset of functions will be available on the created store context. You won't be able to call any method whose purpose is to target more than one stored object (ie. **findAll()**). Because that wouldn't make any sense.
 
-## Store Events
+<a id="storeevents"></a>
+## [Store Events](#storeevents)
 
 **Important:** if you haven't yet, please read [the general guide to Hoodie events and their naming syntax](/en/techdocs/api/client/hoodie.html#on) to better understand how events are handled.
 
