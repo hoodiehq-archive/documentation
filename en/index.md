@@ -39,4 +39,4 @@ You [could read up on some of the ideological concepts behind Hoodie](/en/hoodie
 
 If you're more interested in the technical details of Hoodie, check out [How Hoodie Works](/en/hoodieverse/how-hoodie-works.html). Learn how Hoodie handles data storage, does syncing, and where the offline support comes from.
 
-Eager to build stuff? Skip ahead to the [installation guide](/en/start/)!
+Eager to build stuff? Skip ahead to the [installation guide](.../start/)!
